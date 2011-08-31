@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'BindleKit' target in the 'BindleKit' project
+//
+
+#ifdef __OBJC__
+   #import <Foundation/Foundation.h>
+#endif
