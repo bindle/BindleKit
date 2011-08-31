@@ -1,7 +1,6 @@
 /*
  *  Bindle Binaries Objective-C Kit
  *  Copyright (c) 2011, Bindle Binaries
- *  All rights reserved.
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_START@
  *
@@ -33,19 +32,76 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /**
- *  @file BindleKit/BindleKit.h loads API for classes in BindleKit
+ *  @file BindleKit/classes/models/BKSelectionOption.m Option data for Selelection
  */
 
-#import <Foundation/Foundation.h>
+#import "BKSelectionOption.h"
 
-#import <BindleKit/classes/models/BKMemoryCache.h>
-#import <BindleKit/classes/models/BKSelectionOption.h>
+@implementation BKSelectionOption
 
-#ifdef TARGET_OS_IPHONE
-#import <BindleKit/classes/controllers/iOS/BKSelectionController.h>
-#endif
+@synthesize value;
+@synthesize description;
 
-#ifdef TARGET_OS_MAC
-#endif
 
-/* end of header */
+- (void) dealloc
+{
+   self.value       = nil;
+   self.description = nil;
+   [super dealloc];
+   return;
+}
+
+
+- (id) initWithValue:(id)aValue andDescription:(NSString *)aDescription
+{
+   if ((self = [super init]) == nil)
+      return(self);
+   self.value       = aValue;
+   self.description = aDescription;
+   return(self);
+}
+
+
++ (id) optionWithValue:(id)aValue andDescription:(NSString *)aDescription
+{
+   BKSelectionOption * option;
+   option = [[BKSelectionOption alloc] initWithValue:aValue andDescription:aDescription];
+   return([option autorelease]);
+}
+
+
++ (NSString *) descriptionForValue:(id)value inArray:(NSArray *)array
+{
+   BKSelectionOption * option;
+   NSUInteger          pos;
+
+   for(pos = 0; pos < [array count]; pos++)
+   {
+      option = [array objectAtIndex:pos];
+      if ([option isKindOfClass:[BKSelectionOption class]])
+         if ([value isEqual:[option value]])
+            return([option description]);
+   };
+
+   return(nil);
+}
+
+
++ (id) valueForDescription:(NSString *)description inArray:(NSArray *)array
+{
+   BKSelectionOption * option;
+   NSUInteger          pos;
+
+   for(pos = 0; pos < [array count]; pos++)
+   {
+      option = [array objectAtIndex:pos];
+      if ([option isKindOfClass:[BKSelectionOption class]])
+         if ([description isEqual:[option description]])
+            return([option value]);
+   };
+
+   return(nil);
+}
+
+
+@end

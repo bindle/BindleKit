@@ -1,7 +1,6 @@
 /*
  *  Bindle Binaries Objective-C Kit
  *  Copyright (c) 2011, Bindle Binaries
- *  All rights reserved.
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_START@
  *
@@ -33,19 +32,24 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /**
- *  @file BindleKit/BindleKit.h loads API for classes in BindleKit
+ *  @file BindleKit/classes/models/BKSelectionOption.m Option data for Selelection
  */
 
 #import <Foundation/Foundation.h>
 
-#import <BindleKit/classes/models/BKMemoryCache.h>
-#import <BindleKit/classes/models/BKSelectionOption.h>
+@interface BKSelectionOption : NSObject
+{
+   id         value;
+   NSString * description;
+}
 
-#ifdef TARGET_OS_IPHONE
-#import <BindleKit/classes/controllers/iOS/BKSelectionController.h>
-#endif
+@property (nonatomic, retain) id         value;
+@property (nonatomic, retain) NSString * description;
 
-#ifdef TARGET_OS_MAC
-#endif
+- (id) initWithValue:(id)aValue andDescription:(NSString *)aDescription;
++ (id) optionWithValue:(id)aValue andDescription:(NSString *)aDescription;
 
-/* end of header */
++ (NSString *) descriptionForValue:(id)value inArray:(NSArray *)array;
++ (id) valueForDescription:(NSString *)description inArray:(NSArray *)array;
+
+@end
