@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0529AC9140DDCB500CFA6F8 /* BKMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A0529AC7140DDCB500CFA6F8 /* BKMemoryCache.h */; };
+		A0529ACA140DDCB500CFA6F8 /* BKMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */; };
 		A07D34F8140DC1E800832E1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07D34F7140DC1E800832E1F /* Foundation.framework */; };
-		A07D34FE140DC1E800832E1F /* BindleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A07D34FD140DC1E800832E1F /* BindleKit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0529ABB140DC95A00CFA6F8 /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		A0529ABC140DC95A00CFA6F8 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		A0529AC7140DDCB500CFA6F8 /* BKMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKMemoryCache.h; sourceTree = "<group>"; };
+		A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKMemoryCache.m; sourceTree = "<group>"; };
 		A07D34F4140DC1E800832E1F /* libBindleKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBindleKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07D34F7140DC1E800832E1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A07D34FB140DC1E800832E1F /* BindleKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BindleKit-Prefix.pch"; sourceTree = "<group>"; };
 		A07D34FC140DC1E800832E1F /* BindleKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindleKit.h; sourceTree = "<group>"; };
-		A07D34FD140DC1E800832E1F /* BindleKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindleKit.m; sourceTree = "<group>"; };
 		A07D3505140DC1E800832E1F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		A07D3507140DC1E900832E1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		A07D350A140DC1E900832E1F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
@@ -34,9 +38,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0529ABF140DCAC300CFA6F8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A0529AC3140DCAC300CFA6F8 /* Models */,
+			);
+			name = Classes;
+			path = classes;
+			sourceTree = "<group>";
+		};
+		A0529AC3140DCAC300CFA6F8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A0529AC7140DDCB500CFA6F8 /* BKMemoryCache.h */,
+				A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */,
+			);
+			name = Models;
+			path = models;
+			sourceTree = "<group>";
+		};
 		A07D34E9140DC1E800832E1F = {
 			isa = PBXGroup;
 			children = (
+				A0529ABB140DC95A00CFA6F8 /* COPYING */,
+				A0529ABC140DC95A00CFA6F8 /* README */,
 				A07D34F9140DC1E800832E1F /* BindleKit */,
 				A07D34F6140DC1E800832E1F /* Frameworks */,
 				A07D34F5140DC1E800832E1F /* Products */,
@@ -66,7 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				A07D34FC140DC1E800832E1F /* BindleKit.h */,
-				A07D34FD140DC1E800832E1F /* BindleKit.m */,
+				A0529ABF140DCAC300CFA6F8 /* Classes */,
 				A07D34FA140DC1E800832E1F /* Supporting Files */,
 			);
 			path = BindleKit;
@@ -78,6 +103,7 @@
 				A07D34FB140DC1E800832E1F /* BindleKit-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +113,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0529AC9140DDCB500CFA6F8 /* BKMemoryCache.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A07D34FE140DC1E800832E1F /* BindleKit.m in Sources */,
+				A0529ACA140DDCB500CFA6F8 /* BKMemoryCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,11 +188,12 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				HEADER_SEARCH_PATHS = .;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -177,11 +205,12 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				HEADER_SEARCH_PATHS = .;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -192,7 +221,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/BindleKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BindleKit/BindleKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "BindleKit/support/BindleKit-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -204,7 +233,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/BindleKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BindleKit/BindleKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "BindleKit/support/BindleKit-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

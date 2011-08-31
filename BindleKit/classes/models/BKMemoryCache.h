@@ -33,11 +33,41 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /**
- *  @file BindleKit/BindleKit.h loads API for classes in BindleKit
+ *  @file BindleKit/classes/models/BKMemoryCache.m Caches objects in memory
  */
 
 #import <Foundation/Foundation.h>
 
-#import <BindleKit/classes/models/BKMemoryCache.h>
+@interface BKMemoryCache : NSObject
+{
+   NSMutableDictionary * cacheData;
+   BOOL                  isRegistry;
+   BOOL                  receiveMemoryWarnings;
+}
 
-/* end of header */
+#pragma mark - Cache registery methods
++ (NSInteger) countRegisteredCache:(NSString *)name;
++ (void) initializeCacheRegistry;
++ (id)   objectForKey:(NSString *)key inRegisteredCache:(NSString *)name;
++ (void) pruneCacheRegistry;
++ (void) pruneRegisteredCache:(NSString *)name;
++ (void) registerCacheWithName:(NSString *)name;
++ (void) removeObjectForKey:(NSString *)key inRegisteredCache:(NSString *)name;
++ (void) setObject:(id)object forKey:(NSString *)key inRegisteredCache:(NSString *)name;
++ (void) unregisterCacheWithName:(NSString *)name;
++ (id)   valueForKey:(NSString *)key inRegisteredCache:(NSString *)name;
+
+#pragma mark - Cache methods
+- (NSInteger) count;
+- (id)   objectForKey:(NSString *)key;
+- (void) pruneCache;
+- (void) removeObjectForKey:(NSString *)key;
+- (void) setObject:(id)object forKey:(NSString *)key;
+- (id)   valueForKey:(NSString *)key;
+
+# pragma mark - handles notifications
+- (void) didReceiveMemoryWarning:(NSNotification *)notification;
+- (void) registerToReceiveMemoryWarning;
+- (void) unregisterToReceiveMemoryWarning;
+
+@end
