@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		A0529AC9140DDCB500CFA6F8 /* BKMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A0529AC7140DDCB500CFA6F8 /* BKMemoryCache.h */; };
 		A0529ACA140DDCB500CFA6F8 /* BKMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */; };
+		A0529AF2140DE01B00CFA6F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0529AF1140DE01B00CFA6F8 /* Cocoa.framework */; };
+		A0529B04140DE06600CFA6F8 /* BKMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */; };
+		A0529B0A140DE1EE00CFA6F8 /* BindleKit-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = A07D34FB140DC1E800832E1F /* BindleKit-Prefix.pch */; };
+		A0529B0B140DE20100CFA6F8 /* BindleKit-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = A07D34FB140DC1E800832E1F /* BindleKit-Prefix.pch */; };
+		A0529B0E140DE21000CFA6F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0529B0C140DE21000CFA6F8 /* InfoPlist.strings */; };
 		A07D34F8140DC1E800832E1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07D34F7140DC1E800832E1F /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -17,9 +22,16 @@
 		A0529ABC140DC95A00CFA6F8 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		A0529AC7140DDCB500CFA6F8 /* BKMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKMemoryCache.h; sourceTree = "<group>"; };
 		A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKMemoryCache.m; sourceTree = "<group>"; };
+		A0529AF0140DE01B00CFA6F8 /* BindleKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BindleKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0529AF1140DE01B00CFA6F8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		A0529AF4140DE01B00CFA6F8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		A0529AF5140DE01B00CFA6F8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A0529AF6140DE01B00CFA6F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A0529AF9140DE01B00CFA6F8 /* BindleKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BindleKit-Info.plist"; sourceTree = "<group>"; };
+		A0529B0D140DE21000CFA6F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A07D34F4140DC1E800832E1F /* libBindleKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBindleKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07D34F7140DC1E800832E1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		A07D34FB140DC1E800832E1F /* BindleKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BindleKit-Prefix.pch"; sourceTree = "<group>"; };
+		A07D34FB140DC1E800832E1F /* BindleKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BindleKit-Prefix.pch"; sourceTree = "<group>"; };
 		A07D34FC140DC1E800832E1F /* BindleKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindleKit.h; sourceTree = "<group>"; };
 		A07D3505140DC1E800832E1F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		A07D3507140DC1E900832E1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -27,6 +39,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A0529AEC140DE01B00CFA6F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0529AF2140DE01B00CFA6F8 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A07D34F1140DC1E800832E1F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,6 +77,16 @@
 			path = models;
 			sourceTree = "<group>";
 		};
+		A0529AF3140DE01B00CFA6F8 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0529AF4140DE01B00CFA6F8 /* AppKit.framework */,
+				A0529AF5140DE01B00CFA6F8 /* CoreData.framework */,
+				A0529AF6140DE01B00CFA6F8 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
 		A07D34E9140DC1E800832E1F = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				A07D34F4140DC1E800832E1F /* libBindleKit.a */,
+				A0529AF0140DE01B00CFA6F8 /* BindleKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +114,8 @@
 				A07D3505140DC1E800832E1F /* SenTestingKit.framework */,
 				A07D3507140DC1E900832E1F /* UIKit.framework */,
 				A07D350A140DC1E900832E1F /* CoreGraphics.framework */,
+				A0529AF1140DE01B00CFA6F8 /* Cocoa.framework */,
+				A0529AF3140DE01B00CFA6F8 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -101,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				A07D34FB140DC1E800832E1F /* BindleKit-Prefix.pch */,
+				A0529AF9140DE01B00CFA6F8 /* BindleKit-Info.plist */,
+				A0529B0C140DE21000CFA6F8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			path = support;
@@ -109,6 +144,15 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		A0529AED140DE01B00CFA6F8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0529B0A140DE1EE00CFA6F8 /* BindleKit-Prefix.pch in Headers */,
+				A0529B0B140DE20100CFA6F8 /* BindleKit-Prefix.pch in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A07D34F2140DC1E800832E1F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -120,9 +164,27 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A07D34F3140DC1E800832E1F /* BindleKit */ = {
+		A0529AEF140DE01B00CFA6F8 /* BindleKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A07D351B140DC1E900832E1F /* Build configuration list for PBXNativeTarget "BindleKit" */;
+			buildConfigurationList = A0529B01140DE01B00CFA6F8 /* Build configuration list for PBXNativeTarget "BindleKit" */;
+			buildPhases = (
+				A0529AEB140DE01B00CFA6F8 /* Sources */,
+				A0529AEC140DE01B00CFA6F8 /* Frameworks */,
+				A0529AED140DE01B00CFA6F8 /* Headers */,
+				A0529AEE140DE01B00CFA6F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BindleKit;
+			productName = BindleKit;
+			productReference = A0529AF0140DE01B00CFA6F8 /* BindleKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A07D34F3140DC1E800832E1F /* libBindleKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A07D351B140DC1E900832E1F /* Build configuration list for PBXNativeTarget "libBindleKit" */;
 			buildPhases = (
 				A07D34F0140DC1E800832E1F /* Sources */,
 				A07D34F1140DC1E800832E1F /* Frameworks */,
@@ -132,7 +194,7 @@
 			);
 			dependencies = (
 			);
-			name = BindleKit;
+			name = libBindleKit;
 			productName = BindleKit;
 			productReference = A07D34F4140DC1E800832E1F /* libBindleKit.a */;
 			productType = "com.apple.product-type.library.static";
@@ -157,12 +219,32 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A07D34F3140DC1E800832E1F /* BindleKit */,
+				A07D34F3140DC1E800832E1F /* libBindleKit */,
+				A0529AEF140DE01B00CFA6F8 /* BindleKit */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		A0529AEE140DE01B00CFA6F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0529B0E140DE21000CFA6F8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		A0529AEB140DE01B00CFA6F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0529B04140DE06600CFA6F8 /* BKMemoryCache.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A07D34F0140DC1E800832E1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -173,7 +255,66 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		A0529B0C140DE21000CFA6F8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A0529B0D140DE21000CFA6F8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		A0529B02140DE01B00CFA6F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BindleKit/support/BindleKit-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "BindleKit/support/BindleKit-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		A0529B03140DE01B00CFA6F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BindleKit/support/BindleKit-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "BindleKit/support/BindleKit-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
 		A07D3519140DC1E900832E1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -243,6 +384,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A0529B01140DE01B00CFA6F8 /* Build configuration list for PBXNativeTarget "BindleKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0529B02140DE01B00CFA6F8 /* Debug */,
+				A0529B03140DE01B00CFA6F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		A07D34EE140DC1E800832E1F /* Build configuration list for PBXProject "BindleKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -252,7 +401,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A07D351B140DC1E900832E1F /* Build configuration list for PBXNativeTarget "BindleKit" */ = {
+		A07D351B140DC1E900832E1F /* Build configuration list for PBXNativeTarget "libBindleKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A07D351C140DC1E900832E1F /* Debug */,
