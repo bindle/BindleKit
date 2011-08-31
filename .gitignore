@@ -1,0 +1,6 @@
+*.mode1v3
+*.o
+*.pbxuser
+*.xcuserdatad
+.DS_Store
+a.out
