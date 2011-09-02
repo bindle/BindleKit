@@ -615,7 +615,6 @@
    {
       if (dataHasChanged == YES)
          [tableViewController.tableView reloadData];
-      aFrame = CGRectOffset(sender.frame, sender.detailTextLabel.frame.origin.x, 0);
       aFrame = CGRectMake(sender.detailTextLabel.frame.origin.x,
                           sender.frame.origin.y,
                           sender.detailTextLabel.frame.size.width,
