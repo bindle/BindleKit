@@ -19,6 +19,7 @@
 		A064D973140E053200255FD3 /* BKSelectionController.h in Headers */ = {isa = PBXBuildFile; fileRef = A064D971140E053200255FD3 /* BKSelectionController.h */; };
 		A064D974140E053200255FD3 /* BKSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A064D972140E053200255FD3 /* BKSelectionController.m */; };
 		A07D34F8140DC1E800832E1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07D34F7140DC1E800832E1F /* Foundation.framework */; };
+		A0F71313141345AB00252B5F /* BKSelectionOption.m in Sources */ = {isa = PBXBuildFile; fileRef = A064D96B140E047C00255FD3 /* BKSelectionOption.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -272,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0F71313141345AB00252B5F /* BKSelectionOption.m in Sources */,
 				A0529B04140DE06600CFA6F8 /* BKMemoryCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

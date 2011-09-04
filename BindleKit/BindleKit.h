@@ -41,7 +41,7 @@
 #import <BindleKit/classes/models/BKMemoryCache.h>
 #import <BindleKit/classes/models/BKSelectionOption.h>
 
-#ifdef TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE
 #import <BindleKit/classes/controllers/iOS/BKSelectionController.h>
 #endif
 
