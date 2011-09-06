@@ -1,7 +1,6 @@
 /*
  *  Bindle Binaries Objective-C Kit
  *  Copyright (c) 2011, Bindle Binaries
- *  All rights reserved.
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_START@
  *
