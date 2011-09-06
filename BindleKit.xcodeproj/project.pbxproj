@@ -32,6 +32,7 @@
 		A064D96B140E047C00255FD3 /* BKSelectionOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKSelectionOption.m; sourceTree = "<group>"; };
 		A064D971140E053200255FD3 /* BKSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKSelectionController.h; sourceTree = "<group>"; };
 		A064D972140E053200255FD3 /* BKSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKSelectionController.m; sourceTree = "<group>"; };
+		A07A7F261416D18000AB872D /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		A07D34F4140DC1E800832E1F /* libBindleKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libBindleKit.a; path = libiBindleKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07D34F7140DC1E800832E1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A07D34FB140DC1E800832E1F /* BindleKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BindleKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 			children = (
 				A0529ABB140DC95A00CFA6F8 /* COPYING */,
 				A0529ABC140DC95A00CFA6F8 /* README */,
+				A07A7F261416D18000AB872D /* TODO */,
 				A07D34F9140DC1E800832E1F /* BindleKit */,
 				A07D34F6140DC1E800832E1F /* Frameworks */,
 				A07D34F5140DC1E800832E1F /* Products */,
@@ -404,6 +406,7 @@
 				A0F713631413520300252B5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

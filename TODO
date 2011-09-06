@@ -1,0 +1,20 @@
+
+Bindle Binaries Objective-C Kit
+Copyright (c) 2011 Bindle Binaries <syzdek@bindlebinaries.com>.
+
+Documentation:
+* Document BKMemoryCache class. (syzdek)
+* Document BKSelectionOption class. (syzdek)
+* Document BKSelectionController class. (syzdek)
+* Write BindleKit manual/guide. (syzdek)
+* Create website for BindleKit. (syzdek)
+* Write demo program. (syzdek)
+
+Consistency:
+* Write unit tests for BKMemoryCache class. (syzdek)
+* Write unit tests for BKSelectionOption class. (syzdek)
+* Write unit tests for BKSelectionController class. (syzdek)
+
+Development:
+* Write category for crypto hashes on NSString. (syzdek)
+* Write category for dynamicly creating UIImages for UIButtons. (syzdek)
