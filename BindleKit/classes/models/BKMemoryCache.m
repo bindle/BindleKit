@@ -348,6 +348,7 @@ static BKMemoryCache * BKMemoryCacheRegistery;
 
 - (void) didReceiveMemoryWarning:(NSNotification *)notification
 {
+   notification = nil;
    if (isRegistry == YES)
       [self pruneRegistry];
    else
