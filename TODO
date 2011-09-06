@@ -6,6 +6,7 @@ Documentation:
 * Document BKMemoryCache class. (syzdek)
 * Document BKSelectionOption class. (syzdek)
 * Document BKSelectionController class. (syzdek)
+* Document NSString (BKStringDigest) category. (syzdek)
 * Write BindleKit manual/guide. (syzdek)
 * Create website for BindleKit. (syzdek)
 * Write demo program. (syzdek)
@@ -16,5 +17,5 @@ Consistency:
 * Write unit tests for BKSelectionController class. (syzdek)
 
 Development:
-* Write category for crypto hashes on NSString. (syzdek)
 * Write category for dynamicly creating UIImages for UIButtons. (syzdek)
+* Write controller for lock/password protected screen on iOS. (syzdek)

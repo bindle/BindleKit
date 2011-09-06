@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		A0529AC9140DDCB500CFA6F8 /* BKMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A0529AC7140DDCB500CFA6F8 /* BKMemoryCache.h */; };
 		A0529ACA140DDCB500CFA6F8 /* BKMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */; };
+		A05CE1DD1416DF4D00B7002F /* BKStringDigest.h in Headers */ = {isa = PBXBuildFile; fileRef = A05CE1DB1416DF4D00B7002F /* BKStringDigest.h */; };
+		A05CE1DE1416DF4D00B7002F /* BKStringDigest.h in Headers */ = {isa = PBXBuildFile; fileRef = A05CE1DB1416DF4D00B7002F /* BKStringDigest.h */; };
+		A05CE1DF1416DF4D00B7002F /* BKStringDigest.m in Sources */ = {isa = PBXBuildFile; fileRef = A05CE1DC1416DF4D00B7002F /* BKStringDigest.m */; };
+		A05CE1E01416DF4D00B7002F /* BKStringDigest.m in Sources */ = {isa = PBXBuildFile; fileRef = A05CE1DC1416DF4D00B7002F /* BKStringDigest.m */; };
 		A064D96C140E047C00255FD3 /* BKSelectionOption.h in Headers */ = {isa = PBXBuildFile; fileRef = A064D96A140E047C00255FD3 /* BKSelectionOption.h */; };
 		A064D96D140E047C00255FD3 /* BKSelectionOption.m in Sources */ = {isa = PBXBuildFile; fileRef = A064D96B140E047C00255FD3 /* BKSelectionOption.m */; };
 		A064D973140E053200255FD3 /* BKSelectionController.h in Headers */ = {isa = PBXBuildFile; fileRef = A064D971140E053200255FD3 /* BKSelectionController.h */; };
@@ -28,6 +32,8 @@
 		A0529AF4140DE01B00CFA6F8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A0529AF5140DE01B00CFA6F8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A0529AF6140DE01B00CFA6F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A05CE1DB1416DF4D00B7002F /* BKStringDigest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKStringDigest.h; sourceTree = "<group>"; };
+		A05CE1DC1416DF4D00B7002F /* BKStringDigest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKStringDigest.m; sourceTree = "<group>"; };
 		A064D96A140E047C00255FD3 /* BKSelectionOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKSelectionOption.h; sourceTree = "<group>"; };
 		A064D96B140E047C00255FD3 /* BKSelectionOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKSelectionOption.m; sourceTree = "<group>"; };
 		A064D971140E053200255FD3 /* BKSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKSelectionController.h; sourceTree = "<group>"; };
@@ -96,6 +102,16 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
+		A05CE1DA1416DF4D00B7002F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A05CE1DB1416DF4D00B7002F /* BKStringDigest.h */,
+				A05CE1DC1416DF4D00B7002F /* BKStringDigest.m */,
+			);
+			name = Categories;
+			path = categories;
+			sourceTree = "<group>";
+		};
 		A064D96F140E053200255FD3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				A07D34FC140DC1E800832E1F /* BindleKit.h */,
+				A05CE1DA1416DF4D00B7002F /* Categories */,
 				A0529ABF140DCAC300CFA6F8 /* Classes */,
 				A07D34FA140DC1E800832E1F /* Supporting Files */,
 			);
@@ -178,6 +195,7 @@
 				A0529AC9140DDCB500CFA6F8 /* BKMemoryCache.h in Headers */,
 				A064D96C140E047C00255FD3 /* BKSelectionOption.h in Headers */,
 				A064D973140E053200255FD3 /* BKSelectionController.h in Headers */,
+				A05CE1DD1416DF4D00B7002F /* BKStringDigest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +203,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A05CE1DE1416DF4D00B7002F /* BKStringDigest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +278,7 @@
 				A0529ACA140DDCB500CFA6F8 /* BKMemoryCache.m in Sources */,
 				A064D96D140E047C00255FD3 /* BKSelectionOption.m in Sources */,
 				A064D974140E053200255FD3 /* BKSelectionController.m in Sources */,
+				A05CE1DF1416DF4D00B7002F /* BKStringDigest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +288,7 @@
 			files = (
 				A0F713641413526900252B5F /* BKMemoryCache.m in Sources */,
 				A0F713651413526C00252B5F /* BKSelectionOption.m in Sources */,
+				A05CE1E01416DF4D00B7002F /* BKStringDigest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

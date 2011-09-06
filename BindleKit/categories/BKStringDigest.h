@@ -31,21 +31,20 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/**
- *  @file BindleKit/BindleKit.h loads API for classes in BindleKit
+ /**
+ *  @file BindleKit/categories/LBStringCrypto.h expands NSString
  */
 
 #import <Foundation/Foundation.h>
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/classes/models/BKMemoryCache.h>
-#import <BindleKit/classes/models/BKSelectionOption.h>
+@interface NSString (BKStringDigest)
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/classes/controllers/iOS/BKSelectionController.h>
-#endif
+- (NSString *) stringHashWithCrypt;
+- (NSString *) stringHashWithCryptWithSalt:(NSString *)salt;
+- (NSString *) stringHashWithMD2;
+- (NSString *) stringHashWithMD4;
+- (NSString *) stringHashWithMD5;
+- (NSString *) stringHashWithSHA1;
+- (NSString *) stringHashWithSHA256;
 
-#ifdef TARGET_OS_MAC
-#endif
-
-/* end of header */
+@end
