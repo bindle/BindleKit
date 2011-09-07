@@ -6,6 +6,7 @@ Documentation:
 * Document BKMemoryCache class. (syzdek)
 * Document BKSelectionOption class. (syzdek)
 * Document BKSelectionController class. (syzdek)
+* Document BKArgument class. (syzdek)
 * Document NSString (BKStringDigest) category. (syzdek)
 * Write BindleKit manual/guide. (syzdek)
 * Create website for BindleKit. (syzdek)

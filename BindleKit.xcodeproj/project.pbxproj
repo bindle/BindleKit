@@ -18,6 +18,10 @@
 		A064D973140E053200255FD3 /* BKSelectionController.h in Headers */ = {isa = PBXBuildFile; fileRef = A064D971140E053200255FD3 /* BKSelectionController.h */; };
 		A064D974140E053200255FD3 /* BKSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A064D972140E053200255FD3 /* BKSelectionController.m */; };
 		A07D34F8140DC1E800832E1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07D34F7140DC1E800832E1F /* Foundation.framework */; };
+		A092A666141706B40033C972 /* BKArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = A092A664141706B40033C972 /* BKArgument.h */; };
+		A092A667141706B40033C972 /* BKArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = A092A664141706B40033C972 /* BKArgument.h */; };
+		A092A668141706B40033C972 /* BKArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = A092A665141706B40033C972 /* BKArgument.m */; };
+		A092A669141706B40033C972 /* BKArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = A092A665141706B40033C972 /* BKArgument.m */; };
 		A0F713641413526900252B5F /* BKMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */; };
 		A0F713651413526C00252B5F /* BKSelectionOption.m in Sources */ = {isa = PBXBuildFile; fileRef = A064D96B140E047C00255FD3 /* BKSelectionOption.m */; };
 		A0F713671413529D00252B5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F713661413529D00252B5F /* Foundation.framework */; };
@@ -46,6 +50,8 @@
 		A07D3505140DC1E800832E1F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		A07D3507140DC1E900832E1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		A07D350A140DC1E900832E1F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		A092A664141706B40033C972 /* BKArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKArgument.h; sourceTree = "<group>"; };
+		A092A665141706B40033C972 /* BKArgument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKArgument.m; sourceTree = "<group>"; };
 		A0F713591413520300252B5F /* libBindleKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBindleKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F713661413529D00252B5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -83,6 +89,8 @@
 		A0529AC3140DCAC300CFA6F8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A092A664141706B40033C972 /* BKArgument.h */,
+				A092A665141706B40033C972 /* BKArgument.m */,
 				A0529AC7140DDCB500CFA6F8 /* BKMemoryCache.h */,
 				A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */,
 				A064D96A140E047C00255FD3 /* BKSelectionOption.h */,
@@ -196,6 +204,7 @@
 				A064D96C140E047C00255FD3 /* BKSelectionOption.h in Headers */,
 				A064D973140E053200255FD3 /* BKSelectionController.h in Headers */,
 				A05CE1DD1416DF4D00B7002F /* BKStringDigest.h in Headers */,
+				A092A666141706B40033C972 /* BKArgument.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A05CE1DE1416DF4D00B7002F /* BKStringDigest.h in Headers */,
+				A092A667141706B40033C972 /* BKArgument.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +289,7 @@
 				A064D96D140E047C00255FD3 /* BKSelectionOption.m in Sources */,
 				A064D974140E053200255FD3 /* BKSelectionController.m in Sources */,
 				A05CE1DF1416DF4D00B7002F /* BKStringDigest.m in Sources */,
+				A092A668141706B40033C972 /* BKArgument.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +300,7 @@
 				A0F713641413526900252B5F /* BKMemoryCache.m in Sources */,
 				A0F713651413526C00252B5F /* BKSelectionOption.m in Sources */,
 				A05CE1E01416DF4D00B7002F /* BKStringDigest.m in Sources */,
+				A092A669141706B40033C972 /* BKArgument.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

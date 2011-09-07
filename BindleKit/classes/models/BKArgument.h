@@ -32,21 +32,39 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /**
- *  @file BindleKit/BindleKit.h loads API for classes in BindleKit
+ *  @file BindleKit/classes/models/BKArgument.h Contains array of arguments
  */
 
 #import <Foundation/Foundation.h>
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/classes/models/BKArgument.h>
-#import <BindleKit/classes/models/BKMemoryCache.h>
-#import <BindleKit/classes/models/BKSelectionOption.h>
+@interface BKArgument : NSObject
+{
+   NSString       * argumentName;
+   NSInteger        argumentType;
+   NSMutableArray * argumentSubArguments;
+}
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/classes/controllers/iOS/BKSelectionController.h>
-#endif
+@property (nonatomic, retain) NSString  * argumentName;
+@property (assign, readwrite) NSInteger   argumentType;
 
-#ifdef TARGET_OS_MAC
-#endif
+#pragma mark - Argument management methods
 
-/* end of header */
+- (id)   initWithName:(NSString *)aName;
+- (id)   initWithName:(NSString *)aName andSubName:(NSString *)aSubName;
+- (void) initializeSubArguments;
++ (id)   argumentWithName:(NSString *)aName;
++ (id)   argumentWithName:(NSString *)aName andSubName:(NSString *)aSubName;
+
+#pragma mark - Value management methods
+- (void)         addSubArgument:(BKArgument *)anArgument;
+- (BKArgument *) addSubArgumentWithName:(NSString *)aName;
+- (BKArgument *) addSubArgumentWithName:(NSString *)aName andSubName:(NSString *)aSubName;
+- (NSUInteger)   count;
+- (void)         removeSubArgument:(BKArgument *)anArgument;
+- (void)         removeSubArgumentAtIndex:(NSUInteger)index;
+- (void)         removeSubArgumentWithName:(NSString *)aName;
+- (void)         resetSubArguments;
+- (BKArgument *) subArgumentAtIndex:(NSUInteger)index;
+- (NSString *)   subArgumentNameAtIndex:(NSUInteger)index;
+
+@end
