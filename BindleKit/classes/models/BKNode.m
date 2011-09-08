@@ -34,7 +34,6 @@
 /**
  *  @file BindleKit/classes/models/BKNode.m Contains array of nodes
  */
-
 #import "BKNode.h"
 
 @implementation BKNode

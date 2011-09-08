@@ -34,7 +34,6 @@
 /**
  *  @file BindleKit/classes/models/BKSelectionOption.m Option data for Selelection
  */
-
 #import "BKSelectionOption.h"
 
 @implementation BKSelectionOption

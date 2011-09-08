@@ -34,7 +34,6 @@
 /**
  *  @file BindleKit/classes/models/BKMemoryCache.m Caches objects in memory
  */
-
 #import "BKMemoryCache.h"
 
 @interface  BKMemoryCache ()
