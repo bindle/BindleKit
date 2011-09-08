@@ -40,6 +40,7 @@
 @implementation BKNode
 
 @synthesize nodeName;
+@synthesize nodeData;
 @synthesize nodeType;
 
 #pragma mark - Node management methods

@@ -40,12 +40,14 @@
 @interface BKNode : NSObject
 {
    NSString       * nodeName;
+   id <NSObject>    nodeData;
    NSInteger        nodeType;
    NSMutableArray * nodeSubNodes;
 }
 
-@property (nonatomic, retain) NSString  * nodeName;
-@property (assign, readwrite) NSInteger   nodeType;
+@property (nonatomic, retain) NSString      * nodeName;
+@property (nonatomic, retain) id <NSObject>   nodeData;
+@property (assign, readwrite) NSInteger       nodeType;
 
 #pragma mark - Node management methods
 
