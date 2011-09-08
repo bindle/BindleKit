@@ -4,9 +4,9 @@ Copyright (c) 2011 Bindle Binaries <syzdek@bindlebinaries.com>.
 
 Documentation:
 * Document BKMemoryCache class. (syzdek)
+* Document BKNode class. (syzdek)
 * Document BKSelectionOption class. (syzdek)
 * Document BKSelectionController class. (syzdek)
-* Document BKArgument class. (syzdek)
 * Document NSString (BKStringDigest) category. (syzdek)
 * Write BindleKit manual/guide. (syzdek)
 * Create website for BindleKit. (syzdek)
@@ -14,6 +14,7 @@ Documentation:
 
 Consistency:
 * Write unit tests for BKMemoryCache class. (syzdek)
+* Write unit tests for BKNode class. (syzdek)
 * Write unit tests for BKSelectionOption class. (syzdek)
 * Write unit tests for BKSelectionController class. (syzdek)
 
