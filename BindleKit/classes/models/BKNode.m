@@ -107,7 +107,7 @@
 {
    @synchronized(self)
    {
-      if (nodeSubNodes !=nil)
+      if (nodeSubNodes != nil)
          return;
       nodeSubNodes = [[NSMutableArray alloc] initWithCapacity:1];
    };
@@ -193,7 +193,7 @@
 
 - (void) removeSubNodeWithName:(NSString *)aName
 {
-   BKNode * aNode;
+   BKNode     * aNode;
    NSUInteger   count;
    NSUInteger   pos;
    [self initializeSubNodes];
@@ -223,7 +223,6 @@
    };
    return;
 }
-
 
 
 - (BKNode *) subNodeAtIndex:(NSUInteger)index
