@@ -38,7 +38,7 @@
 #import <Foundation/Foundation.h>
 
 #import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/classes/models/BKArgument.h>
+#import <BindleKit/classes/models/BKNode.h>
 #import <BindleKit/classes/models/BKMemoryCache.h>
 #import <BindleKit/classes/models/BKSelectionOption.h>
 

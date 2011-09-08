@@ -32,39 +32,39 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /**
- *  @file BindleKit/classes/models/BKArgument.h Contains array of arguments
+ *  @file BindleKit/classes/models/BKNode.h Contains array of arguments
  */
 
 #import <Foundation/Foundation.h>
 
-@interface BKArgument : NSObject
+@interface BKNode : NSObject
 {
-   NSString       * argumentName;
-   NSInteger        argumentType;
-   NSMutableArray * argumentSubArguments;
+   NSString       * nodeName;
+   NSInteger        nodeType;
+   NSMutableArray * nodeSubNodes;
 }
 
-@property (nonatomic, retain) NSString  * argumentName;
-@property (assign, readwrite) NSInteger   argumentType;
+@property (nonatomic, retain) NSString  * nodeName;
+@property (assign, readwrite) NSInteger   nodeType;
 
-#pragma mark - Argument management methods
+#pragma mark - Node management methods
 
 - (id)   initWithName:(NSString *)aName;
 - (id)   initWithName:(NSString *)aName andSubName:(NSString *)aSubName;
-- (void) initializeSubArguments;
-+ (id)   argumentWithName:(NSString *)aName;
-+ (id)   argumentWithName:(NSString *)aName andSubName:(NSString *)aSubName;
+- (void) initializeSubNodes;
++ (id)   nodeWithName:(NSString *)aName;
++ (id)   nodeWithName:(NSString *)aName andSubName:(NSString *)aSubName;
 
 #pragma mark - Value management methods
-- (void)         addSubArgument:(BKArgument *)anArgument;
-- (BKArgument *) addSubArgumentWithName:(NSString *)aName;
-- (BKArgument *) addSubArgumentWithName:(NSString *)aName andSubName:(NSString *)aSubName;
+- (void)         addSubNode:(BKNode *)anNode;
+- (BKNode *)     addSubNodeWithName:(NSString *)aName;
+- (BKNode *)     addSubNodeWithName:(NSString *)aName andSubName:(NSString *)aSubName;
 - (NSUInteger)   count;
-- (void)         removeSubArgument:(BKArgument *)anArgument;
-- (void)         removeSubArgumentAtIndex:(NSUInteger)index;
-- (void)         removeSubArgumentWithName:(NSString *)aName;
-- (void)         resetSubArguments;
-- (BKArgument *) subArgumentAtIndex:(NSUInteger)index;
-- (NSString *)   subArgumentNameAtIndex:(NSUInteger)index;
+- (void)         removeSubNode:(BKNode *)anNode;
+- (void)         removeSubNodeAtIndex:(NSUInteger)index;
+- (void)         removeSubNodeWithName:(NSString *)aName;
+- (void)         resetSubNodes;
+- (BKNode *)     subNodeAtIndex:(NSUInteger)index;
+- (NSString *)   subNodeNameAtIndex:(NSUInteger)index;
 
 @end

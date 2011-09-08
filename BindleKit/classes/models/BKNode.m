@@ -32,38 +32,38 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /**
- *  @file BindleKit/classes/models/BKArgument.m Contains array of arguments
+ *  @file BindleKit/classes/models/BKNode.m Contains array of nodes
  */
 
-#import "BKArgument.h"
+#import "BKNode.h"
 
-@implementation BKArgument
+@implementation BKNode
 
-@synthesize argumentName;
-@synthesize argumentType;
+@synthesize nodeName;
+@synthesize nodeType;
 
-#pragma mark - Argument management methods
+#pragma mark - Node management methods
 
-+ (id) argumentWithName:(NSString *)aName
++ (id) nodeWithName:(NSString *)aName
 {
-   BKArgument * argument;
-   argument = [[BKArgument alloc] initWithName:aName];
-   return([argument autorelease]);
+   BKNode * node;
+   node = [[BKNode alloc] initWithName:aName];
+   return([node autorelease]);
 }
 
 
-+ (id) argumentWithName:(NSString *)aName andSubName:(NSString *)aSubName
++ (id) nodeWithName:(NSString *)aName andSubName:(NSString *)aSubName
 {
-   BKArgument * argument;
-   argument = [[BKArgument alloc] initWithName:aName andSubName:aSubName];
-   return([argument autorelease]);
+   BKNode * node;
+   node = [[BKNode alloc] initWithName:aName andSubName:aSubName];
+   return([node autorelease]);
 }
 
 
 - (void) dealloc
 {
-   [argumentName         release];
-   [argumentSubArguments release];
+   [nodeName         release];
+   [nodeSubNodes release];
    [super dealloc];
    return;
 }
@@ -82,34 +82,34 @@
 {
    if ((self = [self init]) == nil)
       return(self);
-   self.argumentName = aName;
+   self.nodeName = aName;
    return(self);
 }
 
 
 - (id) initWithName:(NSString *)aName andSubName:(NSString *)aSubName
 {
-   BKArgument * anArgument;
+   BKNode * aNode;
    if ((self = [self initWithName:aName]) == nil)
       return(self);
 
-   [self initializeSubArguments];
+   [self initializeSubNodes];
 
-   anArgument = [[BKArgument alloc] initWithName:aSubName];
-   [argumentSubArguments addObject:anArgument];
-   [anArgument release];
+   aNode = [[BKNode alloc] initWithName:aSubName];
+   [nodeSubNodes addObject:aNode];
+   [aNode release];
 
    return(self);
 }
 
 
-- (void) initializeSubArguments
+- (void) initializeSubNodes
 {
    @synchronized(self)
    {
-      if (argumentSubArguments !=nil)
+      if (nodeSubNodes !=nil)
          return;
-      argumentSubArguments = [[NSMutableArray alloc] initWithCapacity:1];
+      nodeSubNodes = [[NSMutableArray alloc] initWithCapacity:1];
    };
    return;
 }
@@ -117,95 +117,95 @@
 
 #pragma mark - Value management methods
 
-- (void) addSubArgument:(BKArgument *)anArgument
+- (void) addSubNode:(BKNode *)aNode
 {
-   [self initializeSubArguments];
+   [self initializeSubNodes];
    @synchronized(self)
    {
-      [argumentSubArguments addObject:anArgument];
+      [nodeSubNodes addObject:aNode];
    };
    return;
 }
 
 
-- (BKArgument *) addSubArgumentWithName:(NSString *)aName
+- (BKNode *) addSubNodeWithName:(NSString *)aName
 {
-   BKArgument * anArgument;
-   [self initializeSubArguments];
-   anArgument = [BKArgument argumentWithName:aName];
+   BKNode * aNode;
+   [self initializeSubNodes];
+   aNode = [BKNode nodeWithName:aName];
    @synchronized(self)
    {
-      [argumentSubArguments addObject:anArgument];
+      [nodeSubNodes addObject:aNode];
    };
-   return(anArgument);
+   return(aNode);
 }
 
 
-- (BKArgument *) addSubArgumentWithName:(NSString *)aName andSubName:(NSString *)aSubName
+- (BKNode *) addSubNodeWithName:(NSString *)aName andSubName:(NSString *)aSubName
 {
-   BKArgument * anArgument;
-   [self initializeSubArguments];
-   anArgument = [BKArgument argumentWithName:aName andSubName:aSubName];
+   BKNode * aNode;
+   [self initializeSubNodes];
+   aNode = [BKNode nodeWithName:aName andSubName:aSubName];
    @synchronized(self)
    {
-      [argumentSubArguments addObject:anArgument];
+      [nodeSubNodes addObject:aNode];
    };
-   return(anArgument);
+   return(aNode);
 }
 
 
 - (NSUInteger) count
 {
    NSUInteger count;
-   [self initializeSubArguments];
+   [self initializeSubNodes];
    @synchronized(self)
    {
-      count = [argumentSubArguments count];
+      count = [nodeSubNodes count];
    };
    return(count);
 }
 
 
-- (void) removeSubArgument:(BKArgument *)anArgument
+- (void) removeSubNode:(BKNode *)aNode
 {
-   [self initializeSubArguments];
+   [self initializeSubNodes];
    @synchronized(self)
    {
-      [argumentSubArguments removeObject:anArgument];
+      [nodeSubNodes removeObject:aNode];
    };
    return;
 }
 
 
-- (void) removeSubArgumentAtIndex:(NSUInteger)index
+- (void) removeSubNodeAtIndex:(NSUInteger)index
 {
    NSUInteger count;
-   [self initializeSubArguments];
+   [self initializeSubNodes];
    @synchronized(self)
    {
-      count = [argumentSubArguments count];
+      count = [nodeSubNodes count];
       if (index < count)
-         [argumentSubArguments removeObjectAtIndex:index];
+         [nodeSubNodes removeObjectAtIndex:index];
    };
    return;
 }
 
 
-- (void) removeSubArgumentWithName:(NSString *)aName
+- (void) removeSubNodeWithName:(NSString *)aName
 {
-   BKArgument * anArgument;
+   BKNode * aNode;
    NSUInteger   count;
    NSUInteger   pos;
-   [self initializeSubArguments];
+   [self initializeSubNodes];
    @synchronized(self)
    {
-      count = [argumentSubArguments count];
+      count = [nodeSubNodes count];
       for(pos = 0; pos < count; pos++)
       {
-         anArgument = [argumentSubArguments objectAtIndex:pos];
-         if ([anArgument.argumentName isEqual:aName])
+         aNode = [nodeSubNodes objectAtIndex:pos];
+         if ([aNode.nodeName isEqual:aName])
          {
-            [argumentSubArguments removeObjectAtIndex:pos];
+            [nodeSubNodes removeObjectAtIndex:pos];
             pos--;
          };
       };
@@ -214,39 +214,39 @@
 }
 
 
-- (void) resetSubArguments
+- (void) resetSubNodes
 {
    @synchronized(self)
    {
-      [argumentSubArguments release];
-      argumentSubArguments = nil;
+      [nodeSubNodes release];
+      nodeSubNodes = nil;
    };
    return;
 }
 
 
 
-- (BKArgument *) subArgumentAtIndex:(NSUInteger)index
+- (BKNode *) subNodeAtIndex:(NSUInteger)index
 {
-   BKArgument * anArgument;
-   [self initializeSubArguments];
+   BKNode * aNode;
+   [self initializeSubNodes];
    @synchronized(self)
    {
-      anArgument = [[argumentSubArguments objectAtIndex:index] retain];
+      aNode = [[nodeSubNodes objectAtIndex:index] retain];
    };
-   return([anArgument autorelease]);
+   return([aNode autorelease]);
 }
 
 
-- (NSString *) subArgumentNameAtIndex:(NSUInteger)index
+- (NSString *) subNodeNameAtIndex:(NSUInteger)index
 {
-   BKArgument * anArgument;
+   BKNode     * aNode;
    NSString   * aName ;
-   [self initializeSubArguments];
+   [self initializeSubNodes];
    @synchronized(self)
    {
-      anArgument = [argumentSubArguments objectAtIndex:index];
-      aName = [anArgument.argumentName retain];
+      aNode = [nodeSubNodes objectAtIndex:index];
+      aName = [aNode.nodeName retain];
    };
    return([aName autorelease]);
 }
