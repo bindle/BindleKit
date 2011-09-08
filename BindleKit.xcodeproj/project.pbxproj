@@ -22,6 +22,14 @@
 		A092A667141706B40033C972 /* BKNode.h in Headers */ = {isa = PBXBuildFile; fileRef = A092A664141706B40033C972 /* BKNode.h */; };
 		A092A668141706B40033C972 /* BKNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A092A665141706B40033C972 /* BKNode.m */; };
 		A092A669141706B40033C972 /* BKNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A092A665141706B40033C972 /* BKNode.m */; };
+		A0D32C9314186F0200641ABD /* BKStack.h in Headers */ = {isa = PBXBuildFile; fileRef = A0D32C9114186F0200641ABD /* BKStack.h */; };
+		A0D32C9414186F0200641ABD /* BKStack.h in Headers */ = {isa = PBXBuildFile; fileRef = A0D32C9114186F0200641ABD /* BKStack.h */; };
+		A0D32C9514186F0200641ABD /* BKStack.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D32C9214186F0200641ABD /* BKStack.m */; };
+		A0D32C9614186F0200641ABD /* BKStack.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D32C9214186F0200641ABD /* BKStack.m */; };
+		A0D32C9A14186F2800641ABD /* BKQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = A0D32C9814186F2800641ABD /* BKQueue.h */; };
+		A0D32C9B14186F2800641ABD /* BKQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = A0D32C9814186F2800641ABD /* BKQueue.h */; };
+		A0D32C9C14186F2800641ABD /* BKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D32C9914186F2800641ABD /* BKQueue.m */; };
+		A0D32C9D14186F2800641ABD /* BKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D32C9914186F2800641ABD /* BKQueue.m */; };
 		A0F713641413526900252B5F /* BKMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */; };
 		A0F713651413526C00252B5F /* BKSelectionOption.m in Sources */ = {isa = PBXBuildFile; fileRef = A064D96B140E047C00255FD3 /* BKSelectionOption.m */; };
 		A0F713671413529D00252B5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F713661413529D00252B5F /* Foundation.framework */; };
@@ -52,6 +60,10 @@
 		A07D350A140DC1E900832E1F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		A092A664141706B40033C972 /* BKNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKNode.h; sourceTree = "<group>"; };
 		A092A665141706B40033C972 /* BKNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKNode.m; sourceTree = "<group>"; };
+		A0D32C9114186F0200641ABD /* BKStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKStack.h; sourceTree = "<group>"; };
+		A0D32C9214186F0200641ABD /* BKStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKStack.m; sourceTree = "<group>"; };
+		A0D32C9814186F2800641ABD /* BKQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQueue.h; sourceTree = "<group>"; };
+		A0D32C9914186F2800641ABD /* BKQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQueue.m; sourceTree = "<group>"; };
 		A0F713591413520300252B5F /* libBindleKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBindleKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F713661413529D00252B5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -93,8 +105,12 @@
 				A092A665141706B40033C972 /* BKNode.m */,
 				A0529AC7140DDCB500CFA6F8 /* BKMemoryCache.h */,
 				A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */,
+				A0D32C9814186F2800641ABD /* BKQueue.h */,
+				A0D32C9914186F2800641ABD /* BKQueue.m */,
 				A064D96A140E047C00255FD3 /* BKSelectionOption.h */,
 				A064D96B140E047C00255FD3 /* BKSelectionOption.m */,
+				A0D32C9114186F0200641ABD /* BKStack.h */,
+				A0D32C9214186F0200641ABD /* BKStack.m */,
 			);
 			name = Models;
 			path = models;
@@ -205,6 +221,8 @@
 				A064D973140E053200255FD3 /* BKSelectionController.h in Headers */,
 				A05CE1DD1416DF4D00B7002F /* BKStringDigest.h in Headers */,
 				A092A666141706B40033C972 /* BKNode.h in Headers */,
+				A0D32C9314186F0200641ABD /* BKStack.h in Headers */,
+				A0D32C9A14186F2800641ABD /* BKQueue.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +232,8 @@
 			files = (
 				A05CE1DE1416DF4D00B7002F /* BKStringDigest.h in Headers */,
 				A092A667141706B40033C972 /* BKNode.h in Headers */,
+				A0D32C9414186F0200641ABD /* BKStack.h in Headers */,
+				A0D32C9B14186F2800641ABD /* BKQueue.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +310,8 @@
 				A064D974140E053200255FD3 /* BKSelectionController.m in Sources */,
 				A05CE1DF1416DF4D00B7002F /* BKStringDigest.m in Sources */,
 				A092A668141706B40033C972 /* BKNode.m in Sources */,
+				A0D32C9514186F0200641ABD /* BKStack.m in Sources */,
+				A0D32C9C14186F2800641ABD /* BKQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +323,8 @@
 				A0F713651413526C00252B5F /* BKSelectionOption.m in Sources */,
 				A05CE1E01416DF4D00B7002F /* BKStringDigest.m in Sources */,
 				A092A669141706B40033C972 /* BKNode.m in Sources */,
+				A0D32C9614186F0200641ABD /* BKStack.m in Sources */,
+				A0D32C9D14186F2800641ABD /* BKQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,23 +32,117 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /**
- *  @file BindleKit/BindleKit.h loads API for classes in BindleKit
+ *  @file BindleKit/classes/models/BKQueue.h Creates a FIFO data structure
  */
+#import "BKQueue.h"
 
-#import <Foundation/Foundation.h>
+@interface BKQueue ()
+- (void) initializeDataSet;
+@end
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/classes/models/BKNode.h>
-#import <BindleKit/classes/models/BKMemoryCache.h>
-#import <BindleKit/classes/models/BKQueue.h>
-#import <BindleKit/classes/models/BKSelectionOption.h>
-#import <BindleKit/classes/models/BKStack.h>
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/classes/controllers/iOS/BKSelectionController.h>
-#endif
+#pragma mark -
+@implementation BKQueue
 
-#ifdef TARGET_OS_MAC
-#endif
+- (void) dealloc
+{
+   [dataset release];
+   [super dealloc];
+   return;
+}
 
-/* end of header */
+
+- (id) init
+{
+   if ((self = [super init]) == nil)
+      return(self);
+   return(self);
+}
+
+
+- (void) initializeDataSet
+{
+   @synchronized(self)
+   {
+      if (!(dataset))
+         dataset = [[NSMutableArray alloc] initWithCapacity:1];
+   };
+   return;
+}
+
+
+#pragma mark - Queue operations
+
+- (NSUInteger) count
+{
+   NSUInteger count;
+   count = 0;
+   @synchronized(self)
+   {
+      if ((dataset))
+         count = [dataset count];
+   };
+   return(count);
+}
+
+
+- (BOOL) empty
+{
+   BOOL empty;
+   empty = YES;
+   @synchronized(self)
+   {
+      if ([self count] > 0)
+         empty = NO;
+   };
+   return(empty);
+}
+
+
+- (id) front
+{
+   id anObject;
+   anObject = nil;
+   @synchronized(self)
+   {
+      if ((dataset))
+         anObject = [[dataset objectAtIndex:0] retain];
+   };
+   return([anObject autorelease]);
+}
+
+
+- (id) pop
+{
+   id anObject;
+   anObject = nil;
+   @synchronized(self)
+   {
+      if ((dataset))
+      {
+         anObject = [[dataset objectAtIndex:0] retain];
+         [dataset removeObjectAtIndex:0];
+      };
+   };
+   return([anObject autorelease]);
+}
+
+
+- (void) push:(id)anObject
+{
+   @synchronized(self)
+   {
+      if (!(dataset))
+         [self initializeDataSet];
+      [dataset addObject:anObject];
+   };
+   return;
+}
+
+
+- (NSUInteger) size
+{
+   return([self count]);
+}
+
+@end

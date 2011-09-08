@@ -32,23 +32,21 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /**
- *  @file BindleKit/BindleKit.h loads API for classes in BindleKit
+ *  @file BindleKit/classes/models/BKStack.h Creates a LIFO data structure
  */
 
 #import <Foundation/Foundation.h>
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/classes/models/BKNode.h>
-#import <BindleKit/classes/models/BKMemoryCache.h>
-#import <BindleKit/classes/models/BKQueue.h>
-#import <BindleKit/classes/models/BKSelectionOption.h>
-#import <BindleKit/classes/models/BKStack.h>
+@interface BKStack : NSObject
+{
+   NSMutableArray * dataset;
+}
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/classes/controllers/iOS/BKSelectionController.h>
-#endif
+- (NSUInteger) count;
+- (BOOL)       empty;
+- (id)         pop;
+- (void)       push:(id)anObject;
+- (NSUInteger) size;
+- (id)         top;
 
-#ifdef TARGET_OS_MAC
-#endif
-
-/* end of header */
+@end
