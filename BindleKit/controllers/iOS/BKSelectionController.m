@@ -31,8 +31,8 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/**
- *  @file BindleKit/classes/controllers/BKSelectionOption.m Selelection controller for iOS
+/*
+ *  BKSelectionOption.m - Selelection controller for iOS
  */
 #import "BKSelectionController.h"
 

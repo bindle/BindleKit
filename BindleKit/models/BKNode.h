@@ -32,7 +32,7 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /**
- *  @file BindleKit/classes/models/BKNode.h Contains array of arguments
+ *  BKNode.h - Contains array of arguments
  */
 
 #import <Foundation/Foundation.h>

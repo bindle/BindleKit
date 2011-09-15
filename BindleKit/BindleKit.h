@@ -31,8 +31,8 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/**
- *  @file BindleKit/BindleKit.h loads API for classes in BindleKit
+/*
+ *  BindleKit/BindleKit.h - loads API for classes in BindleKit
  */
 
 #import <Foundation/Foundation.h>

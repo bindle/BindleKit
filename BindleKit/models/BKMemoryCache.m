@@ -32,7 +32,7 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /**
- *  @file BindleKit/classes/models/BKMemoryCache.m Caches objects in memory
+ *  BKMemoryCache.m - Caches objects in memory
  */
 #import "BKMemoryCache.h"
 

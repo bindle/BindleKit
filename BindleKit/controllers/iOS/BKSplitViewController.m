@@ -31,9 +31,8 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/**
- *  @file BindleKit/classes/controllers/BKSplitViewController.m Replacement
- *        for iOS's UISplitViewController
+/*
+ *  BKSplitViewController.m - Custom Replacement for UISplitViewController
  */
 #import "BKSplitViewController.h"
 

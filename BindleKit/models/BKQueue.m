@@ -32,7 +32,7 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /**
- *  @file BindleKit/classes/models/BKQueue.h Creates a FIFO data structure
+ *  BKQueue.h - Creates a FIFO data structure
  */
 #import "BKQueue.h"
 

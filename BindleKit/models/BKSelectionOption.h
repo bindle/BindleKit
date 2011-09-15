@@ -31,8 +31,8 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/**
- *  @file BindleKit/classes/models/BKSelectionOption.m Option data for Selelection
+/*
+ *  BKSelectionOption.m - Option data for Selelection
  */
 
 #import <Foundation/Foundation.h>

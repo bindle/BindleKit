@@ -31,11 +31,11 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
- /**
- *  @file BindleKit/categories/BKStringCrypto.m expands NSString
+/*
+ *  LBStringCrypto.m - expands NSString to include crypto digests
  */
-
 #import "BKStringDigest.h"
+
 #import <inttypes.h>
 #import <string.h>
 #import <strings.h>

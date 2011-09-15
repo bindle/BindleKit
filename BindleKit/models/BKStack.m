@@ -31,8 +31,8 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/**
- *  @file BindleKit/classes/models/BKStack.m Creates a LIFO data structure
+/*
+ *  BKStack.m - Creates a LIFO data structure
  */
 
 #import "BKStack.h"
