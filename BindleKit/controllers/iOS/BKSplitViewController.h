@@ -50,6 +50,7 @@
    CGFloat   masterViewWidth;
    CGFloat   dividerWidth;
    BOOL      reverseViewOrder;
+   BOOL      enableTouchToResize;
 
    BOOL      dividerIsMoving;
 }
@@ -60,5 +61,6 @@
 @property(nonatomic, assign) CGFloat   masterViewWidth;
 @property(nonatomic, assign) CGFloat   dividerWidth;
 @property(nonatomic, assign) BOOL      reverseViewOrder;
+@property(nonatomic, assign) BOOL      enableTouchToResize;
 
 @end

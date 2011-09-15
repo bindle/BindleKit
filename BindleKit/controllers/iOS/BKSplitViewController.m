@@ -58,6 +58,7 @@
 @synthesize masterViewWidth;
 @synthesize dividerWidth;
 @synthesize reverseViewOrder;
+@synthesize enableTouchToResize;
 
 
 - (void) dealloc
@@ -424,6 +425,9 @@
 {
 	UITouch  * touch;
    CGPoint    currPt;
+
+   if (!(enableTouchToResize))
+      return;
 
    touch = [touches anyObject];
 
