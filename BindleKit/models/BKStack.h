@@ -31,16 +31,14 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/*
- *  BKStack.h - Creates a LIFO data structure
+/**
+ *  Implements a generic last in, first out (LIFO) data structure.
+ *
+ *  BKStack is a class which stores a series of objects in a stack data
+ *  structure.  This class supports standard stack operations. The class
+ *  is designed to be re-usable and does not depend upon project specific
+ *  classes.
  */
-
-/// Implements a generic last in, first out (LIFO) data structure.
-///
-/// BKStack is a class which stores a series of objects in a stack data
-/// structure.  This class supports standard stack operations. The class
-/// is designed to be re-usable and does not depend upon project specific
-/// classes.
 
 #import <Foundation/Foundation.h>
 
