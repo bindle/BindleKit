@@ -34,17 +34,21 @@
 #   Makefile - Generates Xcode Documentation Sets from comments in source code
 #
 
+run_appledoc =	appledoc \
+	--output docs/ \
+	--project-name "BindleKit" \
+	--project-version "`git describe  --abbrev=7 |sed -e 's/v//g' -e 's/-/./g'`" \
+	--project-company "Bindle Binaries" \
+	--company-id com.bindlebinaries \
+	--create-html \
+	--verbose 6 \
+	--keep-intermediate-files \
+	--docset-platform-family iphoneos \
+	BindleKit
+
 all:
 	mkdir -p docs
-	appledoc -o docs \
-	   --project-name "BindleKit" \
-	   --project-version "`git describe  --abbrev=7 |sed -e 's/v//g' -e 's/-/./g'`" \
-	   --project-company "Bindle Binaries" \
-	   --company-id com.bindlebinaries \
-	   --create-html \
-	   --verbose 6 \
-	   BindleKit
-
+	${run_appledoc}
 
 clean:
 	rm -Rf docs/
