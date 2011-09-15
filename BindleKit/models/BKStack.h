@@ -53,6 +53,7 @@
 - (id) init;
 
 /// @name Adding Objects
+- (void) dup;
 - (void) push:(id)anObject;
 
 /// @name Removing Objects
@@ -62,5 +63,10 @@
 - (NSUInteger) count;
 - (BOOL)       empty;
 - (id)         top;
+
+/// @name Rearranging Content
+- (void)       leftRotate;
+- (void)       rightRotate;
+- (void)       swap;
 
 @end

@@ -71,6 +71,23 @@
 
 #pragma mark - Adding Objects
 
+/// Pops the top object of the stack and pushes it onto the stack twice.
+/// This method retrieves the last object added to the stack and pushes the
+/// object onto the stack.  This creates two instances of the object on the
+/// stack.
+- (void) dup
+{
+   id anObject;
+   @synchronized(self)
+   {
+      anObject = [self top];
+      if ((anObject))
+         [self push:anObject];
+   };
+   return;
+}
+
+
 /// Inserts an object to the top of the stack.
 /// @param anObject The object to add to top of stack. This value must not be nil.
 - (void) push:(id)anObject
@@ -163,6 +180,73 @@
       };
    };
    return([anObject autorelease]);
+}
+
+
+#pragma mark - Rearranging Content
+
+/// Moves the object at the bottom of the stack to the top of the stack.
+/// To fill the gap, all other objects are moved one position closer to the
+/// bottom of the stack.
+- (void) leftRotate
+{
+   id anObject;
+   NSAutoreleasePool * pool;
+   pool = [[NSAutoreleasePool alloc] init];
+   @synchronized(self)
+   {
+      if ([self count] > 1)
+      {
+         anObject = [dataset objectAtIndex:0];
+         [dataset removeObjectAtIndex:0];
+         [self push:anObject];
+      };
+   };
+   [pool release];
+   return;
+}
+
+
+/// Moves the object at the top of the stack to the bottom of the stack.
+/// To create a gap for the object, all other objects are moved one position
+/// closer to the top of the stack.
+- (void) rightRotate
+{
+   id anObject;
+   NSAutoreleasePool * pool;
+   pool = [[NSAutoreleasePool alloc] init];
+   @synchronized(self)
+   {
+      if ([self count] > 1)
+      {
+         anObject = [self pop];
+         [dataset insertObject:anObject atIndex:0];
+      };
+   };
+   [pool release];
+   return;
+}
+
+
+/// Switches the position of the top two objects in the stack.
+- (void) swap
+{
+   id object0;
+   id object1;
+   NSAutoreleasePool * pool;
+   pool = [[NSAutoreleasePool alloc] init];
+   @synchronized(self)
+   {
+      if ([self count] > 1)
+      {
+         object0 = [self pop];
+         object1 = [self pop];
+         [self push:object1];
+         [self push:object0];
+      };
+   };
+   [pool release];
+   return;
 }
 
 @end
