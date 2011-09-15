@@ -92,16 +92,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A0529ABF140DCAC300CFA6F8 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				A0529AC3140DCAC300CFA6F8 /* Models */,
-				A064D96F140E053200255FD3 /* Controllers */,
-			);
-			name = Classes;
-			path = classes;
-			sourceTree = "<group>";
-		};
 		A0529AC3140DCAC300CFA6F8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,8 +189,9 @@
 			isa = PBXGroup;
 			children = (
 				A07D34FC140DC1E800832E1F /* BindleKit.h */,
+				A0529AC3140DCAC300CFA6F8 /* Models */,
 				A05CE1DA1416DF4D00B7002F /* Categories */,
-				A0529ABF140DCAC300CFA6F8 /* Classes */,
+				A064D96F140E053200255FD3 /* Controllers */,
 				A07D34FA140DC1E800832E1F /* Supporting Files */,
 			);
 			path = BindleKit;
