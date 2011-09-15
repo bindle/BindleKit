@@ -49,10 +49,18 @@
    NSMutableArray * dataset;
 }
 
+/// @name Creating and Initializing a Mutable Array
+- (id) init;
+
+/// @name Adding Objects
+- (void) push:(id)anObject;
+
+/// @name Removing Objects
+- (id) pop;
+
+/// @name Querying a Stack
 - (NSUInteger) count;
 - (BOOL)       empty;
-- (id)         pop;
-- (void)       push:(id)anObject;
 - (id)         top;
 
 @end

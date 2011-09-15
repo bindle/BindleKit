@@ -38,6 +38,7 @@
 #import "BKStack.h"
 
 @implementation BKStack
+#pragma mark - Creating and Initializing a Mutable Array
 
 - (void) dealloc
 {
@@ -68,8 +69,50 @@
 }
 
 
-#pragma mark - Queue operations
+#pragma mark - Adding Objects
 
+/// Inserts an object to the top of the stack.
+/// @param anObject The object to add to top of stack. This value must not be nil.
+- (void) push:(id)anObject
+{
+   @synchronized(self)
+   {
+      if (!(dataset))
+         [self initializeDataSet];
+      [dataset addObject:anObject];
+   };
+   return;
+}
+
+
+#pragma mark - Removing Objects
+
+/// Removes the last object added to the stack.
+/// The object added to the stack immediatly prior to
+/// the removed object becomes the new top of the stack.
+/// @return Returns the removed object.
+- (id) pop
+{
+   id         anObject;
+   NSUInteger count;
+   anObject = nil;
+   @synchronized(self)
+   {
+      if ((dataset))
+      {
+         count = [dataset count];
+         if (count > 0)
+         {
+            anObject = [[dataset objectAtIndex:(count - 1)] retain];
+            [dataset removeObjectAtIndex:(count - 1)];
+         };
+      };
+   };
+   return([anObject autorelease]);
+}
+
+
+#pragma mark - Querying a Stack
 
 /// Returns the number of objects currently in the stack.
 /// @return The number of objects currently in the stack.
@@ -98,45 +141,6 @@
          empty = NO;
    };
    return(empty);
-}
-
-
-/// Removes the last object added to the stack.
-/// The object added to the stack immediatly prior to
-/// the removed object becomes the new top of the stack.
-/// @return Returns the removed object.
-- (id) pop
-{
-   id         anObject;
-   NSUInteger count;
-   anObject = nil;
-   @synchronized(self)
-   {
-      if ((dataset))
-      {
-         count = [dataset count];
-         if (count > 0)
-         {
-            anObject = [[dataset objectAtIndex:(count - 1)] retain];
-            [dataset removeObjectAtIndex:(count - 1)];
-         };
-      };
-   };
-   return([anObject autorelease]);
-}
-
-
-/// Inserts an object to the top of the stack.
-/// @param anObject The object to add to top of stack. This value must not be nil.
-- (void) push:(id)anObject
-{
-   @synchronized(self)
-   {
-      if (!(dataset))
-         [self initializeDataSet];
-      [dataset addObject:anObject];
-   };
-   return;
 }
 
 
