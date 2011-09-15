@@ -47,6 +47,8 @@
 }
 
 
+/// Initializes an instance of BKStack.
+/// @return Returns an initialized instance of BKStack.
 - (id) init
 {
    if ((self = [super init]) == nil)
@@ -68,6 +70,9 @@
 
 #pragma mark - Queue operations
 
+
+/// Returns the number of objects currently in the stack.
+/// @return The number of objects currently in the stack.
 - (NSUInteger) count
 {
    NSUInteger count;
@@ -81,6 +86,8 @@
 }
 
 
+/// Returns a BOOL which indicating if the stack currently contains objects.
+/// @return Returns `YES` if stack contains objects, `NO` otherwise.
 - (BOOL) empty
 {
    BOOL empty;
@@ -94,6 +101,10 @@
 }
 
 
+/// Removes the last object added to the stack.
+/// The object added to the stack immediatly prior to
+/// the removed object becomes the new top of the stack.
+/// @return Returns the removed object.
 - (id) pop
 {
    id         anObject;
@@ -115,6 +126,8 @@
 }
 
 
+/// Inserts an object to the top of the stack.
+/// @param anObject The object to add to top of stack. This value must not be nil.
 - (void) push:(id)anObject
 {
    @synchronized(self)
@@ -133,6 +146,10 @@
 }
 
 
+/// Returns the last object added to the stack.
+/// Returns the last object added to the stack without removing
+/// the object from the stack.
+/// @return Returns the last object added to the stack.
 - (id) top
 {
    id         anObject;
