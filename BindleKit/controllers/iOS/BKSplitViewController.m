@@ -111,6 +111,7 @@
 {
    if (aWidth < 320)
       dividerWidth = aWidth;
+   [self arrangeViews];
    return;
 }
 
@@ -138,6 +139,8 @@
    if (aWidth < 1)
       minimumDetailViewWidth = 1;
 
+   [self arrangeViews];
+
    return;
 }
 
@@ -156,6 +159,8 @@
       minimumMasterViewWidth = aWidth;
    if (aWidth < 1)
       minimumMasterViewWidth = 1;
+
+   [self arrangeViews];
 
    return;
 }
