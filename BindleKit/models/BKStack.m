@@ -140,12 +140,6 @@
 }
 
 
-- (NSUInteger) size
-{
-   return([self count]);
-}
-
-
 /// Returns the last object added to the stack.
 /// Returns the last object added to the stack without removing
 /// the object from the stack.

@@ -53,7 +53,6 @@
 - (BOOL)       empty;
 - (id)         pop;
 - (void)       push:(id)anObject;
-- (NSUInteger) size;
 - (id)         top;
 
 @end
