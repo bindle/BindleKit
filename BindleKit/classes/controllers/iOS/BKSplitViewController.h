@@ -32,24 +32,34 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /**
- *  @file BindleKit/BindleKit.h loads API for classes in BindleKit
+ *  @file BindleKit/classes/controllers/BKSplitViewController.h Replacement
+ *        for iOS's UISplitViewController
  */
 
-#import <Foundation/Foundation.h>
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/classes/models/BKNode.h>
-#import <BindleKit/classes/models/BKMemoryCache.h>
-#import <BindleKit/classes/models/BKQueue.h>
-#import <BindleKit/classes/models/BKSelectionOption.h>
-#import <BindleKit/classes/models/BKStack.h>
+#import <UIKit/UIKit.h>
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/classes/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/classes/controllers/iOS/BKSplitViewController.h>
-#endif
 
-#ifdef TARGET_OS_MAC
-#endif
+@interface BKSplitViewController : UIViewController
+{
 
-/* end of header */
+   NSArray * controllers;
+   NSArray * views;
+
+   CGFloat   minimumMasterViewWidth;
+   CGFloat   minimumDetailViewWidth;
+   CGFloat   masterViewWidth;
+   CGFloat   dividerWidth;
+   BOOL      reverseViewOrder;
+
+   BOOL      dividerIsMoving;
+}
+
+@property(nonatomic, copy)   NSArray * viewControllers;
+@property(nonatomic, assign) CGFloat   minimumMasterViewWidth;
+@property(nonatomic, assign) CGFloat   minimumDetailViewWidth;
+@property(nonatomic, assign) CGFloat   masterViewWidth;
+@property(nonatomic, assign) CGFloat   dividerWidth;
+@property(nonatomic, assign) BOOL      reverseViewOrder;
+
+@end

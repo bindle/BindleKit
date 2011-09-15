@@ -13,6 +13,8 @@
 		A05CE1DE1416DF4D00B7002F /* BKStringDigest.h in Headers */ = {isa = PBXBuildFile; fileRef = A05CE1DB1416DF4D00B7002F /* BKStringDigest.h */; };
 		A05CE1DF1416DF4D00B7002F /* BKStringDigest.m in Sources */ = {isa = PBXBuildFile; fileRef = A05CE1DC1416DF4D00B7002F /* BKStringDigest.m */; };
 		A05CE1E01416DF4D00B7002F /* BKStringDigest.m in Sources */ = {isa = PBXBuildFile; fileRef = A05CE1DC1416DF4D00B7002F /* BKStringDigest.m */; };
+		A0617454142028BA00BCEA6F /* BKSplitViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A0617452142028BA00BCEA6F /* BKSplitViewController.h */; };
+		A0617455142028BA00BCEA6F /* BKSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0617453142028BA00BCEA6F /* BKSplitViewController.m */; };
 		A064D96C140E047C00255FD3 /* BKSelectionOption.h in Headers */ = {isa = PBXBuildFile; fileRef = A064D96A140E047C00255FD3 /* BKSelectionOption.h */; };
 		A064D96D140E047C00255FD3 /* BKSelectionOption.m in Sources */ = {isa = PBXBuildFile; fileRef = A064D96B140E047C00255FD3 /* BKSelectionOption.m */; };
 		A064D973140E053200255FD3 /* BKSelectionController.h in Headers */ = {isa = PBXBuildFile; fileRef = A064D971140E053200255FD3 /* BKSelectionController.h */; };
@@ -46,6 +48,8 @@
 		A0529AF6140DE01B00CFA6F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A05CE1DB1416DF4D00B7002F /* BKStringDigest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKStringDigest.h; sourceTree = "<group>"; };
 		A05CE1DC1416DF4D00B7002F /* BKStringDigest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKStringDigest.m; sourceTree = "<group>"; };
+		A0617452142028BA00BCEA6F /* BKSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKSplitViewController.h; sourceTree = "<group>"; };
+		A0617453142028BA00BCEA6F /* BKSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKSplitViewController.m; sourceTree = "<group>"; };
 		A064D96A140E047C00255FD3 /* BKSelectionOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKSelectionOption.h; sourceTree = "<group>"; };
 		A064D96B140E047C00255FD3 /* BKSelectionOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKSelectionOption.m; sourceTree = "<group>"; };
 		A064D971140E053200255FD3 /* BKSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKSelectionController.h; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 			children = (
 				A064D971140E053200255FD3 /* BKSelectionController.h */,
 				A064D972140E053200255FD3 /* BKSelectionController.m */,
+				A0617452142028BA00BCEA6F /* BKSplitViewController.h */,
+				A0617453142028BA00BCEA6F /* BKSplitViewController.m */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -223,6 +229,7 @@
 				A092A666141706B40033C972 /* BKNode.h in Headers */,
 				A0D32C9314186F0200641ABD /* BKStack.h in Headers */,
 				A0D32C9A14186F2800641ABD /* BKQueue.h in Headers */,
+				A0617454142028BA00BCEA6F /* BKSplitViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +319,7 @@
 				A092A668141706B40033C972 /* BKNode.m in Sources */,
 				A0D32C9514186F0200641ABD /* BKStack.m in Sources */,
 				A0D32C9C14186F2800641ABD /* BKQueue.m in Sources */,
+				A0617455142028BA00BCEA6F /* BKSplitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
