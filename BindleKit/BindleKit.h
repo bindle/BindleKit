@@ -38,15 +38,15 @@
 #import <Foundation/Foundation.h>
 
 #import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/classes/models/BKNode.h>
-#import <BindleKit/classes/models/BKMemoryCache.h>
-#import <BindleKit/classes/models/BKQueue.h>
-#import <BindleKit/classes/models/BKSelectionOption.h>
-#import <BindleKit/classes/models/BKStack.h>
+#import <BindleKit/models/BKNode.h>
+#import <BindleKit/models/BKMemoryCache.h>
+#import <BindleKit/models/BKQueue.h>
+#import <BindleKit/models/BKSelectionOption.h>
+#import <BindleKit/models/BKStack.h>
 
 #if TARGET_OS_IPHONE
-#import <BindleKit/classes/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/classes/controllers/iOS/BKSplitViewController.h>
+#import <BindleKit/controllers/iOS/BKSelectionController.h>
+#import <BindleKit/controllers/iOS/BKSplitViewController.h>
 #endif
 
 #ifdef TARGET_OS_MAC
