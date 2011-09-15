@@ -107,12 +107,6 @@
 
 #pragma mark - Properties getters/setters
 
-- (NSArray *) viewControllers;
-{
-   return(controllers);
-}
-
-
 - (void) setDividerWidth:(CGFloat)aWidth
 {
    if (aWidth < 320)
