@@ -45,7 +45,7 @@
    NSArray * controllers;
    NSArray * views;
 
-   CGFloat   minimumMasterViewWidth;
+   CGSize    minimumMasterViewSize;
    CGFloat   minimumDetailViewWidth;
    CGPoint   splitPoint;
    CGFloat   dividerWidth;
@@ -56,7 +56,7 @@
 }
 
 @property(nonatomic, copy)   NSArray * viewControllers;
-@property(nonatomic, assign) CGFloat   minimumMasterViewWidth;
+@property(nonatomic, assign) CGSize    minimumMasterViewSize;
 @property(nonatomic, assign) CGFloat   minimumDetailViewWidth;
 @property(nonatomic, assign) CGPoint   splitPoint;
 @property(nonatomic, assign) CGFloat   dividerWidth;

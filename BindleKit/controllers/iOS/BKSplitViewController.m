@@ -53,7 +53,7 @@
 @implementation BKSplitViewController
 
 @synthesize viewControllers = controllers;
-@synthesize minimumMasterViewWidth;
+@synthesize minimumMasterViewSize;
 @synthesize minimumDetailViewWidth;
 @synthesize splitPoint;
 @synthesize dividerWidth;
@@ -97,7 +97,7 @@
       return(self);
 
    dividerIsMoving        = NO;
-   minimumMasterViewWidth = 150;
+   minimumMasterViewSize  = CGSizeMake(150, 150);
    minimumDetailViewWidth = 150;
    splitPoint             = CGPointMake(320, 320);
    dividerWidth           = 10;
@@ -135,7 +135,7 @@
    aSize  = aFrame.size;
    limit  = (aSize.width < aSize.height) ? aSize.width : aSize.height;
 
-   if ((aWidth + dividerWidth + minimumMasterViewWidth) <= limit)
+   if ((aWidth + dividerWidth + minimumMasterViewSize.width) <= limit)
       minimumDetailViewWidth = aWidth;
    if (aWidth < 1)
       minimumDetailViewWidth = 1;
@@ -146,20 +146,26 @@
 }
 
 
-- (void) setMinimumMasterViewWidth:(CGFloat)aWidth
+- (void) setMinimumMasterViewSize:(CGSize)aSize
 {
    CGRect  aFrame;
-   CGSize  aSize;
    CGFloat limit;
 
+   // determines screen's limit
    aFrame = [[UIScreen mainScreen] applicationFrame];
-   aSize  = aFrame.size;
-   limit  = (aSize.width < aSize.height) ? aSize.width : aSize.height;
+   limit  = (aFrame.size.width < aFrame.size.height) ? aFrame.size.width : aFrame.size.height;
 
-   if ((aWidth + dividerWidth + minimumDetailViewWidth) <= limit)
-      minimumMasterViewWidth = aWidth;
-   if (aWidth < 1)
-      minimumMasterViewWidth = 1;
+   // adjusts minimum master width
+   if (aSize.width < 10)
+      aSize.width = 10;
+   if ((aSize.width + dividerWidth + minimumDetailViewWidth) <= limit)
+      minimumMasterViewSize.width = aSize.width;
+
+//   // adjusts minimum master width
+//   if (aSize.height < 10)
+//      aSize.height = 10;
+//   if ((aSize.height + dividerWidth + minimumDetailViewSize.height) <= limit)
+//      minimumMasterViewSize.height = aSize.height;
 
    [self arrangeViews];
 
@@ -395,9 +401,9 @@
 
    aFrame = self.view.bounds;
 
-   // adjusts master's view width to a minimum of minimumMasterViewWidth
-   if (splitPoint.x < minimumMasterViewWidth)
-      splitPoint.x = minimumMasterViewWidth;
+   // adjusts master's view width to a minimum of minimumMasterViewSize.width
+   if (splitPoint.x < minimumMasterViewSize.width)
+      splitPoint.x = minimumMasterViewSize.width;
 
    // adjusts detail's view width to a minimum of minimumDetailViewWidth
    if (splitPoint.x > (aFrame.size.width - minimumDetailViewWidth - 1))
