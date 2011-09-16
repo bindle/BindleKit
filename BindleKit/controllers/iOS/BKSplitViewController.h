@@ -43,7 +43,6 @@
 {
 
    NSArray * controllers;
-   NSArray * views;
 
    CGSize    minimumMasterViewSize;
    CGSize    minimumDetailViewSize;

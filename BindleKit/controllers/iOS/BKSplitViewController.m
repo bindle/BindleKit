@@ -64,7 +64,6 @@
 - (void) dealloc
 {
    [controllers      release];
-   [views            release];
 
    [super dealloc];
 
@@ -83,9 +82,6 @@
 
    if (self.isViewLoaded == YES)
       return;
-
-   [views release];
-   views = nil;
 
    return;
 }
@@ -181,81 +177,35 @@
 
 - (void) setViewControllers:(NSArray *)viewControllers
 {
-   UIViewController * masterController = nil;
-   UIViewController * detailController = nil;
-   UIView           * masterRootView   = nil;
-   UIView           * detailRootView   = nil;
-
-   // retrieves current master and detail view controllers
-   if ((controllers))
-   {
-      masterController = [[controllers objectAtIndex:0] retain];
-      detailController = [[controllers objectAtIndex:1] retain];
-      [controllers release];
-      controllers = nil;
-   };
+   NSUInteger         pos;
+   UIViewController * aController;
 
    // if new view controllers are not available, remove old views and exit
    if (!(viewControllers))
    {
-      if ((masterController))
-      {
-         if (masterController.isViewLoaded == YES)
-            [masterController.view removeFromSuperview];
-         [masterController release];
-      };
-      if ((detailController))
-      {
-         if (detailController.isViewLoaded == YES)
-            [detailController.view removeFromSuperview];
-         [detailController release];
-      };
+      [controllers release];
+      controllers = nil;
+      if (self.isViewLoaded == YES)
+         while([self.view.subviews count] > 0)
+            [[self.view.subviews objectAtIndex:0] removeFromSuperview];
       return;
    };
 
-   // save new view controllers
+   // removes old Views from superview
+   if ((controllers))
+   {
+      for(pos = 0; pos < [controllers count]; pos++)
+      {
+         aController = [controllers objectAtIndex:pos];
+         if (!([viewControllers containsObject:aController]))
+            if (aController.isViewLoaded == YES)
+               [aController.view removeFromSuperview];
+      };
+   };
+
+   // assigns new UIViewControllers
+   [controllers release];
    controllers = [[NSArray alloc] initWithArray:viewControllers];
-
-   // retrieves root master and detail views
-   if ((views))
-   {
-      masterRootView   = [views objectAtIndex:0];
-      detailRootView   = [views objectAtIndex:1];
-   };
-
-   // remove old master view if it is not the same as the new view
-   if ((masterController))
-   {
-      if (masterController != [controllers objectAtIndex:0])
-         if (masterController.isViewLoaded == YES)
-            [masterController.view removeFromSuperview];
-      [masterController release];
-   };
-
-   // remove old detail view if it is not the same as the new view
-   if ((detailController))
-   {
-      if (detailController != [controllers objectAtIndex:1])
-         if (detailController.isViewLoaded == YES)
-            [detailController.view removeFromSuperview];
-      [detailController release];
-   };
-
-   // grab new master and detail view controllers
-   masterController = [controllers objectAtIndex:0];
-   detailController = [controllers objectAtIndex:1];
-
-   // add new master and detail views to root view
-   if ((views))
-   {
-      // remove views if they are loaded in incorrect super views
-      if (masterController.isViewLoaded == YES)
-         if (!([masterController.view isDescendantOfView:masterRootView]))
-            [masterController.view removeFromSuperview];
-      if (detailController.isViewLoaded == YES)
-         if (!([detailController.view isDescendantOfView:detailRootView]))
-            [detailController.view removeFromSuperview];
-   }
 
    // arranges views
    [self arrangeViews];
@@ -271,14 +221,6 @@
 {
    CGRect   aFrame;
    UIView * rootView;
-   UIView * masterView;
-   UIView * detailView;
-
-   if ((views))
-   {
-      [self arrangeViews];
-      return;
-   };
 
    // creates root view
    aFrame = [[UIScreen mainScreen] applicationFrame];
@@ -290,36 +232,7 @@
    self.view = rootView;
    [rootView   release];
 
-   // creates master view
-   aFrame = CGRectMake(5,5,5,5);
-   masterView                     = [[UIView alloc] initWithFrame:aFrame];
-   masterView.backgroundColor     = [UIColor whiteColor];
-   masterView.layer.cornerRadius  = 5;
-   masterView.autoresizesSubviews = TRUE;
-   masterView.clipsToBounds       = YES;
-   masterView.autoresizingMask    = UIViewAutoresizingFlexibleRightMargin |
-                                    UIViewAutoresizingFlexibleHeight;
-
-   // creates detail view
-   aFrame = CGRectMake(20,5,5,5);
-   detailView                     = [[UILabel alloc] initWithFrame:aFrame];
-   detailView.backgroundColor     = [UIColor whiteColor];
-   detailView.layer.cornerRadius  = 5;
-   detailView.autoresizesSubviews = TRUE;
-   masterView.clipsToBounds       = YES;
-   detailView.autoresizingMask    = UIViewAutoresizingFlexibleWidth |
-                                    UIViewAutoresizingFlexibleHeight;
-
-
-   // saves views for later use
-   views = [[NSArray alloc] initWithObjects:masterView, detailView, nil];
-   [masterView release];
-   [detailView release];
-
    // arranges views
-   [self.view addSubview:[views objectAtIndex:0]];
-   [self.view addSubview:[views objectAtIndex:1]];
-
    [self arrangeViews];
 
    return;
@@ -329,8 +242,6 @@
 - (void)viewDidUnload
 {
    [super viewDidUnload];
-   [views release];
-   views = nil;
    return;
 }
 
@@ -347,85 +258,55 @@
 
 - (void) arrangeViews
 {
-   CGRect             aFrame;
-   UIViewController * masterController;
-   UIViewController * detailController;
-   UIView           * masterRootView;
-   UIView           * detailRootView;
-
-   if (!(views))
+   if (!(controllers))
       return;
 
-   masterRootView   = [views objectAtIndex:0];
-   detailRootView   = [views objectAtIndex:1];
-
-   if ((controllers))
-   {
-      // retrieves controllers
-      masterController = [controllers objectAtIndex:0];
-      detailController = [controllers objectAtIndex:1];
-
-      // adds content to master root view if content does not exist
-      if (!([masterController.view isDescendantOfView:masterRootView]))
-      {
-         aFrame = CGRectMake( masterRootView.frame.origin.x,
-                              masterRootView.frame.origin.y,
-                              masterController.view.frame.size.width,
-                              masterController.view.frame.size.height);
-         masterRootView.frame = aFrame;
-         [masterRootView addSubview:masterController.view];
-      };
-
-      // adds content to detail root view if content does not exist
-      if (!([detailController.view isDescendantOfView:detailRootView]))
-      {
-         aFrame = CGRectMake( detailRootView.frame.origin.x,
-                              detailRootView.frame.origin.y,
-                              detailController.view.frame.size.width,
-                              detailController.view.frame.size.height);
-         detailRootView.frame = aFrame;
-         [detailRootView addSubview:detailController.view];
-      };
-   };
-
    [self arrangeViewsHorizontally];
+
    return;
 }
 
 
 - (void) arrangeViewsHorizontally
 {
-   CGRect   aFrame;
-   UIView * masterRootView;
-   UIView * detailRootView;
+   CGSize   aSize;
+   UIView * aView;
 
-   if (!(views))
+   if (self.isViewLoaded == NO)
       return;
 
-   masterRootView   = [views objectAtIndex:0];
-   detailRootView   = [views objectAtIndex:1];
+   if (!(controllers))
+      return;
 
-   aFrame = self.view.bounds;
+   aSize = self.view.bounds.size;
 
    // adjusts master's view width to a minimum of minimumMasterViewSize.width
    if (splitPoint.x < minimumMasterViewSize.width)
       splitPoint.x = minimumMasterViewSize.width;
 
    // adjusts detail's view width to a minimum of minimumDetailViewWidth
-   if (splitPoint.x > (aFrame.size.width - minimumDetailViewSize.width - 1))
-      splitPoint.x = aFrame.size.width - minimumDetailViewSize.width - 1;
+   if (splitPoint.x > (aSize.width - minimumDetailViewSize.width - 1))
+      splitPoint.x = aSize.width - minimumDetailViewSize.width - 1;
 
    // adjusts master view
-   masterRootView.frame = CGRectMake(  0,
-                                       aFrame.origin.y,
-                                       splitPoint.x,
-                                       aFrame.size.height);
+   aView = [[controllers objectAtIndex:0] view];
+   if (aView.superview != self.view)
+      [self.view addSubview:aView];
+   aView.frame              = CGRectMake(0, 0, splitPoint.x, aSize.height);
+   aView.layer.cornerRadius = 5;
+   aView.clipsToBounds      = YES;
+   aView.autoresizingMask   = UIViewAutoresizingFlexibleRightMargin |
+                              UIViewAutoresizingFlexibleHeight;
 
    // adjusts detail view
-   detailRootView.frame = CGRectMake(  splitPoint.x + 1,
-                                       aFrame.origin.y,
-                                       aFrame.size.width - splitPoint.x - 1,
-                                       aFrame.size.height);
+   aView = [[controllers objectAtIndex:1] view];
+   if (aView.superview != self.view)
+      [self.view addSubview:aView];
+   aView.frame = CGRectMake(splitPoint.x + 1, 0, aSize.width - splitPoint.x - 1, aSize.height);
+   aView.layer.cornerRadius = 5;
+   aView.clipsToBounds      = YES;
+   aView.autoresizingMask   = UIViewAutoresizingFlexibleHeight |
+                              UIViewAutoresizingFlexibleWidth;
 
    return;
 }
