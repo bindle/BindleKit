@@ -441,9 +441,7 @@
    if (!(enableTouchToResize))
       return;
 
-   touch = [touches anyObject];
-
-	if (touch)
+	if ((touch = [touches anyObject]))
    {
       currPt  = [touch locationInView:self.view];
       if ( (currPt.x >= (splitPoint.x - (dividerWidth/2))) &&
@@ -470,9 +468,7 @@
    if (splitPointIsMoving == NO)
       return;
 
-   touch = [touches anyObject];
-
-	if (touch)
+	if ((touch = [touches anyObject]))
    {
       point           = [touch locationInView:self.view];
       splitPoint.x    = point.x;
