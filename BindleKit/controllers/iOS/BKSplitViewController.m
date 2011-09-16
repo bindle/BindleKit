@@ -99,7 +99,7 @@
    dividerIsMoving        = NO;
    minimumMasterViewWidth = 150;
    minimumDetailViewWidth = 150;
-   masterViewWidth        = minimumMasterViewWidth;
+   masterViewWidth        = 320;
    dividerWidth           = 10;
 
    return(self);
