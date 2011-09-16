@@ -52,7 +52,7 @@
    BOOL      reverseViewOrder;
    BOOL      enableTouchToResize;
 
-   BOOL      dividerIsMoving;
+   BOOL      splitPointIsMoving;
 }
 
 @property(nonatomic, copy)   NSArray * viewControllers;

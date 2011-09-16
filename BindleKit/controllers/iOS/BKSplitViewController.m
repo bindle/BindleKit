@@ -96,10 +96,10 @@
    if ((self = [super init]) == nil)
       return(self);
 
-   dividerIsMoving        = NO;
    minimumMasterViewSize  = CGSizeMake(150, 150);
    minimumDetailViewSize  = CGSizeMake(150, 150);
    splitPoint             = CGPointMake(320, 320);
+   splitPointIsMoving     = NO;
    dividerWidth           = 10;
 
    return(self);
@@ -448,7 +448,7 @@
       currPt  = [touch locationInView:self.view];
       if ( (currPt.x >= (splitPoint.x - (dividerWidth/2))) &&
            (currPt.x <= (splitPoint.x + (dividerWidth/2))) )
-         dividerIsMoving = YES;
+         splitPointIsMoving = YES;
    };
 
    return;
@@ -457,7 +457,7 @@
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	dividerIsMoving = NO;
+	splitPointIsMoving = NO;
    return;
 }
 
@@ -467,7 +467,7 @@
 	UITouch  * touch;
    CGPoint    point;
 
-   if (dividerIsMoving == NO)
+   if (splitPointIsMoving == NO)
       return;
 
    touch = [touches anyObject];
