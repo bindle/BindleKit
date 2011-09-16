@@ -55,7 +55,7 @@
 @synthesize viewControllers = controllers;
 @synthesize minimumMasterViewWidth;
 @synthesize minimumDetailViewWidth;
-@synthesize masterViewWidth;
+@synthesize splitPoint;
 @synthesize dividerWidth;
 @synthesize reverseViewOrder;
 @synthesize enableTouchToResize;
@@ -99,7 +99,7 @@
    dividerIsMoving        = NO;
    minimumMasterViewWidth = 150;
    minimumDetailViewWidth = 150;
-   masterViewWidth        = 320;
+   splitPoint             = CGPointMake(320, 320);
    dividerWidth           = 10;
 
    return(self);
@@ -117,9 +117,9 @@
 }
 
 
-- (void) setMasterViewWidth:(CGFloat)aWidth
+- (void) setSplitPoint:(CGPoint)aPoint
 {
-   masterViewWidth = aWidth;
+   splitPoint = aPoint;
    [self arrangeViews];
    return;
 }
@@ -396,23 +396,23 @@
    aFrame = self.view.bounds;
 
    // adjusts master's view width to a minimum of minimumMasterViewWidth
-   if (masterViewWidth < minimumMasterViewWidth)
-      masterViewWidth = minimumMasterViewWidth;
+   if (splitPoint.x < minimumMasterViewWidth)
+      splitPoint.x = minimumMasterViewWidth;
 
    // adjusts detail's view width to a minimum of minimumDetailViewWidth
-   if (masterViewWidth > (aFrame.size.width - minimumDetailViewWidth - 1))
-      masterViewWidth = aFrame.size.width - minimumDetailViewWidth - 1;
+   if (splitPoint.x > (aFrame.size.width - minimumDetailViewWidth - 1))
+      splitPoint.x = aFrame.size.width - minimumDetailViewWidth - 1;
 
    // adjusts master view
    masterRootView.frame = CGRectMake(  0,
                                        aFrame.origin.y,
-                                       masterViewWidth,
+                                       splitPoint.x,
                                        aFrame.size.height);
 
    // adjusts detail view
-   detailRootView.frame = CGRectMake(  masterViewWidth + 1,
+   detailRootView.frame = CGRectMake(  splitPoint.x + 1,
                                        aFrame.origin.y,
-                                       aFrame.size.width - masterViewWidth - 1,
+                                       aFrame.size.width - splitPoint.x - 1,
                                        aFrame.size.height);
 
    return;
@@ -434,8 +434,8 @@
 	if (touch)
    {
       currPt  = [touch locationInView:self.view];
-      if ( (currPt.x >= (masterViewWidth - (dividerWidth/2))) &&
-           (currPt.x <= (masterViewWidth + (dividerWidth/2))) )
+      if ( (currPt.x >= (splitPoint.x - (dividerWidth/2))) &&
+           (currPt.x <= (splitPoint.x + (dividerWidth/2))) )
          dividerIsMoving = YES;
    };
 
@@ -463,7 +463,7 @@
 	if (touch)
    {
       point           = [touch locationInView:self.view];
-      masterViewWidth = point.x;
+      splitPoint.x    = point.x;
       [self arrangeViews];
    };
    return;
