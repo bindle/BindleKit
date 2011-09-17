@@ -119,16 +119,12 @@
    limit  = (aFrame.size.width < aFrame.size.height) ? aFrame.size.width : aFrame.size.height;
 
    // adjusts minimum view width
-   if (aSize.width < 10)
-      aSize.width = 10;
    if (((aSize.width*2) + sliderSize.width) <= limit)
       minimumViewSize.width = aSize.width;
    else
       minimumViewSize.width = (limit - sliderSize.width) / 2;
 
    // adjusts minimum view height
-   if (aSize.height < 10)
-      aSize.height = 10;
    if (((aSize.height*2) + sliderSize.width) <= limit)
       minimumViewSize.height = aSize.height;
    else
@@ -234,7 +230,8 @@
 
 - (void) arrangeViewsHorizontally
 {
-   CGSize   aSize;
+   CGSize   frameSize;
+   CGFloat  limit;
    UIView * aView;
 
    if (self.isViewLoaded == NO)
@@ -243,15 +240,20 @@
    if (!(controllers))
       return;
 
-   aSize = self.view.bounds.size;
+   frameSize = self.view.bounds.size;
 
-   // adjusts master's view width to a minimum of minimumMasterViewSize.width
-   if (splitPoint.x < minimumViewSize.width)
-      splitPoint.x = minimumViewSize.width;
+   adjustmentForSlider = 0;
+   if (hideSlider == NO)
+      adjustmentForSlider = (sliderSize.width/2);
 
-   // adjusts detail's view width to a minimum of minimumDetailViewWidth
-   if (splitPoint.x > (aSize.width - minimumViewSize.width - 1))
-      splitPoint.x = aSize.width - minimumViewSize.width - 1;
+   // adjusts master's view width to a minimum of minimumViewSize.width
+   if (splitPoint.x < (minimumViewSize.width + (sliderSize.width/2)))
+      splitPoint.x = minimumViewSize.width + (sliderSize.width/2);
+
+   // adjusts detail's view width to a minimum of minimumViewSize.width
+   limit = (frameSize.width < frameSize.height) ? frameSize.width : frameSize.height;
+   if (splitPoint.x > (limit - minimumViewSize.width - (sliderSize.width/2)))
+      splitPoint.x = limit - minimumViewSize.width - (sliderSize.width/2);
 
    // adjusts master view
    aView = [[controllers objectAtIndex:0] view];
