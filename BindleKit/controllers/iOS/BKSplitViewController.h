@@ -44,8 +44,7 @@
 
    NSArray * controllers;
 
-   CGSize    minimumMasterViewSize;
-   CGSize    minimumDetailViewSize;
+   CGSize    minimumViewSize;
    CGPoint   splitPoint;
    CGFloat   dividerWidth;
    BOOL      reverseViewOrder;
@@ -55,8 +54,7 @@
 }
 
 @property(nonatomic, copy)   NSArray * viewControllers;
-@property(nonatomic, assign) CGSize    minimumMasterViewSize;
-@property(nonatomic, assign) CGSize    minimumDetailViewSize;
+@property(nonatomic, assign) CGSize    minimumViewSize;
 @property(nonatomic, assign) CGPoint   splitPoint;
 @property(nonatomic, assign) CGFloat   dividerWidth;
 @property(nonatomic, assign) BOOL      reverseViewOrder;

@@ -53,8 +53,7 @@
 @implementation BKSplitViewController
 
 @synthesize viewControllers = controllers;
-@synthesize minimumMasterViewSize;
-@synthesize minimumDetailViewSize;
+@synthesize minimumViewSize;
 @synthesize splitPoint;
 @synthesize dividerWidth;
 @synthesize reverseViewOrder;
@@ -92,8 +91,7 @@
    if ((self = [super init]) == nil)
       return(self);
 
-   minimumMasterViewSize  = CGSizeMake(150, 150);
-   minimumDetailViewSize  = CGSizeMake(150, 150);
+   minimumViewSize        = CGSizeMake(150, 150);
    splitPoint             = CGPointMake(320, 320);
    splitPointIsMoving     = NO;
    dividerWidth           = 10;
@@ -121,7 +119,7 @@
 }
 
 
-- (void) setMinimumDetailViewSize:(CGSize)aSize
+- (void) setMinimumViewSize:(CGSize)aSize
 {
    CGRect  aFrame;
    CGFloat limit;
@@ -130,44 +128,21 @@
    aFrame = [[UIScreen mainScreen] applicationFrame];
    limit  = (aFrame.size.width < aFrame.size.height) ? aFrame.size.width : aFrame.size.height;
 
-   // adjusts minimum detail width
+   // adjusts minimum view width
    if (aSize.width < 10)
       aSize.width = 10;
-   if ((aSize.width + dividerWidth + minimumMasterViewSize.width) <= limit)
-      minimumDetailViewSize.width = aSize.width;
+   if (((aSize.width*2) + dividerWidth) <= limit)
+      minimumViewSize.width = aSize.width;
+   else
+      minimumViewSize.width = (limit - dividerWidth) / 2;
 
-   // adjusts minimum master width
+   // adjusts minimum view height
    if (aSize.height < 10)
       aSize.height = 10;
-   if ((aSize.height + dividerWidth + minimumMasterViewSize.height) <= limit)
-      minimumDetailViewSize.height = aSize.height;
-
-   [self arrangeViews];
-
-   return;
-}
-
-
-- (void) setMinimumMasterViewSize:(CGSize)aSize
-{
-   CGRect  aFrame;
-   CGFloat limit;
-
-   // determines screen's limit
-   aFrame = [[UIScreen mainScreen] applicationFrame];
-   limit  = (aFrame.size.width < aFrame.size.height) ? aFrame.size.width : aFrame.size.height;
-
-   // adjusts minimum master width
-   if (aSize.width < 10)
-      aSize.width = 10;
-   if ((aSize.width + dividerWidth + minimumDetailViewSize.width) <= limit)
-      minimumMasterViewSize.width = aSize.width;
-
-   // adjusts minimum master width
-   if (aSize.height < 10)
-      aSize.height = 10;
-   if ((aSize.height + dividerWidth + minimumDetailViewSize.height) <= limit)
-      minimumMasterViewSize.height = aSize.height;
+   if (((aSize.height*2) + dividerWidth) <= limit)
+      minimumViewSize.height = aSize.height;
+   else
+      minimumViewSize.height = (limit - dividerWidth) / 2;
 
    [self arrangeViews];
 
@@ -281,12 +256,12 @@
    aSize = self.view.bounds.size;
 
    // adjusts master's view width to a minimum of minimumMasterViewSize.width
-   if (splitPoint.x < minimumMasterViewSize.width)
-      splitPoint.x = minimumMasterViewSize.width;
+   if (splitPoint.x < minimumViewSize.width)
+      splitPoint.x = minimumViewSize.width;
 
    // adjusts detail's view width to a minimum of minimumDetailViewWidth
-   if (splitPoint.x > (aSize.width - minimumDetailViewSize.width - 1))
-      splitPoint.x = aSize.width - minimumDetailViewSize.width - 1;
+   if (splitPoint.x > (aSize.width - minimumViewSize.width - 1))
+      splitPoint.x = aSize.width - minimumViewSize.width - 1;
 
    // adjusts master view
    aView = [[controllers objectAtIndex:0] view];
