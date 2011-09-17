@@ -46,7 +46,7 @@
 
    CGSize    minimumViewSize;
    CGPoint   splitPoint;
-   CGFloat   dividerWidth;
+   CGSize    sliderSize;
    BOOL      reverseViewOrder;
    BOOL      enableTouchToResize;
 
@@ -56,7 +56,6 @@
 @property(nonatomic, copy)   NSArray * viewControllers;
 @property(nonatomic, assign) CGSize    minimumViewSize;
 @property(nonatomic, assign) CGPoint   splitPoint;
-@property(nonatomic, assign) CGFloat   dividerWidth;
 @property(nonatomic, assign) BOOL      reverseViewOrder;
 @property(nonatomic, assign) BOOL      enableTouchToResize;
 

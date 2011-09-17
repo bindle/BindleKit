@@ -55,7 +55,6 @@
 @synthesize viewControllers = controllers;
 @synthesize minimumViewSize;
 @synthesize splitPoint;
-@synthesize dividerWidth;
 @synthesize reverseViewOrder;
 @synthesize enableTouchToResize;
 
@@ -94,22 +93,13 @@
    minimumViewSize        = CGSizeMake(150, 150);
    splitPoint             = CGPointMake(320, 320);
    splitPointIsMoving     = NO;
-   dividerWidth           = 10;
+   sliderSize             = CGSizeMake(10, 10);
 
    return(self);
 }
 
 
 #pragma mark - Properties getters/setters
-
-- (void) setDividerWidth:(CGFloat)aWidth
-{
-   if (aWidth < 320)
-      dividerWidth = aWidth;
-   [self arrangeViews];
-   return;
-}
-
 
 - (void) setSplitPoint:(CGPoint)aPoint
 {
@@ -131,18 +121,18 @@
    // adjusts minimum view width
    if (aSize.width < 10)
       aSize.width = 10;
-   if (((aSize.width*2) + dividerWidth) <= limit)
+   if (((aSize.width*2) + sliderSize.width) <= limit)
       minimumViewSize.width = aSize.width;
    else
-      minimumViewSize.width = (limit - dividerWidth) / 2;
+      minimumViewSize.width = (limit - sliderSize.width) / 2;
 
    // adjusts minimum view height
    if (aSize.height < 10)
       aSize.height = 10;
-   if (((aSize.height*2) + dividerWidth) <= limit)
+   if (((aSize.height*2) + sliderSize.width) <= limit)
       minimumViewSize.height = aSize.height;
    else
-      minimumViewSize.height = (limit - dividerWidth) / 2;
+      minimumViewSize.height = (limit - sliderSize.height) / 2;
 
    [self arrangeViews];
 
@@ -300,8 +290,8 @@
 	if ((touch = [touches anyObject]))
    {
       currPt  = [touch locationInView:self.view];
-      if ( (currPt.x >= (splitPoint.x - (dividerWidth/2))) &&
-           (currPt.x <= (splitPoint.x + (dividerWidth/2))) )
+      if ( (currPt.x >= (splitPoint.x - (sliderSize.width/2))) &&
+           (currPt.x <= (splitPoint.x + (sliderSize.width/2))) )
          splitPointIsMoving = YES;
    };
 
