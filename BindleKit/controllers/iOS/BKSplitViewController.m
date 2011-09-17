@@ -92,7 +92,7 @@
 
    minimumViewSize        = CGSizeMake(150, 150);
    splitPoint             = CGPointMake(320, 320);
-   splitPointIsMoving     = NO;
+   spliderIsMoving        = NO;
    sliderSize             = CGSizeMake(10, 10);
 
    return(self);
@@ -292,7 +292,7 @@
       currPt  = [touch locationInView:self.view];
       if ( (currPt.x >= (splitPoint.x - (sliderSize.width/2))) &&
            (currPt.x <= (splitPoint.x + (sliderSize.width/2))) )
-         splitPointIsMoving = YES;
+         spliderIsMoving = YES;
    };
 
    return;
@@ -301,7 +301,7 @@
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	splitPointIsMoving = NO;
+	spliderIsMoving = NO;
    return;
 }
 
@@ -311,7 +311,7 @@
 	UITouch  * touch;
    CGPoint    point;
 
-   if (splitPointIsMoving == NO)
+   if (spliderIsMoving == NO)
       return;
 
 	if ((touch = [touches anyObject]))
