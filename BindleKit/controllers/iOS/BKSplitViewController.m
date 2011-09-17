@@ -57,6 +57,7 @@
 @synthesize splitPoint;
 @synthesize reverseViewOrder;
 @synthesize enableTouchToResize;
+@synthesize hideSlider;
 
 
 - (void) dealloc
@@ -93,7 +94,8 @@
    minimumViewSize        = CGSizeMake(150, 150);
    splitPoint             = CGPointMake(320, 320);
    spliderIsMoving        = NO;
-   sliderSize             = CGSizeMake(10, 10);
+   sliderSize             = CGSizeMake(20, 20);
+   hideSlider             = NO;
 
    return(self);
 }
@@ -233,6 +235,11 @@
    CGSize   frameSize;
    CGFloat  limit;
    UIView * aView;
+   CGFloat  adjustmentForSlider;
+   CGFloat  frameX;
+   CGFloat  frameY;
+   CGFloat  frameWidth;
+   CGFloat  frameHeight;
 
    if (self.isViewLoaded == NO)
       return;
@@ -259,8 +266,13 @@
    aView = [[controllers objectAtIndex:0] view];
    if (aView.superview != self.view)
       [self.view addSubview:aView];
-   aView.frame              = CGRectMake(0, 0, splitPoint.x, aSize.height);
-   aView.layer.cornerRadius = 5;
+   frameX      = 0;
+   frameY      = 0;
+   frameWidth  = splitPoint.x-adjustmentForSlider;
+   frameHeight = frameSize.height;
+   aView.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+   if (hideSlider == YES)
+      aView.layer.cornerRadius = 5;
    aView.clipsToBounds      = YES;
    aView.autoresizingMask   = UIViewAutoresizingFlexibleRightMargin |
                               UIViewAutoresizingFlexibleHeight;
@@ -269,8 +281,15 @@
    aView = [[controllers objectAtIndex:1] view];
    if (aView.superview != self.view)
       [self.view addSubview:aView];
-   aView.frame = CGRectMake(splitPoint.x + 1, 0, aSize.width - splitPoint.x - 1, aSize.height);
-   aView.layer.cornerRadius = 5;
+   if (!(adjustmentForSlider))
+      adjustmentForSlider = 1;
+   frameX      = splitPoint.x + adjustmentForSlider;
+   frameY      = 0;
+   frameWidth  = frameSize.width - splitPoint.x - adjustmentForSlider;
+   frameHeight = frameSize.height;
+   aView.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+   if (hideSlider == YES)
+      aView.layer.cornerRadius = 5;
    aView.clipsToBounds      = YES;
    aView.autoresizingMask   = UIViewAutoresizingFlexibleHeight |
                               UIViewAutoresizingFlexibleWidth;

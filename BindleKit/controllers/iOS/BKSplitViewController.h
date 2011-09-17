@@ -49,6 +49,7 @@
    CGSize    sliderSize;
    BOOL      reverseViewOrder;
    BOOL      enableTouchToResize;
+   BOOL      hideSlider;
 
    BOOL      spliderIsMoving;
 }
@@ -58,5 +59,6 @@
 @property(nonatomic, assign) CGPoint   splitPoint;
 @property(nonatomic, assign) BOOL      reverseViewOrder;
 @property(nonatomic, assign) BOOL      enableTouchToResize;
+@property(nonatomic, assign) BOOL      hideSlider;
 
 @end
