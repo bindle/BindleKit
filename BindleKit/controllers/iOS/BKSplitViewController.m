@@ -46,7 +46,7 @@
 - (UIView *) sliderViewWithFrame:(CGRect)sliderFrame;
 
 - (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
-- (void) arrangeViewsHorizontally;
+- (void) arrangeViewsHorizontally:(BOOL)animate;
 
 @end
 
@@ -315,7 +315,8 @@
 
 #pragma mark - subview manager methods
 
-- (void) arrangeViewsWithAnimations:(BOOL)useAnimations
+//- (void)layoutSubviewsForInterfaceOrientation:(UIInterfaceOrientation)theOrientation withAnimation:(BOOL)animate
+- (void) arrangeViewsWithAnimations:(BOOL)animate
 {
    if (!(controllers))
       return;
@@ -323,46 +324,34 @@
    if (self.isViewLoaded == NO)
       return;
 
-   if ( ((self.view.superview)) && ((useAnimations)) )
-   {
-      [UIView beginAnimations:nil context:nil];
-      [UIView setAnimationDuration:0.5];
-      [UIView setAnimationDelay:0.0];
-      [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-   };
-
-   [self arrangeViewsHorizontally];
-
-   if ( ((self.view.superview)) && ((useAnimations)) )
-      [UIView commitAnimations];
+   [self arrangeViewsHorizontally:animate];
 
    return;
 }
 
 
-- (void) arrangeViewsHorizontally
+- (void) arrangeViewsHorizontally:(BOOL)animate
 {
+   NSAutoreleasePool * pool;
+   UIView * view0;
+   UIView * view1;
    CGRect   aFrame;
    CGSize   frameSize;
    CGFloat  limit;
-   UIView * aView;
    CGFloat  adjustmentForSlider;
    CGFloat  frameX;
    CGFloat  frameY;
    CGFloat  frameWidth;
    CGFloat  frameHeight;
-   NSAutoreleasePool * pool;
-
-   if (self.isViewLoaded == NO)
-      return;
-
-   if (!(controllers))
-      return;
 
    pool = [[NSAutoreleasePool alloc] init];
 
    frameSize = self.view.bounds.size;
 
+   view0 = [[controllers objectAtIndex:0] view];
+   view1 = [[controllers objectAtIndex:1] view];
+
+   // calculates adjustment to master & detail views
    adjustmentForSlider = 0;
    if (hideSlider == NO)
       adjustmentForSlider = (sliderSize.width/2);
@@ -376,67 +365,76 @@
    if (splitPoint.x > (limit - minimumViewSize.width - (sliderSize.width/2)))
       splitPoint.x = limit - minimumViewSize.width - (sliderSize.width/2);
 
-   // adjusts master view
-   aView = [[controllers objectAtIndex:0] view];
-   if (aView.superview != self.view)
-      [self.view addSubview:aView];
-   frameX      = 0;
-   frameY      = 0;
-   frameWidth  = splitPoint.x-adjustmentForSlider;
-   frameHeight = frameSize.height;
-   aView.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
-   if (hideSlider == YES)
-      aView.layer.cornerRadius = 5;
-   else
-      aView.layer.cornerRadius = 0;
-   aView.clipsToBounds      = YES;
-   aView.autoresizingMask   = UIViewAutoresizingFlexibleRightMargin |
-                              UIViewAutoresizingFlexibleHeight;
-
-   // adjusts detail view
-   aView = [[controllers objectAtIndex:1] view];
-   if (aView.superview != self.view)
-      [self.view addSubview:aView];
-   if (!(adjustmentForSlider))
-      adjustmentForSlider = 1;
-   frameX      = splitPoint.x + adjustmentForSlider;
-   frameY      = 0;
-   frameWidth  = frameSize.width - splitPoint.x - adjustmentForSlider;
-   frameHeight = frameSize.height;
-   aView.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
-   if (hideSlider == YES)
-      aView.layer.cornerRadius = 5;
-   else
-      aView.layer.cornerRadius = 0;
-   aView.clipsToBounds      = YES;
-   aView.autoresizingMask   = UIViewAutoresizingFlexibleHeight |
-                              UIViewAutoresizingFlexibleWidth;
-
-   // removes slider if it is hidden
+   // removes slider view if marked as hidden
    if (hideSlider == YES)
    {
-      if ((hideSlider))
+      // adjust corners of master & detail views
+      view0.layer.cornerRadius = 5;
+      view1.layer.cornerRadius = 5;
+
+      // adjusts slider view
+      if ((sliderView))
       {
          [sliderView removeFromSuperview];
          [sliderView release];
          sliderView = nil;
       };
-      [pool release];
-      return;
    };
 
-   // arranges slider
-   frameX      = splitPoint.x - adjustmentForSlider;
-   frameY      = 0;
-   frameWidth  = sliderSize.width;
-   frameHeight = frameSize.height;
-   aFrame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
-   if (!(sliderView))
+   // positions slider view
+   if (hideSlider == NO)
    {
-      sliderView = [[self sliderViewWithFrame:aFrame] retain];
-      [self.view addSubview:sliderView];
+      // adjust corners of master & detail views
+      view0.layer.cornerRadius = 0;
+      view1.layer.cornerRadius = 0;
+
+      // adjusts slider view
+      frameX      = splitPoint.x - adjustmentForSlider;
+      frameY      = 0;
+      frameWidth  = sliderSize.width;
+      frameHeight = frameSize.height;
+      aFrame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+      if (!(sliderView))
+      {
+         sliderView = [[self sliderViewWithFrame:aFrame] retain];
+         [self.view addSubview:sliderView];
+         [self.view sendSubviewToBack:sliderView];
+      };
+      sliderView.frame = aFrame;
    };
-   sliderView.frame = aFrame;
+
+   // begin animations
+   if ((animate))
+      [UIView beginAnimations:nil context:nil];
+
+   // positions master view
+   if (view0.superview != self.view)
+      [self.view addSubview:view0];
+   frameX      = 0;
+   frameY      = 0;
+   frameWidth  = splitPoint.x-adjustmentForSlider;
+   frameHeight = frameSize.height;
+   view0.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+   view0.clipsToBounds      = YES;
+   view0.autoresizingMask   = UIViewAutoresizingFlexibleRightMargin |
+                              UIViewAutoresizingFlexibleHeight;
+
+   // positions detail view
+   if (!(adjustmentForSlider))
+      adjustmentForSlider = 1;
+   if (view1.superview != self.view)
+      [self.view addSubview:view1];
+   frameX      = splitPoint.x + adjustmentForSlider;
+   frameY      = 0;
+   frameWidth  = frameSize.width - splitPoint.x - adjustmentForSlider;
+   frameHeight = frameSize.height;
+   view1.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+   view1.clipsToBounds      = YES;
+   view1.autoresizingMask   = UIViewAutoresizingFlexibleHeight |
+                              UIViewAutoresizingFlexibleWidth;
+
+   if ((animate))
+      [UIView commitAnimations];
 
    [pool release];
 
