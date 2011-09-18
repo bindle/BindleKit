@@ -430,7 +430,6 @@
    frameWidth  = splitPoint.x-adjustmentForSlider;
    frameHeight = frameSize.height;
    view0.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
-   view0.clipsToBounds      = YES;
    view0.autoresizingMask   = UIViewAutoresizingFlexibleRightMargin |
                               UIViewAutoresizingFlexibleHeight;
 
@@ -444,7 +443,6 @@
    frameWidth  = frameSize.width - splitPoint.x - adjustmentForSlider;
    frameHeight = frameSize.height;
    view1.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
-   view1.clipsToBounds      = YES;
    view1.autoresizingMask   = UIViewAutoresizingFlexibleHeight |
                               UIViewAutoresizingFlexibleWidth;
 
