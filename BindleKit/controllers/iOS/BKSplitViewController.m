@@ -154,8 +154,19 @@
 
 - (void) setReverseViewOrder:(BOOL)aBool
 {
+   CGSize frameSize;
+
+   frameSize = self.view.bounds.size;
+   if (aBool != reverseViewOrder)
+   {
+      splitPoint = CGPointMake(frameSize.width-splitPoint.x,
+                               frameSize.height-splitPoint.y);
+   };
+
    reverseViewOrder = aBool;
+
    [self arrangeViewsWithAnimations:enableAnimations];
+
    return;
 }
 
@@ -348,8 +359,14 @@
 
    frameSize = self.view.bounds.size;
 
-   view0 = [[controllers objectAtIndex:0] view];
-   view1 = [[controllers objectAtIndex:1] view];
+   if (!(reverseViewOrder))
+   {
+      view0 = [[controllers objectAtIndex:0] view];
+      view1 = [[controllers objectAtIndex:1] view];
+   } else {
+      view0 = [[controllers objectAtIndex:1] view];
+      view1 = [[controllers objectAtIndex:0] view];
+   };
 
    // calculates adjusts master & detail position for slider view
    adjustmentForSlider = 0;
