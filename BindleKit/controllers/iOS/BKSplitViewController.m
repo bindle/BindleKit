@@ -45,7 +45,7 @@
 
 - (UIView *) sliderViewWithFrame:(CGRect)sliderFrame;
 
-- (void) arrangeViews;
+- (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
 - (void) arrangeViewsHorizontally;
 
 @end
@@ -59,6 +59,7 @@
 @synthesize splitPoint;
 @synthesize reverseViewOrder;
 @synthesize enableTouchToResize;
+@synthesize enableAnimations;
 @synthesize hideSlider;
 @synthesize sliderSize;
 
@@ -100,6 +101,7 @@
    spliderIsMoving        = NO;
    sliderSize             = CGSizeMake(20, 20);
    hideSlider             = NO;
+   enableAnimations       = YES;
 
    return(self);
 }
@@ -107,10 +109,18 @@
 
 #pragma mark - Properties getters/setters
 
+- (void) setHideSlider:(BOOL)aBool
+{
+   hideSlider = aBool;
+   [self arrangeViewsWithAnimations:enableAnimations];
+   return;
+}
+
+
 - (void) setSplitPoint:(CGPoint)aPoint
 {
    splitPoint = aPoint;
-   [self arrangeViews];
+   [self arrangeViewsWithAnimations:enableAnimations];
    return;
 }
 
@@ -136,8 +146,16 @@
    else
       minimumViewSize.height = (limit - sliderSize.height) / 2;
 
-   [self arrangeViews];
+   [self arrangeViewsWithAnimations:enableAnimations];
 
+   return;
+}
+
+
+- (void) setReverseViewOrder:(BOOL)aBool
+{
+   reverseViewOrder = aBool;
+   [self arrangeViewsWithAnimations:enableAnimations];
    return;
 }
 
@@ -175,7 +193,7 @@
    controllers = [[NSArray alloc] initWithArray:viewControllers];
 
    // arranges views
-   [self arrangeViews];
+   [self arrangeViewsWithAnimations:enableAnimations];
 
    return;
 }
@@ -200,7 +218,7 @@
    [rootView   release];
 
    // arranges views
-   [self arrangeViews];
+   [self arrangeViewsWithAnimations:NO];
 
    return;
 }
@@ -221,7 +239,7 @@
    UIImageView            * imageView;
 
    imageSize.width  = sliderFrame.size.width;
-   imageSize.height = 1;
+   imageSize.height = sliderFrame.size.height;
    color            = CGColorSpaceCreateDeviceRGB();
 
    // creates color context
@@ -297,12 +315,26 @@
 
 #pragma mark - subview manager methods
 
-- (void) arrangeViews
+- (void) arrangeViewsWithAnimations:(BOOL)useAnimations
 {
    if (!(controllers))
       return;
 
+   if (self.isViewLoaded == NO)
+      return;
+
+   if ( ((self.view.superview)) && ((useAnimations)) )
+   {
+      [UIView beginAnimations:nil context:nil];
+      [UIView setAnimationDuration:0.5];
+      [UIView setAnimationDelay:0.0];
+      [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+   };
+
    [self arrangeViewsHorizontally];
+
+   if ( ((self.view.superview)) && ((useAnimations)) )
+      [UIView commitAnimations];
 
    return;
 }
@@ -453,7 +485,7 @@
    {
       point           = [touch locationInView:self.view];
       splitPoint.x    = point.x;
-      [self arrangeViews];
+      [self arrangeViewsWithAnimations:NO];
    };
    return;
 }

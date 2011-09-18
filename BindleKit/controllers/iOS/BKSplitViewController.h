@@ -49,6 +49,7 @@
    CGSize    sliderSize;
    BOOL      reverseViewOrder;
    BOOL      enableTouchToResize;
+   BOOL      enableAnimations;
    BOOL      hideSlider;
 
    UIView  * sliderView;
@@ -61,6 +62,7 @@
 @property(nonatomic, assign) CGSize    sliderSize;
 @property(nonatomic, assign) BOOL      reverseViewOrder;
 @property(nonatomic, assign) BOOL      enableTouchToResize;
+@property(nonatomic, assign) BOOL      enableAnimations;
 @property(nonatomic, assign) BOOL      hideSlider;
 
 @end
