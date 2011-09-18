@@ -51,12 +51,14 @@
    BOOL      enableTouchToResize;
    BOOL      hideSlider;
 
+   UIView  * sliderView;
    BOOL      spliderIsMoving;
 }
 
 @property(nonatomic, copy)   NSArray * viewControllers;
 @property(nonatomic, assign) CGSize    minimumViewSize;
 @property(nonatomic, assign) CGPoint   splitPoint;
+@property(nonatomic, assign) CGSize    sliderSize;
 @property(nonatomic, assign) BOOL      reverseViewOrder;
 @property(nonatomic, assign) BOOL      enableTouchToResize;
 @property(nonatomic, assign) BOOL      hideSlider;

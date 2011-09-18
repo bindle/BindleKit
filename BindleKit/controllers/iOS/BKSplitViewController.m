@@ -43,6 +43,8 @@
 #pragma mark - private methods
 @interface BKSplitViewController ()
 
+- (UIView *) sliderViewWithFrame:(CGRect)sliderFrame;
+
 - (void) arrangeViews;
 - (void) arrangeViewsHorizontally;
 
@@ -58,11 +60,13 @@
 @synthesize reverseViewOrder;
 @synthesize enableTouchToResize;
 @synthesize hideSlider;
+@synthesize sliderSize;
 
 
 - (void) dealloc
 {
    [controllers      release];
+   [sliderView       release];
 
    [super dealloc];
 
@@ -202,6 +206,80 @@
 }
 
 
+- (UIView *) sliderViewWithFrame:(CGRect)sliderFrame
+{
+   CGSize                   imageSize;
+   CGColorSpaceRef          color;
+   CGContextRef             context;
+   CGFloat                  components[8] = { 0.988, 0.988, 0.988, 1.0,  // light
+                                              0.875, 0.875, 0.875, 1.0 }; // dark
+   CGGradientRef            gradient;
+   CGPoint                  start;
+   CGPoint                  stop;
+   CGImageRef               cgImage;
+   UIImage                * uiImage;
+   UIImageView            * imageView;
+
+   imageSize.width  = sliderFrame.size.width;
+   imageSize.height = 1;
+   color            = CGColorSpaceCreateDeviceRGB();
+
+   // creates color context
+   context = CGBitmapContextCreate
+   (
+      NULL,                          // data
+      imageSize.width,               // width
+      imageSize.height,              // height
+      8,                             // bits per component (1 byte per componet)
+      (imageSize.width * 4),         // bytes per row (4 componets per pixel)
+      color,                         // color space
+      kCGImageAlphaPremultipliedLast // bitmap info
+   );
+   CGContextSaveGState(context);
+
+   // creates path (drawing area) for gradient and background color
+   CGContextDrawPath(context, kCGPathStroke);
+   CGContextMoveToPoint(context, 0, 0);
+   CGContextAddLineToPoint(context, imageSize.width, 0);
+   CGContextAddLineToPoint(context, imageSize.width, imageSize.height);
+   CGContextAddLineToPoint(context, 0, imageSize.height);
+   CGContextAddLineToPoint(context, 0, 0);
+	CGContextClosePath(context);
+
+   // fill in background color
+   CGContextSetRGBStrokeColor(context, 0.700, 0.700, 0.700, 1.0);
+	CGContextSetRGBFillColor(context,   0.700, 0.700, 0.700, 1.0);
+   CGContextSetLineWidth(context, 0);
+   CGContextFillPath(context);
+
+   // creates gradient
+   start = CGPointMake(1, 0);
+   stop  = CGPointMake(imageSize.width-1, 0);
+   gradient = CGGradientCreateWithColorComponents(color, components, NULL, 2);
+   CGContextDrawLinearGradient(context, gradient, start, stop,  0);
+	CGContextRestoreGState(context);
+   CGGradientRelease(gradient);
+
+   // Creates Image
+   cgImage = CGBitmapContextCreateImage(context);
+   uiImage = [UIImage imageWithCGImage:cgImage];
+   uiImage = [uiImage stretchableImageWithLeftCapWidth:1 topCapHeight:1];
+
+   // frees resources
+   CGImageRelease(cgImage);
+   CGContextRelease(context);
+   CGColorSpaceRelease(color);
+
+   // creates view
+   imageView = [[UIImageView alloc] initWithImage:uiImage];
+   imageView.frame            = sliderFrame;
+   imageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin |
+                                UIViewAutoresizingFlexibleHeight;
+
+   return([imageView autorelease]);
+}
+
+
 - (void)viewDidUnload
 {
    [super viewDidUnload];
@@ -232,6 +310,7 @@
 
 - (void) arrangeViewsHorizontally
 {
+   CGRect   aFrame;
    CGSize   frameSize;
    CGFloat  limit;
    UIView * aView;
@@ -240,12 +319,15 @@
    CGFloat  frameY;
    CGFloat  frameWidth;
    CGFloat  frameHeight;
+   NSAutoreleasePool * pool;
 
    if (self.isViewLoaded == NO)
       return;
 
    if (!(controllers))
       return;
+
+   pool = [[NSAutoreleasePool alloc] init];
 
    frameSize = self.view.bounds.size;
 
@@ -273,6 +355,8 @@
    aView.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
    if (hideSlider == YES)
       aView.layer.cornerRadius = 5;
+   else
+      aView.layer.cornerRadius = 0;
    aView.clipsToBounds      = YES;
    aView.autoresizingMask   = UIViewAutoresizingFlexibleRightMargin |
                               UIViewAutoresizingFlexibleHeight;
@@ -290,9 +374,39 @@
    aView.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
    if (hideSlider == YES)
       aView.layer.cornerRadius = 5;
+   else
+      aView.layer.cornerRadius = 0;
    aView.clipsToBounds      = YES;
    aView.autoresizingMask   = UIViewAutoresizingFlexibleHeight |
                               UIViewAutoresizingFlexibleWidth;
+
+   // removes slider if it is hidden
+   if (hideSlider == YES)
+   {
+      if ((hideSlider))
+      {
+         [sliderView removeFromSuperview];
+         [sliderView release];
+         sliderView = nil;
+      };
+      [pool release];
+      return;
+   };
+
+   // arranges slider
+   frameX      = splitPoint.x - adjustmentForSlider;
+   frameY      = 0;
+   frameWidth  = sliderSize.width;
+   frameHeight = frameSize.height;
+   aFrame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+   if (!(sliderView))
+   {
+      sliderView = [[self sliderViewWithFrame:aFrame] retain];
+      [self.view addSubview:sliderView];
+   };
+   sliderView.frame = aFrame;
+
+   [pool release];
 
    return;
 }
