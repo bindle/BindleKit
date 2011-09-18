@@ -43,24 +43,26 @@
 {
 
    NSArray * controllers;
-   NSArray * views;
 
-   CGFloat   minimumMasterViewWidth;
-   CGFloat   minimumDetailViewWidth;
-   CGFloat   masterViewWidth;
-   CGFloat   dividerWidth;
+   CGSize    minimumViewSize;
+   CGPoint   splitPoint;
+   CGSize    sliderSize;
    BOOL      reverseViewOrder;
    BOOL      enableTouchToResize;
+   BOOL      enableAnimations;
+   BOOL      hideSlider;
 
-   BOOL      dividerIsMoving;
+   UIView  * sliderView;
+   BOOL      spliderIsMoving;
 }
 
 @property(nonatomic, copy)   NSArray * viewControllers;
-@property(nonatomic, assign) CGFloat   minimumMasterViewWidth;
-@property(nonatomic, assign) CGFloat   minimumDetailViewWidth;
-@property(nonatomic, assign) CGFloat   masterViewWidth;
-@property(nonatomic, assign) CGFloat   dividerWidth;
+@property(nonatomic, assign) CGSize    minimumViewSize;
+@property(nonatomic, assign) CGPoint   splitPoint;
+@property(nonatomic, assign) CGSize    sliderSize;
 @property(nonatomic, assign) BOOL      reverseViewOrder;
 @property(nonatomic, assign) BOOL      enableTouchToResize;
+@property(nonatomic, assign) BOOL      enableAnimations;
+@property(nonatomic, assign) BOOL      hideSlider;
 
 @end

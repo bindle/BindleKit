@@ -43,8 +43,10 @@
 #pragma mark - private methods
 @interface BKSplitViewController ()
 
-- (void) arrangeViews;
-- (void) arrangeViewsHorizontally;
+- (UIView *) sliderViewWithFrame:(CGRect)sliderFrame;
+
+- (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
+- (void) arrangeViewsHorizontally:(BOOL)animate;
 
 @end
 
@@ -53,18 +55,19 @@
 @implementation BKSplitViewController
 
 @synthesize viewControllers = controllers;
-@synthesize minimumMasterViewWidth;
-@synthesize minimumDetailViewWidth;
-@synthesize masterViewWidth;
-@synthesize dividerWidth;
+@synthesize minimumViewSize;
+@synthesize splitPoint;
 @synthesize reverseViewOrder;
 @synthesize enableTouchToResize;
+@synthesize enableAnimations;
+@synthesize hideSlider;
+@synthesize sliderSize;
 
 
 - (void) dealloc
 {
    [controllers      release];
-   [views            release];
+   [sliderView       release];
 
    [super dealloc];
 
@@ -84,9 +87,6 @@
    if (self.isViewLoaded == YES)
       return;
 
-   [views release];
-   views = nil;
-
    return;
 }
 
@@ -96,11 +96,12 @@
    if ((self = [super init]) == nil)
       return(self);
 
-   dividerIsMoving        = NO;
-   minimumMasterViewWidth = 150;
-   minimumDetailViewWidth = 150;
-   masterViewWidth        = minimumMasterViewWidth;
-   dividerWidth           = 10;
+   minimumViewSize        = CGSizeMake(0, 0);
+   splitPoint             = CGPointMake(320, 320);
+   spliderIsMoving        = NO;
+   sliderSize             = CGSizeMake(20, 20);
+   hideSlider             = NO;
+   enableAnimations       = YES;
 
    return(self);
 }
@@ -108,60 +109,63 @@
 
 #pragma mark - Properties getters/setters
 
-- (void) setDividerWidth:(CGFloat)aWidth
+- (void) setHideSlider:(BOOL)aBool
 {
-   if (aWidth < 320)
-      dividerWidth = aWidth;
-   [self arrangeViews];
+   hideSlider = aBool;
+   [self arrangeViewsWithAnimations:enableAnimations];
    return;
 }
 
 
-- (void) setMasterViewWidth:(CGFloat)aWidth
+- (void) setSplitPoint:(CGPoint)aPoint
 {
-   masterViewWidth = aWidth;
-   [self arrangeViews];
+   splitPoint = aPoint;
+   [self arrangeViewsWithAnimations:enableAnimations];
    return;
 }
 
 
-- (void) setMinimumDetailViewWidth:(CGFloat)aWidth
+- (void) setMinimumViewSize:(CGSize)aSize
 {
    CGRect  aFrame;
-   CGSize  aSize;
    CGFloat limit;
 
+   // determines screen's limit
    aFrame = [[UIScreen mainScreen] applicationFrame];
-   aSize  = aFrame.size;
-   limit  = (aSize.width < aSize.height) ? aSize.width : aSize.height;
+   limit  = (aFrame.size.width < aFrame.size.height) ? aFrame.size.width : aFrame.size.height;
 
-   if ((aWidth + dividerWidth + minimumMasterViewWidth) <= limit)
-      minimumDetailViewWidth = aWidth;
-   if (aWidth < 1)
-      minimumDetailViewWidth = 1;
+   // adjusts minimum view width
+   if (((aSize.width*2) + sliderSize.width) <= limit)
+      minimumViewSize.width = aSize.width;
+   else
+      minimumViewSize.width = (limit - sliderSize.width) / 2;
 
-   [self arrangeViews];
+   // adjusts minimum view height
+   if (((aSize.height*2) + sliderSize.width) <= limit)
+      minimumViewSize.height = aSize.height;
+   else
+      minimumViewSize.height = (limit - sliderSize.height) / 2;
+
+   [self arrangeViewsWithAnimations:enableAnimations];
 
    return;
 }
 
 
-- (void) setMinimumMasterViewWidth:(CGFloat)aWidth
+- (void) setReverseViewOrder:(BOOL)aBool
 {
-   CGRect  aFrame;
-   CGSize  aSize;
-   CGFloat limit;
+   CGSize frameSize;
 
-   aFrame = [[UIScreen mainScreen] applicationFrame];
-   aSize  = aFrame.size;
-   limit  = (aSize.width < aSize.height) ? aSize.width : aSize.height;
+   frameSize = self.view.bounds.size;
+   if (aBool != reverseViewOrder)
+   {
+      splitPoint = CGPointMake(frameSize.width-splitPoint.x,
+                               frameSize.height-splitPoint.y);
+   };
 
-   if ((aWidth + dividerWidth + minimumDetailViewWidth) <= limit)
-      minimumMasterViewWidth = aWidth;
-   if (aWidth < 1)
-      minimumMasterViewWidth = 1;
+   reverseViewOrder = aBool;
 
-   [self arrangeViews];
+   [self arrangeViewsWithAnimations:enableAnimations];
 
    return;
 }
@@ -169,84 +173,38 @@
 
 - (void) setViewControllers:(NSArray *)viewControllers
 {
-   UIViewController * masterController = nil;
-   UIViewController * detailController = nil;
-   UIView           * masterRootView   = nil;
-   UIView           * detailRootView   = nil;
-
-   // retrieves current master and detail view controllers
-   if ((controllers))
-   {
-      masterController = [[controllers objectAtIndex:0] retain];
-      detailController = [[controllers objectAtIndex:1] retain];
-      [controllers release];
-      controllers = nil;
-   };
+   NSUInteger         pos;
+   UIViewController * aController;
 
    // if new view controllers are not available, remove old views and exit
    if (!(viewControllers))
    {
-      if ((masterController))
-      {
-         if (masterController.isViewLoaded == YES)
-            [masterController.view removeFromSuperview];
-         [masterController release];
-      };
-      if ((detailController))
-      {
-         if (detailController.isViewLoaded == YES)
-            [detailController.view removeFromSuperview];
-         [detailController release];
-      };
+      [controllers release];
+      controllers = nil;
+      if (self.isViewLoaded == YES)
+         while([self.view.subviews count] > 0)
+            [[self.view.subviews objectAtIndex:0] removeFromSuperview];
       return;
    };
 
-   // save new view controllers
+   // removes old Views from superview
+   if ((controllers))
+   {
+      for(pos = 0; pos < [controllers count]; pos++)
+      {
+         aController = [controllers objectAtIndex:pos];
+         if (!([viewControllers containsObject:aController]))
+            if (aController.isViewLoaded == YES)
+               [aController.view removeFromSuperview];
+      };
+   };
+
+   // assigns new UIViewControllers
+   [controllers release];
    controllers = [[NSArray alloc] initWithArray:viewControllers];
 
-   // retrieves root master and detail views
-   if ((views))
-   {
-      masterRootView   = [views objectAtIndex:0];
-      detailRootView   = [views objectAtIndex:1];
-   };
-
-   // remove old master view if it is not the same as the new view
-   if ((masterController))
-   {
-      if (masterController != [controllers objectAtIndex:0])
-         if (masterController.isViewLoaded == YES)
-            [masterController.view removeFromSuperview];
-      [masterController release];
-   };
-
-   // remove old detail view if it is not the same as the new view
-   if ((detailController))
-   {
-      if (detailController != [controllers objectAtIndex:1])
-         if (detailController.isViewLoaded == YES)
-            [detailController.view removeFromSuperview];
-      [detailController release];
-   };
-
-   // grab new master and detail view controllers
-   masterController = [controllers objectAtIndex:0];
-   detailController = [controllers objectAtIndex:1];
-
-   // add new master and detail views to root view
-   if ((views))
-   {
-      // remove views if they are loaded in incorrect super views
-      if (masterController.isViewLoaded == YES)
-         if (!([masterController.view isDescendantOfView:masterRootView]))
-            [masterController.view removeFromSuperview];
-      if (detailController.isViewLoaded == YES)
-         if (!([detailController.view isDescendantOfView:detailRootView]))
-            [detailController.view removeFromSuperview];
-   }
-
    // arranges views
-   [self arrangeViews];
+   [self arrangeViewsWithAnimations:enableAnimations];
 
    return;
 }
@@ -259,14 +217,6 @@
 {
    CGRect   aFrame;
    UIView * rootView;
-   UIView * masterView;
-   UIView * detailView;
-
-   if ((views))
-   {
-      [self arrangeViews];
-      return;
-   };
 
    // creates root view
    aFrame = [[UIScreen mainScreen] applicationFrame];
@@ -278,47 +228,90 @@
    self.view = rootView;
    [rootView   release];
 
-   // creates master view
-   aFrame = CGRectMake(5,5,5,5);
-   masterView                     = [[UIView alloc] initWithFrame:aFrame];
-   masterView.backgroundColor     = [UIColor whiteColor];
-   masterView.layer.cornerRadius  = 5;
-   masterView.autoresizesSubviews = TRUE;
-   masterView.clipsToBounds       = YES;
-   masterView.autoresizingMask    = UIViewAutoresizingFlexibleRightMargin |
-                                    UIViewAutoresizingFlexibleHeight;
-
-   // creates detail view
-   aFrame = CGRectMake(20,5,5,5);
-   detailView                     = [[UILabel alloc] initWithFrame:aFrame];
-   detailView.backgroundColor     = [UIColor whiteColor];
-   detailView.layer.cornerRadius  = 5;
-   detailView.autoresizesSubviews = TRUE;
-   masterView.clipsToBounds       = YES;
-   detailView.autoresizingMask    = UIViewAutoresizingFlexibleWidth |
-                                    UIViewAutoresizingFlexibleHeight;
-
-
-   // saves views for later use
-   views = [[NSArray alloc] initWithObjects:masterView, detailView, nil];
-   [masterView release];
-   [detailView release];
-
    // arranges views
-   [self.view addSubview:[views objectAtIndex:0]];
-   [self.view addSubview:[views objectAtIndex:1]];
-
-   [self arrangeViews];
+   [self arrangeViewsWithAnimations:NO];
 
    return;
+}
+
+
+- (UIView *) sliderViewWithFrame:(CGRect)sliderFrame
+{
+   CGSize                   imageSize;
+   CGColorSpaceRef          color;
+   CGContextRef             context;
+   CGFloat                  components[8] = { 0.988, 0.988, 0.988, 1.0,  // light
+                                              0.875, 0.875, 0.875, 1.0 }; // dark
+   CGGradientRef            gradient;
+   CGPoint                  start;
+   CGPoint                  stop;
+   CGImageRef               cgImage;
+   UIImage                * uiImage;
+   UIImageView            * imageView;
+
+   imageSize.width  = sliderFrame.size.width;
+   imageSize.height = sliderFrame.size.height;
+   color            = CGColorSpaceCreateDeviceRGB();
+
+   // creates color context
+   context = CGBitmapContextCreate
+   (
+      NULL,                          // data
+      imageSize.width,               // width
+      imageSize.height,              // height
+      8,                             // bits per component (1 byte per componet)
+      (imageSize.width * 4),         // bytes per row (4 componets per pixel)
+      color,                         // color space
+      kCGImageAlphaPremultipliedLast // bitmap info
+   );
+   CGContextSaveGState(context);
+
+   // creates path (drawing area) for gradient and background color
+   CGContextDrawPath(context, kCGPathStroke);
+   CGContextMoveToPoint(context, 0, 0);
+   CGContextAddLineToPoint(context, imageSize.width, 0);
+   CGContextAddLineToPoint(context, imageSize.width, imageSize.height);
+   CGContextAddLineToPoint(context, 0, imageSize.height);
+   CGContextAddLineToPoint(context, 0, 0);
+	CGContextClosePath(context);
+
+   // fill in background color
+   CGContextSetRGBStrokeColor(context, 0.700, 0.700, 0.700, 1.0);
+	CGContextSetRGBFillColor(context,   0.700, 0.700, 0.700, 1.0);
+   CGContextSetLineWidth(context, 0);
+   CGContextFillPath(context);
+
+   // creates gradient
+   start = CGPointMake(1, 0);
+   stop  = CGPointMake(imageSize.width-1, 0);
+   gradient = CGGradientCreateWithColorComponents(color, components, NULL, 2);
+   CGContextDrawLinearGradient(context, gradient, start, stop,  0);
+	CGContextRestoreGState(context);
+   CGGradientRelease(gradient);
+
+   // Creates Image
+   cgImage = CGBitmapContextCreateImage(context);
+   uiImage = [UIImage imageWithCGImage:cgImage];
+   uiImage = [uiImage stretchableImageWithLeftCapWidth:1 topCapHeight:1];
+
+   // frees resources
+   CGImageRelease(cgImage);
+   CGContextRelease(context);
+   CGColorSpaceRelease(color);
+
+   // creates view
+   imageView = [[UIImageView alloc] initWithImage:uiImage];
+   imageView.frame            = sliderFrame;
+   imageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin |
+                                UIViewAutoresizingFlexibleHeight;
+
+   return([imageView autorelease]);
 }
 
 
 - (void)viewDidUnload
 {
    [super viewDidUnload];
-   [views release];
-   views = nil;
    return;
 }
 
@@ -333,87 +326,135 @@
 
 #pragma mark - subview manager methods
 
-- (void) arrangeViews
+//- (void)layoutSubviewsForInterfaceOrientation:(UIInterfaceOrientation)theOrientation withAnimation:(BOOL)animate
+- (void) arrangeViewsWithAnimations:(BOOL)animate
 {
-   CGRect             aFrame;
-   UIViewController * masterController;
-   UIViewController * detailController;
-   UIView           * masterRootView;
-   UIView           * detailRootView;
-
-   if (!(views))
+   if (!(controllers))
       return;
 
-   masterRootView   = [views objectAtIndex:0];
-   detailRootView   = [views objectAtIndex:1];
+   if (self.isViewLoaded == NO)
+      return;
 
-   if ((controllers))
-   {
-      // retrieves controllers
-      masterController = [controllers objectAtIndex:0];
-      detailController = [controllers objectAtIndex:1];
+   [self arrangeViewsHorizontally:animate];
 
-      // adds content to master root view if content does not exist
-      if (!([masterController.view isDescendantOfView:masterRootView]))
-      {
-         aFrame = CGRectMake( masterRootView.frame.origin.x,
-                              masterRootView.frame.origin.y,
-                              masterController.view.frame.size.width,
-                              masterController.view.frame.size.height);
-         masterRootView.frame = aFrame;
-         [masterRootView addSubview:masterController.view];
-      };
-
-      // adds content to detail root view if content does not exist
-      if (!([detailController.view isDescendantOfView:detailRootView]))
-      {
-         aFrame = CGRectMake( detailRootView.frame.origin.x,
-                              detailRootView.frame.origin.y,
-                              detailController.view.frame.size.width,
-                              detailController.view.frame.size.height);
-         detailRootView.frame = aFrame;
-         [detailRootView addSubview:detailController.view];
-      };
-   };
-
-   [self arrangeViewsHorizontally];
    return;
 }
 
 
-- (void) arrangeViewsHorizontally
+- (void) arrangeViewsHorizontally:(BOOL)animate
 {
-   CGRect   aFrame;
-   UIView * masterRootView;
-   UIView * detailRootView;
+   NSAutoreleasePool * pool;
+   UIView * view0;
+   UIView * view1;
+   CGRect   sliderFrame;
+   CGSize   frameSize;
+   CGFloat  limit;
+   CGFloat  adjustmentForSlider;
+   CGFloat  frameX;
+   CGFloat  frameY;
+   CGFloat  frameWidth;
+   CGFloat  frameHeight;
 
-   if (!(views))
-      return;
+   pool = [[NSAutoreleasePool alloc] init];
 
-   masterRootView   = [views objectAtIndex:0];
-   detailRootView   = [views objectAtIndex:1];
+   frameSize = self.view.bounds.size;
 
-   aFrame = self.view.bounds;
+   if (!(reverseViewOrder))
+   {
+      view0 = [[controllers objectAtIndex:0] view];
+      view1 = [[controllers objectAtIndex:1] view];
+   } else {
+      view0 = [[controllers objectAtIndex:1] view];
+      view1 = [[controllers objectAtIndex:0] view];
+   };
 
-   // adjusts master's view width to a minimum of minimumMasterViewWidth
-   if (masterViewWidth < minimumMasterViewWidth)
-      masterViewWidth = minimumMasterViewWidth;
+   // calculates adjusts master & detail position for slider view
+   adjustmentForSlider = 0;
+   if (hideSlider == NO)
+      adjustmentForSlider = (sliderSize.width/2);
 
-   // adjusts detail's view width to a minimum of minimumDetailViewWidth
-   if (masterViewWidth > (aFrame.size.width - minimumDetailViewWidth - 1))
-      masterViewWidth = aFrame.size.width - minimumDetailViewWidth - 1;
+   // adjusts master's view width to a minimum of minimumViewSize.width
+   if (splitPoint.x < (minimumViewSize.width + (sliderSize.width/2)))
+      splitPoint.x = minimumViewSize.width + (sliderSize.width/2);
 
-   // adjusts master view
-   masterRootView.frame = CGRectMake(  0,
-                                       aFrame.origin.y,
-                                       masterViewWidth,
-                                       aFrame.size.height);
+   // adjusts detail's view width to a minimum of minimumViewSize.width
+   limit = (frameSize.width < frameSize.height) ? frameSize.width : frameSize.height;
+   if (splitPoint.x > (limit - minimumViewSize.width - (sliderSize.width/2)))
+      splitPoint.x = limit - minimumViewSize.width - (sliderSize.width/2);
 
-   // adjusts detail view
-   detailRootView.frame = CGRectMake(  masterViewWidth + 1,
-                                       aFrame.origin.y,
-                                       aFrame.size.width - masterViewWidth - 1,
-                                       aFrame.size.height);
+   // removes slider view if marked as hidden
+   if ( (hideSlider == YES) && ((sliderView)) )
+   {
+      // adjust corners of master & detail views
+      view0.layer.cornerRadius = 5;
+      view1.layer.cornerRadius = 5;
+
+      // removes slider view
+      if ((sliderView))
+      {
+         [sliderView removeFromSuperview];
+         [sliderView release];
+         sliderView = nil;
+      };
+   };
+
+   // calculates slider view position
+   frameX      = splitPoint.x - adjustmentForSlider;
+   frameY      = 0;
+   frameWidth  = sliderSize.width;
+   frameHeight = frameSize.height;
+   sliderFrame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+
+   // adds slider view if marked as visible
+   if ( (hideSlider == NO) && (!(sliderView)) )
+   {
+      // adjust corners of master & detail views
+      view0.layer.cornerRadius = 0;
+      view1.layer.cornerRadius = 0;
+
+      // adjusts slider view
+      sliderView = [[self sliderViewWithFrame:sliderFrame] retain];
+      [self.view addSubview:sliderView];
+      [self.view sendSubviewToBack:sliderView];
+   };
+
+   // begin animations
+   if ((animate))
+      [UIView beginAnimations:nil context:nil];
+
+   // positions master view
+   if (view0.superview != self.view)
+      [self.view addSubview:view0];
+   frameX      = 0;
+   frameY      = 0;
+   frameWidth  = splitPoint.x-adjustmentForSlider;
+   frameHeight = frameSize.height;
+   view0.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+   view0.autoresizingMask   = UIViewAutoresizingFlexibleRightMargin |
+                              UIViewAutoresizingFlexibleHeight;
+
+   // positions detail view
+   if (!(adjustmentForSlider))
+      adjustmentForSlider = 1;
+   if (view1.superview != self.view)
+      [self.view addSubview:view1];
+   frameX      = splitPoint.x + adjustmentForSlider;
+   frameY      = 0;
+   frameWidth  = frameSize.width - splitPoint.x - adjustmentForSlider;
+   frameHeight = frameSize.height;
+   view1.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+   view1.autoresizingMask   = UIViewAutoresizingFlexibleHeight |
+                              UIViewAutoresizingFlexibleWidth;
+
+   // positions slider view
+   if (hideSlider == NO)
+      sliderView.frame = sliderFrame;
+
+   // commits animation to be run
+   if ((animate))
+      [UIView commitAnimations];
+
+   [pool release];
 
    return;
 }
@@ -429,14 +470,12 @@
    if (!(enableTouchToResize))
       return;
 
-   touch = [touches anyObject];
-
-	if (touch)
+	if ((touch = [touches anyObject]))
    {
       currPt  = [touch locationInView:self.view];
-      if ( (currPt.x >= (masterViewWidth - (dividerWidth/2))) &&
-           (currPt.x <= (masterViewWidth + (dividerWidth/2))) )
-         dividerIsMoving = YES;
+      if ( (currPt.x >= (splitPoint.x - (sliderSize.width/2))) &&
+           (currPt.x <= (splitPoint.x + (sliderSize.width/2))) )
+         spliderIsMoving = YES;
    };
 
    return;
@@ -445,7 +484,7 @@
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	dividerIsMoving = NO;
+	spliderIsMoving = NO;
    return;
 }
 
@@ -455,16 +494,14 @@
 	UITouch  * touch;
    CGPoint    point;
 
-   if (dividerIsMoving == NO)
+   if (spliderIsMoving == NO)
       return;
 
-   touch = [touches anyObject];
-
-	if (touch)
+	if ((touch = [touches anyObject]))
    {
       point           = [touch locationInView:self.view];
-      masterViewWidth = point.x;
-      [self arrangeViews];
+      splitPoint.x    = point.x;
+      [self arrangeViewsWithAnimations:NO];
    };
    return;
 }
