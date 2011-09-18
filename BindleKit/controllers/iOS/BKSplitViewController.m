@@ -91,7 +91,7 @@
    if ((self = [super init]) == nil)
       return(self);
 
-   minimumViewSize        = CGSizeMake(150, 150);
+   minimumViewSize        = CGSizeMake(0, 0);
    splitPoint             = CGPointMake(320, 320);
    spliderIsMoving        = NO;
    sliderSize             = CGSizeMake(20, 20);
