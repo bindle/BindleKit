@@ -335,7 +335,7 @@
    NSAutoreleasePool * pool;
    UIView * view0;
    UIView * view1;
-   CGRect   aFrame;
+   CGRect   sliderFrame;
    CGSize   frameSize;
    CGFloat  limit;
    CGFloat  adjustmentForSlider;
@@ -351,7 +351,7 @@
    view0 = [[controllers objectAtIndex:0] view];
    view1 = [[controllers objectAtIndex:1] view];
 
-   // calculates adjustment to master & detail views
+   // calculates adjusts master & detail position for slider view
    adjustmentForSlider = 0;
    if (hideSlider == NO)
       adjustmentForSlider = (sliderSize.width/2);
@@ -366,13 +366,13 @@
       splitPoint.x = limit - minimumViewSize.width - (sliderSize.width/2);
 
    // removes slider view if marked as hidden
-   if (hideSlider == YES)
+   if ( (hideSlider == YES) && ((sliderView)) )
    {
       // adjust corners of master & detail views
       view0.layer.cornerRadius = 5;
       view1.layer.cornerRadius = 5;
 
-      // adjusts slider view
+      // removes slider view
       if ((sliderView))
       {
          [sliderView removeFromSuperview];
@@ -381,26 +381,24 @@
       };
    };
 
-   // positions slider view
-   if (hideSlider == NO)
+   // calculates slider view position
+   frameX      = splitPoint.x - adjustmentForSlider;
+   frameY      = 0;
+   frameWidth  = sliderSize.width;
+   frameHeight = frameSize.height;
+   sliderFrame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+
+   // adds slider view if marked as visible
+   if ( (hideSlider == NO) && (!(sliderView)) )
    {
       // adjust corners of master & detail views
       view0.layer.cornerRadius = 0;
       view1.layer.cornerRadius = 0;
 
       // adjusts slider view
-      frameX      = splitPoint.x - adjustmentForSlider;
-      frameY      = 0;
-      frameWidth  = sliderSize.width;
-      frameHeight = frameSize.height;
-      aFrame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
-      if (!(sliderView))
-      {
-         sliderView = [[self sliderViewWithFrame:aFrame] retain];
-         [self.view addSubview:sliderView];
-         [self.view sendSubviewToBack:sliderView];
-      };
-      sliderView.frame = aFrame;
+      sliderView = [[self sliderViewWithFrame:sliderFrame] retain];
+      [self.view addSubview:sliderView];
+      [self.view sendSubviewToBack:sliderView];
    };
 
    // begin animations
@@ -433,6 +431,11 @@
    view1.autoresizingMask   = UIViewAutoresizingFlexibleHeight |
                               UIViewAutoresizingFlexibleWidth;
 
+   // positions slider view
+   if (hideSlider == NO)
+      sliderView.frame = sliderFrame;
+
+   // commits animation to be run
    if ((animate))
       [UIView commitAnimations];
 
