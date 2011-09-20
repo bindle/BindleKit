@@ -92,7 +92,7 @@
    green = aGreen;
    blue  = aBlue;
    alpha = anAlpha;
-   size  = CGSizeMake(78, 48);
+   size  = CGSizeMake(50, 44);
 
    // creates color space
    color = CGColorSpaceCreateDeviceRGB();
