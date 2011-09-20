@@ -31,8 +31,11 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/*
- *  BKButton.h - Creates a button with a color image
+/**
+ *  Creates a custom UIButton with images from BKButtonImages.
+ *
+ *  BKButton is a convenience class for creating UIButtons which have colored
+ *  graphics depicting the button's states.
  */
 
 
@@ -40,6 +43,7 @@
 
 @interface BKButton : UIButton
 
+/// @name Creating a Button
 + (UIButton *) buttonWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue
    alpha:(CGFloat)alpha;
 @end

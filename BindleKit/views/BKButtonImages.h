@@ -31,8 +31,13 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/*
- *  BKButtonImages.h - Creates button images
+/**
+ *  Generates CGImages to be used as images for UIButtons.
+ *
+ *  BKButtonImages generates two images based upon input color components. One
+ *  image is intended to appear for the UIControlStateNormal state of an
+ *  UIButton. The other image is intended to appear for the
+ *  UIControlStateHighlighted state of an UIButton.
  */
 
 #import <Foundation/Foundation.h>
@@ -70,12 +75,16 @@ typedef NSUInteger BKButtonImageState;
    CGImageRef        pushedCGImage;
 }
 
+/// @name Creating and Initializing a Button Images
+- (id) init;
 + (id) imagesWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
 - (id) initWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
+
+/// @name Managing Image Colors
 - (void) borderWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
 - (void) fillWithRed:(CGFloat)aRed green:(CGFloat)aGreen blue:(CGFloat)aBlue alpha:(CGFloat)anAlpha;
 
-#pragma mark - Creates images for export
+/// @name Creates images for export
 - (CGImageRef) createCGImageForState:(BKButtonImageState)state;
 #if TARGET_OS_IPHONE
 - (UIImage *) createUIImageForState:(BKButtonImageState)state;

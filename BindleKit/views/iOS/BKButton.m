@@ -40,6 +40,13 @@
 
 @implementation BKButton
 
+/// Creates and initializes an instance of UIButton.
+/// This method creates a UIButton with the button images based upon the specified color.
+/// @param red    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param green  The green color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param blue   The blue color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @return Returns a created instance of UIButton.
 + (UIButton *) buttonWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue
    alpha:(CGFloat)alpha
 {

@@ -47,7 +47,9 @@
 - (CGImageRef) drawPushedImage;
 @end
 
+
 @implementation BKButtonImages
+#pragma mark - Creating and Initializing a Mutable Array
 
 - (void) dealloc
 {
@@ -64,6 +66,9 @@
 }
 
 
+/// Initializes an instance of BKButtonImages.
+/// This method initializes a BKButtonImages object with default color channels.
+/// @return Returns an initialized instance of BKButtonImages.
 - (id) init
 {
    if ((self = [self initWithRed:0.5 green:0.5 blue:0.5 alpha:1.0]) == nil)
@@ -72,12 +77,26 @@
 }
 
 
+/// Creates and initializes an instance of BKButtonImages.
+/// This method creates a BKButtonImages object and initializes the object with the specified color channels.
+/// @param red    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param green  The green color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param blue   The blue color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @return Returns an initialized instance of BKButtonImages.
 + (id) imagesWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
 {
    return([[[BKButtonImages alloc] initWithRed:red green:green blue:blue alpha:alpha] autorelease]);
 }
 
 
+/// Initializes an instance of BKButtonImages.
+/// This method initializes a BKButtonImages object with the specified color channels.
+/// @param red    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param green  The green color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param blue   The blue color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @return Returns an initialized instance of BKButtonImages.
 - (id) initWithRed:(CGFloat)aRed green:(CGFloat)aGreen blue:(CGFloat)aBlue
    alpha:(CGFloat)anAlpha
 {
@@ -103,6 +122,14 @@
 }
 
 
+#pragma mark - Managing Image Colors
+
+/// Changes the color of the image's border.
+/// This method changes the border of the image to the specified color channels.
+/// @param red    The red color channel of the image border represented as a CGFloat between 0.0 and 1.0
+/// @param green  The green color channel of the image border represented as a CGFloat between 0.0 and 1.0
+/// @param blue   The blue color channel of the image border represented as a CGFloat between 0.0 and 1.0
+/// @param alpha  The alpha color channel of the image border represented as a CGFloat between 0.0 and 1.0
 - (void) borderWithRed:(CGFloat)aRed green:(CGFloat)aGreen blue:(CGFloat)aBlue
    alpha:(CGFloat)anAlpha
 {
@@ -122,6 +149,12 @@
 }
 
 
+/// Changes the image's fill color.
+/// This method changes the fill color of the image to the specified color channels.
+/// @param red    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param green  The green color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param blue   The blue color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 - (void) fillWithRed:(CGFloat)aRed green:(CGFloat)aGreen blue:(CGFloat)aBlue
    alpha:(CGFloat)anAlpha
 {
@@ -331,6 +364,10 @@
 
 #pragma mark - Creates images for export
 
+/// Retrieves the CGImageRef of a button image for a specific state.
+/// This method returns the initialized CGImageRef of the button for a specific state.
+/// @param state    The image state to return (either BKButtonImageStateNormal or BKButtonImageStateHighlighted).
+/// @return Returns an initialized instance of CGImageRef.
 - (CGImageRef) createCGImageForState:(BKButtonImageState)state
 {
    CGImageRef image;
@@ -351,6 +388,10 @@
 
 
 #if TARGET_OS_IPHONE
+/// Retrieves a UIImage of a button image for a specific state.
+/// This method creates and initializes an UIImage for the specific state.
+/// @param state    The image state to return (either BKButtonImageStateNormal or BKButtonImageStateHighlighted).
+/// @return Returns a created instance of UIImage.
 - (UIImage *) createUIImageForState:(BKButtonImageState)state;
 {
    CGImageRef   image;
@@ -368,6 +409,10 @@
 
 
 #if (!(TARGET_OS_IPHONE))
+/// Retrieves a NSImage of a button image for a specific state.
+/// This method creates and initializes an NSImage for the specific state.
+/// @param state    The image state to return (either BKButtonImageStateNormal or BKButtonImageStateHighlighted).
+/// @return Returns a created instance of NSImage.
 - (NSImage *) createNSImageForState:(BKButtonImageState)state
 {
    CGImageRef   image;
