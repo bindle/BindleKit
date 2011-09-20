@@ -92,12 +92,56 @@
    green = aGreen;
    blue  = aBlue;
    alpha = anAlpha;
+
+   borderRed   = 0.0;
+   borderGreen = 0.0;
+   borderBlue  = 0.0;
+   borderAlpha = alpha;
+
    size  = CGSizeMake(50, 44);
 
    // creates color space
    color = CGColorSpaceCreateDeviceRGB();
 
    return(self);
+}
+
+
+- (void) borderWithRed:(CGFloat)aRed green:(CGFloat)aGreen blue:(CGFloat)aBlue
+   alpha:(CGFloat)anAlpha
+{
+   if ((normalCGImage))
+      CGImageRelease(normalCGImage);
+   pushedCGImage = nil;
+   if ((pushedCGImage))
+      CGImageRelease(pushedCGImage);
+   pushedCGImage = nil;
+
+   borderRed   = aRed;
+   borderGreen = aGreen;
+   borderBlue  = aBlue;
+   borderAlpha = anAlpha;
+
+   return;
+}
+
+
+- (void) fillWithRed:(CGFloat)aRed green:(CGFloat)aGreen blue:(CGFloat)aBlue
+   alpha:(CGFloat)anAlpha
+{
+   if ((normalCGImage))
+      CGImageRelease(normalCGImage);
+   pushedCGImage = nil;
+   if ((pushedCGImage))
+      CGImageRelease(pushedCGImage);
+   pushedCGImage = nil;
+
+   red   = aRed;
+   green = aGreen;
+   blue  = aBlue;
+   alpha = anAlpha;
+
+   return;
 }
 
 

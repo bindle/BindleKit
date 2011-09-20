@@ -60,6 +60,10 @@ typedef NSUInteger BKButtonImageState;
    CGFloat           green;
    CGFloat           blue;
    CGFloat           alpha;
+   CGFloat           borderRed;
+   CGFloat           borderGreen;
+   CGFloat           borderBlue;
+   CGFloat           borderAlpha;
 
    CGColorSpaceRef   color;
    CGImageRef        normalCGImage;
@@ -71,6 +75,8 @@ typedef NSUInteger BKButtonImageState;
 
 + (id) imagesWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
 - (id) initWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
+- (void) borderWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
+- (void) fillWithRed:(CGFloat)aRed green:(CGFloat)aGreen blue:(CGFloat)aBlue alpha:(CGFloat)anAlpha;
 
 #pragma mark - Creates images for export
 - (CGImageRef) createCGImageForState:(BKButtonImageState)state;
