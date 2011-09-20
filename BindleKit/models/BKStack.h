@@ -47,7 +47,7 @@
    NSMutableArray * dataset;
 }
 
-/// @name Creating and Initializing a Mutable Array
+/// @name Creating and Initializing a Stack
 - (id) init;
 
 /// @name Adding Objects
