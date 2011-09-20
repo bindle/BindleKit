@@ -42,5 +42,4 @@
 
 + (UIButton *) buttonWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue
    alpha:(CGFloat)alpha;
-+ (CGSize) minimumSize;
 @end

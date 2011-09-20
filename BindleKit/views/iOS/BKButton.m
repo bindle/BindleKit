@@ -56,10 +56,4 @@
    return(button);
 }
 
-
-+ (CGSize) minimumSize
-{
-   return(CGSizeMake(78, 48));
-}
-
 @end
