@@ -49,10 +49,6 @@
 
 @implementation BKButtonImages
 
-@synthesize normalCGImage;
-@synthesize pushedCGImage;
-
-
 - (void) dealloc
 {
    if ((normalCGImage))

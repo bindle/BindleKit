@@ -70,9 +70,6 @@ typedef NSUInteger BKButtonImageState;
    CGImageRef        pushedCGImage;
 }
 
-@property (nonatomic, readonly) CGImageRef normalCGImage;
-@property (nonatomic, readonly) CGImageRef pushedCGImage;
-
 + (id) imagesWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
 - (id) initWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
 - (void) borderWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
