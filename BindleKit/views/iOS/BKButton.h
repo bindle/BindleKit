@@ -32,26 +32,14 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /*
- *  BindleKit/BindleKit.h - loads API for classes in BindleKit
+ *  BKButton.h - Creates a button with a color image
  */
 
-#import <Foundation/Foundation.h>
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/models/BKNode.h>
-#import <BindleKit/models/BKMemoryCache.h>
-#import <BindleKit/models/BKQueue.h>
-#import <BindleKit/models/BKSelectionOption.h>
-#import <BindleKit/models/BKStack.h>
-#import <BindleKit/views/BKButtonImages.h>
+#import <UIKit/UIKit.h>
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/controllers/iOS/BKSplitViewController.h>
-#import <BindleKit/views/iOS/BKButton.h>
-#endif
+@interface BKButton : UIButton
 
-#ifdef TARGET_OS_MAC
-#endif
-
-/* end of header */
++ (UIButton *) buttonWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue
+   alpha:(CGFloat)alpha;
+@end

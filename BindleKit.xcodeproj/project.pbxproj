@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0410F98142801E300ACE897 /* BKButtonImages.h in Headers */ = {isa = PBXBuildFile; fileRef = A0410F96142801E300ACE897 /* BKButtonImages.h */; };
+		A0410F99142801E300ACE897 /* BKButtonImages.h in Headers */ = {isa = PBXBuildFile; fileRef = A0410F96142801E300ACE897 /* BKButtonImages.h */; };
+		A0410F9A142801E300ACE897 /* BKButtonImages.m in Sources */ = {isa = PBXBuildFile; fileRef = A0410F97142801E300ACE897 /* BKButtonImages.m */; };
+		A0410F9B142801E300ACE897 /* BKButtonImages.m in Sources */ = {isa = PBXBuildFile; fileRef = A0410F97142801E300ACE897 /* BKButtonImages.m */; };
+		A0410FBF14283FF800ACE897 /* BKButton.h in Headers */ = {isa = PBXBuildFile; fileRef = A0410FBD14283FF800ACE897 /* BKButton.h */; };
+		A0410FC014283FF800ACE897 /* BKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A0410FBE14283FF800ACE897 /* BKButton.m */; };
 		A0529AC9140DDCB500CFA6F8 /* BKMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A0529AC7140DDCB500CFA6F8 /* BKMemoryCache.h */; };
 		A0529ACA140DDCB500CFA6F8 /* BKMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */; };
 		A05CE1DD1416DF4D00B7002F /* BKStringDigest.h in Headers */ = {isa = PBXBuildFile; fileRef = A05CE1DB1416DF4D00B7002F /* BKStringDigest.h */; };
@@ -38,6 +44,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0410F96142801E300ACE897 /* BKButtonImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKButtonImages.h; sourceTree = "<group>"; };
+		A0410F97142801E300ACE897 /* BKButtonImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKButtonImages.m; sourceTree = "<group>"; };
+		A0410FBD14283FF800ACE897 /* BKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKButton.h; sourceTree = "<group>"; };
+		A0410FBE14283FF800ACE897 /* BKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKButton.m; sourceTree = "<group>"; };
 		A0529ABB140DC95A00CFA6F8 /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
 		A0529ABC140DC95A00CFA6F8 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		A0529AC7140DDCB500CFA6F8 /* BKMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKMemoryCache.h; sourceTree = "<group>"; };
@@ -92,6 +102,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0410FA614282F8C00ACE897 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A0410F96142801E300ACE897 /* BKButtonImages.h */,
+				A0410F97142801E300ACE897 /* BKButtonImages.m */,
+				A0410FBC14283FF800ACE897 /* iOS */,
+			);
+			name = Views;
+			path = views;
+			sourceTree = "<group>";
+		};
+		A0410FBC14283FF800ACE897 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A0410FBD14283FF800ACE897 /* BKButton.h */,
+				A0410FBE14283FF800ACE897 /* BKButton.m */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		A0529AC3140DCAC300CFA6F8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +222,7 @@
 				A0529AC3140DCAC300CFA6F8 /* Models */,
 				A05CE1DA1416DF4D00B7002F /* Categories */,
 				A064D96F140E053200255FD3 /* Controllers */,
+				A0410FA614282F8C00ACE897 /* Views */,
 				A07D34FA140DC1E800832E1F /* Supporting Files */,
 			);
 			path = BindleKit;
@@ -221,6 +252,8 @@
 				A0D32C9314186F0200641ABD /* BKStack.h in Headers */,
 				A0D32C9A14186F2800641ABD /* BKQueue.h in Headers */,
 				A0617454142028BA00BCEA6F /* BKSplitViewController.h in Headers */,
+				A0410F98142801E300ACE897 /* BKButtonImages.h in Headers */,
+				A0410FBF14283FF800ACE897 /* BKButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +265,7 @@
 				A092A667141706B40033C972 /* BKNode.h in Headers */,
 				A0D32C9414186F0200641ABD /* BKStack.h in Headers */,
 				A0D32C9B14186F2800641ABD /* BKQueue.h in Headers */,
+				A0410F99142801E300ACE897 /* BKButtonImages.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +345,8 @@
 				A0D32C9514186F0200641ABD /* BKStack.m in Sources */,
 				A0D32C9C14186F2800641ABD /* BKQueue.m in Sources */,
 				A0617455142028BA00BCEA6F /* BKSplitViewController.m in Sources */,
+				A0410F9A142801E300ACE897 /* BKButtonImages.m in Sources */,
+				A0410FC014283FF800ACE897 /* BKButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +360,7 @@
 				A092A669141706B40033C972 /* BKNode.m in Sources */,
 				A0D32C9614186F0200641ABD /* BKStack.m in Sources */,
 				A0D32C9D14186F2800641ABD /* BKQueue.m in Sources */,
+				A0410F9B142801E300ACE897 /* BKButtonImages.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
