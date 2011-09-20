@@ -32,25 +32,53 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /*
- *  BindleKit/BindleKit.h - loads API for classes in BindleKit
+ *  BKButtonImages.h - Creates button images
  */
 
 #import <Foundation/Foundation.h>
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/models/BKNode.h>
-#import <BindleKit/models/BKMemoryCache.h>
-#import <BindleKit/models/BKQueue.h>
-#import <BindleKit/models/BKSelectionOption.h>
-#import <BindleKit/models/BKStack.h>
-#import <BindleKit/views/BKButtonImages.h>
-
 #if TARGET_OS_IPHONE
-#import <BindleKit/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/controllers/iOS/BKSplitViewController.h>
+#import <UIKit/UIKit.h>
+#endif
+#if (!(TARGET_OS_IPHONE))
+#import <AppKit/AppKit.h>
 #endif
 
-#ifdef TARGET_OS_MAC
+
+enum {
+   BKButtonImageStateNormal        = 1,
+   BKButtonImageStateHighlighted   = 2
+};
+typedef NSUInteger BKButtonImageState;
+
+
+@interface BKButtonImages : NSObject
+{
+   CGSize            size;
+   CGContextRef      context;
+   CGFloat           red;
+   CGFloat           green;
+   CGFloat           blue;
+   CGFloat           alpha;
+
+   CGColorSpaceRef   color;
+   CGImageRef        normalCGImage;
+   CGImageRef        pushedCGImage;
+}
+
+@property (nonatomic, readonly) CGImageRef normalCGImage;
+@property (nonatomic, readonly) CGImageRef pushedCGImage;
+
++ (id) imagesWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
+- (id) initWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
+
+#pragma mark - Creates images for export
+- (CGImageRef) createCGImageForState:(BKButtonImageState)state;
+#if TARGET_OS_IPHONE
+- (UIImage *) createUIImageForState:(BKButtonImageState)state;
+#endif
+#if (!(TARGET_OS_IPHONE))
+- (NSImage *) createNSImageForState:(BKButtonImageState)state;
 #endif
 
-/* end of header */
+@end
