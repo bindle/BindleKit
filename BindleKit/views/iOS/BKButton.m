@@ -32,26 +32,34 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /*
- *  BindleKit/BindleKit.h - loads API for classes in BindleKit
+ *  BKButton.h - Creates a button with a color image
  */
+#import "BKButton.h"
 
-#import <Foundation/Foundation.h>
+#import "BKButtonImages.h"
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/models/BKNode.h>
-#import <BindleKit/models/BKMemoryCache.h>
-#import <BindleKit/models/BKQueue.h>
-#import <BindleKit/models/BKSelectionOption.h>
-#import <BindleKit/models/BKStack.h>
-#import <BindleKit/views/BKButtonImages.h>
+@implementation BKButton
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/controllers/iOS/BKSplitViewController.h>
-#import <BindleKit/views/iOS/BKButton.h>
-#endif
++ (UIButton *) buttonWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue
+   alpha:(CGFloat)alpha
+{
+   BKButtonImages * buttonImages;
+   UIButton       * button;
 
-#ifdef TARGET_OS_MAC
-#endif
+   buttonImages = [BKButtonImages imagesWithRed:red green:green blue:blue alpha:alpha];
 
-/* end of header */
+   button = [UIButton buttonWithType:UIButtonTypeCustom];
+   [button setBackgroundImage:[buttonImages createUIImageForState:BKButtonImageStateNormal]      forState:UIControlStateNormal];
+   [button setBackgroundImage:[buttonImages createUIImageForState:BKButtonImageStateHighlighted] forState:UIControlStateHighlighted];
+   button.frame = CGRectMake(0, 0, 78, 48);
+
+   return(button);
+}
+
+
++ (CGSize) minimumSize
+{
+   return(CGSizeMake(78, 48));
+}
+
+@end
