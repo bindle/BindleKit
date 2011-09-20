@@ -23,5 +23,5 @@ Consistency:
 * Write unit tests for BKStack class. (syzdek)
 
 Development:
-* Write category for dynamicly creating UIImages for UIButtons. (syzdek)
+* Write convenience methods for creating standard colored buttons. (syzdek)
 * Write controller for lock/password protected screen on iOS. (syzdek)
