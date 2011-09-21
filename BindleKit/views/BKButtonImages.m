@@ -270,9 +270,9 @@
       return(nil);
 
    // calculates first color of gradient
-   components[0] = ((red   + 0.3516) > 1.0) ? 1.0 : (red   + 0.3516);
-   components[1] = ((green + 0.3516) > 1.0) ? 1.0 : (green + 0.3516);
-   components[2] = ((blue  + 0.3516) > 1.0) ? 1.0 : (blue  + 0.3516);
+   components[0] = ((red   + 0.4516) > 1.0) ? 1.0 : (red   + 0.4516);
+   components[1] = ((green + 0.4516) > 1.0) ? 1.0 : (green + 0.4516);
+   components[2] = ((blue  + 0.4516) > 1.0) ? 1.0 : (blue  + 0.4516);
    components[3] = alpha;
 
    // calculates second color of gradient
@@ -285,8 +285,8 @@
    gradient = CGGradientCreateWithColorComponents(color, components, NULL, 2);
 
    // calculates gradient path
-   gradientRadius       = (size.width * 1.5);
-   gradientStartRadius  = (gradientRadius - (size.height * 0.5));
+   gradientRadius       = (size.width * 1);
+   gradientStartRadius  = (size.width * 0.5);
    gradientEndRadius    = gradientRadius;
    gradientStart        = CGPointMake((size.width/2), ((size.height/2)+gradientRadius));
    gradientEnd          = CGPointMake((size.width/2), ((size.height/2)+gradientRadius));
@@ -327,9 +327,9 @@
       return(nil);
 
    // calculates first color of gradient
-   components[0]  = ((red   - 0.1875) < 0) ? 0.0 : (red   - 0.1875);
-   components[1]  = ((green - 0.1875) < 0) ? 0.0 : (green - 0.1875);
-   components[2]  = ((blue  - 0.1875) < 0) ? 0.0 : (blue  - 0.1875);
+   components[0]  = ((red   - 0.2875) < 0) ? 0.0 : (red   - 0.2875);
+   components[1]  = ((green - 0.2875) < 0) ? 0.0 : (green - 0.2875);
+   components[2]  = ((blue  - 0.2875) < 0) ? 0.0 : (blue  - 0.2875);
    components[3]  = alpha;
 
    // calculates second color of gradient
