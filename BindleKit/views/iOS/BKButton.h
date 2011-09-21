@@ -65,6 +65,7 @@ typedef NSUInteger BKButtonColor;
 @interface BKButton : UIButton
 
 /// @name Creating a Button
++ (UIButton *) buttonWithImages:(BKButtonImages *)images;
 + (UIButton *) buttonWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue
    alpha:(CGFloat)alpha;
 + (UIButton *) buttonWithRGB:(NSInteger)rgb;

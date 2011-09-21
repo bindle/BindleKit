@@ -41,6 +41,20 @@
 @implementation BKButton
 
 /// Creates and initializes an instance of UIButton.
+/// This method creates a UIButton with the provided button images.
+/// @param images    The button images to use with the UIButton
+/// @return Returns a created instance of UIButton.
++ (UIButton *) buttonWithImages:(BKButtonImages *)images
+{
+   UIButton * button;
+   button = [UIButton buttonWithType:UIButtonTypeCustom];
+   [button setBackgroundImage:[images createUIImageForState:BKButtonImageStateNormal]      forState:UIControlStateNormal];
+   [button setBackgroundImage:[images createUIImageForState:BKButtonImageStateHighlighted] forState:UIControlStateHighlighted];
+   return(button);
+}
+
+
+/// Creates and initializes an instance of UIButton.
 /// This method creates a UIButton with the button images based upon the specified color.
 /// @param red    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @param green  The green color channel of the button image represented as a CGFloat between 0.0 and 1.0
@@ -50,17 +64,9 @@
 + (UIButton *) buttonWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue
    alpha:(CGFloat)alpha
 {
-   BKButtonImages * buttonImages;
-   UIButton       * button;
-
-   buttonImages = [BKButtonImages imagesWithRed:red green:green blue:blue alpha:alpha];
-
-   button = [UIButton buttonWithType:UIButtonTypeCustom];
-   [button setBackgroundImage:[buttonImages createUIImageForState:BKButtonImageStateNormal]      forState:UIControlStateNormal];
-   [button setBackgroundImage:[buttonImages createUIImageForState:BKButtonImageStateHighlighted] forState:UIControlStateHighlighted];
-   button.frame = CGRectMake(0, 0, 78, 48);
-
-   return(button);
+   BKButtonImages * images;
+   images = [BKButtonImages imagesWithRed:red green:green blue:blue alpha:alpha];
+   return([BKButton buttonWithImages:images]);
 }
 
 
