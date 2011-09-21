@@ -58,6 +58,9 @@
    if ((pushedCGImage))
       CGImageRelease(pushedCGImage);
 
+   [normalImage release];
+   [pushedImage release];
+
    CGColorSpaceRelease(color);
 
    [super dealloc];
@@ -140,6 +143,13 @@
       CGImageRelease(pushedCGImage);
    pushedCGImage = nil;
 
+   if ((normalImage))
+      [normalImage release];
+   normalImage = nil;
+   if ((pushedImage))
+      [pushedImage release];
+   pushedImage = nil;
+
    borderRed   = aRed;
    borderGreen = aGreen;
    borderBlue  = aBlue;
@@ -164,6 +174,13 @@
    if ((pushedCGImage))
       CGImageRelease(pushedCGImage);
    pushedCGImage = nil;
+
+   if ((normalImage))
+      [normalImage release];
+   normalImage = nil;
+   if ((pushedImage))
+      [pushedImage release];
+   pushedImage = nil;
 
    red   = aRed;
    green = aGreen;
@@ -398,12 +415,34 @@
    UIImage    * exportImage;
    @synchronized(self)
    {
-      if (!(image = [self createCGImageForState:state]))
-         return(nil);
-      exportImage = [UIImage imageWithCGImage:image];
+      switch(state)
+      {
+         // BKButtonImageStateNormal
+         case BKButtonImageStateNormal:
+         if ((exportImage = [normalImage retain]))
+            return([exportImage autorelease]);
+         if (!(image = [self createCGImageForState:BKButtonImageStateNormal]))
+            return(nil);
+         normalImage = [UIImage imageWithCGImage:image];
+         normalImage = [normalImage stretchableImageWithLeftCapWidth:(size.width/2) topCapHeight:(size.height/2)+3];
+         return([normalImage retain]);
+
+         // BKButtonImageStateHighlighted
+         case BKButtonImageStateHighlighted:
+         if ((exportImage = [pushedImage retain]))
+            return([exportImage autorelease]);
+         if (!(image = [self createCGImageForState:BKButtonImageStateHighlighted]))
+            return(nil);
+         pushedImage = [UIImage imageWithCGImage:image];
+         pushedImage = [pushedImage stretchableImageWithLeftCapWidth:(size.width/2) topCapHeight:(size.height/2)+3];
+         return([pushedImage retain]);
+
+         // catch all
+         default:
+         break;
+      };
    };
-   exportImage = [exportImage stretchableImageWithLeftCapWidth:(size.width/2) topCapHeight:(size.height/2)+3];
-   return(exportImage);
+   return(nil);
 }
 #endif
 
@@ -420,12 +459,33 @@
    NSSize       imageSize;
    @synchronized(self)
    {
-      imageSize = NSMakeSize(size.width, size.height);
-      if (!(image = [self createCGImageForState:state]))
-         return(nil);
-      exportImage = [[NSImage alloc] initWithCGImage:image size:imageSize];
+      imageSize   = NSMakeSize(size.width, size.height);
+      switch(state)
+      {
+         // BKButtonImageStateNormal
+         case BKButtonImageStateNormal:
+         if ((exportImage = [normalImage retain]))
+            return([exportImage autorelease]);
+         if (!(image = [self createCGImageForState:BKButtonImageStateNormal]))
+            return(nil);
+         normalImage = [[NSImage alloc] initWithCGImage:image size:imageSize];
+         return([normalImage retain]);
+
+         // BKButtonImageStateHighlighted
+         case BKButtonImageStateHighlighted:
+         if ((exportImage = [pushedImage retain]))
+            return([exportImage autorelease]);
+         if (!(image = [self createCGImageForState:BKButtonImageStateHighlighted]))
+            return(nil);
+         pushedImage = [[NSImage alloc] initWithCGImage:image size:imageSize];
+         return([pushedImage retain]);
+
+         // catch all
+         default:
+         break;
+      };
    };
-   return([exportImage autorelease]);
+   return(nil);
 }
 #endif
 

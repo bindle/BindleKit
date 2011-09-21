@@ -73,6 +73,8 @@ typedef NSUInteger BKButtonImageState;
    CGColorSpaceRef   color;
    CGImageRef        normalCGImage;
    CGImageRef        pushedCGImage;
+   id                normalImage;
+   id                pushedImage;
 }
 
 /// @name Creating and Initializing a Button Images
