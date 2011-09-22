@@ -104,6 +104,9 @@
 
 - (id) init
 {
+   NSAssert(([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad),
+      @"'BKSplitViewController is only supported when running under UIUserInterfaceIdiomPad'");
+
    if ((self = [super init]) == nil)
       return(self);
 
