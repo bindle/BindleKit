@@ -109,12 +109,14 @@
 
 - (id) init
 {
+   // generates an assertion if code is not running on an iPad
    NSAssert(([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad),
       @"'BKSplitViewController is only supported when running under UIUserInterfaceIdiomPad'");
 
    if ((self = [super init]) == nil)
       return(self);
 
+   // sets default values for split view controller
    minimumViewSize        = CGSizeMake(0, 0);
    splitPoint             = CGPointMake(320, 320);
    spliderIsMoving        = NO;
@@ -266,6 +268,7 @@
 }
 
 
+// generates slider/divider view
 - (UIView *) sliderViewWithFrame:(CGRect)sliderFrame
 {
    CGSize                   imageSize;
@@ -390,6 +393,7 @@
 
    frameSize = self.view.bounds.size;
 
+   // retrieves views in user defined order
    if (!(reverseViewOrder))
    {
       view0 = [[controllers objectAtIndex:0] view];
@@ -399,16 +403,16 @@
       view1 = [[controllers objectAtIndex:0] view];
    };
 
-   // calculates adjusts master & detail position for slider view
+   // calculates left & right view position adjustments to allow room for sliderView
    adjustmentForSlider = 0;
    if (hideSlider == NO)
       adjustmentForSlider = (sliderSize.width/2);
 
-   // adjusts master's view width to a minimum of minimumViewSize.width
+   // adjusts left (view0) view's width to a minimum of minimumViewSize.width
    if (splitPoint.x < (minimumViewSize.width + (sliderSize.width/2)))
       splitPoint.x = minimumViewSize.width + (sliderSize.width/2);
 
-   // adjusts detail's view width to a minimum of minimumViewSize.width
+   // adjusts right (view1) view's width to a minimum of minimumViewSize.width
    limit = (frameSize.width < frameSize.height) ? frameSize.width : frameSize.height;
    if (splitPoint.x > (limit - minimumViewSize.width - (sliderSize.width/2)))
       splitPoint.x = limit - minimumViewSize.width - (sliderSize.width/2);
@@ -453,7 +457,7 @@
    if ((animate))
       [UIView beginAnimations:nil context:nil];
 
-   // positions master view
+   // positions left view
    if (view0.superview != self.view)
       [self.view addSubview:view0];
    frameX      = 0;
@@ -464,7 +468,7 @@
    view0.autoresizingMask   = UIViewAutoresizingFlexibleRightMargin |
                               UIViewAutoresizingFlexibleHeight;
 
-   // positions detail view
+   // positions right view
    if (!(adjustmentForSlider))
       adjustmentForSlider = 1;
    if (view1.superview != self.view)
