@@ -41,9 +41,10 @@
 
 @interface BKSplitViewController : UIViewController
 {
-
+   // Members common with UISplitViewController
    NSArray * controllers;
 
+   // Members specific to BKSplitViewController
    CGSize    minimumViewSize;
    CGPoint   splitPoint;
    CGSize    sliderSize;
@@ -52,11 +53,15 @@
    BOOL      enableAnimations;
    BOOL      hideSlider;
 
+   // Members internal to BKSplitViewController
    UIView  * sliderView;
    BOOL      spliderIsMoving;
 }
 
+// Properties common with UISplitViewController
 @property(nonatomic, copy)   NSArray * viewControllers;
+
+// Properties specific to BKSplitViewController
 @property(nonatomic, assign) CGSize    minimumViewSize;
 @property(nonatomic, assign) CGPoint   splitPoint;
 @property(nonatomic, assign) CGSize    sliderSize;

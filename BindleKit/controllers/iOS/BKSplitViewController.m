@@ -54,7 +54,10 @@
 #pragma mark -
 @implementation BKSplitViewController
 
+// Properties common with UISplitViewController
 @synthesize viewControllers = controllers;
+
+// Properties specific to BKSplitViewController
 @synthesize minimumViewSize;
 @synthesize splitPoint;
 @synthesize reverseViewOrder;
