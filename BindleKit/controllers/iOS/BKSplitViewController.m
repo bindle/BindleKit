@@ -98,6 +98,11 @@
    if (self.isViewLoaded == YES)
       return;
 
+   self.view = nil;
+
+   [sliderView release];
+   sliderView = nil;
+
    return;
 }
 
