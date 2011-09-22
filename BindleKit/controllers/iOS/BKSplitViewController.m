@@ -271,17 +271,17 @@
 // generates slider/divider view
 - (UIView *) sliderViewWithFrame:(CGRect)sliderFrame
 {
-   CGSize                   imageSize;
-   CGColorSpaceRef          color;
-   CGContextRef             context;
-   CGFloat                  components[8] = { 0.988, 0.988, 0.988, 1.0,  // light
-                                              0.875, 0.875, 0.875, 1.0 }; // dark
-   CGGradientRef            gradient;
-   CGPoint                  start;
-   CGPoint                  stop;
-   CGImageRef               cgImage;
-   UIImage                * uiImage;
-   UIImageView            * imageView;
+   CGSize             imageSize;
+   CGColorSpaceRef    color;
+   CGContextRef       context;
+   CGGradientRef      gradient;
+   CGPoint            start;
+   CGPoint            stop;
+   CGImageRef         cgImage;
+   UIImage          * uiImage;
+   UIImageView      * imageView;
+   CGFloat            components[8] = { 0.988, 0.988, 0.988, 1.0,  // light
+                                        0.875, 0.875, 0.875, 1.0 }; // dark
 
    imageSize.width  = sliderFrame.size.width;
    imageSize.height = sliderFrame.size.height;
