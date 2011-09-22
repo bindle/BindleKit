@@ -40,6 +40,14 @@
 #import <QuartzCore/QuartzCore.h>
 
 
+#pragma mark - Private UIViewController Category Declaration
+@interface UIViewController (BKSplitViewControllerInternal)
+
+- (void) setBKParentViewController:(UIViewController *)viewController;
+
+@end
+
+
 #pragma mark - Private BKSplitViewController Category Declaration
 @interface BKSplitViewController ()
 
@@ -182,6 +190,11 @@
    // if new view controllers are not available, remove old views and exit
    if (!(viewControllers))
    {
+      if ((controllers))
+      {
+         for(pos = 0; pos < [controllers count]; pos++)
+            [[controllers objectAtIndex:pos] setBKParentViewController:nil];
+      };
       [controllers release];
       controllers = nil;
       if (self.isViewLoaded == YES)
@@ -197,14 +210,21 @@
       {
          aController = [controllers objectAtIndex:pos];
          if (!([viewControllers containsObject:aController]))
+         {
             if (aController.isViewLoaded == YES)
                [aController.view removeFromSuperview];
+            [aController setBKParentViewController:nil];
+         };
       };
    };
 
    // assigns new UIViewControllers
    [controllers release];
    controllers = [[NSArray alloc] initWithArray:viewControllers];
+
+   // sets parent controller
+   for(pos = 0; pos < [controllers count]; pos++)
+      [[controllers objectAtIndex:pos] setBKParentViewController:self];
 
    // arranges views
    [self arrangeViewsWithAnimations:enableAnimations];
@@ -506,6 +526,36 @@
       splitPoint.x    = point.x;
       [self arrangeViewsWithAnimations:NO];
    };
+   return;
+}
+
+@end
+
+
+#pragma mark - Public UIViewController Category Implementation
+@implementation UIViewController (BKSplitViewController)
+
+- (UIViewController *) splitViewController
+{
+   id controller;
+   if (!(controller = [self parentViewController]))
+      return(nil);
+   while ((controller = [controller parentViewController]))
+      if ( (([controller isKindOfClass:[BKSplitViewController class]])) ||
+           (([controller isKindOfClass:[UISplitViewController class]])) )
+         return(controller);
+   return(nil);
+}
+
+@end
+
+
+#pragma mark - Private UIViewController Category Implementation
+@implementation UIViewController (BKSplitViewControllerInternal)
+
+- (void) setBKParentViewController:(UIViewController *)parent
+{
+   [self setValue:parent forKey:@"_parentViewController"];
    return;
 }
 
