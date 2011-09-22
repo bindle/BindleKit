@@ -39,6 +39,7 @@
 #import <UIKit/UIKit.h>
 
 
+# pragma mark - BKSplitViewController Class Declaration
 @interface BKSplitViewController : UIViewController
 {
    // Members common with UISplitViewController

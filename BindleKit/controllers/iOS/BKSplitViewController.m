@@ -40,7 +40,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-#pragma mark - private methods
+#pragma mark - Private BKSplitViewController Category Declaration
 @interface BKSplitViewController ()
 
 - (UIView *) sliderViewWithFrame:(CGRect)sliderFrame;
@@ -51,7 +51,7 @@
 @end
 
 
-#pragma mark -
+# pragma mark - BKSplitViewController Class Implementation
 @implementation BKSplitViewController
 
 // Properties common with UISplitViewController
