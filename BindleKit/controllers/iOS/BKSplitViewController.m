@@ -298,7 +298,6 @@
       color,                         // color space
       kCGImageAlphaPremultipliedLast // bitmap info
    );
-   CGContextSaveGState(context);
 
    // creates path (drawing area) for gradient and background color
    CGContextDrawPath(context, kCGPathStroke);
@@ -320,7 +319,6 @@
    stop  = CGPointMake(imageSize.width-1, 0);
    gradient = CGGradientCreateWithColorComponents(color, components, NULL, 2);
    CGContextDrawLinearGradient(context, gradient, start, stop,  0);
-	CGContextRestoreGState(context);
    CGGradientRelease(gradient);
 
    // Creates Image
