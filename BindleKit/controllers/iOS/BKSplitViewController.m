@@ -92,14 +92,18 @@
 
    [super didReceiveMemoryWarning];
 
+   // passses warning to child controllers
    for(pos = 0; pos < [controllers count]; pos++)
       [[controllers objectAtIndex:pos] didReceiveMemoryWarning];
 
+   // nothing is left to do if view is currently loaded
    if (self.isViewLoaded == YES)
       return;
 
+   // free root view
    self.view = nil;
 
+   // free slider view
    [sliderView release];
    sliderView = nil;
 
@@ -180,6 +184,7 @@
    frameSize = self.view.bounds.size;
    if (aBool != reverseViewOrder)
    {
+      // calculates new position of the slider/splitPoint
       splitPoint = CGPointMake(frameSize.width-splitPoint.x,
                                frameSize.height-splitPoint.y);
    };
@@ -200,13 +205,18 @@
    // if new view controllers are not available, remove old views and exit
    if (!(viewControllers))
    {
+      // removes self as parentController
       if ((controllers))
       {
          for(pos = 0; pos < [controllers count]; pos++)
             [[controllers objectAtIndex:pos] setBKParentViewController:nil];
       };
+
+      // removes child controllers
       [controllers release];
       controllers = nil;
+
+      // removes subviews from self.view (in theory no view should be left)
       if (self.isViewLoaded == YES)
          while([self.view.subviews count] > 0)
             [[self.view.subviews objectAtIndex:0] removeFromSuperview];
@@ -218,11 +228,17 @@
    {
       for(pos = 0; pos < [controllers count]; pos++)
       {
+         // retrieves old controller
          aController = [controllers objectAtIndex:pos];
+
+         // determines if old controller is in new list of controllers
          if (!([viewControllers containsObject:aController]))
          {
+            // remove old controller's view if old controller is not in new list 
             if (aController.isViewLoaded == YES)
                [aController.view removeFromSuperview];
+
+            // removes self as parentController of old controller
             [aController setBKParentViewController:nil];
          };
       };
@@ -348,6 +364,7 @@
 }
 
 
+// delegates (to the detail view) the decision to auto rotate
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
    if (!(controllers))
@@ -495,6 +512,7 @@
 
 #pragma mark - Responding to Touch Events
 
+// begins tracking touches to slider
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	UITouch  * touch;
@@ -515,6 +533,7 @@
 }
 
 
+// stops tracking touches to slider
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	spliderIsMoving = NO;
@@ -522,6 +541,7 @@
 }
 
 
+// updates slider view position based upon movement of touches
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	UITouch  * touch;
@@ -545,6 +565,7 @@
 #pragma mark - Public UIViewController Category Implementation
 @implementation UIViewController (BKSplitViewController)
 
+// updates splitViewController property to include BKSplitViewController
 - (UIViewController *) splitViewController
 {
    id controller;
@@ -563,6 +584,7 @@
 #pragma mark - Private UIViewController Category Implementation
 @implementation UIViewController (BKSplitViewControllerInternal)
 
+// allows BKSplitViewController to set itself as the parent of a controller
 - (void) setBKParentViewController:(UIViewController *)parent
 {
    [self setValue:parent forKey:@"_parentViewController"];
