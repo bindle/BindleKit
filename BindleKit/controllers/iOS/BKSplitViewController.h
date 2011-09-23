@@ -87,6 +87,7 @@
    CGSize    sliderSize;
    BOOL      reverseViewOrder;
    BOOL      enableTouchToResize;
+   BOOL      displayBothViews;
    BOOL      enableAnimations;
    BOOL      hideSlider;
 
@@ -105,6 +106,7 @@
 @property(nonatomic, assign) CGSize    sliderSize;
 @property(nonatomic, assign) BOOL      reverseViewOrder;
 @property(nonatomic, assign) BOOL      enableTouchToResize;
+@property(nonatomic, assign) BOOL      displayBothViews;
 @property(nonatomic, assign) BOOL      enableAnimations;
 @property(nonatomic, assign) BOOL      hideSlider;
 

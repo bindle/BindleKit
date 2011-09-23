@@ -54,7 +54,8 @@
 - (UIView *) sliderViewWithFrame:(CGRect)sliderFrame;
 
 - (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
-- (void) arrangeViewsHorizontally:(BOOL)animate;
+- (void) arrangeBothViewsHorizontally:(BOOL)animate;
+- (void) arrangeSingleViewHorizontally:(BOOL)animate;
 
 @end
 
@@ -71,6 +72,7 @@
 @synthesize splitPoint;
 @synthesize reverseViewOrder;
 @synthesize enableTouchToResize;
+@synthesize displayBothViews;
 @synthesize enableAnimations;
 @synthesize hideSlider;
 @synthesize sliderSize;
@@ -145,6 +147,16 @@
 
 
 #pragma mark - Properties getters/setters
+
+- (void) setDisplayBothViews:(BOOL)aBool
+{
+   if (aBool == displayBothViews)
+      return;
+   displayBothViews = aBool;
+   [self arrangeViewsWithAnimations:enableAnimations];
+   return;
+}
+
 
 - (void) setHideSlider:(BOOL)aBool
 {
@@ -385,6 +397,33 @@
 }
 
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+   UIView * aView;
+
+   if (  (displayBothViews == YES) ||
+         (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) ||
+         (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) )
+   {
+      aView  = [[controllers objectAtIndex:0] view];
+      if (aView.superview != self.view)
+      {
+         [self.view addSubview:aView];
+         [self.view sendSubviewToBack:aView];
+      };
+   };
+
+   return;
+}
+
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration
+{
+   [self arrangeViewsWithAnimations:NO];
+   return;
+}
+
+
 #pragma mark - subview manager methods
 
 //- (void)layoutSubviewsForInterfaceOrientation:(UIInterfaceOrientation)theOrientation withAnimation:(BOOL)animate
@@ -396,13 +435,20 @@
    if (self.isViewLoaded == NO)
       return;
 
-   [self arrangeViewsHorizontally:animate];
+   if (displayBothViews == YES)
+      [self arrangeBothViewsHorizontally:animate];
+   else if (self.interfaceOrientation == UIInterfaceOrientationPortrait)
+      [self arrangeSingleViewHorizontally:animate];
+   else if (self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
+      [self arrangeSingleViewHorizontally:animate];
+   else
+      [self arrangeBothViewsHorizontally:animate];
 
    return;
 }
 
 
-- (void) arrangeViewsHorizontally:(BOOL)animate
+- (void) arrangeBothViewsHorizontally:(BOOL)animate
 {
    NSAutoreleasePool * pool;
    UIView * view0;
@@ -522,6 +568,31 @@
       [UIView commitAnimations];
 
    [pool release];
+
+   return;
+}
+
+
+- (void) arrangeSingleViewHorizontally:(BOOL)animate
+{
+   UIView * aView;
+
+   // begin animations
+   if ((animate))
+      [UIView beginAnimations:nil context:nil];
+
+   // positions detail view
+   aView = [[controllers objectAtIndex:1] view];
+   if (aView.superview != self.view)
+      [self.view addSubview:aView];
+   [self.view bringSubviewToFront:aView];
+   aView.frame              = self.view.bounds;
+   aView.autoresizingMask   = UIViewAutoresizingFlexibleWidth |
+                              UIViewAutoresizingFlexibleHeight;
+
+   // commits animation to be run
+   if ((animate))
+      [UIView commitAnimations];
 
    return;
 }
