@@ -426,7 +426,6 @@
 
 #pragma mark - subview manager methods
 
-//- (void)layoutSubviewsForInterfaceOrientation:(UIInterfaceOrientation)theOrientation withAnimation:(BOOL)animate
 - (void) arrangeViewsWithAnimations:(BOOL)animate
 {
    if (!(controllers))
