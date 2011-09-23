@@ -82,34 +82,35 @@
 
 /// Creates and initializes an instance of BKButtonImages.
 /// This method creates a BKButtonImages object and initializes the object with the specified color channels.
-/// @param red    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
-/// @param green  The green color channel of the button image represented as a CGFloat between 0.0 and 1.0
-/// @param blue   The blue color channel of the button image represented as a CGFloat between 0.0 and 1.0
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param redChannel    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param greenChannel  The green color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param blueChannel   The blue color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns an initialized instance of BKButtonImages.
-+ (id) imagesWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
++ (id) imagesWithRed:(CGFloat)redChannel green:(CGFloat)greenChannel
+   blue:(CGFloat)blueChannel alpha:(CGFloat)alphaChannel
 {
-   return([[[BKButtonImages alloc] initWithRed:red green:green blue:blue alpha:alpha] autorelease]);
+   return([[[BKButtonImages alloc] initWithRed:redChannel green:greenChannel blue:blueChannel alpha:alphaChannel] autorelease]);
 }
 
 
 /// Initializes an instance of BKButtonImages.
 /// This method initializes a BKButtonImages object with the specified color channels.
-/// @param red    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
-/// @param green  The green color channel of the button image represented as a CGFloat between 0.0 and 1.0
-/// @param blue   The blue color channel of the button image represented as a CGFloat between 0.0 and 1.0
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param redChannel    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param greenChannel  The green color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param blueChannel   The blue color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns an initialized instance of BKButtonImages.
-- (id) initWithRed:(CGFloat)aRed green:(CGFloat)aGreen blue:(CGFloat)aBlue
-   alpha:(CGFloat)anAlpha
+- (id) initWithRed:(CGFloat)redChannel green:(CGFloat)greenChannel
+   blue:(CGFloat)blueChannel alpha:(CGFloat)alphaChannel
 {
    if ((self = [super init]) == nil)
       return(self);
 
-   red   = aRed;
-   green = aGreen;
-   blue  = aBlue;
-   alpha = anAlpha;
+   red   = redChannel;
+   green = greenChannel;
+   blue  = blueChannel;
+   alpha = alphaChannel;
 
    borderRed   = 0.0;
    borderGreen = 0.0;
@@ -129,12 +130,12 @@
 
 /// Changes the color of the image's border.
 /// This method changes the border of the image to the specified color channels.
-/// @param red    The red color channel of the image border represented as a CGFloat between 0.0 and 1.0
-/// @param green  The green color channel of the image border represented as a CGFloat between 0.0 and 1.0
-/// @param blue   The blue color channel of the image border represented as a CGFloat between 0.0 and 1.0
-/// @param alpha  The alpha color channel of the image border represented as a CGFloat between 0.0 and 1.0
-- (void) borderWithRed:(CGFloat)aRed green:(CGFloat)aGreen blue:(CGFloat)aBlue
-   alpha:(CGFloat)anAlpha
+/// @param redChannel    The red color channel of the image border represented as a CGFloat between 0.0 and 1.0
+/// @param greenChannel  The green color channel of the image border represented as a CGFloat between 0.0 and 1.0
+/// @param blueChannel   The blue color channel of the image border represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the image border represented as a CGFloat between 0.0 and 1.0
+- (void) borderWithRed:(CGFloat)redChannel green:(CGFloat)greenChannel
+   blue:(CGFloat)blueChannel alpha:(CGFloat)alphaChannel
 {
    if ((normalCGImage))
       CGImageRelease(normalCGImage);
@@ -150,10 +151,10 @@
       [pushedImage release];
    pushedImage = nil;
 
-   borderRed   = aRed;
-   borderGreen = aGreen;
-   borderBlue  = aBlue;
-   borderAlpha = anAlpha;
+   borderRed   = redChannel;
+   borderGreen = greenChannel;
+   borderBlue  = blueChannel;
+   borderAlpha = alphaChannel;
 
    return;
 }
@@ -161,12 +162,12 @@
 
 /// Changes the image's fill color.
 /// This method changes the fill color of the image to the specified color channels.
-/// @param red    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
-/// @param green  The green color channel of the button image represented as a CGFloat between 0.0 and 1.0
-/// @param blue   The blue color channel of the button image represented as a CGFloat between 0.0 and 1.0
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
-- (void) fillWithRed:(CGFloat)aRed green:(CGFloat)aGreen blue:(CGFloat)aBlue
-   alpha:(CGFloat)anAlpha
+/// @param redChannel    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param greenChannel  The green color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param blueChannel   The blue color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+- (void) fillWithRed:(CGFloat)redChannel green:(CGFloat)greenChannel blue:(CGFloat)blueChannel
+   alpha:(CGFloat)alphaChannel
 {
    if ((normalCGImage))
       CGImageRelease(normalCGImage);
@@ -182,10 +183,10 @@
       [pushedImage release];
    pushedImage = nil;
 
-   red   = aRed;
-   green = aGreen;
-   blue  = aBlue;
-   alpha = anAlpha;
+   red   = redChannel;
+   green = greenChannel;
+   blue  = blueChannel;
+   alpha = alphaChannel;
 
    return;
 }

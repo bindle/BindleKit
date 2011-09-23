@@ -79,12 +79,24 @@ typedef NSUInteger BKButtonImageState;
 
 /// @name Creating and Initializing a Button Images
 - (id) init;
-+ (id) imagesWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
-- (id) initWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
++ (id) imagesWithRed:(CGFloat)redChannel
+       green:(CGFloat)greenChannel
+       blue:(CGFloat)blueChannel
+       alpha:(CGFloat)alphaChannel;
+- (id) initWithRed:(CGFloat)redChannel
+       green:(CGFloat)greenChannel
+       blue:(CGFloat)blueChannel
+       alpha:(CGFloat)alphaChannel;
 
 /// @name Managing Image Colors
-- (void) borderWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
-- (void) fillWithRed:(CGFloat)aRed green:(CGFloat)aGreen blue:(CGFloat)aBlue alpha:(CGFloat)anAlpha;
+- (void) borderWithRed:(CGFloat)redChannel
+         green:(CGFloat)greenChannel
+         blue:(CGFloat)blueChannel
+         alpha:(CGFloat)alphaChannel;
+- (void) fillWithRed:(CGFloat)redChannel
+         green:(CGFloat)greenChannel
+         blue:(CGFloat)blueChannel
+         alpha:(CGFloat)alphaChannel;
 
 /// @name Creates images for export
 - (CGImageRef) createCGImageForState:(BKButtonImageState)state;
