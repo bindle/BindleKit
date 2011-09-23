@@ -31,7 +31,7 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/**
+/*
  *  BKQueue.h - Creates a FIFO data structure
  */
 

@@ -31,7 +31,7 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/**
+/*
  *  BKNode.m - Contains array of nodes
  */
 #import "BKNode.h"
