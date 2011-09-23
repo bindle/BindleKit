@@ -445,19 +445,18 @@
       splitPoint.x = limit - minimumViewSize.width - (sliderSize.width/2);
 
    // removes slider view if marked as hidden
-   if ( (hideSlider == YES) && ((sliderView)) )
+   if (hideSlider == YES)
    {
       // adjust corners of master & detail views
-      view0.layer.cornerRadius = 5;
-      view1.layer.cornerRadius = 5;
+      if (view0.layer.cornerRadius != 5)
+         view0.layer.cornerRadius = 5;
+      if (view1.layer.cornerRadius != 5)
+         view1.layer.cornerRadius = 5;
 
       // removes slider view
       if ((sliderView))
-      {
-         [sliderView removeFromSuperview];
-         [sliderView release];
-         sliderView = nil;
-      };
+         if ((sliderView.superview))
+            [sliderView removeFromSuperview];
    };
 
    // calculates slider view position
@@ -468,16 +467,22 @@
    sliderFrame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
 
    // adds slider view if marked as visible
-   if ( (hideSlider == NO) && (!(sliderView)) )
+   if (hideSlider == NO)
    {
       // adjust corners of master & detail views
-      view0.layer.cornerRadius = 0;
-      view1.layer.cornerRadius = 0;
+      if (view0.layer.cornerRadius != 0)
+         view0.layer.cornerRadius = 0;
+      if (view0.layer.cornerRadius != 0)
+         view1.layer.cornerRadius = 0;
 
       // adjusts slider view
-      sliderView = [[self sliderViewWithFrame:sliderFrame] retain];
-      [self.view addSubview:sliderView];
-      [self.view sendSubviewToBack:sliderView];
+      if (!(sliderView))
+         sliderView = [[self sliderViewWithFrame:sliderFrame] retain];
+      if (!(sliderView.superview))
+      {
+         [self.view addSubview:sliderView];
+         [self.view sendSubviewToBack:sliderView];
+      };
    };
 
    // begin animations
