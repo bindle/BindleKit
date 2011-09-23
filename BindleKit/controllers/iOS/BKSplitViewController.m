@@ -56,6 +56,7 @@
 - (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
 - (void) arrangeBothViewsHorizontally:(BOOL)animate;
 - (void) arrangeSingleViewHorizontally:(BOOL)animate;
+- (void) removeHiddenViewsWithAnimation:(BOOL)animate;
 
 - (void) barButtonItemPushed:(id)sender;
 
@@ -168,6 +169,7 @@
       return;
    displayBothViews = aBool;
    [self arrangeViewsWithAnimations:enableAnimations];
+   [self removeHiddenViewsWithAnimation:enableAnimations];
    return;
 }
 
@@ -176,6 +178,7 @@
 {
    hideSlider = aBool;
    [self arrangeViewsWithAnimations:enableAnimations];
+   [self removeHiddenViewsWithAnimation:enableAnimations];
    return;
 }
 
@@ -434,6 +437,13 @@
 }
 
 
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+   [self removeHiddenViewsWithAnimation:NO];
+   return;
+}
+
+
 #pragma mark - subview manager methods
 
 - (void) arrangeViewsWithAnimations:(BOOL)animate
@@ -518,11 +528,6 @@
          view0.layer.cornerRadius = 5;
       if (view1.layer.cornerRadius != 5)
          view1.layer.cornerRadius = 5;
-
-      // removes slider view
-      if ((sliderView))
-         if ((sliderView.superview))
-            [sliderView removeFromSuperview];
    };
 
    // calculates slider view position
@@ -596,7 +601,6 @@
 - (void) arrangeSingleViewHorizontally:(BOOL)animate
 {
    UIView           * aView;
-   UIViewController * aController;
 
    // begin animations
    if ((animate))
@@ -615,9 +619,34 @@
    if ((animate))
       [UIView commitAnimations];
 
-   // notifies delegate that master view will be hidden and then removes view
+   return;
+}
+
+
+- (void) removeHiddenViewsWithAnimation:(BOOL)animate
+{
+   UIViewController * aController;
+   BOOL               removeView;
+
+   // begin animations
+   if ((animate))
+      [UIView beginAnimations:nil context:nil];
+
+   // determines if master view should be removed
    aController = [controllers objectAtIndex:0];
-   if (isMasterViewDisplayed == YES)
+   if (displayBothViews == YES)
+      removeView = NO;
+   else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft)
+      removeView = NO;
+   else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeRight)
+      removeView = NO;
+   else if (aController.view.superview != self.view)
+      removeView = NO;
+   else
+      removeView  = YES;
+
+   // removes master view
+   if (removeView == YES)
    {
       [delegate splitViewController:self
                 willHideViewController:aController
@@ -626,6 +655,28 @@
       [aController.view removeFromSuperview];
       isMasterViewDisplayed = NO;
    };
+
+   // determines if slider view should be removed
+   if (hideSlider == YES)
+      removeView = YES;
+   else if (displayBothViews == YES)
+      removeView = NO;
+   else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft)
+      removeView = NO;
+   else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeRight)
+      removeView = NO;
+   else
+      removeView  = YES;
+
+   // removes slider view
+   if (removeView == YES)
+      if ((sliderView))
+         if ((sliderView.superview))
+            [sliderView removeFromSuperview];
+
+   // commits animation to be run
+   if ((animate))
+      [UIView commitAnimations];
 
    return;
 }
