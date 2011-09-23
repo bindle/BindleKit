@@ -263,8 +263,8 @@
       return(nil);
 
    // sets colors
-   CGContextSetRGBStrokeColor(context, 0.0,   0.0,  0.0, alpha);
    CGContextSetRGBFillColor(context,   red, green, blue, alpha);
+   CGContextSetRGBStrokeColor(context, borderRed, borderGreen, borderBlue, borderAlpha);
 
    // calculates points around button
    minx    = 2;
