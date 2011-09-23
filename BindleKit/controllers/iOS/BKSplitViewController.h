@@ -40,7 +40,7 @@
 
 
 # pragma mark - Optionally overrides UISplitViewController
-#if USE_BKSPLITVIEWCONTROLLER
+#if BINDLEKIT_REPLACES_UISPLITVIEWCONTROLLER
 #ifdef UISplitViewController
 #undef UISplitViewController
 #endif
