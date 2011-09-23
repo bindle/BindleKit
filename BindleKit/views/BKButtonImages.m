@@ -108,7 +108,7 @@
 /// This method creates a BKButtonImages object and initializes the object with the specified RGB color.
 /// @param rgbColor  The color as an integer: ( (red << 16) | (green << 8) | (blue) )
 /// @return Returns an initialized instance of BKButtonImages.
-+ (id) imagesWithRGB:(NSInteger)rgbColor
++ (id) imagesWithRGB:(NSUInteger)rgbColor
 {
    return([[[BKButtonImages alloc] initWithRGB:rgbColor] autorelease]);
 }
@@ -118,7 +118,7 @@
 /// This method creates a BKButtonImages object and initializes the object with the specified RGBA color.
 /// @param rgbaColor  The color as an integer: ( (red << 24) | (green << 16) | (blue << 8) | (alpha) )
 /// @return Returns an initialized instance of BKButtonImages.
-+ (id) imagesWithRGBA:(NSInteger)rgbaColor;
++ (id) imagesWithRGBA:(NSUInteger)rgbaColor;
 {
    return([[[BKButtonImages alloc] initWithRGBA:rgbaColor] autorelease]);
 }
@@ -160,7 +160,7 @@
 /// This method initializes a BKButtonImages object with the specified RGB color.
 /// @param rgbColor  The color as an integer: ( (red << 16) | (green << 8) | (blue) )
 /// @return Returns an initialized instance of BKButtonImages.
-- (id) initWithRGB:(NSInteger)rgbColor
+- (id) initWithRGB:(NSUInteger)rgbColor
 {
    return([self initWithRGB:((rgbColor << 8) | 0xFF)]);
 }
@@ -170,7 +170,7 @@
 /// This method initializes a BKButtonImages object with the specified RGBA color.
 /// @param rgbaColor  The color as an integer: ( (red << 24) | (green << 16) | (blue << 8) | (alpha) )
 /// @return Returns an initialized instance of BKButtonImages.
-- (id) initWithRGBA:(NSInteger)rgbaColor
+- (id) initWithRGBA:(NSUInteger)rgbaColor
 {
    CGFloat redChannel   = ( ((CGFloat)((rgbaColor >>  24) & 0xFF)) / 256.0);
    CGFloat greenChannel = ( ((CGFloat)((rgbaColor >>  16) & 0xFF)) / 256.0);
