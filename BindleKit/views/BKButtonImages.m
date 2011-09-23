@@ -115,13 +115,12 @@
 
 
 /// Creates and initializes an instance of BKButtonImages.
-/// This method creates a BKButtonImages object and initializes the object with the specified RGB color and alpha channel.
-/// @param rgbColor  The color as an integer: ( (red << 16) | (green << 8) | (blue) )
-/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// This method creates a BKButtonImages object and initializes the object with the specified RGBA color.
+/// @param rgbaColor  The color as an integer: ( (red << 24) | (green << 16) | (blue << 8) | (alpha) )
 /// @return Returns an initialized instance of BKButtonImages.
-+ (id) imagesWithRGB:(NSInteger)rgbColor alpha:(CGFloat)alphaChannel;
++ (id) imagesWithRGBA:(NSInteger)rgbaColor;
 {
-   return([[[BKButtonImages alloc] initWithRGB:rgbColor alpha:alphaChannel] autorelease]);
+   return([[[BKButtonImages alloc] initWithRGBA:rgbaColor] autorelease]);
 }
 
 
@@ -163,20 +162,20 @@
 /// @return Returns an initialized instance of BKButtonImages.
 - (id) initWithRGB:(NSInteger)rgbColor
 {
-   return([self initWithRGB:rgbColor alpha:1.0]);
+   return([self initWithRGB:((rgbColor << 8) | 0xFF)]);
 }
 
 
 /// Initializes an instance of BKButtonImages.
-/// This method initializes a BKButtonImages object with the specified RGB color and alpha channel.
-/// @param rgbColor  The color as an integer: ( (red << 16) | (green << 8) | (blue) )
-/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// This method initializes a BKButtonImages object with the specified RGBA color.
+/// @param rgbaColor  The color as an integer: ( (red << 24) | (green << 16) | (blue << 8) | (alpha) )
 /// @return Returns an initialized instance of BKButtonImages.
-- (id) initWithRGB:(NSInteger)rgbColor alpha:(CGFloat)alphaChannel
+- (id) initWithRGBA:(NSInteger)rgbaColor
 {
-   CGFloat redChannel   = ( ((CGFloat)((rgbColor >>  16) & 0xFF)) / 256.0);
-   CGFloat greenChannel = ( ((CGFloat)((rgbColor >>   8) & 0xFF)) / 256.0);
-   CGFloat blueChannel  = ( ((CGFloat)((rgbColor >>   0) & 0xFF)) / 256.0);
+   CGFloat redChannel   = ( ((CGFloat)((rgbaColor >>  24) & 0xFF)) / 256.0);
+   CGFloat greenChannel = ( ((CGFloat)((rgbaColor >>  16) & 0xFF)) / 256.0);
+   CGFloat blueChannel  = ( ((CGFloat)((rgbaColor >>   8) & 0xFF)) / 256.0);
+   CGFloat alphaChannel = ( ((CGFloat)((rgbaColor >>   0) & 0xFF)) / 256.0);
    return([self initWithRed:redChannel green:greenChannel blue:blueChannel alpha:alphaChannel]);
 }
 
