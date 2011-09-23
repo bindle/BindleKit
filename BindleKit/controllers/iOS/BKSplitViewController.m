@@ -93,8 +93,9 @@
    [super didReceiveMemoryWarning];
 
    // passses warning to child controllers
-   for(pos = 0; pos < [controllers count]; pos++)
-      [[controllers objectAtIndex:pos] didReceiveMemoryWarning];
+   if ((controllers))
+      for(pos = 0; pos < [controllers count]; pos++)
+         [[controllers objectAtIndex:pos] didReceiveMemoryWarning];
 
    // nothing is left to do if view is currently loaded
    if (self.isViewLoaded == YES)
