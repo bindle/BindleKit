@@ -83,9 +83,15 @@ typedef NSUInteger BKButtonImageState;
        green:(CGFloat)greenChannel
        blue:(CGFloat)blueChannel
        alpha:(CGFloat)alphaChannel;
++ (id) imagesWithRGB:(NSInteger)rgbColor;
++ (id) imagesWithRGB:(NSInteger)rgbColor
+       alpha:(CGFloat)alphaChannel;
 - (id) initWithRed:(CGFloat)redChannel
        green:(CGFloat)greenChannel
        blue:(CGFloat)blueChannel
+       alpha:(CGFloat)alphaChannel;
+- (id) initWithRGB:(NSInteger)rgbColor;
+- (id) initWithRGB:(NSInteger)rgbColor
        alpha:(CGFloat)alphaChannel;
 
 /// @name Managing Image Colors

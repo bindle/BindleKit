@@ -94,6 +94,27 @@
 }
 
 
+/// Creates and initializes an instance of BKButtonImages.
+/// This method creates a BKButtonImages object and initializes the object with the specified RGB color.
+/// @param rgbColor  The color as an integer: ( (red << 16) | (green << 8) | (blue) )
+/// @return Returns an initialized instance of BKButtonImages.
++ (id) imagesWithRGB:(NSInteger)rgbColor
+{
+   return([[[BKButtonImages alloc] initWithRGB:rgbColor] autorelease]);
+}
+
+
+/// Creates and initializes an instance of BKButtonImages.
+/// This method creates a BKButtonImages object and initializes the object with the specified RGB color and alpha channel.
+/// @param rgbColor  The color as an integer: ( (red << 16) | (green << 8) | (blue) )
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @return Returns an initialized instance of BKButtonImages.
++ (id) imagesWithRGB:(NSInteger)rgbColor alpha:(CGFloat)alphaChannel;
+{
+   return([[[BKButtonImages alloc] initWithRGB:rgbColor alpha:alphaChannel] autorelease]);
+}
+
+
 /// Initializes an instance of BKButtonImages.
 /// This method initializes a BKButtonImages object with the specified color channels.
 /// @param redChannel    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
@@ -123,6 +144,30 @@
    color = CGColorSpaceCreateDeviceRGB();
 
    return(self);
+}
+
+
+/// Initializes an instance of BKButtonImages.
+/// This method initializes a BKButtonImages object with the specified RGB color.
+/// @param rgbColor  The color as an integer: ( (red << 16) | (green << 8) | (blue) )
+/// @return Returns an initialized instance of BKButtonImages.
+- (id) initWithRGB:(NSInteger)rgbColor
+{
+   return([self initWithRGB:rgbColor alpha:1.0]);
+}
+
+
+/// Initializes an instance of BKButtonImages.
+/// This method initializes a BKButtonImages object with the specified RGB color and alpha channel.
+/// @param rgbColor  The color as an integer: ( (red << 16) | (green << 8) | (blue) )
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @return Returns an initialized instance of BKButtonImages.
+- (id) initWithRGB:(NSInteger)rgbColor alpha:(CGFloat)alphaChannel
+{
+   CGFloat redChannel   = ( ((CGFloat)((rgbColor >>  16) & 0xFF)) / 256.0);
+   CGFloat greenChannel = ( ((CGFloat)((rgbColor >>   8) & 0xFF)) / 256.0);
+   CGFloat blueChannel  = ( ((CGFloat)((rgbColor >>   0) & 0xFF)) / 256.0);
+   return([self initWithRed:redChannel green:greenChannel blue:blueChannel alpha:alphaChannel]);
 }
 
 
