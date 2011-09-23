@@ -114,6 +114,9 @@
 
 - (id) init
 {
+   UIViewController * controller0;
+   UIViewController * controller1;
+
    // generates an assertion if code is not running on an iPad
    NSAssert(([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad),
       @"'BKSplitViewController is only supported when running under UIUserInterfaceIdiomPad'");
@@ -128,6 +131,13 @@
    sliderSize             = CGSizeMake(20, 20);
    hideSlider             = NO;
    enableAnimations       = YES;
+
+   // creates initial controllers
+   controller0 = [[UIViewController alloc] init];
+   controller1 = [[UIViewController alloc] init];
+   controllers = [[NSArray alloc] initWithObjects:controller0, controller1, nil];
+   [controller0 release];
+   [controller1 release];
 
    return(self);
 }
