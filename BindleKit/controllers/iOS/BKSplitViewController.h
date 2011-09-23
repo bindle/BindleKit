@@ -78,25 +78,25 @@
 @interface BKSplitViewController : UIViewController <UIPopoverControllerDelegate>
 {
    // Members common with UISplitViewController
-   id <BKSplitViewControllerDelegate> delegate;
-   NSArray * controllers;
+   id <BKSplitViewControllerDelegate> delegate;  // notify of view events
+   NSArray * controllers;                        // list of view controllers
 
    // Members specific to BKSplitViewController
-   CGSize    minimumViewSize;
-   CGPoint   splitPoint;
-   CGSize    sliderSize;
-   BOOL      reverseViewOrder;
-   BOOL      enableTouchToResize;
-   BOOL      displayBothViews;
-   BOOL      enableAnimations;
-   BOOL      hideSlider;
+   CGSize    minimumViewSize;                    // minimum width/height each view
+   CGPoint   splitPoint;                         // the point which seperates the two views
+   CGSize    sliderSize;                         // the minimum size of the slider bar
+   BOOL      reverseViewOrder;                   // reverse order that the views are displayed
+   BOOL      enableTouchToResize;                // allow views to be resized by sliding
+   BOOL      displayBothViews;                   // always display both views (do not hide on in portait mode)
+   BOOL      enableAnimations;                   // animate changes when updated by properties
+   BOOL      hideSlider;                         // hide slider bar (visual option only, does not affect funcitonality)
 
    // Members internal to BKSplitViewController
-   UIBarButtonItem     * barButton;
-   UIPopoverController * popoverController;
-   UIView              * sliderView;
-   BOOL                  spliderIsMoving;
-   BOOL                  isMasterViewDisplayed;
+   UIBarButtonItem     * barButton;              // the UIBarButtonItem passed to the delegate
+   UIPopoverController * popoverController;      // the UIPopoverController used to display the master view when hidden
+   UIView              * sliderView;             // the view used to draw a slider bar
+   BOOL                  spliderIsMoving;        // indicates that a user is actively touching the slider bar
+   BOOL                  isMasterViewDisplayed;  // used to prevent duplicate messages to the delegate
 }
 
 // Properties common with UISplitViewController
