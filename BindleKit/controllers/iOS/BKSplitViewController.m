@@ -54,8 +54,8 @@
 - (UIView *) sliderViewWithFrame:(CGRect)sliderFrame;
 
 - (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
-- (void) arrangeBothViewsHorizontally:(BOOL)animate;
-- (void) arrangeSingleViewHorizontally:(BOOL)animate;
+- (void) arrangeBothViewsHorizontallyWithAnimations:(BOOL)animate;
+- (void) arrangeSingleViewHorizontallyWithAnimations:(BOOL)animate;
 - (void) removeHiddenViewsWithAnimation:(BOOL)animate;
 
 - (void) barButtonItemPushed:(id)sender;
@@ -457,19 +457,19 @@
       return;
 
    if (displayBothViews == YES)
-      [self arrangeBothViewsHorizontally:animate];
+      [self arrangeBothViewsHorizontallyWithAnimations:animate];
    else if (self.interfaceOrientation == UIInterfaceOrientationPortrait)
-      [self arrangeSingleViewHorizontally:animate];
+      [self arrangeSingleViewHorizontallyWithAnimations:animate];
    else if (self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
-      [self arrangeSingleViewHorizontally:animate];
+      [self arrangeSingleViewHorizontallyWithAnimations:animate];
    else
-      [self arrangeBothViewsHorizontally:animate];
+      [self arrangeBothViewsHorizontallyWithAnimations:animate];
 
    return;
 }
 
 
-- (void) arrangeBothViewsHorizontally:(BOOL)animate
+- (void) arrangeBothViewsHorizontallyWithAnimations:(BOOL)animate
 {
    NSAutoreleasePool * pool;
    UIViewController  * aController;
@@ -600,7 +600,7 @@
 }
 
 
-- (void) arrangeSingleViewHorizontally:(BOOL)animate
+- (void) arrangeSingleViewHorizontallyWithAnimations:(BOOL)animate
 {
    UIView           * aView;
 
