@@ -740,6 +740,13 @@
 {
    UIViewController * aController;
 
+   // dismisses popover controller if already visible
+   if (popoverController.isPopoverVisible)
+   {
+      [popoverController dismissPopoverAnimated:YES];
+      return;
+   };
+
    aController = [controllers objectAtIndex:0];
 
    // notifies delegate that the view will be displayed
