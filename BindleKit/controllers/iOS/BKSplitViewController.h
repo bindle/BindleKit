@@ -39,30 +39,86 @@
 #import <UIKit/UIKit.h>
 
 
-@interface BKSplitViewController : UIViewController
-{
+# pragma mark - Optionally overrides UISplitViewController
+#if USE_BKSPLITVIEWCONTROLLER
+#ifdef UISplitViewController
+#undef UISplitViewController
+#endif
+#ifdef UISplitViewControllerDelegate
+#undef UISplitViewControllerDelegate
+#endif
+#define UISplitViewController BKSplitViewController
+#define UISplitViewControllerDelegate BKSplitViewControllerDelegate
+#endif
 
+
+@class BKSplitViewController;
+
+
+# pragma mark - BKSplitViewControllerDelegate Protocol Declaration
+@protocol BKSplitViewControllerDelegate <NSObject>
+
+- (void) splitViewController:(BKSplitViewController *)svc
+         popoverController:(UIPopoverController *)pc
+         willPresentViewController:(UIViewController *)aViewController;
+
+- (void) splitViewController:(BKSplitViewController *)svc
+         willHideViewController:(UIViewController *)aViewController
+         withBarButtonItem:(UIBarButtonItem *)barButtonItem
+         forPopoverController:(UIPopoverController *)pc;
+
+- (void) splitViewController:(BKSplitViewController *)svc
+         willShowViewController:(UIViewController *)aViewController
+         invalidatingBarButtonItem:(UIBarButtonItem *)button;
+
+@end
+
+
+# pragma mark - BKSplitViewController Class Declaration
+@interface BKSplitViewController : UIViewController <UIPopoverControllerDelegate>
+{
+   // Members common with UISplitViewController
+   id <BKSplitViewControllerDelegate> delegate;
    NSArray * controllers;
 
+   // Members specific to BKSplitViewController
    CGSize    minimumViewSize;
    CGPoint   splitPoint;
    CGSize    sliderSize;
    BOOL      reverseViewOrder;
    BOOL      enableTouchToResize;
+   BOOL      displayBothViews;
    BOOL      enableAnimations;
    BOOL      hideSlider;
 
-   UIView  * sliderView;
-   BOOL      spliderIsMoving;
+   // Members internal to BKSplitViewController
+   UIBarButtonItem     * barButton;
+   UIPopoverController * popoverController;
+   UIView              * sliderView;
+   BOOL                  spliderIsMoving;
+   BOOL                  isMasterViewDisplayed;
 }
 
+// Properties common with UISplitViewController
+@property(nonatomic, assign) id <BKSplitViewControllerDelegate> delegate;
 @property(nonatomic, copy)   NSArray * viewControllers;
+
+// Properties specific to BKSplitViewController
 @property(nonatomic, assign) CGSize    minimumViewSize;
 @property(nonatomic, assign) CGPoint   splitPoint;
 @property(nonatomic, assign) CGSize    sliderSize;
 @property(nonatomic, assign) BOOL      reverseViewOrder;
 @property(nonatomic, assign) BOOL      enableTouchToResize;
+@property(nonatomic, assign) BOOL      displayBothViews;
 @property(nonatomic, assign) BOOL      enableAnimations;
 @property(nonatomic, assign) BOOL      hideSlider;
+
+@end
+
+
+#pragma mark - Public UIViewController Category Declaration
+@interface UIViewController (BKSplitViewController)
+
+@property (nonatomic,readonly,retain) UIViewController * splitViewController; // If the view controller has a split view controller as its ancestor, return it. Returns nil otherwise.
 
 @end

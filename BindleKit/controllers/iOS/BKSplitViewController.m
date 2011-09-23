@@ -40,25 +40,41 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-#pragma mark - private methods
+#pragma mark - Private UIViewController Category Declaration
+@interface UIViewController (BKSplitViewControllerInternal)
+
+- (void) setBKParentViewController:(UIViewController *)viewController;
+
+@end
+
+
+#pragma mark - Private BKSplitViewController Category Declaration
 @interface BKSplitViewController ()
 
 - (UIView *) sliderViewWithFrame:(CGRect)sliderFrame;
 
 - (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
-- (void) arrangeViewsHorizontally:(BOOL)animate;
+- (void) arrangeBothViewsHorizontally:(BOOL)animate;
+- (void) arrangeSingleViewHorizontally:(BOOL)animate;
+
+- (void) barButtonItemPushed:(id)sender;
 
 @end
 
 
-#pragma mark -
+# pragma mark - BKSplitViewController Class Implementation
 @implementation BKSplitViewController
 
+// Properties common with UISplitViewController
+@synthesize delegate;
 @synthesize viewControllers = controllers;
+
+// Properties specific to BKSplitViewController
 @synthesize minimumViewSize;
 @synthesize splitPoint;
 @synthesize reverseViewOrder;
 @synthesize enableTouchToResize;
+@synthesize displayBothViews;
 @synthesize enableAnimations;
 @synthesize hideSlider;
 @synthesize sliderSize;
@@ -67,7 +83,9 @@
 - (void) dealloc
 {
    [controllers      release];
+   [barButton        release];
    [sliderView       release];
+   [popoverController release];
 
    [super dealloc];
 
@@ -81,11 +99,21 @@
 
    [super didReceiveMemoryWarning];
 
-   for(pos = 0; pos < [controllers count]; pos++)
-      [[controllers objectAtIndex:pos] didReceiveMemoryWarning];
+   // passses warning to child controllers
+   if ((controllers))
+      for(pos = 0; pos < [controllers count]; pos++)
+         [[controllers objectAtIndex:pos] didReceiveMemoryWarning];
 
+   // nothing is left to do if view is currently loaded
    if (self.isViewLoaded == YES)
       return;
+
+   // free root view
+   self.view = nil;
+
+   // free slider view
+   [sliderView release];
+   sliderView = nil;
 
    return;
 }
@@ -93,9 +121,17 @@
 
 - (id) init
 {
+   UIViewController * controller0;
+   UIViewController * controller1;
+
+   // generates an assertion if code is not running on an iPad
+   NSAssert(([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad),
+      @"'BKSplitViewController is only supported when running under UIUserInterfaceIdiomPad'");
+
    if ((self = [super init]) == nil)
       return(self);
 
+   // sets default values for split view controller
    minimumViewSize        = CGSizeMake(0, 0);
    splitPoint             = CGPointMake(320, 320);
    spliderIsMoving        = NO;
@@ -103,11 +139,38 @@
    hideSlider             = NO;
    enableAnimations       = YES;
 
+   // creates button bar
+   barButton = [[UIBarButtonItem alloc] initWithTitle:nil
+                                        style:UIBarButtonItemStylePlain
+                                        target:self
+                                        action:@selector(barButtonItemPushed:)];
+
+   // creates initial controllers
+   controller0 = [[UIViewController alloc] init];
+   controller1 = [[UIViewController alloc] init];
+   controllers = [[NSArray alloc] initWithObjects:controller0, controller1, nil];
+   [controller0 release];
+   [controller1 release];
+
+   // creates popover controller
+   popoverController = [[UIPopoverController alloc] initWithContentViewController:[controllers objectAtIndex:0]];
+   popoverController.delegate = self;
+
    return(self);
 }
 
 
 #pragma mark - Properties getters/setters
+
+- (void) setDisplayBothViews:(BOOL)aBool
+{
+   if (aBool == displayBothViews)
+      return;
+   displayBothViews = aBool;
+   [self arrangeViewsWithAnimations:enableAnimations];
+   return;
+}
+
 
 - (void) setHideSlider:(BOOL)aBool
 {
@@ -159,6 +222,7 @@
    frameSize = self.view.bounds.size;
    if (aBool != reverseViewOrder)
    {
+      // calculates new position of the slider/splitPoint
       splitPoint = CGPointMake(frameSize.width-splitPoint.x,
                                frameSize.height-splitPoint.y);
    };
@@ -176,32 +240,41 @@
    NSUInteger         pos;
    UIViewController * aController;
 
-   // if new view controllers are not available, remove old views and exit
-   if (!(viewControllers))
-   {
-      [controllers release];
-      controllers = nil;
-      if (self.isViewLoaded == YES)
-         while([self.view.subviews count] > 0)
-            [[self.view.subviews objectAtIndex:0] removeFromSuperview];
-      return;
-   };
+   // check for array of view controllers
+   NSAssert((viewControllers != nil),
+      @"BKSplitViewControllers viewControllers cannot be set to nil.");
+
+   // assigns new controller to popover
+   popoverController.contentViewController = [viewControllers objectAtIndex:0];
 
    // removes old Views from superview
    if ((controllers))
    {
       for(pos = 0; pos < [controllers count]; pos++)
       {
+         // retrieves old controller
          aController = [controllers objectAtIndex:pos];
+
+         // determines if old controller is in new list of controllers
          if (!([viewControllers containsObject:aController]))
+         {
+            // remove old controller's view if old controller is not in new list 
             if (aController.isViewLoaded == YES)
                [aController.view removeFromSuperview];
+
+            // removes self as parentController of old controller
+            [aController setBKParentViewController:nil];
+         };
       };
    };
 
    // assigns new UIViewControllers
    [controllers release];
    controllers = [[NSArray alloc] initWithArray:viewControllers];
+
+   // sets parent controller
+   for(pos = 0; pos < [controllers count]; pos++)
+      [[controllers objectAtIndex:pos] setBKParentViewController:self];
 
    // arranges views
    [self arrangeViewsWithAnimations:enableAnimations];
@@ -228,6 +301,13 @@
    self.view = rootView;
    [rootView   release];
 
+   // notifies delegate that master view will be hidden
+   isMasterViewDisplayed = NO;
+   [delegate splitViewController:self
+             willHideViewController:[controllers objectAtIndex:0]
+             withBarButtonItem:barButton
+             forPopoverController:popoverController];
+
    // arranges views
    [self arrangeViewsWithAnimations:NO];
 
@@ -235,19 +315,20 @@
 }
 
 
+// generates slider/divider view
 - (UIView *) sliderViewWithFrame:(CGRect)sliderFrame
 {
-   CGSize                   imageSize;
-   CGColorSpaceRef          color;
-   CGContextRef             context;
-   CGFloat                  components[8] = { 0.988, 0.988, 0.988, 1.0,  // light
-                                              0.875, 0.875, 0.875, 1.0 }; // dark
-   CGGradientRef            gradient;
-   CGPoint                  start;
-   CGPoint                  stop;
-   CGImageRef               cgImage;
-   UIImage                * uiImage;
-   UIImageView            * imageView;
+   CGSize             imageSize;
+   CGColorSpaceRef    color;
+   CGContextRef       context;
+   CGGradientRef      gradient;
+   CGPoint            start;
+   CGPoint            stop;
+   CGImageRef         cgImage;
+   UIImage          * uiImage;
+   UIImageView      * imageView;
+   CGFloat            components[8] = { 0.988, 0.988, 0.988, 1.0,  // light
+                                        0.875, 0.875, 0.875, 1.0 }; // dark
 
    imageSize.width  = sliderFrame.size.width;
    imageSize.height = sliderFrame.size.height;
@@ -264,7 +345,6 @@
       color,                         // color space
       kCGImageAlphaPremultipliedLast // bitmap info
    );
-   CGContextSaveGState(context);
 
    // creates path (drawing area) for gradient and background color
    CGContextDrawPath(context, kCGPathStroke);
@@ -286,7 +366,6 @@
    stop  = CGPointMake(imageSize.width-1, 0);
    gradient = CGGradientCreateWithColorComponents(color, components, NULL, 2);
    CGContextDrawLinearGradient(context, gradient, start, stop,  0);
-	CGContextRestoreGState(context);
    CGGradientRelease(gradient);
 
    // Creates Image
@@ -316,17 +395,47 @@
 }
 
 
+// delegates (to the detail view) the decision to auto rotate
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
    if (!(controllers))
-      return(YES);
+      return(NO);
    return([[controllers objectAtIndex:1] shouldAutorotateToInterfaceOrientation:interfaceOrientation]);
+}
+
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+   UIView * aView;
+
+   if (popoverController.popoverVisible == YES)
+      [popoverController dismissPopoverAnimated:NO];
+
+   if (  (displayBothViews == YES) ||
+         (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) ||
+         (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) )
+   {
+      aView  = [[controllers objectAtIndex:0] view];
+      if (aView.superview != self.view)
+      {
+         [self.view addSubview:aView];
+         [self.view sendSubviewToBack:aView];
+      };
+   };
+
+   return;
+}
+
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration
+{
+   [self arrangeViewsWithAnimations:NO];
+   return;
 }
 
 
 #pragma mark - subview manager methods
 
-//- (void)layoutSubviewsForInterfaceOrientation:(UIInterfaceOrientation)theOrientation withAnimation:(BOOL)animate
 - (void) arrangeViewsWithAnimations:(BOOL)animate
 {
    if (!(controllers))
@@ -335,15 +444,23 @@
    if (self.isViewLoaded == NO)
       return;
 
-   [self arrangeViewsHorizontally:animate];
+   if (displayBothViews == YES)
+      [self arrangeBothViewsHorizontally:animate];
+   else if (self.interfaceOrientation == UIInterfaceOrientationPortrait)
+      [self arrangeSingleViewHorizontally:animate];
+   else if (self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
+      [self arrangeSingleViewHorizontally:animate];
+   else
+      [self arrangeBothViewsHorizontally:animate];
 
    return;
 }
 
 
-- (void) arrangeViewsHorizontally:(BOOL)animate
+- (void) arrangeBothViewsHorizontally:(BOOL)animate
 {
    NSAutoreleasePool * pool;
+   UIViewController  * aController;
    UIView * view0;
    UIView * view1;
    CGRect   sliderFrame;
@@ -359,6 +476,17 @@
 
    frameSize = self.view.bounds.size;
 
+   // notifies delegate that master view is about to be displayed
+   aController = [controllers objectAtIndex:0];
+   if (isMasterViewDisplayed == NO)
+   {
+      [delegate splitViewController:self
+                willShowViewController:aController
+                invalidatingBarButtonItem:barButton];
+      isMasterViewDisplayed = YES;
+   };
+
+   // retrieves views in user defined order
    if (!(reverseViewOrder))
    {
       view0 = [[controllers objectAtIndex:0] view];
@@ -368,34 +496,33 @@
       view1 = [[controllers objectAtIndex:0] view];
    };
 
-   // calculates adjusts master & detail position for slider view
+   // calculates left & right view position adjustments to allow room for sliderView
    adjustmentForSlider = 0;
    if (hideSlider == NO)
       adjustmentForSlider = (sliderSize.width/2);
 
-   // adjusts master's view width to a minimum of minimumViewSize.width
+   // adjusts left (view0) view's width to a minimum of minimumViewSize.width
    if (splitPoint.x < (minimumViewSize.width + (sliderSize.width/2)))
       splitPoint.x = minimumViewSize.width + (sliderSize.width/2);
 
-   // adjusts detail's view width to a minimum of minimumViewSize.width
+   // adjusts right (view1) view's width to a minimum of minimumViewSize.width
    limit = (frameSize.width < frameSize.height) ? frameSize.width : frameSize.height;
    if (splitPoint.x > (limit - minimumViewSize.width - (sliderSize.width/2)))
       splitPoint.x = limit - minimumViewSize.width - (sliderSize.width/2);
 
    // removes slider view if marked as hidden
-   if ( (hideSlider == YES) && ((sliderView)) )
+   if (hideSlider == YES)
    {
       // adjust corners of master & detail views
-      view0.layer.cornerRadius = 5;
-      view1.layer.cornerRadius = 5;
+      if (view0.layer.cornerRadius != 5)
+         view0.layer.cornerRadius = 5;
+      if (view1.layer.cornerRadius != 5)
+         view1.layer.cornerRadius = 5;
 
       // removes slider view
       if ((sliderView))
-      {
-         [sliderView removeFromSuperview];
-         [sliderView release];
-         sliderView = nil;
-      };
+         if ((sliderView.superview))
+            [sliderView removeFromSuperview];
    };
 
    // calculates slider view position
@@ -406,23 +533,29 @@
    sliderFrame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
 
    // adds slider view if marked as visible
-   if ( (hideSlider == NO) && (!(sliderView)) )
+   if (hideSlider == NO)
    {
       // adjust corners of master & detail views
-      view0.layer.cornerRadius = 0;
-      view1.layer.cornerRadius = 0;
+      if (view0.layer.cornerRadius != 0)
+         view0.layer.cornerRadius = 0;
+      if (view0.layer.cornerRadius != 0)
+         view1.layer.cornerRadius = 0;
 
       // adjusts slider view
-      sliderView = [[self sliderViewWithFrame:sliderFrame] retain];
-      [self.view addSubview:sliderView];
-      [self.view sendSubviewToBack:sliderView];
+      if (!(sliderView))
+         sliderView = [[self sliderViewWithFrame:sliderFrame] retain];
+      if (!(sliderView.superview))
+      {
+         [self.view addSubview:sliderView];
+         [self.view sendSubviewToBack:sliderView];
+      };
    };
 
    // begin animations
    if ((animate))
       [UIView beginAnimations:nil context:nil];
 
-   // positions master view
+   // positions left view
    if (view0.superview != self.view)
       [self.view addSubview:view0];
    frameX      = 0;
@@ -433,7 +566,7 @@
    view0.autoresizingMask   = UIViewAutoresizingFlexibleRightMargin |
                               UIViewAutoresizingFlexibleHeight;
 
-   // positions detail view
+   // positions right view
    if (!(adjustmentForSlider))
       adjustmentForSlider = 1;
    if (view1.superview != self.view)
@@ -460,8 +593,47 @@
 }
 
 
+- (void) arrangeSingleViewHorizontally:(BOOL)animate
+{
+   UIView           * aView;
+   UIViewController * aController;
+
+   // begin animations
+   if ((animate))
+      [UIView beginAnimations:nil context:nil];
+
+   // positions detail view
+   aView = [[controllers objectAtIndex:1] view];
+   if (aView.superview != self.view)
+      [self.view addSubview:aView];
+   [self.view bringSubviewToFront:aView];
+   aView.frame              = self.view.bounds;
+   aView.autoresizingMask   = UIViewAutoresizingFlexibleWidth |
+                              UIViewAutoresizingFlexibleHeight;
+
+   // commits animation to be run
+   if ((animate))
+      [UIView commitAnimations];
+
+   // notifies delegate that master view will be hidden and then removes view
+   aController = [controllers objectAtIndex:0];
+   if (isMasterViewDisplayed == YES)
+   {
+      [delegate splitViewController:self
+                willHideViewController:aController
+                withBarButtonItem:barButton
+                forPopoverController:popoverController];
+      [aController.view removeFromSuperview];
+      isMasterViewDisplayed = NO;
+   };
+
+   return;
+}
+
+
 #pragma mark - Responding to Touch Events
 
+// begins tracking touches to slider
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	UITouch  * touch;
@@ -482,6 +654,7 @@
 }
 
 
+// stops tracking touches to slider
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	spliderIsMoving = NO;
@@ -489,6 +662,7 @@
 }
 
 
+// updates slider view position based upon movement of touches
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	UITouch  * touch;
@@ -503,6 +677,60 @@
       splitPoint.x    = point.x;
       [self arrangeViewsWithAnimations:NO];
    };
+   return;
+}
+
+
+#pragma mark - UIBarButtonItem targets
+
+- (void) barButtonItemPushed:(id)sender
+{
+   UIViewController * aController;
+
+   aController = [controllers objectAtIndex:0];
+
+   // notifies delegate that the view will be displayed
+   [delegate splitViewController:self
+             popoverController:popoverController
+             willPresentViewController:aController];
+
+   // presents popover with master view
+   [popoverController presentPopoverFromBarButtonItem:barButton
+                      permittedArrowDirections:UIPopoverArrowDirectionAny
+                      animated:YES];
+
+   return;
+}
+
+@end
+
+
+#pragma mark - Public UIViewController Category Implementation
+@implementation UIViewController (BKSplitViewController)
+
+// updates splitViewController property to include BKSplitViewController
+- (UIViewController *) splitViewController
+{
+   id controller;
+   if (!(controller = [self parentViewController]))
+      return(nil);
+   while ((controller = [controller parentViewController]))
+      if ( (([controller isKindOfClass:[BKSplitViewController class]])) ||
+           (([controller isKindOfClass:[UISplitViewController class]])) )
+         return(controller);
+   return(nil);
+}
+
+@end
+
+
+#pragma mark - Private UIViewController Category Implementation
+@implementation UIViewController (BKSplitViewControllerInternal)
+
+// allows BKSplitViewController to set itself as the parent of a controller
+- (void) setBKParentViewController:(UIViewController *)parent
+{
+   [self setValue:parent forKey:@"_parentViewController"];
    return;
 }
 
