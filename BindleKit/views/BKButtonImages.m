@@ -162,7 +162,10 @@
 /// @return Returns an initialized instance of BKButtonImages.
 - (id) initWithRGB:(NSUInteger)rgbColor
 {
-   return([self initWithRGB:((rgbColor << 8) | 0xFF)]);
+   if ((self = [self init]) == nil)
+      return(self);
+   self.rgbFillColor = rgbColor;
+   return(self);
 }
 
 
@@ -172,11 +175,84 @@
 /// @return Returns an initialized instance of BKButtonImages.
 - (id) initWithRGBA:(NSUInteger)rgbaColor
 {
+   if ((self = [self init]) == nil)
+      return(self);
+   self.rgbaFillColor = rgbaColor;
+   return(self);
+}
+
+
+#pragma mark - Property getter methods
+
+- (NSUInteger) rgbFillColor
+{
+   return(self.rgbaFillColor >> 8);
+}
+
+
+- (NSUInteger) rgbStrokeColor
+{
+   return(self.rgbaStrokeColor >> 8);
+}
+
+
+- (NSUInteger) rgbaFillColor
+{
+   NSUInteger rgbaColor;
+   rgbaColor  = (((NSUInteger)(256.0 * red))   & 0xFF) << 24;
+   rgbaColor += (((NSUInteger)(256.0 * green)) & 0xFF) << 16;
+   rgbaColor += (((NSUInteger)(256.0 * blue))  & 0xFF) <<  8;
+   rgbaColor += (((NSUInteger)(256.0 * alpha)) & 0xFF) <<  0;
+   return(rgbaColor);
+}
+
+
+- (NSUInteger) rgbaStrokeColor
+{
+   NSUInteger rgbaColor;
+   rgbaColor  = (((NSUInteger)(256.0 * strokeRed))   & 0xFF) << 24;
+   rgbaColor += (((NSUInteger)(256.0 * strokeGreen)) & 0xFF) << 16;
+   rgbaColor += (((NSUInteger)(256.0 * strokeBlue))  & 0xFF) <<  8;
+   rgbaColor += (((NSUInteger)(256.0 * strokeAlpha)) & 0xFF) <<  0;
+   return(rgbaColor);
+}
+
+
+#pragma mark - Property setter methods
+
+- (void) setRgbFillColor:(NSUInteger)rgbColor
+{
+   self.rgbaFillColor = ((rgbColor << 8) | 0xFF);
+   return;
+}
+
+
+- (void) setRgbStrokeColor:(NSUInteger)rgbColor
+{
+   self.rgbaStrokeColor = ((rgbColor << 8) | 0xFF);
+   return;
+}
+
+
+- (void) setRgbaFillColor:(NSUInteger)rgbaColor
+{
    CGFloat redChannel   = ( ((CGFloat)((rgbaColor >>  24) & 0xFF)) / 256.0);
    CGFloat greenChannel = ( ((CGFloat)((rgbaColor >>  16) & 0xFF)) / 256.0);
    CGFloat blueChannel  = ( ((CGFloat)((rgbaColor >>   8) & 0xFF)) / 256.0);
    CGFloat alphaChannel = ( ((CGFloat)((rgbaColor >>   0) & 0xFF)) / 256.0);
-   return([self initWithRed:redChannel green:greenChannel blue:blueChannel alpha:alphaChannel]);
+   [self fillWithRed:redChannel green:greenChannel blue:blueChannel alpha:alphaChannel];
+   return;
+}
+
+
+- (void) setRgbaStrokeColor:(NSUInteger)rgbaColor
+{
+   CGFloat redChannel   = ( ((CGFloat)((rgbaColor >>  24) & 0xFF)) / 256.0);
+   CGFloat greenChannel = ( ((CGFloat)((rgbaColor >>  16) & 0xFF)) / 256.0);
+   CGFloat blueChannel  = ( ((CGFloat)((rgbaColor >>   8) & 0xFF)) / 256.0);
+   CGFloat alphaChannel = ( ((CGFloat)((rgbaColor >>   0) & 0xFF)) / 256.0);
+   [self strokeWithRed:redChannel green:greenChannel blue:blueChannel alpha:alphaChannel];
+   return;
 }
 
 

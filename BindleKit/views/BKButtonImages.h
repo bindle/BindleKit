@@ -85,6 +85,10 @@ typedef NSUInteger BKButtonImageState;
 @property (assign, readonly) CGFloat strokeGreenChannel;
 @property (assign, readonly) CGFloat strokeBlueChannel;
 @property (assign, readonly) CGFloat strokeAlphaChannel;
+@property (assign, readwrite) NSUInteger rgbFillColor;
+@property (assign, readwrite) NSUInteger rgbaFillColor;
+@property (assign, readwrite) NSUInteger rgbStrokeColor;
+@property (assign, readwrite) NSUInteger rgbaStrokeColor;
 
 /// @name Creating and Initializing a Button Images
 - (id) init;
