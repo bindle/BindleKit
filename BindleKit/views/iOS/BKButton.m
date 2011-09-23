@@ -72,7 +72,7 @@
 
 /// Creates and initializes an instance of UIButton using 8 bit color channels
 /// This method creates a UIButton with the images based upon the specified color represented as a 24 bit integer.
-/// @param rgb The color as an integer: ( ((red & 0xFF) << 16) | ((green << 8) & 0xFF) | (blue & 0xFF) )
+/// @param rgb The color as an integer: ( (red << 16) | (green << 8) | (blue) )
 /// @return Returns a created instance of UIButton.
 + (UIButton *) buttonWithRGB:(NSInteger)rgb
 {
@@ -82,7 +82,7 @@
 
 /// Creates and initializes an instance of UIButton using 8 bit color channels
 /// This method creates a UIButton with the images based upon the specified color represented as a 24 bit integer.
-/// @param rgb The color as an integer: ( ((red & 0xFF) << 16) | ((green << 8) & 0xFF) | (blue & 0xFF) )
+/// @param rgb The color as an integer: ( (red << 16) | (green << 8) | (blue) )
 /// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
 + (UIButton *) buttonWithRGB:(NSInteger)rgb alpha:(CGFloat)alpha
