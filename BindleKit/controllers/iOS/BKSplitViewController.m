@@ -226,26 +226,10 @@
    NSUInteger         pos;
    UIViewController * aController;
 
-   // if new view controllers are not available, remove old views and exit
-   if (!(viewControllers))
-   {
-      // removes self as parentController
-      if ((controllers))
-      {
-         for(pos = 0; pos < [controllers count]; pos++)
-            [[controllers objectAtIndex:pos] setBKParentViewController:nil];
-      };
+   // check for array of view controllers
+   NSAssert((viewControllers != nil),
+      @"BKSplitViewControllers viewControllers cannot be set to nil.");
 
-      // removes child controllers
-      [controllers release];
-      controllers = nil;
-
-      // removes subviews from self.view (in theory no view should be left)
-      if (self.isViewLoaded == YES)
-         while([self.view.subviews count] > 0)
-            [[self.view.subviews objectAtIndex:0] removeFromSuperview];
-      return;
-   };
 
    // removes old Views from superview
    if ((controllers))
