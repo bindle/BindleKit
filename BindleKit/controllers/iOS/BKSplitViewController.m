@@ -398,6 +398,8 @@
 }
 
 
+#pragma mark - View lifecycle (interface rotatations)
+
 // delegates (to the detail view) the decision to auto rotate
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
