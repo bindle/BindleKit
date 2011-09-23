@@ -39,10 +39,33 @@
 #import <UIKit/UIKit.h>
 
 
+@class BKSplitViewController;
+
+
+# pragma mark - BKSplitViewControllerDelegate Protocol Declaration
+@protocol BKSplitViewControllerDelegate <NSObject>
+
+- (void) splitViewController:(BKSplitViewController *)svc
+         popoverController:(UIPopoverController *)pc
+         willPresentViewController:(UIViewController *)aViewController;
+
+- (void) splitViewController:(BKSplitViewController *)svc
+         willHideViewController:(UIViewController *)aViewController
+         withBarButtonItem:(UIBarButtonItem *)barButtonItem
+         forPopoverController:(UIPopoverController *)pc;
+
+- (void) splitViewController:(BKSplitViewController *)svc
+         willShowViewController:(UIViewController *)aViewController
+         invalidatingBarButtonItem:(UIBarButtonItem *)button;
+
+@end
+
+
 # pragma mark - BKSplitViewController Class Declaration
 @interface BKSplitViewController : UIViewController
 {
    // Members common with UISplitViewController
+   id <BKSplitViewControllerDelegate> delegate;
    NSArray * controllers;
 
    // Members specific to BKSplitViewController
@@ -60,6 +83,7 @@
 }
 
 // Properties common with UISplitViewController
+@property(nonatomic, assign) id <BKSplitViewControllerDelegate> delegate;
 @property(nonatomic, copy)   NSArray * viewControllers;
 
 // Properties specific to BKSplitViewController

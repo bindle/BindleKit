@@ -63,6 +63,7 @@
 @implementation BKSplitViewController
 
 // Properties common with UISplitViewController
+@synthesize delegate;
 @synthesize viewControllers = controllers;
 
 // Properties specific to BKSplitViewController
