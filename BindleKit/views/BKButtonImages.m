@@ -51,6 +51,16 @@
 @implementation BKButtonImages
 #pragma mark - Creating and Initializing a Mutable Array
 
+@synthesize fillRedChannel     = red;
+@synthesize fillGreenChannel   = green;
+@synthesize fillBlueChannel    = blue;
+@synthesize fillAlphaChannel   = alpha;
+@synthesize strokeRedChannel   = borderRed;
+@synthesize strokeGreenChannel = borderGreen;
+@synthesize strokeBlueChannel  = borderBlue;
+@synthesize strokeAlphaChannel = borderAlpha;
+
+
 - (void) dealloc
 {
    if ((normalCGImage))
