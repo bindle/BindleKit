@@ -65,10 +65,10 @@ typedef NSUInteger BKButtonImageState;
    CGFloat           green;
    CGFloat           blue;
    CGFloat           alpha;
-   CGFloat           borderRed;
-   CGFloat           borderGreen;
-   CGFloat           borderBlue;
-   CGFloat           borderAlpha;
+   CGFloat           stokeRed;
+   CGFloat           strokeGreen;
+   CGFloat           strokeBlue;
+   CGFloat           strokeAlpha;
 
    CGColorSpaceRef   color;
    CGImageRef        normalCGImage;
@@ -104,11 +104,11 @@ typedef NSUInteger BKButtonImageState;
        alpha:(CGFloat)alphaChannel;
 
 /// @name Managing Image Colors
-- (void) borderWithRed:(CGFloat)redChannel
+- (void) fillWithRed:(CGFloat)redChannel
          green:(CGFloat)greenChannel
          blue:(CGFloat)blueChannel
          alpha:(CGFloat)alphaChannel;
-- (void) fillWithRed:(CGFloat)redChannel
+- (void) strokeWithRed:(CGFloat)redChannel
          green:(CGFloat)greenChannel
          blue:(CGFloat)blueChannel
          alpha:(CGFloat)alphaChannel;

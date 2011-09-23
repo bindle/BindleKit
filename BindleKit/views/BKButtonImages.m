@@ -55,10 +55,10 @@
 @synthesize fillGreenChannel   = green;
 @synthesize fillBlueChannel    = blue;
 @synthesize fillAlphaChannel   = alpha;
-@synthesize strokeRedChannel   = borderRed;
-@synthesize strokeGreenChannel = borderGreen;
-@synthesize strokeBlueChannel  = borderBlue;
-@synthesize strokeAlphaChannel = borderAlpha;
+@synthesize strokeRedChannel   = strokeRed;
+@synthesize strokeGreenChannel = strokeGreen;
+@synthesize strokeBlueChannel  = strokeBlue;
+@synthesize strokeAlphaChannel = strokeAlpha;
 
 
 - (void) dealloc
@@ -143,10 +143,10 @@
    blue  = blueChannel;
    alpha = alphaChannel;
 
-   borderRed   = 0.0;
-   borderGreen = 0.0;
-   borderBlue  = 0.0;
-   borderAlpha = alpha;
+   strokeRed   = 0.0;
+   strokeGreen = 0.0;
+   strokeBlue  = 0.0;
+   strokeAlpha = alpha;
 
    size  = CGSizeMake(50, 44);
 
@@ -183,38 +183,6 @@
 
 #pragma mark - Managing Image Colors
 
-/// Changes the color of the image's border.
-/// This method changes the border of the image to the specified color channels.
-/// @param redChannel    The red color channel of the image border represented as a CGFloat between 0.0 and 1.0
-/// @param greenChannel  The green color channel of the image border represented as a CGFloat between 0.0 and 1.0
-/// @param blueChannel   The blue color channel of the image border represented as a CGFloat between 0.0 and 1.0
-/// @param alphaChannel  The alpha color channel of the image border represented as a CGFloat between 0.0 and 1.0
-- (void) borderWithRed:(CGFloat)redChannel green:(CGFloat)greenChannel
-   blue:(CGFloat)blueChannel alpha:(CGFloat)alphaChannel
-{
-   if ((normalCGImage))
-      CGImageRelease(normalCGImage);
-   pushedCGImage = nil;
-   if ((pushedCGImage))
-      CGImageRelease(pushedCGImage);
-   pushedCGImage = nil;
-
-   if ((normalImage))
-      [normalImage release];
-   normalImage = nil;
-   if ((pushedImage))
-      [pushedImage release];
-   pushedImage = nil;
-
-   borderRed   = redChannel;
-   borderGreen = greenChannel;
-   borderBlue  = blueChannel;
-   borderAlpha = alphaChannel;
-
-   return;
-}
-
-
 /// Changes the image's fill color.
 /// This method changes the fill color of the image to the specified color channels.
 /// @param redChannel    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
@@ -247,6 +215,38 @@
 }
 
 
+/// Changes the color of the image's border.
+/// This method changes the border of the image to the specified color channels.
+/// @param redChannel    The red color channel of the image border represented as a CGFloat between 0.0 and 1.0
+/// @param greenChannel  The green color channel of the image border represented as a CGFloat between 0.0 and 1.0
+/// @param blueChannel   The blue color channel of the image border represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the image border represented as a CGFloat between 0.0 and 1.0
+- (void) strokeWithRed:(CGFloat)redChannel green:(CGFloat)greenChannel
+   blue:(CGFloat)blueChannel alpha:(CGFloat)alphaChannel
+{
+   if ((normalCGImage))
+      CGImageRelease(normalCGImage);
+   pushedCGImage = nil;
+   if ((pushedCGImage))
+      CGImageRelease(pushedCGImage);
+   pushedCGImage = nil;
+
+   if ((normalImage))
+      [normalImage release];
+   normalImage = nil;
+   if ((pushedImage))
+      [pushedImage release];
+   pushedImage = nil;
+
+   strokeRed   = redChannel;
+   strokeGreen = greenChannel;
+   strokeBlue  = blueChannel;
+   strokeAlpha = alphaChannel;
+
+   return;
+}
+
+
 #pragma mark - Draws images
 
 - (CGContextRef) createContext
@@ -274,7 +274,7 @@
 
    // sets colors
    CGContextSetRGBFillColor(context,   red, green, blue, alpha);
-   CGContextSetRGBStrokeColor(context, borderRed, borderGreen, borderBlue, borderAlpha);
+   CGContextSetRGBStrokeColor(context, strokeRed, strokeGreen, strokeBlue, strokeAlpha);
 
    // calculates points around button
    minx    = 2;
