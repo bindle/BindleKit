@@ -57,6 +57,8 @@
 - (void) arrangeBothViewsHorizontally:(BOOL)animate;
 - (void) arrangeSingleViewHorizontally:(BOOL)animate;
 
+- (void) barButtonItemPushed:(id)sender;
+
 @end
 
 
@@ -81,7 +83,9 @@
 - (void) dealloc
 {
    [controllers      release];
+   [barButton        release];
    [sliderView       release];
+   [popoverController release];
 
    [super dealloc];
 
@@ -135,12 +139,22 @@
    hideSlider             = NO;
    enableAnimations       = YES;
 
+   // creates button bar
+   barButton = [[UIBarButtonItem alloc] initWithTitle:nil
+                                        style:UIBarButtonItemStylePlain
+                                        target:self
+                                        action:@selector(barButtonItemPushed:)];
+
    // creates initial controllers
    controller0 = [[UIViewController alloc] init];
    controller1 = [[UIViewController alloc] init];
    controllers = [[NSArray alloc] initWithObjects:controller0, controller1, nil];
    [controller0 release];
    [controller1 release];
+
+   // creates popover controller
+   popoverController = [[UIPopoverController alloc] initWithContentViewController:[controllers objectAtIndex:0]];
+   popoverController.delegate = self;
 
    return(self);
 }
@@ -230,6 +244,8 @@
    NSAssert((viewControllers != nil),
       @"BKSplitViewControllers viewControllers cannot be set to nil.");
 
+   // assigns new controller to popover
+   popoverController.contentViewController = [viewControllers objectAtIndex:0];
 
    // removes old Views from superview
    if ((controllers))
@@ -284,6 +300,13 @@
                                     UIViewAutoresizingFlexibleHeight;
    self.view = rootView;
    [rootView   release];
+
+   // notifies delegate that master view will be hidden
+   isMasterViewDisplayed = NO;
+   [delegate splitViewController:self
+             willHideViewController:[controllers objectAtIndex:0]
+             withBarButtonItem:barButton
+             forPopoverController:popoverController];
 
    // arranges views
    [self arrangeViewsWithAnimations:NO];
@@ -385,6 +408,9 @@
 {
    UIView * aView;
 
+   if (popoverController.popoverVisible == YES)
+      [popoverController dismissPopoverAnimated:NO];
+
    if (  (displayBothViews == YES) ||
          (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) ||
          (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) )
@@ -434,6 +460,7 @@
 - (void) arrangeBothViewsHorizontally:(BOOL)animate
 {
    NSAutoreleasePool * pool;
+   UIViewController  * aController;
    UIView * view0;
    UIView * view1;
    CGRect   sliderFrame;
@@ -448,6 +475,16 @@
    pool = [[NSAutoreleasePool alloc] init];
 
    frameSize = self.view.bounds.size;
+
+   // notifies delegate that master view is about to be displayed
+   aController = [controllers objectAtIndex:0];
+   if (isMasterViewDisplayed == NO)
+   {
+      [delegate splitViewController:self
+                willShowViewController:aController
+                invalidatingBarButtonItem:barButton];
+      isMasterViewDisplayed = YES;
+   };
 
    // retrieves views in user defined order
    if (!(reverseViewOrder))
@@ -558,7 +595,8 @@
 
 - (void) arrangeSingleViewHorizontally:(BOOL)animate
 {
-   UIView * aView;
+   UIView           * aView;
+   UIViewController * aController;
 
    // begin animations
    if ((animate))
@@ -576,6 +614,18 @@
    // commits animation to be run
    if ((animate))
       [UIView commitAnimations];
+
+   // notifies delegate that master view will be hidden and then removes view
+   aController = [controllers objectAtIndex:0];
+   if (isMasterViewDisplayed == YES)
+   {
+      [delegate splitViewController:self
+                willHideViewController:aController
+                withBarButtonItem:barButton
+                forPopoverController:popoverController];
+      [aController.view removeFromSuperview];
+      isMasterViewDisplayed = NO;
+   };
 
    return;
 }
@@ -627,6 +677,28 @@
       splitPoint.x    = point.x;
       [self arrangeViewsWithAnimations:NO];
    };
+   return;
+}
+
+
+#pragma mark - UIBarButtonItem targets
+
+- (void) barButtonItemPushed:(id)sender
+{
+   UIViewController * aController;
+
+   aController = [controllers objectAtIndex:0];
+
+   // notifies delegate that the view will be displayed
+   [delegate splitViewController:self
+             popoverController:popoverController
+             willPresentViewController:aController];
+
+   // presents popover with master view
+   [popoverController presentPopoverFromBarButtonItem:barButton
+                      permittedArrowDirections:UIPopoverArrowDirectionAny
+                      animated:YES];
+
    return;
 }
 

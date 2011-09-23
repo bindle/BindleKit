@@ -75,7 +75,7 @@
 
 
 # pragma mark - BKSplitViewController Class Declaration
-@interface BKSplitViewController : UIViewController
+@interface BKSplitViewController : UIViewController <UIPopoverControllerDelegate>
 {
    // Members common with UISplitViewController
    id <BKSplitViewControllerDelegate> delegate;
@@ -92,8 +92,11 @@
    BOOL      hideSlider;
 
    // Members internal to BKSplitViewController
-   UIView  * sliderView;
-   BOOL      spliderIsMoving;
+   UIBarButtonItem     * barButton;
+   UIPopoverController * popoverController;
+   UIView              * sliderView;
+   BOOL                  spliderIsMoving;
+   BOOL                  isMasterViewDisplayed;
 }
 
 // Properties common with UISplitViewController
