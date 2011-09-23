@@ -39,6 +39,19 @@
 #import <UIKit/UIKit.h>
 
 
+# pragma mark - Optionally overrides UISplitViewController
+#if USE_BKSPLITVIEWCONTROLLER
+#ifdef UISplitViewController
+#undef UISplitViewController
+#endif
+#ifdef UISplitViewControllerDelegate
+#undef UISplitViewControllerDelegate
+#endif
+#define UISplitViewController BKSplitViewController
+#define UISplitViewControllerDelegate BKSplitViewControllerDelegate
+#endif
+
+
 @class BKSplitViewController;
 
 
