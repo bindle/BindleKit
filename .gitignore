@@ -3,5 +3,6 @@
 *.pbxuser
 *.xcuserdatad
 /docs/
+/examples/
 .DS_Store
 a.out
