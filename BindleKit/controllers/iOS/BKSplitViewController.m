@@ -49,7 +49,7 @@
 
 
 #pragma mark - Private BKSplitViewController Category Declaration
-@interface BKSplitViewController ()
+@interface BKSplitViewController () <UIPopoverControllerDelegate>
 
 - (UIView *) sliderViewWithFrame:(CGRect)sliderFrame;
 

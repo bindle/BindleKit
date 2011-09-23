@@ -75,7 +75,7 @@
 
 
 # pragma mark - BKSplitViewController Class Declaration
-@interface BKSplitViewController : UIViewController <UIPopoverControllerDelegate>
+@interface BKSplitViewController : UIViewController
 {
    // Members common with UISplitViewController
    id <BKSplitViewControllerDelegate> delegate;  // notify of view events
