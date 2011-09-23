@@ -77,14 +77,14 @@ typedef NSUInteger BKButtonImageState;
    id                pushedImage;
 }
 
-@property (assign, readonly) CGFloat fillRedChannel;
-@property (assign, readonly) CGFloat fillGreenChannel;
-@property (assign, readonly) CGFloat fillBlueChannel;
-@property (assign, readonly) CGFloat fillAlphaChannel;
-@property (assign, readonly) CGFloat strokeRedChannel;
-@property (assign, readonly) CGFloat strokeGreenChannel;
-@property (assign, readonly) CGFloat strokeBlueChannel;
-@property (assign, readonly) CGFloat strokeAlphaChannel;
+@property (assign, readonly)  CGFloat    fillRedChannel;
+@property (assign, readonly)  CGFloat    fillGreenChannel;
+@property (assign, readonly)  CGFloat    fillBlueChannel;
+@property (assign, readonly)  CGFloat    fillAlphaChannel;
+@property (assign, readonly)  CGFloat    strokeRedChannel;
+@property (assign, readonly)  CGFloat    strokeGreenChannel;
+@property (assign, readonly)  CGFloat    strokeBlueChannel;
+@property (assign, readonly)  CGFloat    strokeAlphaChannel;
 @property (assign, readwrite) NSUInteger rgbFillColor;
 @property (assign, readwrite) NSUInteger rgbaFillColor;
 @property (assign, readwrite) NSUInteger rgbStrokeColor;
