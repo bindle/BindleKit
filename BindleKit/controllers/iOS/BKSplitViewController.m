@@ -57,7 +57,7 @@
 - (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
 - (void) arrangeBothViewsHorizontallyWithAnimations:(BOOL)animate;
 - (void) arrangeSingleViewHorizontallyWithAnimations:(BOOL)animate;
-- (void) removeHiddenViewsWithAnimation:(BOOL)animate;
+- (void) removeHiddenViews;
 
 // popover manager methods
 - (void) displayPopoverControllerFromSender:(id)sender;
@@ -163,7 +163,7 @@
       return;
    displayBothViews = aBool;
    [self arrangeViewsWithAnimations:enableAnimations];
-   [self removeHiddenViewsWithAnimation:enableAnimations];
+   [self removeHiddenViews];
    return;
 }
 
@@ -172,7 +172,7 @@
 {
    hideSlider = aBool;
    [self arrangeViewsWithAnimations:enableAnimations];
-   [self removeHiddenViewsWithAnimation:enableAnimations];
+   [self removeHiddenViews];
    return;
 }
 
@@ -430,7 +430,7 @@
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-   [self removeHiddenViewsWithAnimation:NO];
+   [self removeHiddenViews];
    return;
 }
 
@@ -606,14 +606,10 @@
 }
 
 
-- (void) removeHiddenViewsWithAnimation:(BOOL)animate
+- (void) removeHiddenViews
 {
    UIViewController * aController;
    BOOL               removeView;
-
-   // begin animations
-   if ((animate))
-      [UIView beginAnimations:nil context:nil];
 
    // determines if master view should be removed
    aController = [controllers objectAtIndex:0];
@@ -652,10 +648,6 @@
       if ((sliderView))
          if ((sliderView.superview))
             [sliderView removeFromSuperview];
-
-   // commits animation to be run
-   if ((animate))
-      [UIView commitAnimations];
 
    return;
 }
