@@ -53,12 +53,16 @@
 
 - (UIView *) sliderViewWithFrame:(CGRect)sliderFrame;
 
+// subview manager methods
 - (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
 - (void) arrangeBothViewsHorizontallyWithAnimations:(BOOL)animate;
 - (void) arrangeSingleViewHorizontallyWithAnimations:(BOOL)animate;
 - (void) removeHiddenViewsWithAnimation:(BOOL)animate;
 
-- (void) barButtonItemPushed:(id)sender;
+// popover manager methods
+- (void) displayPopoverControllerFromSender:(id)sender;
+- (void) loadPopoverController;
+- (void) unloadPopoverController;
 
 @end
 
@@ -140,22 +144,12 @@
    hideSlider             = NO;
    enableAnimations       = YES;
 
-   // creates button bar
-   barButton = [[UIBarButtonItem alloc] initWithTitle:nil
-                                        style:UIBarButtonItemStylePlain
-                                        target:self
-                                        action:@selector(barButtonItemPushed:)];
-
    // creates initial controllers
    controller0 = [[UIViewController alloc] init];
    controller1 = [[UIViewController alloc] init];
    controllers = [[NSArray alloc] initWithObjects:controller0, controller1, nil];
    [controller0 release];
    [controller1 release];
-
-   // creates popover controller
-   popoverController = [[UIPopoverController alloc] initWithContentViewController:[controllers objectAtIndex:0]];
-   popoverController.delegate = self;
 
    return(self);
 }
@@ -247,9 +241,6 @@
    NSAssert((viewControllers != nil),
       @"BKSplitViewControllers viewControllers cannot be set to nil.");
 
-   // assigns new controller to popover
-   popoverController.contentViewController = [viewControllers objectAtIndex:0];
-
    // removes old Views from superview
    if ((controllers))
    {
@@ -304,12 +295,8 @@
    self.view = rootView;
    [rootView   release];
 
-   // notifies delegate that master view will be hidden
-   isMasterViewDisplayed = NO;
-   [delegate splitViewController:self
-             willHideViewController:[controllers objectAtIndex:0]
-             withBarButtonItem:barButton
-             forPopoverController:popoverController];
+   // load popoverController
+   [self loadPopoverController];
 
    // arranges views
    [self arrangeViewsWithAnimations:NO];
@@ -413,13 +400,15 @@
 {
    UIView * aView;
 
-   if (popoverController.popoverVisible == YES)
-      [popoverController dismissPopoverAnimated:NO];
+   if ((popoverController))
+      if (popoverController.popoverVisible == YES)
+         [popoverController dismissPopoverAnimated:NO];
 
    if (  (displayBothViews == YES) ||
          (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) ||
          (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) )
    {
+      [self unloadPopoverController];
       aView  = [[controllers objectAtIndex:0] view];
       if (aView.superview != self.view)
       {
@@ -472,7 +461,6 @@
 - (void) arrangeBothViewsHorizontallyWithAnimations:(BOOL)animate
 {
    NSAutoreleasePool * pool;
-   UIViewController  * aController;
    UIView * view0;
    UIView * view1;
    CGRect   sliderFrame;
@@ -489,14 +477,7 @@
    frameSize = self.view.bounds.size;
 
    // notifies delegate that master view is about to be displayed
-   aController = [controllers objectAtIndex:0];
-   if (isMasterViewDisplayed == NO)
-   {
-      [delegate splitViewController:self
-                willShowViewController:aController
-                invalidatingBarButtonItem:barButton];
-      isMasterViewDisplayed = YES;
-   };
+   [self unloadPopoverController];
 
    // retrieves views in user defined order
    if (!(reverseViewOrder))
@@ -650,12 +631,8 @@
    // removes master view
    if (removeView == YES)
    {
-      [delegate splitViewController:self
-                willHideViewController:aController
-                withBarButtonItem:barButton
-                forPopoverController:popoverController];
+      [self loadPopoverController];
       [aController.view removeFromSuperview];
-      isMasterViewDisplayed = NO;
    };
 
    // determines if slider view should be removed
@@ -679,6 +656,102 @@
    // commits animation to be run
    if ((animate))
       [UIView commitAnimations];
+
+   return;
+}
+
+
+#pragma mark - popover manager methods
+
+- (void) displayPopoverControllerFromSender:(id)sender
+{
+   UIViewController * aController;
+
+   aController = [controllers objectAtIndex:0];
+
+   if (!(popoverController))
+      return;
+
+   // dismisses popover controller if already visible
+   if (popoverController.isPopoverVisible)
+   {
+      [popoverController dismissPopoverAnimated:YES];
+      return;
+   };
+
+   // notifies delegate that the view will be displayed
+   [delegate splitViewController:self
+             popoverController:popoverController
+             willPresentViewController:aController];
+
+   // presents popover with master view
+   [popoverController presentPopoverFromBarButtonItem:barButton
+                      permittedArrowDirections:UIPopoverArrowDirectionAny
+                      animated:YES];
+
+   return;
+}
+
+
+- (void) loadPopoverController
+{
+   UIViewController * aController;
+
+   aController = [controllers objectAtIndex:0];
+
+   if ((popoverController))
+      return;
+
+   // allocates new popover controller
+   popoverController = [[UIPopoverController alloc]
+                       initWithContentViewController:aController];
+
+   // allocates bar button item
+   barButton = [[UIBarButtonItem alloc]
+               initWithTitle:nil
+               style:UIBarButtonItemStylePlain
+               target:self
+               action:@selector(displayPopoverControllerFromSender:)];
+
+   // notifies delegate that controller has been added to popover controller
+   [delegate splitViewController:self
+             willHideViewController:aController
+             withBarButtonItem:barButton
+             forPopoverController:popoverController];
+
+   return;
+}
+
+
+- (void) unloadPopoverController
+{
+   UIViewController * aController;
+
+   if (!(popoverController))
+      return;
+
+   aController = [controllers objectAtIndex:0];
+
+   // dismisses popover controller view
+   if (popoverController.popoverVisible != YES)
+      [popoverController presentPopoverFromRect:CGRectZero inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
+   [popoverController dismissPopoverAnimated:NO];
+
+   // informs delegate that controller's view will be shown
+   [delegate splitViewController:self
+             willShowViewController:aController
+             invalidatingBarButtonItem:barButton];
+
+   // frees popoverController
+   [popoverController release];
+   popoverController = nil;
+
+   // frees bar button item
+   [barButton release];
+   barButton = nil;
+
+   // sets controller's parentController to self again
+   [aController setBKParentViewController:self];
 
    return;
 }
@@ -730,35 +803,6 @@
       splitPoint.x    = point.x;
       [self arrangeViewsWithAnimations:NO];
    };
-   return;
-}
-
-
-#pragma mark - UIBarButtonItem targets
-
-- (void) barButtonItemPushed:(id)sender
-{
-   UIViewController * aController;
-
-   // dismisses popover controller if already visible
-   if (popoverController.isPopoverVisible)
-   {
-      [popoverController dismissPopoverAnimated:YES];
-      return;
-   };
-
-   aController = [controllers objectAtIndex:0];
-
-   // notifies delegate that the view will be displayed
-   [delegate splitViewController:self
-             popoverController:popoverController
-             willPresentViewController:aController];
-
-   // presents popover with master view
-   [popoverController presentPopoverFromBarButtonItem:barButton
-                      permittedArrowDirections:UIPopoverArrowDirectionAny
-                      animated:YES];
-
    return;
 }
 
