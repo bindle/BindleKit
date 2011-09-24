@@ -56,41 +56,41 @@
 
 /// Creates and initializes an instance of UIButton.
 /// This method creates a UIButton with the button images based upon the specified color.
-/// @param red    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
-/// @param green  The green color channel of the button image represented as a CGFloat between 0.0 and 1.0
-/// @param blue   The blue color channel of the button image represented as a CGFloat between 0.0 and 1.0
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param redChannel    The red color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param greenChannel  The green color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param blueChannel   The blue color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) buttonWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue
-   alpha:(CGFloat)alpha
++ (UIButton *) buttonWithRed:(CGFloat)redChannel green:(CGFloat)greenChannel
+   blue:(CGFloat)blueChannel alpha:(CGFloat)alphaChannel
 {
    BKButtonImages * images;
-   images = [BKButtonImages imagesWithRed:red green:green blue:blue alpha:alpha];
+   images = [BKButtonImages imagesWithRed:redChannel green:greenChannel blue:blueChannel alpha:alphaChannel];
    return([BKButton buttonWithImages:images]);
 }
 
 
 /// Creates and initializes an instance of UIButton using 8 bit color channels
 /// This method creates a UIButton with the images based upon the specified color represented as a 24 bit integer.
-/// @param rgb The color as an integer: ( (red << 16) | (green << 8) | (blue) )
+/// @param rgbColor   The color as an integer: ( (red << 16) | (green << 8) | (blue) )
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) buttonWithRGB:(NSInteger)rgb
++ (UIButton *) buttonWithRGB:(NSInteger)rgbColor
 {
-   return([BKButton buttonWithRGB:rgb alpha:1.0]);
+   return([BKButton buttonWithRGB:rgbColor alpha:1.0]);
 }
 
 
 /// Creates and initializes an instance of UIButton using 8 bit color channels
 /// This method creates a UIButton with the images based upon the specified color represented as a 24 bit integer.
-/// @param rgb The color as an integer: ( (red << 16) | (green << 8) | (blue) )
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param rgbColor      The color as an integer: ( (red << 16) | (green << 8) | (blue) )
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) buttonWithRGB:(NSInteger)rgb alpha:(CGFloat)alpha
++ (UIButton *) buttonWithRGB:(NSInteger)rgbColor alpha:(CGFloat)alphaChannel
 {
-   CGFloat red   = ( ((CGFloat)((rgb >>  16) & 0xFF)) / 256.0);
-   CGFloat green = ( ((CGFloat)((rgb >>   8) & 0xFF)) / 256.0);
-   CGFloat blue  = ( ((CGFloat)((rgb >>   0) & 0xFF)) / 256.0);
-   return([BKButton buttonWithRed:red green:green blue:blue alpha:alpha]);
+   CGFloat red   = ( ((CGFloat)((rgbColor >>  16) & 0xFF)) / 256.0);
+   CGFloat green = ( ((CGFloat)((rgbColor >>   8) & 0xFF)) / 256.0);
+   CGFloat blue  = ( ((CGFloat)((rgbColor >>   0) & 0xFF)) / 256.0);
+   return([BKButton buttonWithRed:red green:green blue:blue alpha:alphaChannel]);
 }
 
 
@@ -226,141 +226,141 @@
 
 /// A convenience method for creating a black button.
 /// This method creates a UIButton with the images based upon a black color and the specified alpha channel.
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) blackButtonWithAlpha:(CGFloat)alpha
++ (UIButton *) blackButtonWithAlpha:(CGFloat)alphaChannel
 {
-   return([BKButton buttonWithRGB:BKButtonColorBlack alpha:alpha]);
+   return([BKButton buttonWithRGB:BKButtonColorBlack alpha:alphaChannel]);
 }
 
 
 /// A convenience method for creating a blue button.
 /// This method creates a UIButton with the images based upon a blue color and the specified alpha channel.
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) blueButtonWithAlpha:(CGFloat)alpha
++ (UIButton *) blueButtonWithAlpha:(CGFloat)alphaChannel
 {
-   return([BKButton buttonWithRGB:BKButtonColorBlue alpha:alpha]);
+   return([BKButton buttonWithRGB:BKButtonColorBlue alpha:alphaChannel]);
 }
 
 
 /// A convenience method for creating a brown button.
 /// This method creates a UIButton with the images based upon a brown color and the specified alpha channel.
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) brownButtonWithAlpha:(CGFloat)alpha
++ (UIButton *) brownButtonWithAlpha:(CGFloat)alphaChannel
 {
-   return([BKButton buttonWithRGB:BKButtonColorBrown alpha:alpha]);
+   return([BKButton buttonWithRGB:BKButtonColorBrown alpha:alphaChannel]);
 }
 
 
 /// A convenience method for creating a cyan button.
 /// This method creates a UIButton with the images based upon a cyan color and the specified alpha channel.
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) cyanButtonWithAlpha:(CGFloat)alpha
++ (UIButton *) cyanButtonWithAlpha:(CGFloat)alphaChannel
 {
-   return([BKButton buttonWithRGB:BKButtonColorCyan alpha:alpha]);
+   return([BKButton buttonWithRGB:BKButtonColorCyan alpha:alphaChannel]);
 }
 
 
 /// A convenience method for creating a dark gray button.
 /// This method creates a UIButton with the images based upon a dark gray color and the specified alpha channel.
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) darkGrayButtonWithAlpha:(CGFloat)alpha
++ (UIButton *) darkGrayButtonWithAlpha:(CGFloat)alphaChannel
 {
-   return([BKButton buttonWithRGB:BKButtonColorDarkGray alpha:alpha]);
+   return([BKButton buttonWithRGB:BKButtonColorDarkGray alpha:alphaChannel]);
 }
 
 
 /// A convenience method for creating a gray button.
 /// This method creates a UIButton with the images based upon a gray color and the specified alpha channel.
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) grayButtonWithAlpha:(CGFloat)alpha
++ (UIButton *) grayButtonWithAlpha:(CGFloat)alphaChannel
 {
-   return([BKButton buttonWithRGB:BKButtonColorGray alpha:alpha]);
+   return([BKButton buttonWithRGB:BKButtonColorGray alpha:alphaChannel]);
 }
 
 
 /// A convenience method for creating a green button.
 /// This method creates a UIButton with the images based upon a green color and the specified alpha channel.
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) greenButtonWithAlpha:(CGFloat)alpha
++ (UIButton *) greenButtonWithAlpha:(CGFloat)alphaChannel
 {
-   return([BKButton buttonWithRGB:BKButtonColorGreen alpha:alpha]);
+   return([BKButton buttonWithRGB:BKButtonColorGreen alpha:alphaChannel]);
 }
 
 
 /// A convenience method for creating a light gray button.
 /// This method creates a UIButton with the images based upon a light gray color and the specified alpha channel.
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) lightGrayButtonWithAlpha:(CGFloat)alpha
++ (UIButton *) lightGrayButtonWithAlpha:(CGFloat)alphaChannel
 {
-   return([BKButton buttonWithRGB:BKButtonColorLightGray alpha:alpha]);
+   return([BKButton buttonWithRGB:BKButtonColorLightGray alpha:alphaChannel]);
 }
 
 
 /// A convenience method for creating a magenta button.
 /// This method creates a UIButton with the images based upon a magenta color and the specified alpha channel.
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) magentaButtonWithAlpha:(CGFloat)alpha
++ (UIButton *) magentaButtonWithAlpha:(CGFloat)alphaChannel
 {
-   return([BKButton buttonWithRGB:BKButtonColorMagenta alpha:alpha]);
+   return([BKButton buttonWithRGB:BKButtonColorMagenta alpha:alphaChannel]);
 }
 
 
 /// A convenience method for creating a orange button.
 /// This method creates a UIButton with the images based upon a orange color and the specified alpha channel.
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) orangeButtonWithAlpha:(CGFloat)alpha
++ (UIButton *) orangeButtonWithAlpha:(CGFloat)alphaChannel
 {
-   return([BKButton buttonWithRGB:BKButtonColorOrange alpha:alpha]);
+   return([BKButton buttonWithRGB:BKButtonColorOrange alpha:alphaChannel]);
 }
 
 
 /// A convenience method for creating a purple button.
 /// This method creates a UIButton with the images based upon a purple color and the specified alpha channel.
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) purpleButtonWithAlpha:(CGFloat)alpha
++ (UIButton *) purpleButtonWithAlpha:(CGFloat)alphaChannel
 {
-   return([BKButton buttonWithRGB:BKButtonColorPurple alpha:alpha]);
+   return([BKButton buttonWithRGB:BKButtonColorPurple alpha:alphaChannel]);
 }
 
 
 /// A convenience method for creating a red button.
 /// This method creates a UIButton with the images based upon a red color and the specified alpha channel.
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) redButtonWithAlpha:(CGFloat)alpha
++ (UIButton *) redButtonWithAlpha:(CGFloat)alphaChannel
 {
-   return([BKButton buttonWithRGB:BKButtonColorRed alpha:alpha]);
+   return([BKButton buttonWithRGB:BKButtonColorRed alpha:alphaChannel]);
 }
 
 
 /// A convenience method for creating a white button.
 /// This method creates a UIButton with the images based upon a white color and the specified alpha channel.
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) whiteButtonWithAlpha:(CGFloat)alpha
++ (UIButton *) whiteButtonWithAlpha:(CGFloat)alphaChannel
 {
-   return([BKButton buttonWithRGB:BKButtonColorWhite alpha:alpha]);
+   return([BKButton buttonWithRGB:BKButtonColorWhite alpha:alphaChannel]);
 }
 
 
 /// A convenience method for creating a yellow button.
 /// This method creates a UIButton with the images based upon a yellow color and the specified alpha channel.
-/// @param alpha  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
+/// @param alphaChannel  The alpha color channel of the button image represented as a CGFloat between 0.0 and 1.0
 /// @return Returns a created instance of UIButton.
-+ (UIButton *) yellowButtonWithAlpha:(CGFloat)alpha
++ (UIButton *) yellowButtonWithAlpha:(CGFloat)alphaChannel
 {
-   return([BKButton buttonWithRGB:BKButtonColorYellow alpha:alpha]);
+   return([BKButton buttonWithRGB:BKButtonColorYellow alpha:alphaChannel]);
 }
 
 @end

@@ -66,10 +66,10 @@ typedef NSUInteger BKButtonColor;
 
 /// @name Creating a Button
 + (UIButton *) buttonWithImages:(BKButtonImages *)images;
-+ (UIButton *) buttonWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue
-   alpha:(CGFloat)alpha;
-+ (UIButton *) buttonWithRGB:(NSInteger)rgb;
-+ (UIButton *) buttonWithRGB:(NSInteger)rgb alpha:(CGFloat)alpha;
++ (UIButton *) buttonWithRed:(CGFloat)redChannel green:(CGFloat)greenChannel
+   blue:(CGFloat)blueChannel alpha:(CGFloat)alphaChannel;
++ (UIButton *) buttonWithRGB:(NSInteger)rgbColor;
++ (UIButton *) buttonWithRGB:(NSInteger)rgbColor alpha:(CGFloat)alphaChannel;
 
 /// @name Creating a Button with standard colors
 + (UIButton *) blackButton;
@@ -88,19 +88,19 @@ typedef NSUInteger BKButtonColor;
 + (UIButton *) yellowButton;
 
 /// @name Creating a Button with standard colors and alpha channels
-+ (UIButton *) blackButtonWithAlpha:(CGFloat)alpha;
-+ (UIButton *) blueButtonWithAlpha:(CGFloat)alpha;
-+ (UIButton *) brownButtonWithAlpha:(CGFloat)alpha;
-+ (UIButton *) cyanButtonWithAlpha:(CGFloat)alpha;
-+ (UIButton *) darkGrayButtonWithAlpha:(CGFloat)alpha;
-+ (UIButton *) grayButtonWithAlpha:(CGFloat)alpha;
-+ (UIButton *) greenButtonWithAlpha:(CGFloat)alpha;
-+ (UIButton *) lightGrayButtonWithAlpha:(CGFloat)alpha;
-+ (UIButton *) magentaButtonWithAlpha:(CGFloat)alpha;
-+ (UIButton *) orangeButtonWithAlpha:(CGFloat)alpha;
-+ (UIButton *) purpleButtonWithAlpha:(CGFloat)alpha;
-+ (UIButton *) redButtonWithAlpha:(CGFloat)alpha;
-+ (UIButton *) whiteButtonWithAlpha:(CGFloat)alpha;
-+ (UIButton *) yellowButtonWithAlpha:(CGFloat)alpha;
++ (UIButton *) blackButtonWithAlpha:(CGFloat)alphaChannel;
++ (UIButton *) blueButtonWithAlpha:(CGFloat)alphaChannel;
++ (UIButton *) brownButtonWithAlpha:(CGFloat)alphaChannel;
++ (UIButton *) cyanButtonWithAlpha:(CGFloat)alphaChannel;
++ (UIButton *) darkGrayButtonWithAlpha:(CGFloat)alphaChannel;
++ (UIButton *) grayButtonWithAlpha:(CGFloat)alphaChannel;
++ (UIButton *) greenButtonWithAlpha:(CGFloat)alphaChannel;
++ (UIButton *) lightGrayButtonWithAlpha:(CGFloat)alphaChannel;
++ (UIButton *) magentaButtonWithAlpha:(CGFloat)alphaChannel;
++ (UIButton *) orangeButtonWithAlpha:(CGFloat)alphaChannel;
++ (UIButton *) purpleButtonWithAlpha:(CGFloat)alphaChannel;
++ (UIButton *) redButtonWithAlpha:(CGFloat)alphaChannel;
++ (UIButton *) whiteButtonWithAlpha:(CGFloat)alphaChannel;
++ (UIButton *) yellowButtonWithAlpha:(CGFloat)alphaChannel;
 
 @end
