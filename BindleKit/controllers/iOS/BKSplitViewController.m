@@ -59,6 +59,13 @@
 - (void) arrangeSingleViewHorizontallyWithAnimations:(BOOL)animate;
 - (void) removeHiddenViews;
 
+// animation delegate
+
+- (void) beginAnimations:animationID context:animationContext;
+- (void) commitAnimations;
+- (void) animationDidStop:(NSString *)animationID finished:(NSNumber *)finished
+         context:(void *)context;
+
 // popover manager methods
 - (void) displayPopoverControllerFromSender:(id)sender;
 - (void) loadPopoverController;
@@ -163,7 +170,6 @@
       return;
    displayBothViews = aBool;
    [self arrangeViewsWithAnimations:enableAnimations];
-   [self removeHiddenViews];
    return;
 }
 
@@ -172,7 +178,6 @@
 {
    hideSlider = aBool;
    [self arrangeViewsWithAnimations:enableAnimations];
-   [self removeHiddenViews];
    return;
 }
 
@@ -541,7 +546,7 @@
 
    // begin animations
    if ((animate))
-      [UIView beginAnimations:nil context:nil];
+      [self beginAnimations:nil context:nil];
 
    // positions left view
    if (view0.superview != self.view)
@@ -573,7 +578,7 @@
 
    // commits animation to be run
    if ((animate))
-      [UIView commitAnimations];
+      [self commitAnimations];
 
    [pool release];
 
@@ -587,7 +592,7 @@
 
    // begin animations
    if ((animate))
-      [UIView beginAnimations:nil context:nil];
+      [self beginAnimations:nil context:nil];
 
    // positions detail view
    aView = [[controllers objectAtIndex:1] view];
@@ -600,7 +605,7 @@
 
    // commits animation to be run
    if ((animate))
-      [UIView commitAnimations];
+      [self commitAnimations];
 
    return;
 }
@@ -649,6 +654,31 @@
          if ((sliderView.superview))
             [sliderView removeFromSuperview];
 
+   return;
+}
+
+
+#pragma mark - animation delegate
+
+- (void) beginAnimations:animationID context:animationContext
+{
+   [UIView beginAnimations:animationID context:nil];
+   [UIView setAnimationDelegate:self];
+   [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+   return;
+}
+
+
+- (void) commitAnimations
+{
+   [UIView commitAnimations];
+   return;
+}
+
+
+- (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+   [self removeHiddenViews];
    return;
 }
 
