@@ -468,7 +468,7 @@
    NSAutoreleasePool * pool;
    UIView * view0;
    UIView * view1;
-   CGRect   sliderFrame;
+   CGRect   aFrame;
    CGSize   frameSize;
    CGFloat  limit;
    CGFloat  adjustmentForSlider;
@@ -508,40 +508,18 @@
    if (splitPoint.x > (limit - minimumViewSize.width - (sliderSize.width/2)))
       splitPoint.x = limit - minimumViewSize.width - (sliderSize.width/2);
 
-   // removes slider view if marked as hidden
+   // adjusts rounded corners depending on the slider view status
    if (hideSlider == YES)
    {
-      // adjust corners of master & detail views
       if (view0.layer.cornerRadius != 5)
          view0.layer.cornerRadius = 5;
       if (view1.layer.cornerRadius != 5)
          view1.layer.cornerRadius = 5;
-   };
-
-   // calculates slider view position
-   frameX      = splitPoint.x - adjustmentForSlider;
-   frameY      = 0;
-   frameWidth  = sliderSize.width;
-   frameHeight = frameSize.height;
-   sliderFrame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
-
-   // adds slider view if marked as visible
-   if (hideSlider == NO)
-   {
-      // adjust corners of master & detail views
+   } else {
       if (view0.layer.cornerRadius != 0)
          view0.layer.cornerRadius = 0;
       if (view0.layer.cornerRadius != 0)
          view1.layer.cornerRadius = 0;
-
-      // adjusts slider view
-      if (!(sliderView))
-         sliderView = [[self sliderViewWithFrame:sliderFrame] retain];
-      if (!(sliderView.superview))
-      {
-         [self.view addSubview:sliderView];
-         [self.view sendSubviewToBack:sliderView];
-      };
    };
 
    // begin animations
@@ -549,8 +527,6 @@
       [self beginAnimations:nil context:nil];
 
    // positions left view
-   if (view0.superview != self.view)
-      [self.view addSubview:view0];
    frameX      = 0;
    frameY      = 0;
    frameWidth  = splitPoint.x-adjustmentForSlider;
@@ -558,12 +534,29 @@
    view0.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
    view0.autoresizingMask   = UIViewAutoresizingFlexibleRightMargin |
                               UIViewAutoresizingFlexibleHeight;
+   if (view0.superview != self.view)
+      [self.view addSubview:view0];
+
+   // adds slider view if marked as visible
+   if (hideSlider == NO)
+   {
+      frameX      = splitPoint.x - adjustmentForSlider;
+      frameY      = 0;
+      frameWidth  = sliderSize.width;
+      frameHeight = frameSize.height;
+      aFrame      = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+      if (!(sliderView))
+         sliderView = [[self sliderViewWithFrame:aFrame] retain];
+      if (!(sliderView.superview))
+      {
+         [self.view addSubview:sliderView];
+         [self.view sendSubviewToBack:sliderView];
+      };
+   };
 
    // positions right view
    if (!(adjustmentForSlider))
       adjustmentForSlider = 1;
-   if (view1.superview != self.view)
-      [self.view addSubview:view1];
    frameX      = splitPoint.x + adjustmentForSlider;
    frameY      = 0;
    frameWidth  = frameSize.width - splitPoint.x - adjustmentForSlider;
@@ -571,10 +564,8 @@
    view1.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
    view1.autoresizingMask   = UIViewAutoresizingFlexibleHeight |
                               UIViewAutoresizingFlexibleWidth;
-
-   // positions slider view
-   if (hideSlider == NO)
-      sliderView.frame = sliderFrame;
+   if (view1.superview != self.view)
+      [self.view addSubview:view1];
 
    // commits animation to be run
    if ((animate))
