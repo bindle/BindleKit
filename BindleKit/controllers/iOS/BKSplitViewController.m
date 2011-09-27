@@ -175,22 +175,22 @@
 }
 
 
-- (void) setDividerHidden:(BOOL)aBool
-{
-   if (aBool == dividerHidden)
-      return;
-   dividerHidden = aBool;
-   [self arrangeViewsWithAnimations:animationsEnabled];
-   return;
-}
-
-
 - (void) setDividePoint:(CGPoint)aPoint
 {
    if ( (aPoint.x == dividePoint.x) &&
         (aPoint.y == dividePoint.y) )
       return;
    dividePoint = aPoint;
+   [self arrangeViewsWithAnimations:animationsEnabled];
+   return;
+}
+
+
+- (void) setDividerHidden:(BOOL)aBool
+{
+   if (aBool == dividerHidden)
+      return;
+   dividerHidden = aBool;
    [self arrangeViewsWithAnimations:animationsEnabled];
    return;
 }
@@ -221,26 +221,6 @@
       minimumViewSize.height = aSize.height;
    else
       minimumViewSize.height = (limit - dividerSize.height) / 2;
-
-   [self arrangeViewsWithAnimations:animationsEnabled];
-
-   return;
-}
-
-
-- (void) setViewOrderReversed:(BOOL)aBool
-{
-   CGSize frameSize;
-
-   frameSize = self.view.bounds.size;
-   if (aBool != viewOrderReversed)
-   {
-      // calculates new position of the divider/dividePoint
-      dividePoint = CGPointMake(frameSize.width-dividePoint.x,
-                                frameSize.height-dividePoint.y);
-   };
-
-   viewOrderReversed = aBool;
 
    [self arrangeViewsWithAnimations:animationsEnabled];
 
@@ -287,6 +267,26 @@
       [[controllers objectAtIndex:pos] setBKParentViewController:self];
 
    // arranges views
+   [self arrangeViewsWithAnimations:animationsEnabled];
+
+   return;
+}
+
+
+- (void) setViewOrderReversed:(BOOL)aBool
+{
+   CGSize frameSize;
+
+   frameSize = self.view.bounds.size;
+   if (aBool != viewOrderReversed)
+   {
+      // calculates new position of the divider/dividePoint
+      dividePoint = CGPointMake(frameSize.width-dividePoint.x,
+                                frameSize.height-dividePoint.y);
+   };
+
+   viewOrderReversed = aBool;
+
    [self arrangeViewsWithAnimations:animationsEnabled];
 
    return;
