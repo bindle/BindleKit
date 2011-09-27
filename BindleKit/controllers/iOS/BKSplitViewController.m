@@ -585,7 +585,7 @@
 
    frameSize = self.view.bounds.size;
 
-   // positions detail view
+   // positions detail view in full screen
    orientation = self.interfaceOrientation;
    if ( ((!(bothViewsDisplayed)) && (orientation == UIInterfaceOrientationPortrait)) ||
         ((!(bothViewsDisplayed)) && (orientation == UIInterfaceOrientationPortraitUpsideDown)) )
