@@ -55,8 +55,8 @@
 
 // subview manager methods
 - (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
-- (void) arrangeBothViewsHorizontallyWithAnimations:(BOOL)animate;
-- (void) arrangeSingleViewHorizontallyWithAnimations:(BOOL)animate;
+- (void) arrangeBothViewsHorizontally;
+- (void) arrangeSingleViewHorizontally;
 - (void) didLayoutSplitViews;
 
 // animation delegate
@@ -450,20 +450,28 @@
    if (self.isViewLoaded == NO)
       return;
 
+   // begin animations
+   if ((animate))
+      [self beginAnimations:nil context:nil];
+
    if (displayBothViews == YES)
-      [self arrangeBothViewsHorizontallyWithAnimations:animate];
+      [self arrangeBothViewsHorizontally];
    else if (self.interfaceOrientation == UIInterfaceOrientationPortrait)
-      [self arrangeSingleViewHorizontallyWithAnimations:animate];
+      [self arrangeSingleViewHorizontally];
    else if (self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
-      [self arrangeSingleViewHorizontallyWithAnimations:animate];
+      [self arrangeSingleViewHorizontally];
    else
-      [self arrangeBothViewsHorizontallyWithAnimations:animate];
+      [self arrangeBothViewsHorizontally];
+
+   // commits animation to be run
+   if ((animate))
+      [self commitAnimations];
 
    return;
 }
 
 
-- (void) arrangeBothViewsHorizontallyWithAnimations:(BOOL)animate
+- (void) arrangeBothViewsHorizontally
 {
    NSAutoreleasePool * pool;
    UIView * view0;
@@ -515,10 +523,6 @@
       view1.layer.cornerRadius = 0;
    };
 
-   // begin animations
-   if ((animate))
-      [self beginAnimations:nil context:nil];
-
    // positions slider view if marked as visible
    adjustmentForSlider = 0;
    if (hideSlider == NO)
@@ -566,23 +570,15 @@
       [self.view addSubview:view1];
    [view1 layoutSubviews];
 
-   // commits animation to be run
-   if ((animate))
-      [self commitAnimations];
-
    [pool release];
 
    return;
 }
 
 
-- (void) arrangeSingleViewHorizontallyWithAnimations:(BOOL)animate
+- (void) arrangeSingleViewHorizontally
 {
    UIView           * aView;
-
-   // begin animations
-   if ((animate))
-      [self beginAnimations:nil context:nil];
 
    // positions detail view
    aView = [[controllers objectAtIndex:1] view];
@@ -592,10 +588,6 @@
    aView.frame              = self.view.bounds;
    aView.autoresizingMask   = UIViewAutoresizingFlexibleWidth |
                               UIViewAutoresizingFlexibleHeight;
-
-   // commits animation to be run
-   if ((animate))
-      [self commitAnimations];
 
    return;
 }
