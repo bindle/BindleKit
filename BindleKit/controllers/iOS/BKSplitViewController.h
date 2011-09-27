@@ -86,7 +86,7 @@
    CGSize    dividerSize;                        // the minimum size of the slider bar
    BOOL      dividerHidden;                      // hide slider bar (visual option only, does not affect funcitonality)
    CGSize    minimumViewSize;                    // minimum width/height each view
-   BOOL      reverseViewOrder;                   // reverse order that the views are displayed
+   BOOL      viewOrderReversed;                  // reverse order that the views are displayed
    BOOL      displayBothViews;                   // always display both views (do not hide on in portait mode)
    BOOL      userInteractionEnabled;             // allow views to be resized by sliding te divider
    BOOL      animationsEnabled;                  // animate changes when updated by properties
@@ -108,7 +108,7 @@
 @property(nonatomic, assign) CGSize    dividerSize;
 @property(nonatomic, assign) BOOL      dividerHidden;
 @property(nonatomic, assign) CGSize    minimumViewSize;
-@property(nonatomic, assign) BOOL      reverseViewOrder;
+@property(nonatomic, assign) BOOL      viewOrderReversed;
 @property(nonatomic, assign) BOOL      displayBothViews;
 @property(nonatomic, assign) BOOL      userInteractionEnabled;
 @property(nonatomic, assign) BOOL      animationsEnabled;

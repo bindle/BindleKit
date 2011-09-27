@@ -87,7 +87,7 @@
 @synthesize dividerSize;
 @synthesize dividerHidden;
 @synthesize minimumViewSize;
-@synthesize reverseViewOrder;
+@synthesize viewOrderReversed;
 @synthesize displayBothViews;
 @synthesize userInteractionEnabled;
 @synthesize animationsEnabled;
@@ -228,19 +228,19 @@
 }
 
 
-- (void) setReverseViewOrder:(BOOL)aBool
+- (void) setViewOrderReversed:(BOOL)aBool
 {
    CGSize frameSize;
 
    frameSize = self.view.bounds.size;
-   if (aBool != reverseViewOrder)
+   if (aBool != viewOrderReversed)
    {
       // calculates new position of the slider/splitPoint
       dividePoint = CGPointMake(frameSize.width-dividePoint.x,
                                 frameSize.height-dividePoint.y);
    };
 
-   reverseViewOrder = aBool;
+   viewOrderReversed = aBool;
 
    [self arrangeViewsWithAnimations:animationsEnabled];
 
@@ -511,7 +511,7 @@
       if (masterView.superview != self.view)
       {
          fx = frameSize.width;
-         if (!(reverseViewOrder))
+         if (!(viewOrderReversed))
             fx = 0 - dividerSize.width;
       };
       fy  = 0;
@@ -534,7 +534,7 @@
 
    // positions master view for beginning of animations
    fx = frameSize.width + dividerSize.width;
-   if (!(reverseViewOrder))
+   if (!(viewOrderReversed))
       fx = 0 - dividePoint.x;
    fy   = 0;
    fw   = dividePoint.x - sliderOffset;
@@ -581,7 +581,7 @@
    };
 
    // retrieves views in user defined order
-   if (!(reverseViewOrder))
+   if (!(viewOrderReversed))
    {
       view0 = [[controllers objectAtIndex:0] view];
       view1 = [[controllers objectAtIndex:1] view];
