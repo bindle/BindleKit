@@ -519,7 +519,7 @@
    if ((animate))
       [self beginAnimations:nil context:nil];
 
-   // adds slider view if marked as visible
+   // positions slider view if marked as visible
    adjustmentForSlider = 0;
    if (hideSlider == NO)
    {
