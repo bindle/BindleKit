@@ -93,6 +93,8 @@
 @synthesize animationsEnabled;
 
 
+#pragma mark - Creating and Initializing a BKSplitViewController
+
 - (void) dealloc
 {
    [controllers      release];
