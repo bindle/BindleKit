@@ -53,7 +53,7 @@
 
 // view lifecycle (divider views)
 - (CGContextRef) newDividerBackgroundContext:(CGSize)imageSize;
-- (UIView *) dividerViewWithFrame:(CGRect)aFrame;
+- (void) loadDividerView;
 
 // subview layout methods
 - (void) layoutViewsWithAnimations:(BOOL)useAnimations;
@@ -385,16 +385,20 @@
 }
 
 
-- (UIView *) dividerViewWithFrame:(CGRect)aFrame
+- (void) loadDividerView
 {
-   CGSize             imageSize;
-   CGContextRef       context;
-   CGImageRef         cgImage;
-   UIImage          * uiImage;
-   UIImageView      * imageView;
+   NSAutoreleasePool * pool;
+   CGSize              boundsSize;
+   CGSize              imageSize;
+   CGContextRef        context;
+   CGImageRef          cgImage;
+   UIImage           * uiImage;
 
-   imageSize.width  = aFrame.size.width;
-   imageSize.height = aFrame.size.height;
+   pool = [[NSAutoreleasePool alloc] init];
+
+   boundsSize       = self.view.bounds.size;
+   imageSize.width  = dividerSize.width;
+   imageSize.height = boundsSize.height;
 
    // creates context
    context = [self newDividerBackgroundContext:imageSize];
@@ -409,10 +413,11 @@
    CGContextRelease(context);
 
    // creates view
-   imageView = [[UIImageView alloc] initWithImage:uiImage];
-   imageView.frame = aFrame;
+   dividerView = [[UIImageView alloc] initWithImage:uiImage];
 
-   return([imageView autorelease]);
+   [pool release];
+
+   return;
 }
 
 
@@ -480,7 +485,6 @@
 
 - (void) willLayoutSplitViews:(UIInterfaceOrientation)orientation
 {
-   NSAutoreleasePool * pool;
    CGSize    frameSize;
    UIView  * masterView;
    CGRect    dividerFrame;
@@ -538,11 +542,7 @@
       fh  = frameSize.height;
       dividerFrame = CGRectMake(fx, fy, fw, fh);
       if (!(dividerView))
-      {
-         pool = [[NSAutoreleasePool alloc] init];
-         dividerView = [[self dividerViewWithFrame:dividerFrame] retain];
-         [pool release];
-      };
+         [self loadDividerView];
       if (dividerView.superview != self.view)
       {
          dividerView.frame = dividerFrame;
@@ -572,7 +572,6 @@
 - (void) layoutSplitViews
 {
    UIInterfaceOrientation orientation;
-   NSAutoreleasePool * pool;
    UIView * view0;
    UIView * view1;
    CGRect   aFrame;
@@ -641,11 +640,7 @@
       fh     = frameSize.height;
       aFrame = CGRectMake(fx, fy, fw, fh);
       if (!(dividerView))
-      {
-         pool = [[NSAutoreleasePool alloc] init];
-         dividerView = [[self dividerViewWithFrame:aFrame] retain];
-         [pool release];
-      };
+         [self loadDividerView];
       dividerView.frame = aFrame;
       if (!(dividerView.superview))
       {
