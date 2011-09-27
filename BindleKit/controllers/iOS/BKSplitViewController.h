@@ -89,7 +89,7 @@
    BOOL      userInteractionEnabled;             // allow views to be resized by sliding te divider
    BOOL      displayBothViews;                   // always display both views (do not hide on in portait mode)
    BOOL      enableAnimations;                   // animate changes when updated by properties
-   BOOL      hideSlider;                         // hide slider bar (visual option only, does not affect funcitonality)
+   BOOL      dividerHidden;                      // hide slider bar (visual option only, does not affect funcitonality)
 
    // Members internal to BKSplitViewController
    UIBarButtonItem     * barButton;              // the UIBarButtonItem passed to the delegate
@@ -111,7 +111,7 @@
 @property(nonatomic, assign) BOOL      userInteractionEnabled;
 @property(nonatomic, assign) BOOL      displayBothViews;
 @property(nonatomic, assign) BOOL      enableAnimations;
-@property(nonatomic, assign) BOOL      hideSlider;
+@property(nonatomic, assign) BOOL      dividerHidden;
 
 @end
 

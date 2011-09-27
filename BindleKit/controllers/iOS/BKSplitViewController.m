@@ -89,7 +89,7 @@
 @synthesize userInteractionEnabled;
 @synthesize displayBothViews;
 @synthesize enableAnimations;
-@synthesize hideSlider;
+@synthesize dividerHidden;
 @synthesize dividerSize;
 
 
@@ -149,7 +149,7 @@
    dividePoint            = CGPointMake(320, 320);
    spliderIsMoving        = NO;
    dividerSize            = CGSizeMake(20, 20);
-   hideSlider             = NO;
+   dividerHidden          = NO;
    enableAnimations       = YES;
 
    // creates initial controllers
@@ -175,11 +175,11 @@
 }
 
 
-- (void) setHideSlider:(BOOL)aBool
+- (void) setDividerHidden:(BOOL)aBool
 {
-   if (aBool == hideSlider)
+   if (aBool == dividerHidden)
       return;
-   hideSlider = aBool;
+   dividerHidden = aBool;
    [self arrangeViewsWithAnimations:enableAnimations];
    return;
 }
@@ -504,7 +504,7 @@
 
    // positions slider view for beginning of animations
    sliderOffset = 0;
-   if (!(hideSlider))
+   if (!(dividerHidden))
    {
          sliderOffset = (dividerSize.width/2);
       fx  = dividePoint.x - sliderOffset;
@@ -600,12 +600,12 @@
       dividePoint.x = limit - minimumViewSize.width - (dividerSize.width/2);
 
    // adjusts rounded corners depending on the slider view status
-   if ((hideSlider == YES) && (view0.layer.cornerRadius != 5))
+   if ((dividerHidden == YES) && (view0.layer.cornerRadius != 5))
    {
       view0.layer.cornerRadius = 5;
       view1.layer.cornerRadius = 5;
    };
-   if ((hideSlider == NO) && (view0.layer.cornerRadius != 0))
+   if ((dividerHidden == NO) && (view0.layer.cornerRadius != 0))
    {
       view0.layer.cornerRadius = 0;
       view1.layer.cornerRadius = 0;
@@ -613,7 +613,7 @@
 
    // positions slider view if marked as visible
    sliderOffset = 0;
-   if (hideSlider == NO)
+   if (dividerHidden == NO)
    {
       sliderOffset = (dividerSize.width/2);
       fx     = dividePoint.x - sliderOffset;
@@ -688,7 +688,7 @@
    };
 
    // determines if slider view should be removed
-   if (hideSlider == YES)
+   if (dividerHidden == YES)
       removeView = YES;
    else if (displayBothViews == YES)
       removeView = NO;
