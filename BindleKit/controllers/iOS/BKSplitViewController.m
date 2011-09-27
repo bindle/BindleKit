@@ -51,6 +51,7 @@
 #pragma mark - Private BKSplitViewController Category Declaration
 @interface BKSplitViewController () <UIPopoverControllerDelegate>
 
+// View lifecycle
 - (UIView *) sliderViewWithFrame:(CGRect)sliderFrame;
 
 // subview manager methods
