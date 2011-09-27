@@ -176,6 +176,8 @@
 
 - (void) setHideSlider:(BOOL)aBool
 {
+   if (aBool == hideSlider)
+      return;
    hideSlider = aBool;
    [self arrangeViewsWithAnimations:enableAnimations];
    return;
@@ -184,6 +186,9 @@
 
 - (void) setSplitPoint:(CGPoint)aPoint
 {
+   if ( (aPoint.x == splitPoint.x) &&
+        (aPoint.y == splitPoint.y) )
+      return;
    splitPoint = aPoint;
    [self arrangeViewsWithAnimations:enableAnimations];
    return;
@@ -194,6 +199,11 @@
 {
    CGRect  aFrame;
    CGFloat limit;
+
+   // exits if value is already set
+   if ( (aSize.width == minimumViewSize.width) &&
+        (aSize.height == minimumViewSize.height) )
+      return;
 
    // determines screen's limit
    aFrame = [[UIScreen mainScreen] applicationFrame];
