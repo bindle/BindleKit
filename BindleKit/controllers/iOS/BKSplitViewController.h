@@ -82,14 +82,14 @@
    NSArray * controllers;                        // list of view controllers
 
    // Members specific to BKSplitViewController
-   CGSize    minimumViewSize;                    // minimum width/height each view
    CGPoint   dividePoint;                        // the point which seperates the two views
    CGSize    dividerSize;                        // the minimum size of the slider bar
-   BOOL      reverseViewOrder;                   // reverse order that the views are displayed
-   BOOL      userInteractionEnabled;             // allow views to be resized by sliding te divider
-   BOOL      displayBothViews;                   // always display both views (do not hide on in portait mode)
-   BOOL      animationsEnabled;                  // animate changes when updated by properties
    BOOL      dividerHidden;                      // hide slider bar (visual option only, does not affect funcitonality)
+   CGSize    minimumViewSize;                    // minimum width/height each view
+   BOOL      reverseViewOrder;                   // reverse order that the views are displayed
+   BOOL      displayBothViews;                   // always display both views (do not hide on in portait mode)
+   BOOL      userInteractionEnabled;             // allow views to be resized by sliding te divider
+   BOOL      animationsEnabled;                  // animate changes when updated by properties
 
    // Members internal to BKSplitViewController
    UIBarButtonItem     * barButton;              // the UIBarButtonItem passed to the delegate
@@ -104,14 +104,14 @@
 @property(nonatomic, copy)   NSArray * viewControllers;
 
 // Properties specific to BKSplitViewController
-@property(nonatomic, assign) CGSize    minimumViewSize;
 @property(nonatomic, assign) CGPoint   dividePoint;
 @property(nonatomic, assign) CGSize    dividerSize;
-@property(nonatomic, assign) BOOL      reverseViewOrder;
-@property(nonatomic, assign) BOOL      userInteractionEnabled;
-@property(nonatomic, assign) BOOL      displayBothViews;
-@property(nonatomic, assign) BOOL      animationsEnabled;
 @property(nonatomic, assign) BOOL      dividerHidden;
+@property(nonatomic, assign) CGSize    minimumViewSize;
+@property(nonatomic, assign) BOOL      reverseViewOrder;
+@property(nonatomic, assign) BOOL      displayBothViews;
+@property(nonatomic, assign) BOOL      userInteractionEnabled;
+@property(nonatomic, assign) BOOL      animationsEnabled;
 
 @end
 

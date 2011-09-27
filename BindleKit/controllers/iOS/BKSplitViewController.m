@@ -83,14 +83,14 @@
 @synthesize viewControllers = controllers;
 
 // Properties specific to BKSplitViewController
-@synthesize minimumViewSize;
 @synthesize dividePoint;
-@synthesize reverseViewOrder;
-@synthesize userInteractionEnabled;
-@synthesize displayBothViews;
-@synthesize animationsEnabled;
-@synthesize dividerHidden;
 @synthesize dividerSize;
+@synthesize dividerHidden;
+@synthesize minimumViewSize;
+@synthesize reverseViewOrder;
+@synthesize displayBothViews;
+@synthesize userInteractionEnabled;
+@synthesize animationsEnabled;
 
 
 - (void) dealloc
