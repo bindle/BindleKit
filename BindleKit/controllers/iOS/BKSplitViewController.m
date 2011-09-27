@@ -536,6 +536,7 @@
                               UIViewAutoresizingFlexibleHeight;
    if (view0.superview != self.view)
       [self.view addSubview:view0];
+   [view0 layoutSubviews];
 
    // adds slider view if marked as visible
    if (hideSlider == NO)
@@ -553,6 +554,7 @@
          [self.view addSubview:sliderView];
          [self.view sendSubviewToBack:sliderView];
       };
+      [sliderView layoutSubviews];
    };
 
    // positions right view
@@ -567,6 +569,7 @@
                               UIViewAutoresizingFlexibleWidth;
    if (view1.superview != self.view)
       [self.view addSubview:view1];
+   [view1 layoutSubviews];
 
    // commits animation to be run
    if ((animate))
