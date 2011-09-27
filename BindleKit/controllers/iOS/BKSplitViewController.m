@@ -55,6 +55,7 @@
 
 // subview manager methods
 - (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
+- (void) willLayoutSplitViews:(UIInterfaceOrientation)orientation;
 - (void) layoutSplitViews;
 - (void) didLayoutSplitViews;
 
@@ -402,23 +403,7 @@
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-   UIView * aView;
-
-   [self dismissPopoverControllerAnimated:NO];
-
-   if (  (displayBothViews == YES) ||
-         (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) ||
-         (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) )
-   {
-      [self unloadPopoverController];
-      aView  = [[controllers objectAtIndex:0] view];
-      if (aView.superview != self.view)
-      {
-         [self.view addSubview:aView];
-         [self.view sendSubviewToBack:aView];
-      };
-   };
-
+   [self willLayoutSplitViews:toInterfaceOrientation];
    return;
 }
 
@@ -457,6 +442,45 @@
    // commits animation to be run
    if ((animate))
       [self commitAnimations];
+   return;
+}
+
+
+- (void) willLayoutSplitViews:(UIInterfaceOrientation)orientation
+{
+   CGSize    frameSize;
+   UIView  * masterView;
+
+   frameSize  = self.view.bounds.size;
+   masterView = [[controllers objectAtIndex:0] view];
+
+   // dismisses popover controller for transitions
+   if (orientation != self.interfaceOrientation)
+      [self dismissPopoverControllerAnimated:NO];
+
+   // determines if moving to portrait mode without displaying both views and exits
+   if ((displayBothViews == NO) && (orientation == UIInterfaceOrientationPortrait))
+      return;
+   if ((displayBothViews == NO) && (orientation == UIInterfaceOrientationPortraitUpsideDown))
+      return;
+
+   // unloads the popover controller if moving to landscape mode
+   if (  (displayBothViews == YES) ||
+         (orientation == UIInterfaceOrientationLandscapeLeft) ||
+         (orientation == UIInterfaceOrientationLandscapeRight) )
+      [self unloadPopoverController];
+
+   // if just an orientation change, add master view to self.view and exit
+   if (orientation != self.interfaceOrientation)
+   {
+      if (masterView.superview != self.view)
+      {
+         [self.view addSubview:masterView];
+         [self.view sendSubviewToBack:masterView];
+      };
+      return;
+   };
+
 
    return;
 }
