@@ -59,7 +59,6 @@
 - (void) didLayoutSplitViews;
 
 // animation delegate
-
 - (void) beginAnimations:animationID context:animationContext;
 - (void) commitAnimations;
 - (void) animationDidStop:(NSString *)animationID finished:(NSNumber *)finished
