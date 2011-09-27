@@ -86,7 +86,7 @@
 @synthesize minimumViewSize;
 @synthesize splitPoint;
 @synthesize reverseViewOrder;
-@synthesize enableTouchToResize;
+@synthesize userInteractionEnabled;
 @synthesize displayBothViews;
 @synthesize enableAnimations;
 @synthesize hideSlider;
@@ -847,7 +847,7 @@
 	UITouch  * touch;
    CGPoint    currPt;
 
-   if (!(enableTouchToResize))
+   if (!(userInteractionEnabled))
       return;
 
 	if ((touch = [touches anyObject]))
