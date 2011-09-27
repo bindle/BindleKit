@@ -50,11 +50,10 @@
 #endif
 
 
-enum {
+typedef enum {
    BKButtonImageStateNormal        = 1,
    BKButtonImageStateHighlighted   = 2
-};
-typedef NSUInteger BKButtonImageState;
+} BKButtonImageState;
 
 
 @interface BKButtonImages : NSObject
