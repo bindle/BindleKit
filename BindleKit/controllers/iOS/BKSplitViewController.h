@@ -88,7 +88,7 @@
    BOOL      reverseViewOrder;                   // reverse order that the views are displayed
    BOOL      userInteractionEnabled;             // allow views to be resized by sliding te divider
    BOOL      displayBothViews;                   // always display both views (do not hide on in portait mode)
-   BOOL      enableAnimations;                   // animate changes when updated by properties
+   BOOL      animationsEnabled;                  // animate changes when updated by properties
    BOOL      dividerHidden;                      // hide slider bar (visual option only, does not affect funcitonality)
 
    // Members internal to BKSplitViewController
@@ -110,7 +110,7 @@
 @property(nonatomic, assign) BOOL      reverseViewOrder;
 @property(nonatomic, assign) BOOL      userInteractionEnabled;
 @property(nonatomic, assign) BOOL      displayBothViews;
-@property(nonatomic, assign) BOOL      enableAnimations;
+@property(nonatomic, assign) BOOL      animationsEnabled;
 @property(nonatomic, assign) BOOL      dividerHidden;
 
 @end

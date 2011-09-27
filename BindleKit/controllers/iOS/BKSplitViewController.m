@@ -88,7 +88,7 @@
 @synthesize reverseViewOrder;
 @synthesize userInteractionEnabled;
 @synthesize displayBothViews;
-@synthesize enableAnimations;
+@synthesize animationsEnabled;
 @synthesize dividerHidden;
 @synthesize dividerSize;
 
@@ -150,7 +150,7 @@
    spliderIsMoving        = NO;
    dividerSize            = CGSizeMake(20, 20);
    dividerHidden          = NO;
-   enableAnimations       = YES;
+   animationsEnabled      = YES;
 
    // creates initial controllers
    controller0 = [[UIViewController alloc] init];
@@ -170,7 +170,7 @@
    if (aBool == displayBothViews)
       return;
    displayBothViews = aBool;
-   [self arrangeViewsWithAnimations:enableAnimations];
+   [self arrangeViewsWithAnimations:animationsEnabled];
    return;
 }
 
@@ -180,7 +180,7 @@
    if (aBool == dividerHidden)
       return;
    dividerHidden = aBool;
-   [self arrangeViewsWithAnimations:enableAnimations];
+   [self arrangeViewsWithAnimations:animationsEnabled];
    return;
 }
 
@@ -191,7 +191,7 @@
         (aPoint.y == dividePoint.y) )
       return;
    dividePoint = aPoint;
-   [self arrangeViewsWithAnimations:enableAnimations];
+   [self arrangeViewsWithAnimations:animationsEnabled];
    return;
 }
 
@@ -222,7 +222,7 @@
    else
       minimumViewSize.height = (limit - dividerSize.height) / 2;
 
-   [self arrangeViewsWithAnimations:enableAnimations];
+   [self arrangeViewsWithAnimations:animationsEnabled];
 
    return;
 }
@@ -242,7 +242,7 @@
 
    reverseViewOrder = aBool;
 
-   [self arrangeViewsWithAnimations:enableAnimations];
+   [self arrangeViewsWithAnimations:animationsEnabled];
 
    return;
 }
@@ -287,7 +287,7 @@
       [[controllers objectAtIndex:pos] setBKParentViewController:self];
 
    // arranges views
-   [self arrangeViewsWithAnimations:enableAnimations];
+   [self arrangeViewsWithAnimations:animationsEnabled];
 
    return;
 }
