@@ -295,8 +295,6 @@
    rootView                       = [[UIView alloc] initWithFrame:aFrame];
    rootView.backgroundColor       = [UIColor blackColor];
    rootView.autoresizesSubviews   = TRUE;
-   rootView.autoresizingMask      = UIViewAutoresizingFlexibleWidth |
-                                    UIViewAutoresizingFlexibleHeight;
    self.view = rootView;
    [rootView   release];
 
@@ -375,9 +373,7 @@
 
    // creates view
    imageView = [[UIImageView alloc] initWithImage:uiImage];
-   imageView.frame            = sliderFrame;
-   imageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin |
-                                UIViewAutoresizingFlexibleHeight;
+   imageView.frame = sliderFrame;
 
    return([imageView autorelease]);
 }
@@ -563,12 +559,10 @@
         ((!(displayBothViews)) && (orientation == UIInterfaceOrientationPortraitUpsideDown)) )
    {
       view0 = [[controllers objectAtIndex:1] view];
+      view0.frame = self.view.bounds;
       if (view0.superview != self.view)
          [self.view addSubview:view0];
       [self.view bringSubviewToFront:view0];
-      view0.frame              = self.view.bounds;
-      view0.autoresizingMask   = UIViewAutoresizingFlexibleWidth |
-                                 UIViewAutoresizingFlexibleHeight;
       [pool release];
       return;
    };
@@ -631,8 +625,6 @@
    fw          = splitPoint.x - sliderOffset;
    fh          = frameSize.height;
    view0.frame = CGRectMake(fx, fy, fw, fh);
-   view0.autoresizingMask   = UIViewAutoresizingFlexibleRightMargin |
-                              UIViewAutoresizingFlexibleHeight;
    if (view0.superview != self.view)
       [self.view addSubview:view0];
    [view0 layoutSubviews];
@@ -645,8 +637,6 @@
    fw          = frameSize.width - splitPoint.x - sliderOffset;
    fh          = frameSize.height;
    view1.frame = CGRectMake(fx, fy, fw, fh);
-   view1.autoresizingMask   = UIViewAutoresizingFlexibleHeight |
-                              UIViewAutoresizingFlexibleWidth;
    if (view1.superview != self.view)
       [self.view addSubview:view1];
    [view1 layoutSubviews];
