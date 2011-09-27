@@ -56,7 +56,6 @@
 // subview manager methods
 - (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
 - (void) arrangeBothViewsHorizontally;
-- (void) arrangeSingleViewHorizontally;
 - (void) didLayoutSplitViews;
 
 // animation delegate
@@ -454,14 +453,8 @@
    if ((animate))
       [self beginAnimations:nil context:nil];
 
-   if (displayBothViews == YES)
-      [self arrangeBothViewsHorizontally];
-   else if (self.interfaceOrientation == UIInterfaceOrientationPortrait)
-      [self arrangeSingleViewHorizontally];
-   else if (self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
-      [self arrangeSingleViewHorizontally];
-   else
-      [self arrangeBothViewsHorizontally];
+   // arranges views
+   [self arrangeBothViewsHorizontally];
 
    // commits animation to be run
    if ((animate))
@@ -473,6 +466,7 @@
 
 - (void) arrangeBothViewsHorizontally
 {
+   UIInterfaceOrientation orientation;
    NSAutoreleasePool * pool;
    UIView * view0;
    UIView * view1;
@@ -488,6 +482,22 @@
    pool = [[NSAutoreleasePool alloc] init];
 
    frameSize = self.view.bounds.size;
+
+   // positions detail view
+   orientation = self.interfaceOrientation;
+   if ( ((!(displayBothViews)) && (orientation == UIInterfaceOrientationPortrait)) ||
+        ((!(displayBothViews)) && (orientation == UIInterfaceOrientationPortraitUpsideDown)) )
+   {
+      view0 = [[controllers objectAtIndex:1] view];
+      if (view0.superview != self.view)
+         [self.view addSubview:view0];
+      [self.view bringSubviewToFront:view0];
+      view0.frame              = self.view.bounds;
+      view0.autoresizingMask   = UIViewAutoresizingFlexibleWidth |
+                                 UIViewAutoresizingFlexibleHeight;
+      [pool release];
+      return;
+   };
 
    // notifies delegate that master view is about to be displayed
    [self unloadPopoverController];
@@ -571,23 +581,6 @@
    [view1 layoutSubviews];
 
    [pool release];
-
-   return;
-}
-
-
-- (void) arrangeSingleViewHorizontally
-{
-   UIView           * aView;
-
-   // positions detail view
-   aView = [[controllers objectAtIndex:1] view];
-   if (aView.superview != self.view)
-      [self.view addSubview:aView];
-   [self.view bringSubviewToFront:aView];
-   aView.frame              = self.view.bounds;
-   aView.autoresizingMask   = UIViewAutoresizingFlexibleWidth |
-                              UIViewAutoresizingFlexibleHeight;
 
    return;
 }
