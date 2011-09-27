@@ -57,7 +57,7 @@
 - (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
 - (void) arrangeBothViewsHorizontallyWithAnimations:(BOOL)animate;
 - (void) arrangeSingleViewHorizontallyWithAnimations:(BOOL)animate;
-- (void) removeHiddenViews;
+- (void) didLayoutSplitViews;
 
 // animation delegate
 
@@ -435,7 +435,7 @@
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-   [self removeHiddenViews];
+   [self didLayoutSplitViews];
    return;
 }
 
@@ -601,7 +601,7 @@
 }
 
 
-- (void) removeHiddenViews
+- (void) didLayoutSplitViews
 {
    UIViewController * aController;
    BOOL               removeView;
@@ -668,7 +668,7 @@
 
 - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
-   [self removeHiddenViews];
+   [self didLayoutSplitViews];
    return;
 }
 
