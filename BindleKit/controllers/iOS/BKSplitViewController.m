@@ -66,6 +66,7 @@
          context:(void *)context;
 
 // popover manager methods
+- (void) dismissPopoverControllerAnimated:(BOOL)animate;
 - (void) displayPopoverControllerFromSender:(id)sender;
 - (void) loadPopoverController;
 - (void) unloadPopoverController;
@@ -404,9 +405,7 @@
 {
    UIView * aView;
 
-   if ((popoverController))
-      if (popoverController.popoverVisible == YES)
-         [popoverController dismissPopoverAnimated:NO];
+   [self dismissPopoverControllerAnimated:NO];
 
    if (  (displayBothViews == YES) ||
          (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) ||
@@ -659,6 +658,15 @@
 
 
 #pragma mark - popover manager methods
+
+- (void) dismissPopoverControllerAnimated:(BOOL)animate
+{
+   if ((popoverController))
+      if ((popoverController.isPopoverVisible))
+         [popoverController dismissPopoverAnimated:YES];
+   return;
+}
+
 
 - (void) displayPopoverControllerFromSender:(id)sender
 {
