@@ -90,7 +90,7 @@
 @synthesize displayBothViews;
 @synthesize enableAnimations;
 @synthesize hideSlider;
-@synthesize sliderSize;
+@synthesize dividerSize;
 
 
 - (void) dealloc
@@ -148,7 +148,7 @@
    minimumViewSize        = CGSizeMake(0, 0);
    dividePoint            = CGPointMake(320, 320);
    spliderIsMoving        = NO;
-   sliderSize             = CGSizeMake(20, 20);
+   dividerSize            = CGSizeMake(20, 20);
    hideSlider             = NO;
    enableAnimations       = YES;
 
@@ -211,16 +211,16 @@
    limit  = (aFrame.size.width < aFrame.size.height) ? aFrame.size.width : aFrame.size.height;
 
    // adjusts minimum view width
-   if (((aSize.width*2) + sliderSize.width) <= limit)
+   if (((aSize.width*2) + dividerSize.width) <= limit)
       minimumViewSize.width = aSize.width;
    else
-      minimumViewSize.width = (limit - sliderSize.width) / 2;
+      minimumViewSize.width = (limit - dividerSize.width) / 2;
 
    // adjusts minimum view height
-   if (((aSize.height*2) + sliderSize.width) <= limit)
+   if (((aSize.height*2) + dividerSize.width) <= limit)
       minimumViewSize.height = aSize.height;
    else
-      minimumViewSize.height = (limit - sliderSize.height) / 2;
+      minimumViewSize.height = (limit - dividerSize.height) / 2;
 
    [self arrangeViewsWithAnimations:enableAnimations];
 
@@ -506,16 +506,16 @@
    sliderOffset = 0;
    if (!(hideSlider))
    {
-         sliderOffset = (sliderSize.width/2);
+         sliderOffset = (dividerSize.width/2);
       fx  = dividePoint.x - sliderOffset;
       if (masterView.superview != self.view)
       {
          fx = frameSize.width;
          if (!(reverseViewOrder))
-            fx = 0 - sliderSize.width;
+            fx = 0 - dividerSize.width;
       };
       fy  = 0;
-      fw  = sliderSize.width;
+      fw  = dividerSize.width;
       fh  = frameSize.height;
       sliderFrame = CGRectMake(fx, fy, fw, fh);
       if (!(sliderView))
@@ -533,7 +533,7 @@
    };
 
    // positions master view for beginning of animations
-   fx = frameSize.width + sliderSize.width;
+   fx = frameSize.width + dividerSize.width;
    if (!(reverseViewOrder))
       fx = 0 - dividePoint.x;
    fy   = 0;
@@ -591,13 +591,13 @@
    };
 
    // adjusts left (view0) view's width to a minimum of minimumViewSize.width
-   if (dividePoint.x < (minimumViewSize.width + (sliderSize.width/2)))
-      dividePoint.x = minimumViewSize.width + (sliderSize.width/2);
+   if (dividePoint.x < (minimumViewSize.width + (dividerSize.width/2)))
+      dividePoint.x = minimumViewSize.width + (dividerSize.width/2);
 
    // adjusts right (view1) view's width to a minimum of minimumViewSize.width
    limit = (frameSize.width < frameSize.height) ? frameSize.width : frameSize.height;
-   if (dividePoint.x > (limit - minimumViewSize.width - (sliderSize.width/2)))
-      dividePoint.x = limit - minimumViewSize.width - (sliderSize.width/2);
+   if (dividePoint.x > (limit - minimumViewSize.width - (dividerSize.width/2)))
+      dividePoint.x = limit - minimumViewSize.width - (dividerSize.width/2);
 
    // adjusts rounded corners depending on the slider view status
    if ((hideSlider == YES) && (view0.layer.cornerRadius != 5))
@@ -615,10 +615,10 @@
    sliderOffset = 0;
    if (hideSlider == NO)
    {
-      sliderOffset = (sliderSize.width/2);
+      sliderOffset = (dividerSize.width/2);
       fx     = dividePoint.x - sliderOffset;
       fy     = 0;
-      fw     = sliderSize.width;
+      fw     = dividerSize.width;
       fh     = frameSize.height;
       aFrame = CGRectMake(fx, fy, fw, fh);
       if (!(sliderView))
@@ -853,8 +853,8 @@
 	if ((touch = [touches anyObject]))
    {
       currPt  = [touch locationInView:self.view];
-      if ( (currPt.x >= (dividePoint.x - (sliderSize.width/2))) &&
-           (currPt.x <= (dividePoint.x + (sliderSize.width/2))) )
+      if ( (currPt.x >= (dividePoint.x - (dividerSize.width/2))) &&
+           (currPt.x <= (dividePoint.x + (dividerSize.width/2))) )
          spliderIsMoving = YES;
    };
 
