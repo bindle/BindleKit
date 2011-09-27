@@ -547,11 +547,11 @@
    CGRect   aFrame;
    CGSize   frameSize;
    CGFloat  limit;
-   CGFloat  adjustmentForSlider;
-   CGFloat  frameX;
-   CGFloat  frameY;
-   CGFloat  frameWidth;
-   CGFloat  frameHeight;
+   CGFloat  sliderOffset;
+   CGFloat   fx; // frame X position
+   CGFloat   fy; // frame Y position
+   CGFloat   fw; // frame width
+   CGFloat   fh; // frame height
 
    pool = [[NSAutoreleasePool alloc] init];
 
@@ -605,15 +605,15 @@
    };
 
    // positions slider view if marked as visible
-   adjustmentForSlider = 0;
+   sliderOffset = 0;
    if (hideSlider == NO)
    {
-      adjustmentForSlider = (sliderSize.width/2);
-      frameX      = splitPoint.x - adjustmentForSlider;
-      frameY      = 0;
-      frameWidth  = sliderSize.width;
-      frameHeight = frameSize.height;
-      aFrame      = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+      sliderOffset = (sliderSize.width/2);
+      fx     = splitPoint.x - sliderOffset;
+      fy     = 0;
+      fw     = sliderSize.width;
+      fh     = frameSize.height;
+      aFrame = CGRectMake(fx, fy, fw, fh);
       if (!(sliderView))
          sliderView = [[self sliderViewWithFrame:aFrame] retain];
       sliderView.frame = aFrame;
@@ -626,11 +626,11 @@
    };
 
    // positions left view
-   frameX      = 0;
-   frameY      = 0;
-   frameWidth  = splitPoint.x-adjustmentForSlider;
-   frameHeight = frameSize.height;
-   view0.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+   fx          = 0;
+   fy          = 0;
+   fw          = splitPoint.x - sliderOffset;
+   fh          = frameSize.height;
+   view0.frame = CGRectMake(fx, fy, fw, fh);
    view0.autoresizingMask   = UIViewAutoresizingFlexibleRightMargin |
                               UIViewAutoresizingFlexibleHeight;
    if (view0.superview != self.view)
@@ -638,13 +638,13 @@
    [view0 layoutSubviews];
 
    // positions right view
-   if (!(adjustmentForSlider))
-      adjustmentForSlider = 1;
-   frameX      = splitPoint.x + adjustmentForSlider;
-   frameY      = 0;
-   frameWidth  = frameSize.width - splitPoint.x - adjustmentForSlider;
-   frameHeight = frameSize.height;
-   view1.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+   if (!(sliderOffset))
+      sliderOffset = 1;
+   fx          = splitPoint.x + sliderOffset;
+   fy          = 0;
+   fw          = frameSize.width - splitPoint.x - sliderOffset;
+   fh          = frameSize.height;
+   view1.frame = CGRectMake(fx, fy, fw, fh);
    view1.autoresizingMask   = UIViewAutoresizingFlexibleHeight |
                               UIViewAutoresizingFlexibleWidth;
    if (view1.superview != self.view)
