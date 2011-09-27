@@ -315,7 +315,7 @@
    [self loadPopoverController];
 
    // arranges views
-   [self arrangeViewsWithAnimations:NO];
+   [self layoutSplitViews];
 
    return;
 }
