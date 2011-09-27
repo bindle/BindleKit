@@ -54,8 +54,8 @@
 // View lifecycle
 - (UIView *) dividerViewWithFrame:(CGRect)aFrame;
 
-// subview manager methods
-- (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
+// subview layout methods
+- (void) layoutViewsWithAnimations:(BOOL)useAnimations;
 - (void) willLayoutSplitViews:(UIInterfaceOrientation)orientation;
 - (void) layoutSplitViews;
 - (void) didLayoutSplitViews;
@@ -172,7 +172,7 @@
    if (aBool == bothViewsDisplayed)
       return;
    bothViewsDisplayed = aBool;
-   [self arrangeViewsWithAnimations:animationsEnabled];
+   [self layoutViewsWithAnimations:animationsEnabled];
    return;
 }
 
@@ -183,7 +183,7 @@
         (aPoint.y == dividePoint.y) )
       return;
    dividePoint = aPoint;
-   [self arrangeViewsWithAnimations:animationsEnabled];
+   [self layoutViewsWithAnimations:animationsEnabled];
    return;
 }
 
@@ -193,7 +193,7 @@
    if (aBool == dividerHidden)
       return;
    dividerHidden = aBool;
-   [self arrangeViewsWithAnimations:animationsEnabled];
+   [self layoutViewsWithAnimations:animationsEnabled];
    return;
 }
 
@@ -224,7 +224,7 @@
    else
       minimumViewSize.height = (limit - dividerSize.height) / 2;
 
-   [self arrangeViewsWithAnimations:animationsEnabled];
+   [self layoutViewsWithAnimations:animationsEnabled];
 
    return;
 }
@@ -269,7 +269,7 @@
       [[controllers objectAtIndex:pos] setBKParentViewController:self];
 
    // arranges views
-   [self arrangeViewsWithAnimations:animationsEnabled];
+   [self layoutViewsWithAnimations:animationsEnabled];
 
    return;
 }
@@ -289,7 +289,7 @@
 
    viewOrderReversed = aBool;
 
-   [self arrangeViewsWithAnimations:animationsEnabled];
+   [self layoutViewsWithAnimations:animationsEnabled];
 
    return;
 }
@@ -431,9 +431,9 @@
 }
 
 
-#pragma mark - subview manager methods
+#pragma mark - subview layout methods
 
-- (void) arrangeViewsWithAnimations:(BOOL)animate
+- (void) layoutViewsWithAnimations:(BOOL)animate
 {
    if (!(controllers))
       return;
@@ -885,7 +885,7 @@
    {
       point           = [touch locationInView:self.view];
       dividePoint.x   = point.x;
-      [self arrangeViewsWithAnimations:NO];
+      [self layoutViewsWithAnimations:NO];
    };
    return;
 }
