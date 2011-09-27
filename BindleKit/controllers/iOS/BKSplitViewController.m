@@ -147,7 +147,7 @@
    // sets default values for split view controller
    minimumViewSize        = CGSizeMake(0, 0);
    dividePoint            = CGPointMake(320, 320);
-   spliderIsMoving        = NO;
+   dividerIsMoving        = NO;
    dividerSize            = CGSizeMake(20, 20);
    dividerHidden          = NO;
    animationsEnabled      = YES;
@@ -855,7 +855,7 @@
       currPt  = [touch locationInView:self.view];
       if ( (currPt.x >= (dividePoint.x - (dividerSize.width/2))) &&
            (currPt.x <= (dividePoint.x + (dividerSize.width/2))) )
-         spliderIsMoving = YES;
+         dividerIsMoving = YES;
    };
 
    return;
@@ -865,7 +865,7 @@
 // stops tracking touches to slider
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	spliderIsMoving = NO;
+	dividerIsMoving = NO;
    return;
 }
 
@@ -876,7 +876,7 @@
 	UITouch  * touch;
    CGPoint    point;
 
-   if (spliderIsMoving == NO)
+   if (dividerIsMoving == NO)
       return;
 
 	if ((touch = [touches anyObject]))
