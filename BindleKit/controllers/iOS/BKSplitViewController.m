@@ -547,6 +547,7 @@
       aFrame      = CGRectMake(frameX, frameY, frameWidth, frameHeight);
       if (!(sliderView))
          sliderView = [[self sliderViewWithFrame:aFrame] retain];
+      sliderView.frame = aFrame;
       if (!(sliderView.superview))
       {
          [self.view addSubview:sliderView];
