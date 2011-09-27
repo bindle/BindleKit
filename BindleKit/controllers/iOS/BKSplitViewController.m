@@ -410,7 +410,7 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration
 {
-   [self arrangeViewsWithAnimations:NO];
+   [self layoutSplitViews];
    return;
 }
 
@@ -432,6 +432,9 @@
    if (self.isViewLoaded == NO)
       return;
 
+   // prepares views to be arranged on screen
+   [self willLayoutSplitViews:self.interfaceOrientation];
+
    // begin animations
    if ((animate))
       [self beginAnimations:nil context:nil];
@@ -442,6 +445,9 @@
    // commits animation to be run
    if ((animate))
       [self commitAnimations];
+   else
+      [self didLayoutSplitViews];
+
    return;
 }
 
@@ -450,6 +456,13 @@
 {
    CGSize    frameSize;
    UIView  * masterView;
+   CGRect    sliderFrame;
+   CGRect    masterFrame;
+   CGFloat   sliderOffset;
+   CGFloat   fx; // frame X position
+   CGFloat   fy; // frame Y position
+   CGFloat   fw; // frame width
+   CGFloat   fh; // frame height
 
    frameSize  = self.view.bounds.size;
    masterView = [[controllers objectAtIndex:0] view];
@@ -481,6 +494,45 @@
       return;
    };
 
+   // positions slider view for beginning of animations
+   sliderOffset = 0;
+   if (!(hideSlider))
+   {
+         sliderOffset = (sliderSize.width/2);
+      fx  = splitPoint.x - sliderOffset;
+      if (masterView.superview != self.view)
+      {
+         fx = frameSize.width;
+         if (!(reverseViewOrder))
+            fx = 0 - sliderSize.width;
+      };
+      fy  = 0;
+      fw  = sliderSize.width;
+      fh  = frameSize.height;
+      sliderFrame = CGRectMake(fx, fy, fw, fh);
+      if (!(sliderView))
+         sliderView = [[self sliderViewWithFrame:sliderFrame] retain];
+      if (sliderView.superview != self.view)
+      {
+         sliderView.frame = sliderFrame;
+         [self.view addSubview:sliderView];
+         [self.view sendSubviewToBack:sliderView];
+      };
+   };
+
+   // positions master view for beginning of animations
+   fx = frameSize.width + sliderSize.width;
+   if (!(reverseViewOrder))
+      fx = 0 - splitPoint.x;
+   fy   = 0;
+   fw   = splitPoint.x - sliderOffset;
+   fh   = frameSize.height;
+   masterFrame = CGRectMake(fx, fy, fw, fh);
+   if (masterView.superview != self.view)
+   {
+      masterView.frame = masterFrame;
+      [self.view addSubview:masterView];
+   };
 
    return;
 }
@@ -520,9 +572,6 @@
       [pool release];
       return;
    };
-
-   // notifies delegate that master view is about to be displayed
-   [self unloadPopoverController];
 
    // retrieves views in user defined order
    if (!(reverseViewOrder))
