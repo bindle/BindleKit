@@ -88,7 +88,7 @@
 @synthesize dividerHidden;
 @synthesize minimumViewSize;
 @synthesize viewOrderReversed;
-@synthesize displayBothViews;
+@synthesize bothViewsDisplayed;
 @synthesize userInteractionEnabled;
 @synthesize animationsEnabled;
 
@@ -165,11 +165,11 @@
 
 #pragma mark - Properties getters/setters
 
-- (void) setDisplayBothViews:(BOOL)aBool
+- (void) setBothViewsDisplayed:(BOOL)aBool
 {
-   if (aBool == displayBothViews)
+   if (aBool == bothViewsDisplayed)
       return;
-   displayBothViews = aBool;
+   bothViewsDisplayed = aBool;
    [self arrangeViewsWithAnimations:animationsEnabled];
    return;
 }
@@ -480,13 +480,13 @@
       [self dismissPopoverControllerAnimated:NO];
 
    // determines if moving to portrait mode without displaying both views and exits
-   if ((displayBothViews == NO) && (orientation == UIInterfaceOrientationPortrait))
+   if ((bothViewsDisplayed == NO) && (orientation == UIInterfaceOrientationPortrait))
       return;
-   if ((displayBothViews == NO) && (orientation == UIInterfaceOrientationPortraitUpsideDown))
+   if ((bothViewsDisplayed == NO) && (orientation == UIInterfaceOrientationPortraitUpsideDown))
       return;
 
    // unloads the popover controller if moving to landscape mode
-   if (  (displayBothViews == YES) ||
+   if (  (bothViewsDisplayed == YES) ||
          (orientation == UIInterfaceOrientationLandscapeLeft) ||
          (orientation == UIInterfaceOrientationLandscapeRight) )
       [self unloadPopoverController];
@@ -569,8 +569,8 @@
 
    // positions detail view
    orientation = self.interfaceOrientation;
-   if ( ((!(displayBothViews)) && (orientation == UIInterfaceOrientationPortrait)) ||
-        ((!(displayBothViews)) && (orientation == UIInterfaceOrientationPortraitUpsideDown)) )
+   if ( ((!(bothViewsDisplayed)) && (orientation == UIInterfaceOrientationPortrait)) ||
+        ((!(bothViewsDisplayed)) && (orientation == UIInterfaceOrientationPortraitUpsideDown)) )
    {
       view0 = [[controllers objectAtIndex:1] view];
       view0.frame = self.view.bounds;
@@ -669,7 +669,7 @@
 
    // determines if master view should be removed
    aController = [controllers objectAtIndex:0];
-   if (displayBothViews == YES)
+   if (bothViewsDisplayed == YES)
       removeView = NO;
    else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft)
       removeView = NO;
@@ -690,7 +690,7 @@
    // determines if slider view should be removed
    if (dividerHidden == YES)
       removeView = YES;
-   else if (displayBothViews == YES)
+   else if (bothViewsDisplayed == YES)
       removeView = NO;
    else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft)
       removeView = NO;
