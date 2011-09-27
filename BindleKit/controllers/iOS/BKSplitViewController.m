@@ -504,17 +504,15 @@
       splitPoint.x = limit - minimumViewSize.width - (sliderSize.width/2);
 
    // adjusts rounded corners depending on the slider view status
-   if (hideSlider == YES)
+   if ((hideSlider == YES) && (view0.layer.cornerRadius != 5))
    {
-      if (view0.layer.cornerRadius != 5)
-         view0.layer.cornerRadius = 5;
-      if (view1.layer.cornerRadius != 5)
-         view1.layer.cornerRadius = 5;
-   } else {
-      if (view0.layer.cornerRadius != 0)
-         view0.layer.cornerRadius = 0;
-      if (view0.layer.cornerRadius != 0)
-         view1.layer.cornerRadius = 0;
+      view0.layer.cornerRadius = 5;
+      view1.layer.cornerRadius = 5;
+   };
+   if ((hideSlider == NO) && (view0.layer.cornerRadius != 0))
+   {
+      view0.layer.cornerRadius = 0;
+      view1.layer.cornerRadius = 0;
    };
 
    // begin animations
