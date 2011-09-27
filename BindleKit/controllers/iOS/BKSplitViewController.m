@@ -494,11 +494,6 @@
       view1 = [[controllers objectAtIndex:0] view];
    };
 
-   // calculates left & right view position adjustments to allow room for sliderView
-   adjustmentForSlider = 0;
-   if (hideSlider == NO)
-      adjustmentForSlider = (sliderSize.width/2);
-
    // adjusts left (view0) view's width to a minimum of minimumViewSize.width
    if (splitPoint.x < (minimumViewSize.width + (sliderSize.width/2)))
       splitPoint.x = minimumViewSize.width + (sliderSize.width/2);
@@ -526,21 +521,11 @@
    if ((animate))
       [self beginAnimations:nil context:nil];
 
-   // positions left view
-   frameX      = 0;
-   frameY      = 0;
-   frameWidth  = splitPoint.x-adjustmentForSlider;
-   frameHeight = frameSize.height;
-   view0.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
-   view0.autoresizingMask   = UIViewAutoresizingFlexibleRightMargin |
-                              UIViewAutoresizingFlexibleHeight;
-   if (view0.superview != self.view)
-      [self.view addSubview:view0];
-   [view0 layoutSubviews];
-
    // adds slider view if marked as visible
+   adjustmentForSlider = 0;
    if (hideSlider == NO)
    {
+      adjustmentForSlider = (sliderSize.width/2);
       frameX      = splitPoint.x - adjustmentForSlider;
       frameY      = 0;
       frameWidth  = sliderSize.width;
@@ -556,6 +541,18 @@
       };
       [sliderView layoutSubviews];
    };
+
+   // positions left view
+   frameX      = 0;
+   frameY      = 0;
+   frameWidth  = splitPoint.x-adjustmentForSlider;
+   frameHeight = frameSize.height;
+   view0.frame = CGRectMake(frameX, frameY, frameWidth, frameHeight);
+   view0.autoresizingMask   = UIViewAutoresizingFlexibleRightMargin |
+                              UIViewAutoresizingFlexibleHeight;
+   if (view0.superview != self.view)
+      [self.view addSubview:view0];
+   [view0 layoutSubviews];
 
    // positions right view
    if (!(adjustmentForSlider))
