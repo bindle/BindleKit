@@ -450,6 +450,7 @@
 
 - (void) willLayoutSplitViews:(UIInterfaceOrientation)orientation
 {
+   NSAutoreleasePool * pool;
    CGSize    frameSize;
    UIView  * masterView;
    CGRect    sliderFrame;
@@ -507,7 +508,11 @@
       fh  = frameSize.height;
       sliderFrame = CGRectMake(fx, fy, fw, fh);
       if (!(sliderView))
+      {
+         pool = [[NSAutoreleasePool alloc] init];
          sliderView = [[self sliderViewWithFrame:sliderFrame] retain];
+         [pool release];
+      };
       if (sliderView.superview != self.view)
       {
          sliderView.frame = sliderFrame;
@@ -549,8 +554,6 @@
    CGFloat   fw; // frame width
    CGFloat   fh; // frame height
 
-   pool = [[NSAutoreleasePool alloc] init];
-
    frameSize = self.view.bounds.size;
 
    // positions detail view
@@ -563,7 +566,6 @@
       if (view0.superview != self.view)
          [self.view addSubview:view0];
       [self.view bringSubviewToFront:view0];
-      [pool release];
       return;
    };
 
@@ -609,7 +611,11 @@
       fh     = frameSize.height;
       aFrame = CGRectMake(fx, fy, fw, fh);
       if (!(sliderView))
+      {
+         pool = [[NSAutoreleasePool alloc] init];
          sliderView = [[self sliderViewWithFrame:aFrame] retain];
+         [pool release];
+      };
       sliderView.frame = aFrame;
       if (!(sliderView.superview))
       {
@@ -640,8 +646,6 @@
    if (view1.superview != self.view)
       [self.view addSubview:view1];
    [view1 layoutSubviews];
-
-   [pool release];
 
    return;
 }
