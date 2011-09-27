@@ -96,7 +96,6 @@
    UIPopoverController * popoverController;      // the UIPopoverController used to display the master view when hidden
    UIView              * dividerView;            // the view used to draw a slider bar
    BOOL                  dividerIsMoving;        // indicates that a user is actively touching the slider bar
-   BOOL                  isMasterViewDisplayed;  // used to prevent duplicate messages to the delegate
 }
 
 // Properties common with UISplitViewController
