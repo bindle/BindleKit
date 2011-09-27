@@ -52,6 +52,7 @@
 @interface BKSplitViewController () <UIPopoverControllerDelegate>
 
 // view lifecycle (divider views)
+- (CGContextRef) newDividerBackgroundContext:(CGSize)imageSize;
 - (UIView *) dividerViewWithFrame:(CGRect)aFrame;
 
 // subview layout methods
@@ -330,24 +331,18 @@
 
 #pragma mark - view lifecycle (divider views)
 
-// generates divider view
-- (UIView *) dividerViewWithFrame:(CGRect)aFrame
+// generates divider background CGContext for divider views
+- (CGContextRef) newDividerBackgroundContext:(CGSize)imageSize
 {
-   CGSize             imageSize;
    CGColorSpaceRef    color;
    CGContextRef       context;
    CGGradientRef      gradient;
    CGPoint            start;
    CGPoint            stop;
-   CGImageRef         cgImage;
-   UIImage          * uiImage;
-   UIImageView      * imageView;
    CGFloat            components[8] = { 0.988, 0.988, 0.988, 1.0,  // light
                                         0.875, 0.875, 0.875, 1.0 }; // dark
 
-   imageSize.width  = aFrame.size.width;
-   imageSize.height = aFrame.size.height;
-   color            = CGColorSpaceCreateDeviceRGB();
+   color = CGColorSpaceCreateDeviceRGB();
 
    // creates color context
    context = CGBitmapContextCreate
@@ -383,6 +378,27 @@
    CGContextDrawLinearGradient(context, gradient, start, stop,  0);
    CGGradientRelease(gradient);
 
+   // frees resources
+   CGColorSpaceRelease(color);
+
+   return(context);
+}
+
+
+- (UIView *) dividerViewWithFrame:(CGRect)aFrame
+{
+   CGSize             imageSize;
+   CGContextRef       context;
+   CGImageRef         cgImage;
+   UIImage          * uiImage;
+   UIImageView      * imageView;
+
+   imageSize.width  = aFrame.size.width;
+   imageSize.height = aFrame.size.height;
+
+   // creates context
+   context = [self newDividerBackgroundContext:imageSize];
+
    // Creates Image
    cgImage = CGBitmapContextCreateImage(context);
    uiImage = [UIImage imageWithCGImage:cgImage];
@@ -391,7 +407,6 @@
    // frees resources
    CGImageRelease(cgImage);
    CGContextRelease(context);
-   CGColorSpaceRelease(color);
 
    // creates view
    imageView = [[UIImageView alloc] initWithImage:uiImage];
