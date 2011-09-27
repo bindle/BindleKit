@@ -84,7 +84,7 @@
 
 // Properties specific to BKSplitViewController
 @synthesize minimumViewSize;
-@synthesize splitPoint;
+@synthesize dividePoint;
 @synthesize reverseViewOrder;
 @synthesize userInteractionEnabled;
 @synthesize displayBothViews;
@@ -146,7 +146,7 @@
 
    // sets default values for split view controller
    minimumViewSize        = CGSizeMake(0, 0);
-   splitPoint             = CGPointMake(320, 320);
+   dividePoint            = CGPointMake(320, 320);
    spliderIsMoving        = NO;
    sliderSize             = CGSizeMake(20, 20);
    hideSlider             = NO;
@@ -185,12 +185,12 @@
 }
 
 
-- (void) setSplitPoint:(CGPoint)aPoint
+- (void) setDividePoint:(CGPoint)aPoint
 {
-   if ( (aPoint.x == splitPoint.x) &&
-        (aPoint.y == splitPoint.y) )
+   if ( (aPoint.x == dividePoint.x) &&
+        (aPoint.y == dividePoint.y) )
       return;
-   splitPoint = aPoint;
+   dividePoint = aPoint;
    [self arrangeViewsWithAnimations:enableAnimations];
    return;
 }
@@ -236,8 +236,8 @@
    if (aBool != reverseViewOrder)
    {
       // calculates new position of the slider/splitPoint
-      splitPoint = CGPointMake(frameSize.width-splitPoint.x,
-                               frameSize.height-splitPoint.y);
+      dividePoint = CGPointMake(frameSize.width-dividePoint.x,
+                                frameSize.height-dividePoint.y);
    };
 
    reverseViewOrder = aBool;
@@ -507,7 +507,7 @@
    if (!(hideSlider))
    {
          sliderOffset = (sliderSize.width/2);
-      fx  = splitPoint.x - sliderOffset;
+      fx  = dividePoint.x - sliderOffset;
       if (masterView.superview != self.view)
       {
          fx = frameSize.width;
@@ -535,9 +535,9 @@
    // positions master view for beginning of animations
    fx = frameSize.width + sliderSize.width;
    if (!(reverseViewOrder))
-      fx = 0 - splitPoint.x;
+      fx = 0 - dividePoint.x;
    fy   = 0;
-   fw   = splitPoint.x - sliderOffset;
+   fw   = dividePoint.x - sliderOffset;
    fh   = frameSize.height;
    masterFrame = CGRectMake(fx, fy, fw, fh);
    if (masterView.superview != self.view)
@@ -591,13 +591,13 @@
    };
 
    // adjusts left (view0) view's width to a minimum of minimumViewSize.width
-   if (splitPoint.x < (minimumViewSize.width + (sliderSize.width/2)))
-      splitPoint.x = minimumViewSize.width + (sliderSize.width/2);
+   if (dividePoint.x < (minimumViewSize.width + (sliderSize.width/2)))
+      dividePoint.x = minimumViewSize.width + (sliderSize.width/2);
 
    // adjusts right (view1) view's width to a minimum of minimumViewSize.width
    limit = (frameSize.width < frameSize.height) ? frameSize.width : frameSize.height;
-   if (splitPoint.x > (limit - minimumViewSize.width - (sliderSize.width/2)))
-      splitPoint.x = limit - minimumViewSize.width - (sliderSize.width/2);
+   if (dividePoint.x > (limit - minimumViewSize.width - (sliderSize.width/2)))
+      dividePoint.x = limit - minimumViewSize.width - (sliderSize.width/2);
 
    // adjusts rounded corners depending on the slider view status
    if ((hideSlider == YES) && (view0.layer.cornerRadius != 5))
@@ -616,7 +616,7 @@
    if (hideSlider == NO)
    {
       sliderOffset = (sliderSize.width/2);
-      fx     = splitPoint.x - sliderOffset;
+      fx     = dividePoint.x - sliderOffset;
       fy     = 0;
       fw     = sliderSize.width;
       fh     = frameSize.height;
@@ -639,7 +639,7 @@
    // positions left view
    fx          = 0;
    fy          = 0;
-   fw          = splitPoint.x - sliderOffset;
+   fw          = dividePoint.x - sliderOffset;
    fh          = frameSize.height;
    view0.frame = CGRectMake(fx, fy, fw, fh);
    if (view0.superview != self.view)
@@ -649,9 +649,9 @@
    // positions right view
    if (!(sliderOffset))
       sliderOffset = 1;
-   fx          = splitPoint.x + sliderOffset;
+   fx          = dividePoint.x + sliderOffset;
    fy          = 0;
-   fw          = frameSize.width - splitPoint.x - sliderOffset;
+   fw          = frameSize.width - dividePoint.x - sliderOffset;
    fh          = frameSize.height;
    view1.frame = CGRectMake(fx, fy, fw, fh);
    if (view1.superview != self.view)
@@ -853,8 +853,8 @@
 	if ((touch = [touches anyObject]))
    {
       currPt  = [touch locationInView:self.view];
-      if ( (currPt.x >= (splitPoint.x - (sliderSize.width/2))) &&
-           (currPt.x <= (splitPoint.x + (sliderSize.width/2))) )
+      if ( (currPt.x >= (dividePoint.x - (sliderSize.width/2))) &&
+           (currPt.x <= (dividePoint.x + (sliderSize.width/2))) )
          spliderIsMoving = YES;
    };
 
@@ -882,7 +882,7 @@
 	if ((touch = [touches anyObject]))
    {
       point           = [touch locationInView:self.view];
-      splitPoint.x    = point.x;
+      dividePoint.x   = point.x;
       [self arrangeViewsWithAnimations:NO];
    };
    return;

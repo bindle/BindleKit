@@ -83,7 +83,7 @@
 
    // Members specific to BKSplitViewController
    CGSize    minimumViewSize;                    // minimum width/height each view
-   CGPoint   splitPoint;                         // the point which seperates the two views
+   CGPoint   dividePoint;                        // the point which seperates the two views
    CGSize    sliderSize;                         // the minimum size of the slider bar
    BOOL      reverseViewOrder;                   // reverse order that the views are displayed
    BOOL      userInteractionEnabled;             // allow views to be resized by sliding te divider
@@ -105,7 +105,7 @@
 
 // Properties specific to BKSplitViewController
 @property(nonatomic, assign) CGSize    minimumViewSize;
-@property(nonatomic, assign) CGPoint   splitPoint;
+@property(nonatomic, assign) CGPoint   dividePoint;
 @property(nonatomic, assign) CGSize    sliderSize;
 @property(nonatomic, assign) BOOL      reverseViewOrder;
 @property(nonatomic, assign) BOOL      userInteractionEnabled;
