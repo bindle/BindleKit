@@ -94,7 +94,7 @@
    // Members internal to BKSplitViewController
    UIBarButtonItem     * barButton;              // the UIBarButtonItem passed to the delegate
    UIPopoverController * popoverController;      // the UIPopoverController used to display the master view when hidden
-   UIView              * sliderView;             // the view used to draw a slider bar
+   UIView              * dividerView;            // the view used to draw a slider bar
    BOOL                  spliderIsMoving;        // indicates that a user is actively touching the slider bar
    BOOL                  isMasterViewDisplayed;  // used to prevent duplicate messages to the delegate
 }

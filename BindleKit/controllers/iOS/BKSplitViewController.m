@@ -97,7 +97,7 @@
 {
    [controllers      release];
    [barButton        release];
-   [sliderView       release];
+   [dividerView      release];
    [popoverController release];
 
    [super dealloc];
@@ -125,8 +125,8 @@
    self.view = nil;
 
    // free slider view
-   [sliderView release];
-   sliderView = nil;
+   [dividerView release];
+   dividerView = nil;
 
    return;
 }
@@ -518,17 +518,17 @@
       fw  = dividerSize.width;
       fh  = frameSize.height;
       sliderFrame = CGRectMake(fx, fy, fw, fh);
-      if (!(sliderView))
+      if (!(dividerView))
       {
          pool = [[NSAutoreleasePool alloc] init];
-         sliderView = [[self dividerViewWithFrame:sliderFrame] retain];
+         dividerView = [[self dividerViewWithFrame:sliderFrame] retain];
          [pool release];
       };
-      if (sliderView.superview != self.view)
+      if (dividerView.superview != self.view)
       {
-         sliderView.frame = sliderFrame;
-         [self.view addSubview:sliderView];
-         [self.view sendSubviewToBack:sliderView];
+         dividerView.frame = sliderFrame;
+         [self.view addSubview:dividerView];
+         [self.view sendSubviewToBack:dividerView];
       };
    };
 
@@ -621,19 +621,19 @@
       fw     = dividerSize.width;
       fh     = frameSize.height;
       aFrame = CGRectMake(fx, fy, fw, fh);
-      if (!(sliderView))
+      if (!(dividerView))
       {
          pool = [[NSAutoreleasePool alloc] init];
-         sliderView = [[self dividerViewWithFrame:aFrame] retain];
+         dividerView = [[self dividerViewWithFrame:aFrame] retain];
          [pool release];
       };
-      sliderView.frame = aFrame;
-      if (!(sliderView.superview))
+      dividerView.frame = aFrame;
+      if (!(dividerView.superview))
       {
-         [self.view addSubview:sliderView];
-         [self.view sendSubviewToBack:sliderView];
+         [self.view addSubview:dividerView];
+         [self.view sendSubviewToBack:dividerView];
       };
-      [sliderView layoutSubviews];
+      [dividerView layoutSubviews];
    };
 
    // positions left view
@@ -701,9 +701,9 @@
 
    // removes slider view
    if (removeView == YES)
-      if ((sliderView))
-         if ((sliderView.superview))
-            [sliderView removeFromSuperview];
+      if ((dividerView))
+         if ((dividerView.superview))
+            [dividerView removeFromSuperview];
 
    return;
 }
