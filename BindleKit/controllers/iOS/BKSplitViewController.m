@@ -51,7 +51,7 @@
 #pragma mark - Private BKSplitViewController Category Declaration
 @interface BKSplitViewController () <UIPopoverControllerDelegate>
 
-// View lifecycle
+// view lifecycle (divider views)
 - (UIView *) dividerViewWithFrame:(CGRect)aFrame;
 
 // subview layout methods
@@ -321,6 +321,15 @@
 }
 
 
+- (void)viewDidUnload
+{
+   [super viewDidUnload];
+   return;
+}
+
+
+#pragma mark - view lifecycle (divider views)
+
 // generates divider view
 - (UIView *) dividerViewWithFrame:(CGRect)aFrame
 {
@@ -389,13 +398,6 @@
    imageView.frame = aFrame;
 
    return([imageView autorelease]);
-}
-
-
-- (void)viewDidUnload
-{
-   [super viewDidUnload];
-   return;
 }
 
 
