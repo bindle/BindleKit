@@ -622,8 +622,8 @@
    // removes master view
    if (removeView == YES)
    {
-      [self loadPopoverController];
       [aController.view removeFromSuperview];
+      [self loadPopoverController];
    };
 
    // determines if slider view should be removed
