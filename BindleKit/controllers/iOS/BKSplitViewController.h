@@ -52,6 +52,12 @@
 #endif
 
 
+typedef enum {
+  BKSplitViewLayoutHorizontally = 0,
+  BKSplitViewLayoutVertically   = 1
+} BKSplitViewLayout;
+
+
 @class BKSplitViewController;
 
 
@@ -90,6 +96,7 @@
    BOOL      bothViewsDisplayed;                 // always display both views (do not hide on in portait mode)
    BOOL      userInteractionEnabled;             // allow views to be resized by sliding te divider
    BOOL      animationsEnabled;                  // animate changes when updated by properties
+   BKSplitViewLayout viewLayout;                 // the layout of the split views (vertical or horizontal)
 
    // Members internal to BKSplitViewController
    UIBarButtonItem     * barButton;              // the UIBarButtonItem passed to the delegate
@@ -111,6 +118,7 @@
 @property(nonatomic, assign) BOOL      bothViewsDisplayed;
 @property(nonatomic, assign) BOOL      userInteractionEnabled;
 @property(nonatomic, assign) BOOL      animationsEnabled;
+@property(nonatomic, assign) BKSplitViewLayout viewLayout;
 
 @end
 
