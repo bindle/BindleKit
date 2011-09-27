@@ -55,7 +55,7 @@
 
 // subview manager methods
 - (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
-- (void) arrangeBothViewsHorizontally;
+- (void) layoutSplitViews;
 - (void) didLayoutSplitViews;
 
 // animation delegate
@@ -454,7 +454,7 @@
       [self beginAnimations:nil context:nil];
 
    // arranges views
-   [self arrangeBothViewsHorizontally];
+   [self layoutSplitViews];
 
    // commits animation to be run
    if ((animate))
@@ -464,7 +464,7 @@
 }
 
 
-- (void) arrangeBothViewsHorizontally
+- (void) layoutSplitViews
 {
    UIInterfaceOrientation orientation;
    NSAutoreleasePool * pool;
