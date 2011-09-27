@@ -52,7 +52,7 @@
 @interface BKSplitViewController () <UIPopoverControllerDelegate>
 
 // View lifecycle
-- (UIView *) sliderViewWithFrame:(CGRect)sliderFrame;
+- (UIView *) dividerViewWithFrame:(CGRect)aFrame;
 
 // subview manager methods
 - (void) arrangeViewsWithAnimations:(BOOL)useAnimations;
@@ -320,7 +320,7 @@
 
 
 // generates slider/divider view
-- (UIView *) sliderViewWithFrame:(CGRect)sliderFrame
+- (UIView *) dividerViewWithFrame:(CGRect)aFrame
 {
    CGSize             imageSize;
    CGColorSpaceRef    color;
@@ -334,8 +334,8 @@
    CGFloat            components[8] = { 0.988, 0.988, 0.988, 1.0,  // light
                                         0.875, 0.875, 0.875, 1.0 }; // dark
 
-   imageSize.width  = sliderFrame.size.width;
-   imageSize.height = sliderFrame.size.height;
+   imageSize.width  = aFrame.size.width;
+   imageSize.height = aFrame.size.height;
    color            = CGColorSpaceCreateDeviceRGB();
 
    // creates color context
@@ -384,7 +384,7 @@
 
    // creates view
    imageView = [[UIImageView alloc] initWithImage:uiImage];
-   imageView.frame = sliderFrame;
+   imageView.frame = aFrame;
 
    return([imageView autorelease]);
 }
@@ -521,7 +521,7 @@
       if (!(sliderView))
       {
          pool = [[NSAutoreleasePool alloc] init];
-         sliderView = [[self sliderViewWithFrame:sliderFrame] retain];
+         sliderView = [[self dividerViewWithFrame:sliderFrame] retain];
          [pool release];
       };
       if (sliderView.superview != self.view)
@@ -624,7 +624,7 @@
       if (!(sliderView))
       {
          pool = [[NSAutoreleasePool alloc] init];
-         sliderView = [[self sliderViewWithFrame:aFrame] retain];
+         sliderView = [[self dividerViewWithFrame:aFrame] retain];
          [pool release];
       };
       sliderView.frame = aFrame;
