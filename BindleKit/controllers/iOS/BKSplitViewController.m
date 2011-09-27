@@ -124,7 +124,7 @@
    // free root view
    self.view = nil;
 
-   // free slider view
+   // free divider view
    [dividerView release];
    dividerView = nil;
 
@@ -235,7 +235,7 @@
    frameSize = self.view.bounds.size;
    if (aBool != viewOrderReversed)
    {
-      // calculates new position of the slider/splitPoint
+      // calculates new position of the divider/dividePoint
       dividePoint = CGPointMake(frameSize.width-dividePoint.x,
                                 frameSize.height-dividePoint.y);
    };
@@ -319,7 +319,7 @@
 }
 
 
-// generates slider/divider view
+// generates divider view
 - (UIView *) dividerViewWithFrame:(CGRect)aFrame
 {
    CGSize             imageSize;
@@ -464,9 +464,9 @@
    NSAutoreleasePool * pool;
    CGSize    frameSize;
    UIView  * masterView;
-   CGRect    sliderFrame;
+   CGRect    dividerFrame;
    CGRect    masterFrame;
-   CGFloat   sliderOffset;
+   CGFloat   dividerOffset;
    CGFloat   fx; // frame X position
    CGFloat   fy; // frame Y position
    CGFloat   fw; // frame width
@@ -502,12 +502,12 @@
       return;
    };
 
-   // positions slider view for beginning of animations
-   sliderOffset = 0;
+   // positions divider view for beginning of animations
+   dividerOffset = 0;
    if (!(dividerHidden))
    {
-         sliderOffset = (dividerSize.width/2);
-      fx  = dividePoint.x - sliderOffset;
+         dividerOffset = (dividerSize.width/2);
+      fx  = dividePoint.x - dividerOffset;
       if (masterView.superview != self.view)
       {
          fx = frameSize.width;
@@ -517,16 +517,16 @@
       fy  = 0;
       fw  = dividerSize.width;
       fh  = frameSize.height;
-      sliderFrame = CGRectMake(fx, fy, fw, fh);
+      dividerFrame = CGRectMake(fx, fy, fw, fh);
       if (!(dividerView))
       {
          pool = [[NSAutoreleasePool alloc] init];
-         dividerView = [[self dividerViewWithFrame:sliderFrame] retain];
+         dividerView = [[self dividerViewWithFrame:dividerFrame] retain];
          [pool release];
       };
       if (dividerView.superview != self.view)
       {
-         dividerView.frame = sliderFrame;
+         dividerView.frame = dividerFrame;
          [self.view addSubview:dividerView];
          [self.view sendSubviewToBack:dividerView];
       };
@@ -537,7 +537,7 @@
    if (!(viewOrderReversed))
       fx = 0 - dividePoint.x;
    fy   = 0;
-   fw   = dividePoint.x - sliderOffset;
+   fw   = dividePoint.x - dividerOffset;
    fh   = frameSize.height;
    masterFrame = CGRectMake(fx, fy, fw, fh);
    if (masterView.superview != self.view)
@@ -559,7 +559,7 @@
    CGRect   aFrame;
    CGSize   frameSize;
    CGFloat  limit;
-   CGFloat  sliderOffset;
+   CGFloat  dividerOffset;
    CGFloat   fx; // frame X position
    CGFloat   fy; // frame Y position
    CGFloat   fw; // frame width
@@ -599,7 +599,7 @@
    if (dividePoint.x > (limit - minimumViewSize.width - (dividerSize.width/2)))
       dividePoint.x = limit - minimumViewSize.width - (dividerSize.width/2);
 
-   // adjusts rounded corners depending on the slider view status
+   // adjusts rounded corners depending on the divider view status
    if ((dividerHidden == YES) && (view0.layer.cornerRadius != 5))
    {
       view0.layer.cornerRadius = 5;
@@ -611,12 +611,12 @@
       view1.layer.cornerRadius = 0;
    };
 
-   // positions slider view if marked as visible
-   sliderOffset = 0;
+   // positions divider view if marked as visible
+   dividerOffset = 0;
    if (dividerHidden == NO)
    {
-      sliderOffset = (dividerSize.width/2);
-      fx     = dividePoint.x - sliderOffset;
+      dividerOffset = (dividerSize.width/2);
+      fx     = dividePoint.x - dividerOffset;
       fy     = 0;
       fw     = dividerSize.width;
       fh     = frameSize.height;
@@ -639,7 +639,7 @@
    // positions left view
    fx          = 0;
    fy          = 0;
-   fw          = dividePoint.x - sliderOffset;
+   fw          = dividePoint.x - dividerOffset;
    fh          = frameSize.height;
    view0.frame = CGRectMake(fx, fy, fw, fh);
    if (view0.superview != self.view)
@@ -647,11 +647,11 @@
    [view0 layoutSubviews];
 
    // positions right view
-   if (!(sliderOffset))
-      sliderOffset = 1;
-   fx          = dividePoint.x + sliderOffset;
+   if (!(dividerOffset))
+      dividerOffset = 1;
+   fx          = dividePoint.x + dividerOffset;
    fy          = 0;
-   fw          = frameSize.width - dividePoint.x - sliderOffset;
+   fw          = frameSize.width - dividePoint.x - dividerOffset;
    fh          = frameSize.height;
    view1.frame = CGRectMake(fx, fy, fw, fh);
    if (view1.superview != self.view)
@@ -687,7 +687,7 @@
       [self loadPopoverController];
    };
 
-   // determines if slider view should be removed
+   // determines if divider view should be removed
    if (dividerHidden == YES)
       removeView = YES;
    else if (bothViewsDisplayed == YES)
@@ -699,7 +699,7 @@
    else
       removeView  = YES;
 
-   // removes slider view
+   // removes divider view
    if (removeView == YES)
       if ((dividerView))
          if ((dividerView.superview))
@@ -841,7 +841,7 @@
 
 #pragma mark - Responding to Touch Events
 
-// begins tracking touches to slider
+// begins tracking touches to divider
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	UITouch  * touch;
@@ -862,7 +862,7 @@
 }
 
 
-// stops tracking touches to slider
+// stops tracking touches to divider
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	dividerIsMoving = NO;
@@ -870,7 +870,7 @@
 }
 
 
-// updates slider view position based upon movement of touches
+// updates divider view position based upon movement of touches
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	UITouch  * touch;
