@@ -502,10 +502,12 @@
    if (viewLayout == BKSplitViewLayoutHorizontally)
    {
       dividerView = [self dividerViewForHorizontal];
-      [dividerVertView removeFromSuperview];
+      if ((dividerVertView.superview))
+         [dividerVertView removeFromSuperview];
    } else {
       dividerView = [self dividerViewForVertical];
-      [dividerHorzView removeFromSuperview];
+      if ((dividerHorzView.superview))
+         [dividerHorzView removeFromSuperview];
    };
    return;
 }
