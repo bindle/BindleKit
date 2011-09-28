@@ -53,6 +53,8 @@
 
 // view lifecycle (divider views)
 - (CGContextRef) newDividerBackgroundContext:(CGSize)imageSize;
+- (UIView *) dividerViewForHorizontal;
+- (UIView *) dividerViewForVertical;
 - (void) loadDividerView;
 
 // subview layout methods
@@ -101,7 +103,8 @@
 {
    [controllers      release];
    [barButton        release];
-   [dividerView      release];
+   [dividerHorzView   release];
+   [dividerVertView   release];
    [popoverController release];
 
    [super dealloc];
@@ -121,16 +124,26 @@
       for(pos = 0; pos < [controllers count]; pos++)
          [[controllers objectAtIndex:pos] didReceiveMemoryWarning];
 
+   // free horizontal divider view if not visible
+   if (!(dividerHorzView.superview))
+   {
+      [dividerHorzView release];
+      dividerHorzView = nil;
+   };
+
+   // free vertical divider view if not visible
+   if (!(dividerVertView.superview))
+   {
+      [dividerVertView release];
+      dividerVertView = nil;
+   };
+
    // nothing is left to do if view is currently loaded
    if (self.isViewLoaded == YES)
       return;
 
    // free root view
    self.view = nil;
-
-   // free divider view
-   [dividerView release];
-   dividerView = nil;
 
    return;
 }
@@ -385,8 +398,14 @@
    CGContextFillPath(context);
 
    // creates gradient
-   start = CGPointMake(1, 0);
-   stop  = CGPointMake(imageSize.width-1, 0);
+   if (imageSize.height > imageSize.width)
+   {
+      start = CGPointMake(1, 0);
+      stop  = CGPointMake(imageSize.width-1, 0);
+   } else {
+      start = CGPointMake(0, imageSize.height-1);
+      stop  = CGPointMake(0, 1);
+   };
    gradient = CGGradientCreateWithColorComponents(color, components, NULL, 2);
    CGContextDrawLinearGradient(context, gradient, start, stop,  0);
    CGGradientRelease(gradient);
@@ -398,7 +417,7 @@
 }
 
 
-- (void) loadDividerView
+- (UIView *) dividerViewForHorizontal
 {
    NSAutoreleasePool * pool;
    CGSize              boundsSize;
@@ -407,8 +426,12 @@
    CGImageRef          cgImage;
    UIImage           * uiImage;
 
+   if ((dividerHorzView))
+      return(dividerHorzView);
+
    pool = [[NSAutoreleasePool alloc] init];
 
+   // defines image size
    boundsSize       = self.view.bounds.size;
    imageSize.width  = dividerSize.width;
    imageSize.height = boundsSize.height;
@@ -426,10 +449,64 @@
    CGContextRelease(context);
 
    // creates view
-   dividerView = [[UIImageView alloc] initWithImage:uiImage];
+   dividerHorzView = [[UIImageView alloc] initWithImage:uiImage];
 
    [pool release];
 
+   return(dividerHorzView);
+}
+
+
+- (UIView *) dividerViewForVertical
+{
+   NSAutoreleasePool * pool;
+   CGSize              boundsSize;
+   CGSize              imageSize;
+   CGContextRef        context;
+   CGImageRef          cgImage;
+   UIImage           * uiImage;
+
+   if ((dividerVertView))
+      return(dividerVertView);
+
+   pool = [[NSAutoreleasePool alloc] init];
+
+   // defines image size
+   boundsSize       = self.view.bounds.size;
+   imageSize.width  = boundsSize.width;
+   imageSize.height = dividerSize.height;
+
+   // creates context
+   context = [self newDividerBackgroundContext:imageSize];
+
+   // Creates Image
+   cgImage = CGBitmapContextCreateImage(context);
+   uiImage = [UIImage imageWithCGImage:cgImage];
+   uiImage = [uiImage stretchableImageWithLeftCapWidth:1 topCapHeight:1];
+
+   // frees resources
+   CGImageRelease(cgImage);
+   CGContextRelease(context);
+
+   // creates view
+   dividerVertView = [[UIImageView alloc] initWithImage:uiImage];
+
+   [pool release];
+
+   return(dividerVertView);
+}
+
+
+- (void) loadDividerView
+{
+   if (viewLayout == BKSplitViewLayoutHorizontally)
+   {
+      dividerView = [self dividerViewForHorizontal];
+      [dividerVertView removeFromSuperview];
+   } else {
+      dividerView = [self dividerViewForVertical];
+      [dividerHorzView removeFromSuperview];
+   };
    return;
 }
 
@@ -606,8 +683,7 @@
    // positions divider view for beginning of animations
    if (!(dividerHidden))
    {
-      if (!(dividerView))
-         [self loadDividerView];
+      [self loadDividerView];
       if (dividerView.superview != self.view)
       {
          dividerView.frame = dividerFrame;
@@ -783,8 +859,7 @@
    // positions divider view if marked as visible
    if (dividerHidden == NO)
    {
-      if (!(dividerView))
-         [self loadDividerView];
+      [self loadDividerView];
       dividerView.frame = dividerFrame;
       if (!(dividerView.superview))
       {

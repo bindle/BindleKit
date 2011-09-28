@@ -101,7 +101,9 @@ typedef enum {
    // Members internal to BKSplitViewController
    UIBarButtonItem     * barButton;              // the UIBarButtonItem passed to the delegate
    UIPopoverController * popoverController;      // the UIPopoverController used to display the master view when hidden
-   UIView              * dividerView;            // the view used to draw a slider bar
+   UIView              * dividerView;            // the current divider bar view
+   UIView              * dividerHorzView;        // the view used to draw a horizontal slider bar
+   UIView              * dividerVertView;        // the view used to draw a vertical slider bar
    BOOL                  dividerIsMoving;        // indicates that a user is actively touching the slider bar
 }
 
