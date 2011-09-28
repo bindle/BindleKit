@@ -60,6 +60,7 @@
 // subview layout methods
 - (void) layoutViewsWithAnimations:(BOOL)useAnimations;
 - (void) willLayoutSplitViews:(UIInterfaceOrientation)orientation;
+- (void) layoutSingleView;
 - (void) layoutSplitViews;
 - (void) didLayoutSplitViews;
 
@@ -705,6 +706,104 @@
 }
 
 
+- (void) layoutSingleView
+{
+   UIView  * view0;
+   UIView  * view1;
+   CGSize    frameSize;
+   CGFloat   fx; // frame X position
+   CGFloat   fy; // frame Y position
+   CGFloat   fw; // frame width
+   CGFloat   fh; // frame height
+   CGFloat   dividerOffset;
+   CGRect    dividerFrame;
+   CGRect    frame0;
+
+   frameSize  = self.view.bounds.size;
+   view0      = [[controllers objectAtIndex:0] view];
+   view1      = [[controllers objectAtIndex:1] view];
+
+   // calculates position of divider view for beginning of animations
+   dividerOffset = 0;
+   switch(viewLayout)
+   {
+      // vertical layout (one over the other)
+      case BKSplitViewLayoutVertically:
+      if (!(dividerHidden))
+         dividerOffset = (dividerSize.height/2);
+      fx  = 0;
+      fy = frameSize.height;
+      if (!(viewOrderReversed))
+         fy = 0 - dividerSize.height;
+      fw  = frameSize.width;
+      fh  = dividerSize.height;
+      break;
+
+      // horizontal layout (side by side)
+      case BKSplitViewLayoutHorizontally:
+      default:
+      if (!(dividerHidden))
+         dividerOffset = (dividerSize.width/2);
+      fx = frameSize.width;
+      if (!(viewOrderReversed))
+         fx = 0 - dividerSize.width;
+      fy  = 0;
+      fw  = dividerSize.width;
+      fh  = frameSize.height;
+      break;
+   };
+   dividerFrame = CGRectMake(fx, fy, fw, fh);
+
+   // calculates position of master view for beginning of animations
+   switch(viewLayout)
+   {
+      // vertical layout (one over the other)
+      case BKSplitViewLayoutVertically:
+      fx   = 0;
+      fy   = frameSize.height + dividerSize.height;
+      if (!(viewOrderReversed))
+         fy = 0 - dividePoint.y;
+      fw   = frameSize.width;
+      fh   = dividePoint.y - dividerOffset;
+      break;
+
+      // horizontal layout (side by side)
+      case BKSplitViewLayoutHorizontally:
+      default:
+      fx = frameSize.width + dividerSize.width;
+      if (!(viewOrderReversed))
+         fx = 0 - dividePoint.x;
+      fy   = 0;
+      fw   = dividePoint.x - dividerOffset;
+      fh   = frameSize.height;
+      break;
+   };
+   frame0 = CGRectMake(fx, fy, fw, fh);
+
+   // positions detail view
+   view1.frame = self.view.bounds;
+   if (view1.superview != self.view)
+      [self.view addSubview:view1];
+   [self.view bringSubviewToFront:view1];
+
+   // positions detail view
+   if (view0.superview == self.view)
+   {
+      view0.frame = frame0;
+      [self.view sendSubviewToBack:view0];
+   };
+
+   // positions divider view
+   if (dividerView.superview == self.view)
+   {
+      dividerView.frame = dividerFrame;
+      [self.view sendSubviewToBack:dividerView];
+   };
+
+   return;
+}
+
+
 - (void) layoutSplitViews
 {
    UIInterfaceOrientation orientation;
@@ -728,11 +827,7 @@
    if ( ((!(bothViewsDisplayed)) && (orientation == UIInterfaceOrientationPortrait)) ||
         ((!(bothViewsDisplayed)) && (orientation == UIInterfaceOrientationPortraitUpsideDown)) )
    {
-      view0 = [[controllers objectAtIndex:1] view];
-      view0.frame = self.view.bounds;
-      if (view0.superview != self.view)
-         [self.view addSubview:view0];
-      [self.view bringSubviewToFront:view0];
+      [self layoutSingleView];
       return;
    };
 
