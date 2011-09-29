@@ -122,6 +122,8 @@ typedef enum {
 @property(nonatomic, assign) BOOL      animationsEnabled;
 @property(nonatomic, assign) BKSplitViewLayout viewLayout;
 
+- (void) setDefaults;
+
 @end
 
 

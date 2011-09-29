@@ -162,21 +162,15 @@
    if ((self = [super init]) == nil)
       return(self);
 
-   // sets default values for split view controller
-   minimumViewSize        = CGSizeMake(0, 0);
-   dividePoint            = CGPointMake(320, 320);
-   dividerIsMoving        = NO;
-   dividerSize            = CGSizeMake(20, 20);
-   dividerHidden          = NO;
-   animationsEnabled      = YES;
-   viewLayout             = BKSplitViewLayoutHorizontally;
-
    // creates initial controllers
    controller0 = [[UIViewController alloc] init];
    controller1 = [[UIViewController alloc] init];
    controllers = [[NSArray alloc] initWithObjects:controller0, controller1, nil];
    [controller0 release];
    [controller1 release];
+
+   // sets default values for split view controller
+   [self setDefaults];
 
    return(self);
 }
@@ -189,6 +183,20 @@
    if (aBool == bothViewsDisplayed)
       return;
    bothViewsDisplayed = aBool;
+   [self layoutViewsWithAnimations:animationsEnabled];
+   return;
+}
+
+
+- (void) setDefaults
+{
+   minimumViewSize        = CGSizeMake(0, 0);
+   dividePoint            = CGPointMake(320, 320);
+   dividerIsMoving        = NO;
+   dividerSize            = CGSizeMake(20, 20);
+   dividerHidden          = NO;
+   animationsEnabled      = YES;
+   viewLayout             = BKSplitViewLayoutHorizontally;
    [self layoutViewsWithAnimations:animationsEnabled];
    return;
 }
