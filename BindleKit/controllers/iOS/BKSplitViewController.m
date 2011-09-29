@@ -286,7 +286,7 @@
       [[controllers objectAtIndex:pos] setBKParentViewController:self];
 
    // arranges views
-   [self layoutViewsWithAnimations:animationsEnabled];
+   [self layoutViewsWithAnimations:NO];
 
    return;
 }
