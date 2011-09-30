@@ -52,7 +52,7 @@
 @interface BKSplitViewController () <UIPopoverControllerDelegate>
 
 // view lifecycle (divider views)
-- (CGContextRef) newDividerBackgroundContext:(CGSize)imageSize;
+- (UIImage *) dividerBackgroundImage:(CGSize)imageSize;
 - (UIView *) dividerViewForHorizontal;
 - (UIView *) dividerViewForVertical;
 - (void) loadDividerView;
@@ -367,13 +367,15 @@
 #pragma mark - view lifecycle (divider views)
 
 // generates divider background CGContext for divider views
-- (CGContextRef) newDividerBackgroundContext:(CGSize)imageSize
+- (UIImage *) dividerBackgroundImage:(CGSize)imageSize
 {
    CGColorSpaceRef    color;
    CGContextRef       context;
    CGGradientRef      gradient;
    CGPoint            start;
    CGPoint            stop;
+   CGImageRef         cgImage;
+   UIImage          * uiImage;
    CGFloat            components[8] = { 0.988, 0.988, 0.988, 1.0,  // light
                                         0.875, 0.875, 0.875, 1.0 }; // dark
 
@@ -419,10 +421,16 @@
    CGContextDrawLinearGradient(context, gradient, start, stop,  0);
    CGGradientRelease(gradient);
 
+   // Creates Image
+   cgImage = CGBitmapContextCreateImage(context);
+   uiImage = [UIImage imageWithCGImage:cgImage];
+
    // frees resources
+   CGImageRelease(cgImage);
+   CGContextRelease(context);
    CGColorSpaceRelease(color);
 
-   return(context);
+   return(uiImage);
 }
 
 
@@ -431,8 +439,6 @@
    NSAutoreleasePool * pool;
    CGSize              boundsSize;
    CGSize              imageSize;
-   CGContextRef        context;
-   CGImageRef          cgImage;
    UIImage           * uiImage;
 
    if ((dividerHorzView))
@@ -445,17 +451,9 @@
    imageSize.width  = dividerSize.width;
    imageSize.height = boundsSize.height;
 
-   // creates context
-   context = [self newDividerBackgroundContext:imageSize];
-
    // Creates Image
-   cgImage = CGBitmapContextCreateImage(context);
-   uiImage = [UIImage imageWithCGImage:cgImage];
+   uiImage = [self dividerBackgroundImage:imageSize];
    uiImage = [uiImage stretchableImageWithLeftCapWidth:1 topCapHeight:1];
-
-   // frees resources
-   CGImageRelease(cgImage);
-   CGContextRelease(context);
 
    // creates view
    dividerHorzView = [[UIImageView alloc] initWithImage:uiImage];
@@ -471,8 +469,6 @@
    NSAutoreleasePool * pool;
    CGSize              boundsSize;
    CGSize              imageSize;
-   CGContextRef        context;
-   CGImageRef          cgImage;
    UIImage           * uiImage;
 
    if ((dividerVertView))
@@ -485,17 +481,9 @@
    imageSize.width  = boundsSize.width;
    imageSize.height = dividerSize.height;
 
-   // creates context
-   context = [self newDividerBackgroundContext:imageSize];
-
    // Creates Image
-   cgImage = CGBitmapContextCreateImage(context);
-   uiImage = [UIImage imageWithCGImage:cgImage];
+   uiImage = [self dividerBackgroundImage:imageSize];
    uiImage = [uiImage stretchableImageWithLeftCapWidth:1 topCapHeight:1];
-
-   // frees resources
-   CGImageRelease(cgImage);
-   CGContextRelease(context);
 
    // creates view
    dividerVertView = [[UIImageView alloc] initWithImage:uiImage];
