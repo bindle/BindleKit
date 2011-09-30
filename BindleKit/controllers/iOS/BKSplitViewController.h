@@ -90,6 +90,7 @@ typedef enum {
    // Members specific to BKSplitViewController
    CGPoint   dividePoint;                        // the point which seperates the two views
    CGSize    dividerSize;                        // the minimum size of the slider bar
+   CGSize    dividerGripSize;                    // the size of the slider bar grip image
    BOOL      dividerHidden;                      // hide slider bar (visual option only, does not affect funcitonality)
    CGSize    minimumViewSize;                    // minimum width/height each view
    BOOL      viewOrderReversed;                  // reverse order that the views are displayed

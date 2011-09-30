@@ -53,6 +53,7 @@
 
 // view lifecycle (divider views)
 - (UIImage *) dividerBackgroundImage:(BKSplitViewLayout)orientation;
+- (UIImage *) dividerGripImage:(BKSplitViewLayout)orientation;
 - (UIImageView *) dividerImageView:(BKSplitViewLayout)orientation;
 - (void) loadDividerView;
 
@@ -193,6 +194,7 @@
    dividePoint            = CGPointMake(320, 320);
    dividerIsMoving        = NO;
    dividerSize            = CGSizeMake(20, 20);
+   dividerGripSize        = CGSizeMake(6, 30);
    dividerHidden          = NO;
    animationsEnabled      = YES;
    viewLayout             = BKSplitViewLayoutHorizontally;
@@ -444,14 +446,138 @@
 }
 
 
+// generates divider grip image for divider views
+- (UIImage *) dividerGripImage:(BKSplitViewLayout)orientation
+{
+   CGColorSpaceRef    color;
+   CGSize             imageSize;
+   CGContextRef       context;
+   CGImageRef         cgImage;
+   UIImage          * grImage;
+
+   color = CGColorSpaceCreateDeviceRGB();
+
+   // determines image dimensions based on orientation
+   imageSize = CGSizeZero;
+   if (orientation == BKSplitViewLayoutHorizontally)
+      imageSize = CGSizeMake(dividerGripSize.width, dividerGripSize.height);
+   if (orientation == BKSplitViewLayoutVertically)
+      imageSize = CGSizeMake(dividerGripSize.height, dividerGripSize.width);
+
+   // creates color context
+   context = CGBitmapContextCreate
+   (
+      NULL,                          // data
+      imageSize.width,               // width
+      imageSize.height,              // height
+      8,                             // bits per component (1 byte per componet)
+      (imageSize.width * 4),         // bytes per row (4 componets per pixel)
+      color,                         // color space
+      kCGImageAlphaPremultipliedLast // bitmap info
+   );
+   CGContextSaveGState(context);
+
+   CGContextDrawPath(context, kCGPathStroke);
+   CGContextSetLineWidth(context, 1);
+   CGContextSetShouldAntialias(context, NO);
+
+   // draws dark lines of grip
+   CGContextSetGrayStrokeColor(context, 0.35, 1.0);
+   switch (orientation)
+   {
+      case BKSplitViewLayoutVertically:
+      // draw first line
+      CGContextMoveToPoint(context,    0,                   1);
+      CGContextAddLineToPoint(context, (imageSize.width-1), 1);
+      // draw second line
+      CGContextMoveToPoint(context,    0,                   (imageSize.height-1));
+      CGContextAddLineToPoint(context, (imageSize.width-1), (imageSize.height-1));
+      break;
+
+      case BKSplitViewLayoutHorizontally:
+      default:
+      // draw first line
+      CGContextMoveToPoint(context,    0, 0);
+      CGContextAddLineToPoint(context, 0, imageSize.height-1);
+      // draw second line
+      CGContextMoveToPoint(context,    (imageSize.width-2), 0);
+      CGContextAddLineToPoint(context, (imageSize.width-2), imageSize.height-1);
+      break;
+   };
+   CGContextStrokePath(context);
+
+   // draws light lines of grip
+   CGContextSetGrayStrokeColor(context, 1.0, 1.0);
+   switch (orientation)
+   {
+      case BKSplitViewLayoutVertically:
+      // draw first line
+      CGContextMoveToPoint(context,    0,                   0);
+      CGContextAddLineToPoint(context, (imageSize.width-2), 0);
+      // draw second line
+      CGContextMoveToPoint(context,    0,                   (imageSize.height-2));
+      CGContextAddLineToPoint(context, (imageSize.width-1), (imageSize.height-2));
+      break;
+
+      case BKSplitViewLayoutHorizontally:
+      default:
+      // draw first line
+      CGContextMoveToPoint(context,    1, 0);
+      CGContextAddLineToPoint(context, 1, imageSize.height-1);
+      // draw second line
+      CGContextMoveToPoint(context,    (imageSize.width-1), 0);
+      CGContextAddLineToPoint(context, (imageSize.width-1), imageSize.height-1);
+      break;
+   };
+   CGContextStrokePath(context);
+
+   // Creates Image
+   cgImage = CGBitmapContextCreateImage(context);
+   grImage = [UIImage imageWithCGImage:cgImage];
+
+   // frees resources
+   CGImageRelease(cgImage);
+   CGContextRelease(context);
+   CGColorSpaceRelease(color);
+
+   return(grImage);
+}
+
+
 // generates divider image views for divider views
 - (UIImageView *) dividerImageView:(BKSplitViewLayout)orientation
 {
-   UIImage * bgImage;
+   UIImage     * bgImage;
+   UIImage     * grImage;
+   UIImageView * bgImageView;
+   UIImageView * grImageView;
 
+   // generates images
    bgImage = [self dividerBackgroundImage:orientation];
+   grImage = [self dividerGripImage:orientation];
 
-   return([[[UIImageView alloc] initWithImage:bgImage] autorelease]);
+   // creates image views
+   bgImageView = [[UIImageView alloc] initWithImage:bgImage];
+   grImageView = [[UIImageView alloc] initWithImage:grImage];
+
+   // adds grip view to background view
+   grImageView.frame = CGRectMake
+   (
+      (bgImageView.bounds.size.width  - grImageView.frame.size.width)  / 2.0,
+      (bgImageView.bounds.size.height - grImageView.frame.size.height) / 2.0,
+      grImageView.frame.size.width,
+      grImageView.frame.size.height
+   );
+   grImageView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin |
+                                  UIViewAutoresizingFlexibleTopMargin |
+                                  UIViewAutoresizingFlexibleLeftMargin |
+                                  UIViewAutoresizingFlexibleRightMargin;
+   [bgImageView addSubview:grImageView];
+
+   // releases resources
+   [grImageView release];
+
+   return([bgImageView autorelease]);
 }
 
 
