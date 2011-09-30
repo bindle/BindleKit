@@ -375,7 +375,7 @@
    CGPoint            start;
    CGPoint            stop;
    CGImageRef         cgImage;
-   UIImage          * uiImage;
+   UIImage          * bgImage;
    CGFloat            components[8] = { 0.988, 0.988, 0.988, 1.0,  // light
                                         0.875, 0.875, 0.875, 1.0 }; // dark
 
@@ -433,14 +433,14 @@
 
    // Creates Image
    cgImage = CGBitmapContextCreateImage(context);
-   uiImage = [UIImage imageWithCGImage:cgImage];
+   bgImage = [UIImage imageWithCGImage:cgImage];
 
    // frees resources
    CGImageRelease(cgImage);
    CGContextRelease(context);
    CGColorSpaceRelease(color);
 
-   return(uiImage);
+   return(bgImage);
 }
 
 
