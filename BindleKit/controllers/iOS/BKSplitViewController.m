@@ -53,8 +53,7 @@
 
 // view lifecycle (divider views)
 - (UIImage *) dividerBackgroundImage:(CGSize)imageSize;
-- (UIView *) dividerViewForHorizontal;
-- (UIView *) dividerViewForVertical;
+- (UIImageView *) dividerImageView:(CGSize)imageSize;
 - (void) loadDividerView;
 
 // subview layout methods
@@ -366,7 +365,7 @@
 
 #pragma mark - view lifecycle (divider views)
 
-// generates divider background CGContext for divider views
+// generates divider background image for divider views
 - (UIImage *) dividerBackgroundImage:(CGSize)imageSize
 {
    CGColorSpaceRef    color;
@@ -434,78 +433,56 @@
 }
 
 
-- (UIView *) dividerViewForHorizontal
+// generates divider image views for divider views
+- (UIImageView *) dividerImageView:(CGSize)imageSize
 {
-   NSAutoreleasePool * pool;
-   CGSize              boundsSize;
-   CGSize              imageSize;
-   UIImage           * uiImage;
+   UIImage * bgImage;
 
-   if ((dividerHorzView))
-      return(dividerHorzView);
+   bgImage = [self dividerBackgroundImage:imageSize];
 
-   pool = [[NSAutoreleasePool alloc] init];
-
-   // defines image size
-   boundsSize       = self.view.bounds.size;
-   imageSize.width  = dividerSize.width;
-   imageSize.height = boundsSize.height;
-
-   // Creates Image
-   uiImage = [self dividerBackgroundImage:imageSize];
-   uiImage = [uiImage stretchableImageWithLeftCapWidth:1 topCapHeight:1];
-
-   // creates view
-   dividerHorzView = [[UIImageView alloc] initWithImage:uiImage];
-
-   [pool release];
-
-   return(dividerHorzView);
+   return([[[UIImageView alloc] initWithImage:bgImage] autorelease]);
 }
 
 
-- (UIView *) dividerViewForVertical
-{
-   NSAutoreleasePool * pool;
-   CGSize              boundsSize;
-   CGSize              imageSize;
-   UIImage           * uiImage;
-
-   if ((dividerVertView))
-      return(dividerVertView);
-
-   pool = [[NSAutoreleasePool alloc] init];
-
-   // defines image size
-   boundsSize       = self.view.bounds.size;
-   imageSize.width  = boundsSize.width;
-   imageSize.height = dividerSize.height;
-
-   // Creates Image
-   uiImage = [self dividerBackgroundImage:imageSize];
-   uiImage = [uiImage stretchableImageWithLeftCapWidth:1 topCapHeight:1];
-
-   // creates view
-   dividerVertView = [[UIImageView alloc] initWithImage:uiImage];
-
-   [pool release];
-
-   return(dividerVertView);
-}
-
-
+// loads divider view
 - (void) loadDividerView
 {
+   NSAutoreleasePool * pool;
+   CGSize              boundsSize;
+   CGSize              imageSize;
+
+   pool = [[NSAutoreleasePool alloc] init];
+
+   boundsSize       = self.view.bounds.size;
+
+   // calculates image size
+   if (viewLayout == BKSplitViewLayoutHorizontally)
+      imageSize = CGSizeMake(dividerSize.width, boundsSize.height);
+   else
+      imageSize = CGSizeMake(boundsSize.width, dividerSize.height);
+
+   // retrieves horizontal divider
    if (viewLayout == BKSplitViewLayoutHorizontally)
    {
-      dividerView = [self dividerViewForHorizontal];
+      if (!(dividerHorzView))
+         dividerHorzView = [[self dividerImageView:imageSize] retain];
+      dividerView = dividerHorzView;
       if ((dividerVertView.superview))
          [dividerVertView removeFromSuperview];
-   } else {
-      dividerView = [self dividerViewForVertical];
+   };
+
+   // retrieves vertical divider
+   if (viewLayout == BKSplitViewLayoutVertically)
+   {
+      if (!(dividerVertView))
+         dividerVertView = [[self dividerImageView:imageSize] retain];
+      dividerView = dividerVertView;
       if ((dividerHorzView.superview))
          [dividerHorzView removeFromSuperview];
    };
+
+   [pool release];
+
    return;
 }
 
