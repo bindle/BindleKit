@@ -52,8 +52,8 @@
 @interface BKSplitViewController () <UIPopoverControllerDelegate>
 
 // view lifecycle (divider views)
-- (UIImage *) dividerBackgroundImage:(CGSize)imageSize;
-- (UIImageView *) dividerImageView:(CGSize)imageSize;
+- (UIImage *) dividerBackgroundImage:(BKSplitViewLayout)orientation;
+- (UIImageView *) dividerImageView:(BKSplitViewLayout)orientation;
 - (void) loadDividerView;
 
 // subview layout methods
@@ -366,9 +366,10 @@
 #pragma mark - view lifecycle (divider views)
 
 // generates divider background image for divider views
-- (UIImage *) dividerBackgroundImage:(CGSize)imageSize
+- (UIImage *) dividerBackgroundImage:(BKSplitViewLayout)orientation
 {
    CGColorSpaceRef    color;
+   CGSize             imageSize;
    CGContextRef       context;
    CGGradientRef      gradient;
    CGPoint            start;
@@ -379,6 +380,16 @@
                                         0.875, 0.875, 0.875, 1.0 }; // dark
 
    color = CGColorSpaceCreateDeviceRGB();
+
+   // calculates image dimensions
+   if (orientation == BKSplitViewLayoutHorizontally)
+   {
+      imageSize.width  = dividerSize.width;
+      imageSize.height = self.view.bounds.size.height;
+   } else {
+      imageSize.width  = self.view.bounds.size.width;
+      imageSize.height = dividerSize.height;
+   };
 
    // creates color context
    context = CGBitmapContextCreate
@@ -434,11 +445,11 @@
 
 
 // generates divider image views for divider views
-- (UIImageView *) dividerImageView:(CGSize)imageSize
+- (UIImageView *) dividerImageView:(BKSplitViewLayout)orientation
 {
    UIImage * bgImage;
 
-   bgImage = [self dividerBackgroundImage:imageSize];
+   bgImage = [self dividerBackgroundImage:orientation];
 
    return([[[UIImageView alloc] initWithImage:bgImage] autorelease]);
 }
@@ -448,24 +459,14 @@
 - (void) loadDividerView
 {
    NSAutoreleasePool * pool;
-   CGSize              boundsSize;
-   CGSize              imageSize;
 
    pool = [[NSAutoreleasePool alloc] init];
-
-   boundsSize       = self.view.bounds.size;
-
-   // calculates image size
-   if (viewLayout == BKSplitViewLayoutHorizontally)
-      imageSize = CGSizeMake(dividerSize.width, boundsSize.height);
-   else
-      imageSize = CGSizeMake(boundsSize.width, dividerSize.height);
 
    // retrieves horizontal divider
    if (viewLayout == BKSplitViewLayoutHorizontally)
    {
       if (!(dividerHorzView))
-         dividerHorzView = [[self dividerImageView:imageSize] retain];
+         dividerHorzView = [[self dividerImageView:BKSplitViewLayoutHorizontally] retain];
       dividerView = dividerHorzView;
       if ((dividerVertView.superview))
          [dividerVertView removeFromSuperview];
@@ -475,7 +476,7 @@
    if (viewLayout == BKSplitViewLayoutVertically)
    {
       if (!(dividerVertView))
-         dividerVertView = [[self dividerImageView:imageSize] retain];
+         dividerVertView = [[self dividerImageView:BKSplitViewLayoutVertically] retain];
       dividerView = dividerVertView;
       if ((dividerHorzView.superview))
          [dividerHorzView removeFromSuperview];
