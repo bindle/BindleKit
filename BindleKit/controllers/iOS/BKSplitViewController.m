@@ -1051,7 +1051,7 @@
    view0.frame = frame0;
    if (view0.superview != self.view)
       [self.view addSubview:view0];
-   [view0 layoutSubviews];
+   [view0 setNeedsLayout];
 
    // positions divider view if marked as visible
    if (dividerHidden == NO)
@@ -1063,14 +1063,17 @@
          [self.view addSubview:dividerView];
          [self.view sendSubviewToBack:dividerView];
       };
-      [dividerView layoutSubviews];
+      [dividerView setNeedsLayout];
    };
 
    // positions right view
    view1.frame = frame1;
    if (view1.superview != self.view)
       [self.view addSubview:view1];
-   [view1 layoutSubviews];
+   [view1 setNeedsLayout];
+
+   // requests the view layout
+   [self.view layoutIfNeeded];
 
    return;
 }
