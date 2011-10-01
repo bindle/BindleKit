@@ -64,9 +64,7 @@
 - (void) layoutSplitViews;
 - (void) didLayoutSplitViews;
 
-// animation delegate
-- (void) beginAnimations:animationID context:animationContext;
-- (void) commitAnimations;
+// UIView animation delegate
 - (void) animationDidStop:(NSString *)animationID finished:(NSNumber *)finished
          context:(void *)context;
 
@@ -661,14 +659,18 @@
 
    // begin animations
    if ((animate))
-      [self beginAnimations:nil context:nil];
+   {
+      [UIView beginAnimations:@"layoutViewsWithAnimations" context:nil];
+      [UIView setAnimationDelegate:self];
+      [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+   };
 
    // arranges views
    [self layoutSplitViews];
 
    // commits animation to be run
    if ((animate))
-      [self commitAnimations];
+      [UIView commitAnimations];
    else
       [self didLayoutSplitViews];
 
@@ -1126,23 +1128,7 @@
 }
 
 
-#pragma mark - animation delegate
-
-- (void) beginAnimations:animationID context:animationContext
-{
-   [UIView beginAnimations:animationID context:nil];
-   [UIView setAnimationDelegate:self];
-   [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
-   return;
-}
-
-
-- (void) commitAnimations
-{
-   [UIView commitAnimations];
-   return;
-}
-
+#pragma mark - UIView animation delegate
 
 - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
