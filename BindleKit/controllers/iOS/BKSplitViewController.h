@@ -131,6 +131,6 @@ typedef enum {
 #pragma mark - Public UIViewController Category Declaration
 @interface UIViewController (BKSplitViewController)
 
-@property (nonatomic,readonly,retain) UIViewController * splitViewController; // If the view controller has a split view controller as its ancestor, return it. Returns nil otherwise.
+@property (nonatomic,readonly,retain) UISplitViewController * splitViewController; // If the view controller has a split view controller as its ancestor, return it. Returns nil otherwise.
 
 @end

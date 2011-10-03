@@ -1306,7 +1306,7 @@
 @implementation UIViewController (BKSplitViewController)
 
 // updates splitViewController property to include BKSplitViewController
-- (UIViewController *) splitViewController
+- (UISplitViewController *) splitViewController
 {
    id controller;
    if (!(controller = [self parentViewController]))
