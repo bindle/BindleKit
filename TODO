@@ -12,8 +12,8 @@ Documentation:
 * Document NSString (BKStringDigest) category. (syzdek)
 * Write BindleKit manual/guide. (syzdek)
 * Create website for BindleKit. (syzdek)
-* Write demo program. (syzdek)
 * Publish documentation sets on website. (syzdek)
+* Add demo of BKSelectionController to BKCatalog. (syzdek)
 
 Consistency:
 * Write unit tests for BKMemoryCache class. (syzdek)

@@ -1,0 +1,442 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A005084A1422CB01005C3D98 /* BKNumberController.m in Sources */ = {isa = PBXBuildFile; fileRef = A00508491422CB01005C3D98 /* BKNumberController.m */; };
+		A005084D1422D342005C3D98 /* libBindleKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A00508441422C7B3005C3D98 /* libBindleKit.a */; };
+		A00B7FA214390F88004A8798 /* BKButtonOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = A00B7FA114390F88004A8798 /* BKButtonOptions.m */; };
+		A02DC46E1421B8A500D8F79F /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A02DC46C1421B8A500D8F79F /* MainWindow_iPad.xib */; };
+		A02DC4711421B8B500D8F79F /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A02DC46F1421B8B500D8F79F /* MainWindow_iPhone.xib */; };
+		A02DC4741421B9C200D8F79F /* BKCatalogMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A02DC4731421B9C200D8F79F /* BKCatalogMenu.m */; };
+		A0887A5D1421B1A400421AFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0887A5C1421B1A400421AFE /* UIKit.framework */; };
+		A0887A5F1421B1A400421AFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0887A5E1421B1A400421AFE /* Foundation.framework */; };
+		A0887A611421B1A400421AFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0887A601421B1A400421AFE /* CoreGraphics.framework */; };
+		A0887A671421B1A400421AFE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0887A651421B1A400421AFE /* InfoPlist.strings */; };
+		A0887A691421B1A400421AFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0887A681421B1A400421AFE /* main.m */; };
+		A0887A6D1421B1A400421AFE /* BKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0887A6C1421B1A400421AFE /* BKAppDelegate.m */; };
+		A0887A741421B1A400421AFE /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0887A721421B1A400421AFE /* MainWindow_iPhone.xib */; };
+		A0887A7B1421B1A400421AFE /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0887A791421B1A400421AFE /* MainWindow_iPad.xib */; };
+		A0EF0EFD14395636000CF01A /* BKSplitVCOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EF0EFC14395636000CF01A /* BKSplitVCOptions.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A00508431422C7B3005C3D98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0887A821421B25400421AFE /* BindleKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A07D34F4140DC1E800832E1F;
+			remoteInfo = iBindleKit;
+		};
+		A00508451422C7B3005C3D98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0887A821421B25400421AFE /* BindleKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A0F713591413520300252B5F;
+			remoteInfo = BindleKit;
+		};
+		A005084B1422D33D005C3D98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0887A821421B25400421AFE /* BindleKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A07D34F3140DC1E800832E1F;
+			remoteInfo = iBindleKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A00508481422CB01005C3D98 /* BKNumberController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKNumberController.h; sourceTree = "<group>"; };
+		A00508491422CB01005C3D98 /* BKNumberController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKNumberController.m; sourceTree = "<group>"; };
+		A00B7FA014390F88004A8798 /* BKButtonOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKButtonOptions.h; sourceTree = "<group>"; };
+		A00B7FA114390F88004A8798 /* BKButtonOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKButtonOptions.m; sourceTree = "<group>"; };
+		A02DC46D1421B8A500D8F79F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
+		A02DC4701421B8B500D8F79F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
+		A02DC4721421B9C200D8F79F /* BKCatalogMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKCatalogMenu.h; sourceTree = "<group>"; };
+		A02DC4731421B9C200D8F79F /* BKCatalogMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKCatalogMenu.m; sourceTree = "<group>"; };
+		A0887A581421B1A400421AFE /* BKCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BKCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0887A5C1421B1A400421AFE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A0887A5E1421B1A400421AFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A0887A601421B1A400421AFE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A0887A641421B1A400421AFE /* BKCatalog-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BKCatalog-Info.plist"; sourceTree = "<group>"; };
+		A0887A661421B1A400421AFE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A0887A681421B1A400421AFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A0887A6A1421B1A400421AFE /* BKCatalog-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BKCatalog-Prefix.pch"; sourceTree = "<group>"; };
+		A0887A6B1421B1A400421AFE /* BKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKAppDelegate.h; sourceTree = "<group>"; };
+		A0887A6C1421B1A400421AFE /* BKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKAppDelegate.m; sourceTree = "<group>"; };
+		A0887A821421B25400421AFE /* BindleKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BindleKit.xcodeproj; path = ../../BindleKit.xcodeproj; sourceTree = SOURCE_ROOT; };
+		A0EF0EFB14395636000CF01A /* BKSplitVCOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKSplitVCOptions.h; sourceTree = "<group>"; };
+		A0EF0EFC14395636000CF01A /* BKSplitVCOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKSplitVCOptions.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A0887A551421B1A400421AFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0887A5D1421B1A400421AFE /* UIKit.framework in Frameworks */,
+				A0887A5F1421B1A400421AFE /* Foundation.framework in Frameworks */,
+				A0887A611421B1A400421AFE /* CoreGraphics.framework in Frameworks */,
+				A005084D1422D342005C3D98 /* libBindleKit.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A0029E841421B6C900EFC600 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A0887A6B1421B1A400421AFE /* BKAppDelegate.h */,
+				A0887A6C1421B1A400421AFE /* BKAppDelegate.m */,
+				A00B7FA014390F88004A8798 /* BKButtonOptions.h */,
+				A00B7FA114390F88004A8798 /* BKButtonOptions.m */,
+				A02DC4721421B9C200D8F79F /* BKCatalogMenu.h */,
+				A02DC4731421B9C200D8F79F /* BKCatalogMenu.m */,
+				A00508481422CB01005C3D98 /* BKNumberController.h */,
+				A00508491422CB01005C3D98 /* BKNumberController.m */,
+				A0EF0EFB14395636000CF01A /* BKSplitVCOptions.h */,
+				A0EF0EFC14395636000CF01A /* BKSplitVCOptions.m */,
+			);
+			name = Controllers;
+			path = BKCatalog/controllers;
+			sourceTree = SOURCE_ROOT;
+		};
+		A0029EA71421B72600EFC600 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A0887A681421B1A400421AFE /* main.m */,
+				A0887A6A1421B1A400421AFE /* BKCatalog-Prefix.pch */,
+			);
+			name = "Other Sources";
+			path = BKCatalog/other;
+			sourceTree = SOURCE_ROOT;
+		};
+		A0029EA81421B75900EFC600 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			path = BKCatalog/models;
+			sourceTree = SOURCE_ROOT;
+		};
+		A005083F1422C7B3005C3D98 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A00508441422C7B3005C3D98 /* libBindleKit.a */,
+				A00508461422C7B3005C3D98 /* libBindleKit.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A0887A4D1421B1A300421AFE = {
+			isa = PBXGroup;
+			children = (
+				A0887A621421B1A400421AFE /* BKCatalog */,
+				A0887A811421B22800421AFE /* Dependencies */,
+				A0887A5B1421B1A400421AFE /* Frameworks */,
+				A0887A591421B1A400421AFE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A0887A591421B1A400421AFE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A0887A581421B1A400421AFE /* BKCatalog.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A0887A5B1421B1A400421AFE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0887A5C1421B1A400421AFE /* UIKit.framework */,
+				A0887A5E1421B1A400421AFE /* Foundation.framework */,
+				A0887A601421B1A400421AFE /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A0887A621421B1A400421AFE /* BKCatalog */ = {
+			isa = PBXGroup;
+			children = (
+				A0029EA81421B75900EFC600 /* Models */,
+				A0029E841421B6C900EFC600 /* Controllers */,
+				A0029EA71421B72600EFC600 /* Other Sources */,
+				A0887A631421B1A400421AFE /* Supporting Files */,
+			);
+			path = BKCatalog;
+			sourceTree = "<group>";
+		};
+		A0887A631421B1A400421AFE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A02DC46F1421B8B500D8F79F /* MainWindow_iPhone.xib */,
+				A02DC46C1421B8A500D8F79F /* MainWindow_iPad.xib */,
+				A0887A641421B1A400421AFE /* BKCatalog-Info.plist */,
+				A0887A651421B1A400421AFE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			path = BKCatalog/support;
+			sourceTree = SOURCE_ROOT;
+		};
+		A0887A811421B22800421AFE /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				A0887A821421B25400421AFE /* BindleKit.xcodeproj */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A0887A571421B1A400421AFE /* BKCatalog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0887A7E1421B1A400421AFE /* Build configuration list for PBXNativeTarget "BKCatalog" */;
+			buildPhases = (
+				A0887A541421B1A400421AFE /* Sources */,
+				A0887A551421B1A400421AFE /* Frameworks */,
+				A0887A561421B1A400421AFE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A005084C1422D33D005C3D98 /* PBXTargetDependency */,
+			);
+			name = BKCatalog;
+			productName = BKCatalog;
+			productReference = A0887A581421B1A400421AFE /* BKCatalog.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A0887A4F1421B1A300421AFE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Bindle Binaries";
+			};
+			buildConfigurationList = A0887A521421B1A300421AFE /* Build configuration list for PBXProject "BKCatalog" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A0887A4D1421B1A300421AFE;
+			productRefGroup = A0887A591421B1A400421AFE /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A005083F1422C7B3005C3D98 /* Products */;
+					ProjectRef = A0887A821421B25400421AFE /* BindleKit.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				A0887A571421B1A400421AFE /* BKCatalog */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A00508441422C7B3005C3D98 /* libBindleKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = libBindleKit.a;
+			path = libiBindleKit.a;
+			remoteRef = A00508431422C7B3005C3D98 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A00508461422C7B3005C3D98 /* libBindleKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBindleKit.a;
+			remoteRef = A00508451422C7B3005C3D98 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A0887A561421B1A400421AFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0887A671421B1A400421AFE /* InfoPlist.strings in Resources */,
+				A0887A741421B1A400421AFE /* MainWindow_iPhone.xib in Resources */,
+				A0887A7B1421B1A400421AFE /* MainWindow_iPad.xib in Resources */,
+				A02DC46E1421B8A500D8F79F /* MainWindow_iPad.xib in Resources */,
+				A02DC4711421B8B500D8F79F /* MainWindow_iPhone.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A0887A541421B1A400421AFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0887A691421B1A400421AFE /* main.m in Sources */,
+				A0887A6D1421B1A400421AFE /* BKAppDelegate.m in Sources */,
+				A02DC4741421B9C200D8F79F /* BKCatalogMenu.m in Sources */,
+				A005084A1422CB01005C3D98 /* BKNumberController.m in Sources */,
+				A00B7FA214390F88004A8798 /* BKButtonOptions.m in Sources */,
+				A0EF0EFD14395636000CF01A /* BKSplitVCOptions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A005084C1422D33D005C3D98 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iBindleKit;
+			targetProxy = A005084B1422D33D005C3D98 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A02DC46C1421B8A500D8F79F /* MainWindow_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A02DC46D1421B8A500D8F79F /* en */,
+			);
+			name = MainWindow_iPad.xib;
+			sourceTree = "<group>";
+		};
+		A02DC46F1421B8B500D8F79F /* MainWindow_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A02DC4701421B8B500D8F79F /* en */,
+			);
+			name = MainWindow_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		A0887A651421B1A400421AFE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A0887A661421B1A400421AFE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A0887A721421B1A400421AFE /* MainWindow_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+			);
+			name = MainWindow_iPhone.xib;
+			path = /Users/syzdek/development/com.bindlebinaries/BindleKit/examples/BKCatalog/BKCatalog/support;
+			sourceTree = "<absolute>";
+		};
+		A0887A791421B1A400421AFE /* MainWindow_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+			);
+			name = MainWindow_iPad.xib;
+			path = /Users/syzdek/development/com.bindlebinaries/BindleKit/examples/BKCatalog/BKCatalog/support;
+			sourceTree = "<absolute>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A0887A7C1421B1A400421AFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../..;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				OTHER_LDFLAGS = "-all_load";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A0887A7D1421B1A400421AFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../..;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-all_load";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A0887A7F1421B1A400421AFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BKCatalog/other/BKCatalog-Prefix.pch";
+				INFOPLIST_FILE = "BKCatalog/support/BKCatalog-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A0887A801421B1A400421AFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BKCatalog/other/BKCatalog-Prefix.pch";
+				INFOPLIST_FILE = "BKCatalog/support/BKCatalog-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A0887A521421B1A300421AFE /* Build configuration list for PBXProject "BKCatalog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0887A7C1421B1A400421AFE /* Debug */,
+				A0887A7D1421B1A400421AFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0887A7E1421B1A400421AFE /* Build configuration list for PBXNativeTarget "BKCatalog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0887A7F1421B1A400421AFE /* Debug */,
+				A0887A801421B1A400421AFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A0887A4F1421B1A300421AFE /* Project object */;
+}
