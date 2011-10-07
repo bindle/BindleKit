@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A014851D143D4F3200A24446 /* BKNetworkReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = A014851B143D4F3200A24446 /* BKNetworkReachability.h */; };
+		A014851E143D4F3200A24446 /* BKNetworkReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = A014851B143D4F3200A24446 /* BKNetworkReachability.h */; };
+		A014851F143D4F3200A24446 /* BKNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A014851C143D4F3200A24446 /* BKNetworkReachability.m */; };
+		A0148520143D4F3200A24446 /* BKNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A014851C143D4F3200A24446 /* BKNetworkReachability.m */; };
 		A0410F98142801E300ACE897 /* BKButtonImages.h in Headers */ = {isa = PBXBuildFile; fileRef = A0410F96142801E300ACE897 /* BKButtonImages.h */; };
 		A0410F99142801E300ACE897 /* BKButtonImages.h in Headers */ = {isa = PBXBuildFile; fileRef = A0410F96142801E300ACE897 /* BKButtonImages.h */; };
 		A0410F9A142801E300ACE897 /* BKButtonImages.m in Sources */ = {isa = PBXBuildFile; fileRef = A0410F97142801E300ACE897 /* BKButtonImages.m */; };
@@ -44,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A014851B143D4F3200A24446 /* BKNetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKNetworkReachability.h; sourceTree = "<group>"; };
+		A014851C143D4F3200A24446 /* BKNetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKNetworkReachability.m; sourceTree = "<group>"; };
 		A0410F96142801E300ACE897 /* BKButtonImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKButtonImages.h; sourceTree = "<group>"; };
 		A0410F97142801E300ACE897 /* BKButtonImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKButtonImages.m; sourceTree = "<group>"; };
 		A0410FBD14283FF800ACE897 /* BKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKButton.h; sourceTree = "<group>"; };
@@ -163,6 +169,8 @@
 		A064D96F140E053200255FD3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A014851B143D4F3200A24446 /* BKNetworkReachability.h */,
+				A014851C143D4F3200A24446 /* BKNetworkReachability.m */,
 				A064D970140E053200255FD3 /* iOS */,
 			);
 			name = Controllers;
@@ -254,6 +262,7 @@
 				A0617454142028BA00BCEA6F /* BKSplitViewController.h in Headers */,
 				A0410F98142801E300ACE897 /* BKButtonImages.h in Headers */,
 				A0410FBF14283FF800ACE897 /* BKButton.h in Headers */,
+				A014851D143D4F3200A24446 /* BKNetworkReachability.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +275,7 @@
 				A0D32C9414186F0200641ABD /* BKStack.h in Headers */,
 				A0D32C9B14186F2800641ABD /* BKQueue.h in Headers */,
 				A0410F99142801E300ACE897 /* BKButtonImages.h in Headers */,
+				A014851E143D4F3200A24446 /* BKNetworkReachability.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +357,7 @@
 				A0617455142028BA00BCEA6F /* BKSplitViewController.m in Sources */,
 				A0410F9A142801E300ACE897 /* BKButtonImages.m in Sources */,
 				A0410FC014283FF800ACE897 /* BKButton.m in Sources */,
+				A014851F143D4F3200A24446 /* BKNetworkReachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +372,7 @@
 				A0D32C9614186F0200641ABD /* BKStack.m in Sources */,
 				A0D32C9D14186F2800641ABD /* BKQueue.m in Sources */,
 				A0410F9B142801E300ACE897 /* BKButtonImages.m in Sources */,
+				A0148520143D4F3200A24446 /* BKNetworkReachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

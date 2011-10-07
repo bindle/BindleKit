@@ -32,27 +32,22 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /*
- *  BindleKit/BindleKit.h - loads API for classes in BindleKit
+ *  BKRootViewController.h - Root view controller for Reachability
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <BindleKit/BindleKit.h>
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/controllers/BKNetworkReachability.h>
-#import <BindleKit/models/BKNode.h>
-#import <BindleKit/models/BKMemoryCache.h>
-#import <BindleKit/models/BKQueue.h>
-#import <BindleKit/models/BKSelectionOption.h>
-#import <BindleKit/models/BKStack.h>
-#import <BindleKit/views/BKButtonImages.h>
+@interface BKRootViewController : UITableViewController
+{
+   UIImage               * redImage;
+   UIImage               * greenImage;
+   NSMutableArray        * logs;
+   BKNetworkReachability * networkReachability;
+}
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/controllers/iOS/BKSplitViewController.h>
-#import <BindleKit/views/iOS/BKButton.h>
-#endif
+@property (nonatomic, assign) BKNetworkReachability * networkReachability;
 
-#ifdef TARGET_OS_MAC
-#endif
+- (void) networkReachabilityUpdate:(NSNotification *)note;
 
-/* end of header */
+@end

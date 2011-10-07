@@ -32,27 +32,22 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /*
- *  BindleKit/BindleKit.h - loads API for classes in BindleKit
+ *  BKAppDelegate.h - App delegate for Reachability
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <BindleKit/BindleKit.h>
+#import "BKRootViewController.h"
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/controllers/BKNetworkReachability.h>
-#import <BindleKit/models/BKNode.h>
-#import <BindleKit/models/BKMemoryCache.h>
-#import <BindleKit/models/BKQueue.h>
-#import <BindleKit/models/BKSelectionOption.h>
-#import <BindleKit/models/BKStack.h>
-#import <BindleKit/views/BKButtonImages.h>
+@interface BKAppDelegate : NSObject <UIApplicationDelegate>
+{
+   UINavigationController * navigationController;
+   BKRootViewController   * rootController;
+   BKNetworkReachability  * networkReachability;
+}
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/controllers/iOS/BKSplitViewController.h>
-#import <BindleKit/views/iOS/BKButton.h>
-#endif
+@property (nonatomic, retain) IBOutlet UIWindow *window;
 
-#ifdef TARGET_OS_MAC
-#endif
+- (void) networkReachabilityUpdate:(NSNotification *)note;
 
-/* end of header */
+@end

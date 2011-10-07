@@ -1,0 +1,407 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A0148549143E790600A24446 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0148548143E790600A24446 /* UIKit.framework */; };
+		A014854B143E790600A24446 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A014854A143E790600A24446 /* Foundation.framework */; };
+		A014854D143E790600A24446 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A014854C143E790600A24446 /* CoreGraphics.framework */; };
+		A0148553143E790600A24446 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0148551143E790600A24446 /* InfoPlist.strings */; };
+		A0148555143E790600A24446 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0148554143E790600A24446 /* main.m */; };
+		A0148559143E790600A24446 /* BKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0148558143E790600A24446 /* BKAppDelegate.m */; };
+		A0148574143E7B4100A24446 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0148570143E7B4100A24446 /* MainWindow_iPad.xib */; };
+		A0148575143E7B4100A24446 /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0148572143E7B4100A24446 /* MainWindow_iPhone.xib */; };
+		A0148584143E7D5200A24446 /* libBindleKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A014857F143E7D2E00A24446 /* libBindleKit.a */; };
+		A03BB3CE143E7F3400806765 /* BKRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03BB3CD143E7F3400806765 /* BKRootViewController.m */; };
+		A03BB3D4143E919F00806765 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03BB3D3143E919F00806765 /* SystemConfiguration.framework */; };
+		A0CDD9E5143ECC86000D32DB /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = A0CDD9E3143ECC86000D32DB /* green.png */; };
+		A0CDD9E6143ECC86000D32DB /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = A0CDD9E4143ECC86000D32DB /* red.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A014857E143E7D2E00A24446 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0148576143E7D2E00A24446 /* BindleKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A07D34F4140DC1E800832E1F;
+			remoteInfo = iBindleKit;
+		};
+		A0148580143E7D2E00A24446 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0148576143E7D2E00A24446 /* BindleKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A0F713591413520300252B5F;
+			remoteInfo = BindleKit;
+		};
+		A0148582143E7D4700A24446 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0148576143E7D2E00A24446 /* BindleKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A07D34F3140DC1E800832E1F;
+			remoteInfo = iBindleKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A0148544143E790600A24446 /* BKNetTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BKNetTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0148548143E790600A24446 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A014854A143E790600A24446 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A014854C143E790600A24446 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A0148550143E790600A24446 /* BKNetTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BKNetTest-Info.plist"; sourceTree = "<group>"; };
+		A0148552143E790600A24446 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A0148554143E790600A24446 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A0148556143E790600A24446 /* BKNetTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BKNetTest-Prefix.pch"; sourceTree = "<group>"; };
+		A0148557143E790600A24446 /* BKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKAppDelegate.h; sourceTree = "<group>"; };
+		A0148558143E790600A24446 /* BKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKAppDelegate.m; sourceTree = "<group>"; };
+		A0148571143E7B4100A24446 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
+		A0148573143E7B4100A24446 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
+		A0148576143E7D2E00A24446 /* BindleKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BindleKit.xcodeproj; path = ../../BindleKit.xcodeproj; sourceTree = "<group>"; };
+		A03BB3CC143E7F3400806765 /* BKRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKRootViewController.h; sourceTree = "<group>"; };
+		A03BB3CD143E7F3400806765 /* BKRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKRootViewController.m; sourceTree = "<group>"; };
+		A03BB3D3143E919F00806765 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A0CDD9E3143ECC86000D32DB /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
+		A0CDD9E4143ECC86000D32DB /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A0148541143E790600A24446 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A03BB3D4143E919F00806765 /* SystemConfiguration.framework in Frameworks */,
+				A0148584143E7D5200A24446 /* libBindleKit.a in Frameworks */,
+				A0148549143E790600A24446 /* UIKit.framework in Frameworks */,
+				A014854B143E790600A24446 /* Foundation.framework in Frameworks */,
+				A014854D143E790600A24446 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A0148539143E790600A24446 = {
+			isa = PBXGroup;
+			children = (
+				A014854E143E790600A24446 /* BKNetTest */,
+				A014856D143E798E00A24446 /* Dependencies */,
+				A0148547143E790600A24446 /* Frameworks */,
+				A0148545143E790600A24446 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A0148545143E790600A24446 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A0148544143E790600A24446 /* BKNetTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A0148547143E790600A24446 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A03BB3D3143E919F00806765 /* SystemConfiguration.framework */,
+				A0148548143E790600A24446 /* UIKit.framework */,
+				A014854A143E790600A24446 /* Foundation.framework */,
+				A014854C143E790600A24446 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A014854E143E790600A24446 /* BKNetTest */ = {
+			isa = PBXGroup;
+			children = (
+				A014856E143E7AE700A24446 /* Controllers */,
+				A014856F143E7B0500A24446 /* Other Sources */,
+				A014854F143E790600A24446 /* Supporting Files */,
+			);
+			path = BKNetTest;
+			sourceTree = "<group>";
+		};
+		A014854F143E790600A24446 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A0CDD9E3143ECC86000D32DB /* green.png */,
+				A0CDD9E4143ECC86000D32DB /* red.png */,
+				A0148570143E7B4100A24446 /* MainWindow_iPad.xib */,
+				A0148572143E7B4100A24446 /* MainWindow_iPhone.xib */,
+				A0148550143E790600A24446 /* BKNetTest-Info.plist */,
+				A0148551143E790600A24446 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			path = support;
+			sourceTree = "<group>";
+		};
+		A014856D143E798E00A24446 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				A0148576143E7D2E00A24446 /* BindleKit.xcodeproj */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		A014856E143E7AE700A24446 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A0148557143E790600A24446 /* BKAppDelegate.h */,
+				A0148558143E790600A24446 /* BKAppDelegate.m */,
+				A03BB3CC143E7F3400806765 /* BKRootViewController.h */,
+				A03BB3CD143E7F3400806765 /* BKRootViewController.m */,
+			);
+			name = Controllers;
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		A014856F143E7B0500A24446 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A0148554143E790600A24446 /* main.m */,
+				A0148556143E790600A24446 /* BKNetTest-Prefix.pch */,
+			);
+			name = "Other Sources";
+			path = other;
+			sourceTree = "<group>";
+		};
+		A0148577143E7D2E00A24446 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A014857F143E7D2E00A24446 /* libBindleKit.a */,
+				A0148581143E7D2E00A24446 /* libBindleKit.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A0148543143E790600A24446 /* BKNetTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A014856A143E790600A24446 /* Build configuration list for PBXNativeTarget "BKNetTest" */;
+			buildPhases = (
+				A0148540143E790600A24446 /* Sources */,
+				A0148541143E790600A24446 /* Frameworks */,
+				A0148542143E790600A24446 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0148583143E7D4700A24446 /* PBXTargetDependency */,
+			);
+			name = BKNetTest;
+			productName = Reachability;
+			productReference = A0148544143E790600A24446 /* BKNetTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A014853B143E790600A24446 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Bindle Binaries";
+			};
+			buildConfigurationList = A014853E143E790600A24446 /* Build configuration list for PBXProject "BKNetTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A0148539143E790600A24446;
+			productRefGroup = A0148545143E790600A24446 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A0148577143E7D2E00A24446 /* Products */;
+					ProjectRef = A0148576143E7D2E00A24446 /* BindleKit.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				A0148543143E790600A24446 /* BKNetTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A014857F143E7D2E00A24446 /* libBindleKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = libBindleKit.a;
+			path = libiBindleKit.a;
+			remoteRef = A014857E143E7D2E00A24446 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A0148581143E7D2E00A24446 /* libBindleKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBindleKit.a;
+			remoteRef = A0148580143E7D2E00A24446 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A0148542143E790600A24446 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0148553143E790600A24446 /* InfoPlist.strings in Resources */,
+				A0148574143E7B4100A24446 /* MainWindow_iPad.xib in Resources */,
+				A0148575143E7B4100A24446 /* MainWindow_iPhone.xib in Resources */,
+				A0CDD9E5143ECC86000D32DB /* green.png in Resources */,
+				A0CDD9E6143ECC86000D32DB /* red.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A0148540143E790600A24446 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0148555143E790600A24446 /* main.m in Sources */,
+				A0148559143E790600A24446 /* BKAppDelegate.m in Sources */,
+				A03BB3CE143E7F3400806765 /* BKRootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A0148583143E7D4700A24446 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iBindleKit;
+			targetProxy = A0148582143E7D4700A24446 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A0148551143E790600A24446 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A0148552143E790600A24446 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A0148570143E7B4100A24446 /* MainWindow_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A0148571143E7B4100A24446 /* en */,
+			);
+			name = MainWindow_iPad.xib;
+			sourceTree = "<group>";
+		};
+		A0148572143E7B4100A24446 /* MainWindow_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A0148573143E7B4100A24446 /* en */,
+			);
+			name = MainWindow_iPhone.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A0148568143E790600A24446 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../..;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A0148569143E790600A24446 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../..;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A014856B143E790600A24446 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BKNetTest/other/BKNetTest-Prefix.pch";
+				INFOPLIST_FILE = "BKNetTest/support/BKNetTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A014856C143E790600A24446 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BKNetTest/other/BKNetTest-Prefix.pch";
+				INFOPLIST_FILE = "BKNetTest/support/BKNetTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A014853E143E790600A24446 /* Build configuration list for PBXProject "BKNetTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0148568143E790600A24446 /* Debug */,
+				A0148569143E790600A24446 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A014856A143E790600A24446 /* Build configuration list for PBXNativeTarget "BKNetTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A014856B143E790600A24446 /* Debug */,
+				A014856C143E790600A24446 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A014853B143E790600A24446 /* Project object */;
+}
