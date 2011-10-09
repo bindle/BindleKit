@@ -333,7 +333,10 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
    char str[1024];
 
    [self networkReachabilityFlagsFormat:str length:1024L flags:flags];
-   NSLog(@"Reachability: %s", str);
+   if (!(notificationString))
+      NSLog(@"Reachability: %s", str);
+   if ((notificationString))
+      NSLog(@"Reachability: %s (%@)", str, notificationString);
 
    return;
 }
