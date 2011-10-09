@@ -67,6 +67,7 @@
 
 @synthesize logUpdates;
 @synthesize reachabilityFlags;
+@synthesize notificationString;
 
 
 #pragma mark - Creating and Initializing a BKNetworkReachability
@@ -76,6 +77,7 @@
    [self stopNotifier];
    if ((reachabilityRef))
 		CFRelease(reachabilityRef);
+   [notificationString release];
 	[super dealloc];
    return;
 }
@@ -263,6 +265,8 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
       [reachability logNetworkReachabilityFlags];
 
 	[[NSNotificationCenter defaultCenter] postNotificationName:BKNetworkReachabilityNotification object:reachability];
+   if ((reachability.notificationString))
+      [[NSNotificationCenter defaultCenter] postNotificationName:reachability.notificationString object:reachability];
 
 	[pool release];
 }
@@ -301,6 +305,8 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 
    // sends notification with current status
    [[NSNotificationCenter defaultCenter] postNotificationName:BKNetworkReachabilityNotification object:self];
+   if ((notificationString))
+      [[NSNotificationCenter defaultCenter] postNotificationName:notificationString object:self];
 
 	return(YES);
 }
