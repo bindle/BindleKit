@@ -13,6 +13,7 @@
 		A02DC46E1421B8A500D8F79F /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A02DC46C1421B8A500D8F79F /* MainWindow_iPad.xib */; };
 		A02DC4711421B8B500D8F79F /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A02DC46F1421B8B500D8F79F /* MainWindow_iPhone.xib */; };
 		A02DC4741421B9C200D8F79F /* BKCatalogMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A02DC4731421B9C200D8F79F /* BKCatalogMenu.m */; };
+		A0376B821441596100410C2E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0376B811441596100410C2E /* SystemConfiguration.framework */; };
 		A0887A5D1421B1A400421AFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0887A5C1421B1A400421AFE /* UIKit.framework */; };
 		A0887A5F1421B1A400421AFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0887A5E1421B1A400421AFE /* Foundation.framework */; };
 		A0887A611421B1A400421AFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0887A601421B1A400421AFE /* CoreGraphics.framework */; };
@@ -57,6 +58,7 @@
 		A02DC4701421B8B500D8F79F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
 		A02DC4721421B9C200D8F79F /* BKCatalogMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKCatalogMenu.h; sourceTree = "<group>"; };
 		A02DC4731421B9C200D8F79F /* BKCatalogMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKCatalogMenu.m; sourceTree = "<group>"; };
+		A0376B811441596100410C2E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A0887A581421B1A400421AFE /* BKCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BKCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0887A5C1421B1A400421AFE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A0887A5E1421B1A400421AFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -77,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0376B821441596100410C2E /* SystemConfiguration.framework in Frameworks */,
 				A0887A5D1421B1A400421AFE /* UIKit.framework in Frameworks */,
 				A0887A5F1421B1A400421AFE /* Foundation.framework in Frameworks */,
 				A0887A611421B1A400421AFE /* CoreGraphics.framework in Frameworks */,
@@ -153,6 +156,7 @@
 		A0887A5B1421B1A400421AFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A0376B811441596100410C2E /* SystemConfiguration.framework */,
 				A0887A5C1421B1A400421AFE /* UIKit.framework */,
 				A0887A5E1421B1A400421AFE /* Foundation.framework */,
 				A0887A601421B1A400421AFE /* CoreGraphics.framework */,
