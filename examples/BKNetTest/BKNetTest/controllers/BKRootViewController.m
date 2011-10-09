@@ -52,6 +52,7 @@
 {
    [[NSNotificationCenter defaultCenter] removeObserver:self name:networkReachability.notificationString object:nil];
    [logs release];
+   [super dealloc];
    return;
 }
 
