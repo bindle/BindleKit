@@ -32,27 +32,18 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /*
- *  BKRootViewController.h - Root view controller for Reachability
+ *  BKLogViewController.h - Log view controller for Reachability
  */
 
 #import <UIKit/UIKit.h>
-#import <BindleKit/BindleKit.h>
 
-#import "BKLogViewController.h"
-
-@interface BKRootViewController : UITableViewController
+@interface BKLogViewController : UITableViewController
 {
-   UIImage               * redImage;
-   UIImage               * greenImage;
-   NSMutableArray        * logs;
-   UINavigationController * logsViewController;
-   BKNetworkReachability * networkReachability;
+   NSMutableArray * logs;
 }
 
-@property (nonatomic, retain) BKNetworkReachability * networkReachability;
+@property (nonatomic, assign) NSMutableArray * logs;
 
-- (void) startNotifier;
-- (void) networkReachabilityUpdate:(NSNotification *)note;
-- (void) openLogs:(UIBarButtonItem *)sender;
+- (void) closeLogs:(UIBarButtonItem *)sender;
 
 @end

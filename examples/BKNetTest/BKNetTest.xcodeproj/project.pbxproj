@@ -22,6 +22,7 @@
 		A0376BAE144174B100410C2E /* BindleKit72.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376BAA144174B100410C2E /* BindleKit72.png */; };
 		A03BB3CE143E7F3400806765 /* BKRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03BB3CD143E7F3400806765 /* BKRootViewController.m */; };
 		A03BB3D4143E919F00806765 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03BB3D3143E919F00806765 /* SystemConfiguration.framework */; };
+		A06B98C2144190A90002EA7E /* BKLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A06B98C1144190A90002EA7E /* BKLogViewController.m */; };
 		A0CDD9E5143ECC86000D32DB /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = A0CDD9E3143ECC86000D32DB /* green.png */; };
 		A0CDD9E6143ECC86000D32DB /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = A0CDD9E4143ECC86000D32DB /* red.png */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,8 @@
 		A03BB3CC143E7F3400806765 /* BKRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKRootViewController.h; sourceTree = "<group>"; };
 		A03BB3CD143E7F3400806765 /* BKRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKRootViewController.m; sourceTree = "<group>"; };
 		A03BB3D3143E919F00806765 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A06B98C0144190A90002EA7E /* BKLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKLogViewController.h; sourceTree = "<group>"; };
+		A06B98C1144190A90002EA7E /* BKLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKLogViewController.m; sourceTree = "<group>"; };
 		A0CDD9E3143ECC86000D32DB /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
 		A0CDD9E4143ECC86000D32DB /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +163,8 @@
 				A0148558143E790600A24446 /* BKAppDelegate.m */,
 				A03BB3CC143E7F3400806765 /* BKRootViewController.h */,
 				A03BB3CD143E7F3400806765 /* BKRootViewController.m */,
+				A06B98C0144190A90002EA7E /* BKLogViewController.h */,
+				A06B98C1144190A90002EA7E /* BKLogViewController.m */,
 			);
 			name = Controllers;
 			path = controllers;
@@ -293,6 +298,7 @@
 				A0148555143E790600A24446 /* main.m in Sources */,
 				A0148559143E790600A24446 /* BKAppDelegate.m in Sources */,
 				A03BB3CE143E7F3400806765 /* BKRootViewController.m in Sources */,
+				A06B98C2144190A90002EA7E /* BKLogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

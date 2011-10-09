@@ -37,8 +37,6 @@
 #import "BKRootViewController.h"
 
 #define kSectionFlags    0
-#define kSectionButtons  2
-#define kSectionLogs     1
 
 # pragma mark - BKRootViewController Class Implementation
 @implementation BKRootViewController
@@ -60,6 +58,22 @@
 - (void) didReceiveMemoryWarning
 {
    [super didReceiveMemoryWarning];    
+   if ((logsViewController))
+   {
+      if (!(logsViewController.isViewLoaded))
+      {
+         [logsViewController release];
+         logsViewController = nil;
+         return;
+      };
+      if (!(logsViewController.view.superview))
+      {
+         [logsViewController release];
+         logsViewController = nil;
+         return;
+      };
+   };
+
    return;
 }
 
@@ -87,6 +101,8 @@
 
 - (void) viewDidLoad
 {
+   UIBarButtonItem * barButtonItem;
+
    [super viewDidLoad];
 	[[NSNotificationCenter defaultCenter] postNotificationName:networkReachability.notificationString object:networkReachability];
 
@@ -94,7 +110,10 @@
    // self.clearsSelectionOnViewWillAppear = NO;
 
    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+   barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logs" style:UIBarButtonItemStyleBordered target:self action:@selector(openLogs:)];
+   self.navigationItem.rightBarButtonItem = barButtonItem;
+   [barButtonItem release];
+
    return;
 }
 
@@ -120,7 +139,6 @@
    NSMutableIndexSet * indexSet;
    [super viewDidAppear:animated];
    indexSet = [[NSMutableIndexSet alloc] initWithIndex:kSectionFlags];
-   [indexSet addIndex:kSectionLogs];
    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
    [indexSet release];
    return;
@@ -151,41 +169,25 @@
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-   return(3);
+   return(1);
 }
 
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-   switch(section)
-   {
-      case kSectionFlags:    return(nil);
-      case kSectionButtons:  return(nil);
-      case kSectionLogs:     return(@"Network Logs");
-      default:               return(nil);
-   };
    return(nil);
 }
 
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   switch(section)
-   {
-      case kSectionFlags:    return(9);
-      case kSectionButtons:  return(1);
-      case kSectionLogs:     return([logs count]);
-      default:               return(0);
-   };
-   return(0);
+   return(9);
 }
 
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   if(indexPath.section == kSectionFlags)
-      return(tableView.rowHeight - 6.0);
-   return(tableView.rowHeight);
+   return(tableView.rowHeight - 6.0);
 }
 
 
@@ -196,138 +198,83 @@
    UIImageView     * imageView;
 
    // creates re-usable cell
-   switch(indexPath.section)
+   cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+   if (cell == nil)
    {
-      case kSectionButtons:
-      cell = [tableView dequeueReusableCellWithIdentifier:@"cellButton"];
-      if (cell == nil)
-      {
-         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellButton"];
-         cell.selectionStyle = UITableViewCellSelectionStyleGray;
-         cell.textLabel.textAlignment = UITextAlignmentCenter;
-         [cell autorelease];
-      };
-      break;
-
-      case kSectionFlags:
-      case kSectionLogs:
-      default:
-      cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-      if (cell == nil)
-      {
-         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-         [cell autorelease];
-      };
-      break;
+      cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+      cell.selectionStyle = UITableViewCellSelectionStyleNone;
+      [cell autorelease];
    };
 
    image = nil;
 
-   // adds cell data
-   switch(indexPath.section)
+   // display reachability flags
+   cell.detailTextLabel.text = nil;
+   switch(indexPath.row)
    {
-      // display reachability flags
-      case kSectionFlags:
-      cell.detailTextLabel.text = nil;
-      switch(indexPath.row)
-      {
-         case 0:
-         cell.textLabel.text       = @"Reachable";
-         cell.detailTextLabel.text = @"R";
-         image = networkReachability.reachable ? greenImage : redImage;
-         break;
-
-         case 1:
-         cell.textLabel.text       = @"Using WWAN";
-         cell.detailTextLabel.text = @"W";
-         image = networkReachability.isWWAN ? greenImage : redImage;
-         break;
-
-         case 2:
-         cell.textLabel.text       = @"Transient Connection";
-         cell.detailTextLabel.text = @"t";
-         image = networkReachability.transientConnection ? greenImage : redImage;
-         break;
-
-         case 3:
-         cell.textLabel.text       = @"Connection Required";
-         cell.detailTextLabel.text = @"c";
-         image = networkReachability.connectionRequired ? greenImage : redImage;
-         break;
-
-         case 4:
-         cell.textLabel.text       = @"Connection On Traffic";
-         cell.detailTextLabel.text = @"C";
-         image = networkReachability.connectionOnTraffic ? greenImage : redImage;
-         break;
-
-         case 5:
-         cell.textLabel.text       = @"Intervention Required";
-         cell.detailTextLabel.text = @"i";
-         image = networkReachability.interventionRequired ? greenImage : redImage;
-         break;
-
-         case 6:
-         cell.textLabel.text       = @"Connection On Demand";
-         cell.detailTextLabel.text = @"D";
-         image = networkReachability.connectionOnDemand ? greenImage : redImage;
-         break;
-
-         case 7:
-         cell.textLabel.text       = @"Local Address";
-         cell.detailTextLabel.text = @"l";
-         image = networkReachability.isLocalAddress ? greenImage : redImage;
-         break;
-
-         case 8:
-         cell.textLabel.text       = @"Is Direct";
-         cell.detailTextLabel.text = @"d";
-         image = networkReachability.isDirect ? greenImage : redImage;
-         break;
-
-         default:
-         cell.textLabel.text       = nil;
-         cell.detailTextLabel.text = nil;
-         break;
-      };
-      imageView = [[UIImageView alloc] initWithImage:image];
-      cell.accessoryView = imageView;
-      [imageView release];
+      case 0:
+      cell.textLabel.text       = @"Reachable";
+      cell.detailTextLabel.text = @"R";
+      image = networkReachability.reachable ? greenImage : redImage;
       break;
 
-      // display "buttons" to interact with data
-      case kSectionButtons:
-      cell.detailTextLabel.text = nil;
-      switch(indexPath.row)
-      {
-         case 1:
-         cell.textLabel.text = @"Update Status";
-         break;
-
-         case 0:
-         cell.textLabel.text = @"Clear Log";
-         break;
-
-         default:
-         cell.textLabel.text = nil;
-         break;
-      };
+      case 1:
+      cell.textLabel.text       = @"Using WWAN";
+      cell.detailTextLabel.text = @"W";
+      image = networkReachability.isWWAN ? greenImage : redImage;
       break;
 
-      // display flag log
-      case kSectionLogs:
-      cell.textLabel.text       = nil;
-      cell.detailTextLabel.text = [logs objectAtIndex:indexPath.row];
-      cell.accessoryView        = nil;
+      case 2:
+      cell.textLabel.text       = @"Transient Connection";
+      cell.detailTextLabel.text = @"t";
+      image = networkReachability.transientConnection ? greenImage : redImage;
       break;
 
-      // catch unknown cells
+      case 3:
+      cell.textLabel.text       = @"Connection Required";
+      cell.detailTextLabel.text = @"c";
+      image = networkReachability.connectionRequired ? greenImage : redImage;
+      break;
+
+      case 4:
+      cell.textLabel.text       = @"Connection On Traffic";
+      cell.detailTextLabel.text = @"C";
+      image = networkReachability.connectionOnTraffic ? greenImage : redImage;
+      break;
+
+      case 5:
+      cell.textLabel.text       = @"Intervention Required";
+      cell.detailTextLabel.text = @"i";
+      image = networkReachability.interventionRequired ? greenImage : redImage;
+      break;
+
+      case 6:
+      cell.textLabel.text       = @"Connection On Demand";
+      cell.detailTextLabel.text = @"D";
+      image = networkReachability.connectionOnDemand ? greenImage : redImage;
+      break;
+
+      case 7:
+      cell.textLabel.text       = @"Local Address";
+      cell.detailTextLabel.text = @"l";
+      image = networkReachability.isLocalAddress ? greenImage : redImage;
+      break;
+
+      case 8:
+      cell.textLabel.text       = @"Is Direct";
+      cell.detailTextLabel.text = @"d";
+      image = networkReachability.isDirect ? greenImage : redImage;
+      break;
+
       default:
       cell.textLabel.text       = nil;
       cell.detailTextLabel.text = nil;
       break;
    };
+
+   imageView = [[UIImageView alloc] initWithImage:image];
+   cell.accessoryView = imageView;
+   [imageView release];
 
    return(cell);
 }
@@ -337,36 +284,6 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   NSAutoreleasePool * pool;
-   NSString          * logEntry;
-   NSIndexSet        * indexSet;
-
-   pool = [[NSAutoreleasePool alloc] init];
-
-   [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-   switch(indexPath.row)
-   {
-      case 1:
-      [[NSNotificationCenter defaultCenter] postNotificationName:networkReachability.notificationString object:networkReachability];
-      break;
-
-      case 0:
-      [logs removeAllObjects];
-      logEntry = [networkReachability stringForNetworkReachabilityFlags];
-      [logs addObject:logEntry];
-
-      indexSet = [[NSIndexSet alloc] initWithIndex:kSectionLogs];
-      [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
-      [indexSet release];
-      break;
-
-      default:
-      break;
-   };
-
-   [pool release];
-
    return;
 }
 
@@ -396,13 +313,38 @@
    [logs addObject:logEntry];
 
    indexSet = [[NSMutableIndexSet alloc] initWithIndex:kSectionFlags];
-   [indexSet addIndex:kSectionLogs];
    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
    [indexSet release];
+
+   if ((logsViewController))
+      [(UITableView *) [[logsViewController.viewControllers objectAtIndex:0] view] reloadData];
 
    [pool release];
 
    return;
 }
+
+
+#pragma mark - UIBarButtonItem targets
+
+- (void) openLogs:(UIBarButtonItem *)sender
+{
+   BKLogViewController * controller;
+
+   if (!(logsViewController))
+   {
+      controller = [[BKLogViewController alloc] initWithStyle:UITableViewStyleGrouped];
+      controller.logs = logs;
+      controller.title = [NSString stringWithFormat:@"%@ Logs", self.title];
+
+      logsViewController = [[UINavigationController alloc] initWithRootViewController:controller];
+      [controller release];
+   };
+
+   [self presentModalViewController:logsViewController animated:YES];
+
+   return;
+}
+
 
 @end
