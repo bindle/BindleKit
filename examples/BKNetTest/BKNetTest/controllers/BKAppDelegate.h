@@ -41,9 +41,7 @@
 
 @interface BKAppDelegate : NSObject <UIApplicationDelegate>
 {
-   UINavigationController * navigationController;
-   BKRootViewController   * rootController;
-   BKNetworkReachability  * networkReachability;
+   UITabBarController * tabBarController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

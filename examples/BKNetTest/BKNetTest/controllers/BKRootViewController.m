@@ -50,7 +50,7 @@
 
 - (void) dealloc
 {
-   [[NSNotificationCenter defaultCenter] removeObserver:self name:BKNetworkReachabilityNotification object:nil];
+   [[NSNotificationCenter defaultCenter] removeObserver:self name:networkReachability.notificationString object:nil];
    [logs release];
    return;
 }
@@ -72,10 +72,7 @@
 
    pool = [[NSAutoreleasePool alloc] init];
 
-   logs = [[NSMutableArray alloc] initWithCapacity:1];
-
-   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachabilityUpdate:) name:BKNetworkReachabilityNotification object:nil];
-
+   logs       = [[NSMutableArray alloc] initWithCapacity:1];
    redImage   = [[UIImage imageNamed:@"red.png"] retain];
    greenImage = [[UIImage imageNamed:@"green.png"] retain];
 
@@ -90,7 +87,7 @@
 - (void) viewDidLoad
 {
    [super viewDidLoad];
-	[[NSNotificationCenter defaultCenter] postNotificationName:BKNetworkReachabilityNotification object:networkReachability];
+	[[NSNotificationCenter defaultCenter] postNotificationName:networkReachability.notificationString object:networkReachability];
 
    // Uncomment the following line to preserve selection between presentations.
    // self.clearsSelectionOnViewWillAppear = NO;
@@ -119,7 +116,12 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
+   NSMutableIndexSet * indexSet;
    [super viewDidAppear:animated];
+   indexSet = [[NSMutableIndexSet alloc] initWithIndex:kSectionFlags];
+   [indexSet addIndex:kSectionLogs];
+   [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
+   [indexSet release];
    return;
 }
 
@@ -337,7 +339,7 @@
    switch(indexPath.row)
    {
       case 1:
-      [[NSNotificationCenter defaultCenter] postNotificationName:BKNetworkReachabilityNotification object:networkReachability];
+      [[NSNotificationCenter defaultCenter] postNotificationName:networkReachability.notificationString object:networkReachability];
       break;
 
       case 0:
@@ -362,6 +364,14 @@
 
 #pragma mark - NSNotification targets
 
+- (void) startNotifier
+{
+   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachabilityUpdate:) name:networkReachability.notificationString object:nil];
+   [networkReachability startNotifier];
+   return;
+}
+
+
 - (void) networkReachabilityUpdate:(NSNotification *)note
 {
    NSAutoreleasePool * pool;
@@ -376,15 +386,12 @@
    logEntry = [networkReachability stringForNetworkReachabilityFlags];
    [logs addObject:logEntry];
 
-   [pool release];
-
-   if (!(self.isViewLoaded))
-      return;
-
    indexSet = [[NSMutableIndexSet alloc] initWithIndex:kSectionFlags];
    [indexSet addIndex:kSectionLogs];
    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
    [indexSet release];
+
+   [pool release];
 
    return;
 }

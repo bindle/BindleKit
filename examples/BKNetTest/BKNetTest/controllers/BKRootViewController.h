@@ -46,8 +46,9 @@
    BKNetworkReachability * networkReachability;
 }
 
-@property (nonatomic, assign) BKNetworkReachability * networkReachability;
+@property (nonatomic, retain) BKNetworkReachability * networkReachability;
 
+- (void) startNotifier;
 - (void) networkReachabilityUpdate:(NSNotification *)note;
 
 @end
