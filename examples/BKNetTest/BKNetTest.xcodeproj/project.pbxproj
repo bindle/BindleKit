@@ -213,7 +213,7 @@
 				A0148583143E7D4700A24446 /* PBXTargetDependency */,
 			);
 			name = BKNetTest;
-			productName = Reachability;
+			productName = BKNetTest;
 			productReference = A0148544143E790600A24446 /* BKNetTest.app */;
 			productType = "com.apple.product-type.application";
 		};
