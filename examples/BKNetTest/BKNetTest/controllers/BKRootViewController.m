@@ -181,6 +181,14 @@
 }
 
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   if(indexPath.section == kSectionFlags)
+      return(tableView.rowHeight - 6.0);
+   return(tableView.rowHeight);
+}
+
+
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    UITableViewCell * cell;
