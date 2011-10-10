@@ -133,7 +133,7 @@
 
    // create popover
    popoverController = [[UIPopoverController alloc] initWithContentViewController:tableViewController];
-	popoverController.delegate = self;
+   popoverController.delegate = self;
 
    return;
 }

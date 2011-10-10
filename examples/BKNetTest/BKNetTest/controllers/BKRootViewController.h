@@ -42,12 +42,12 @@
 
 @interface BKRootViewController : UITableViewController
 {
-   UIImage               * redImage;
-   UIImage               * greenImage;
-   NSMutableArray        * logs;
-   UINavigationController * logsViewController;
    BOOL                     useFlagNames;
-   BKNetworkReachability * networkReachability;
+   UIImage                * redImage;
+   UIImage                * greenImage;
+   NSMutableArray         * logs;
+   UINavigationController * logsViewController;
+   BKNetworkReachability  * networkReachability;
 }
 
 @property (nonatomic, retain) BKNetworkReachability * networkReachability;

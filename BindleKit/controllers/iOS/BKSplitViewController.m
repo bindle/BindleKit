@@ -410,11 +410,11 @@
    CGContextAddLineToPoint(context, imageSize.width, imageSize.height);
    CGContextAddLineToPoint(context, 0, imageSize.height);
    CGContextAddLineToPoint(context, 0, 0);
-	CGContextClosePath(context);
+   CGContextClosePath(context);
 
    // fill in background color
    CGContextSetRGBStrokeColor(context, 0.700, 0.700, 0.700, 1.0);
-	CGContextSetRGBFillColor(context,   0.700, 0.700, 0.700, 1.0);
+   CGContextSetRGBFillColor(context,   0.700, 0.700, 0.700, 1.0);
    CGContextSetLineWidth(context, 0);
    CGContextFillPath(context);
 
@@ -1247,13 +1247,13 @@
 // begins tracking touches to divider
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	UITouch  * touch;
+   UITouch  * touch;
    CGPoint    currPt;
 
    if (!(userInteractionEnabled))
       return;
 
-	if ((touch = [touches anyObject]))
+   if ((touch = [touches anyObject]))
    {
       currPt  = [touch locationInView:self.view];
       if ( (currPt.x >= (dividePoint.x - (dividerSize.width/2))) &&
@@ -1273,7 +1273,7 @@
 // stops tracking touches to divider
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	dividerIsMoving = NO;
+   dividerIsMoving = NO;
    return;
 }
 
@@ -1281,13 +1281,13 @@
 // updates divider view position based upon movement of touches
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	UITouch  * touch;
+   UITouch  * touch;
    CGPoint    point;
 
    if (dividerIsMoving == NO)
       return;
 
-	if ((touch = [touches anyObject]))
+   if ((touch = [touches anyObject]))
    {
       point = [touch locationInView:self.view];
       if (viewLayout == BKSplitViewLayoutHorizontally)

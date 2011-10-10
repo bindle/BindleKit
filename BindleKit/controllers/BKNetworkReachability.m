@@ -76,9 +76,9 @@
 {
    [self stopNotifier];
    if ((reachabilityRef))
-		CFRelease(reachabilityRef);
+      CFRelease(reachabilityRef);
    [notificationString release];
-	[super dealloc];
+   [super dealloc];
    return;
 }
 
@@ -94,7 +94,7 @@
 
    notifierOn      = NO;
    linkLocalRef    = NO;
-	reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
+   reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
 
    [pool release];
 
@@ -117,22 +117,22 @@
 
 - (id) initForInternetConnection
 {
-	struct sockaddr_in zeroAddress;
-	bzero(&zeroAddress, sizeof(zeroAddress));
-	zeroAddress.sin_len    = sizeof(zeroAddress);
-	zeroAddress.sin_family = AF_INET;
+   struct sockaddr_in zeroAddress;
+   bzero(&zeroAddress, sizeof(zeroAddress));
+   zeroAddress.sin_len    = sizeof(zeroAddress);
+   zeroAddress.sin_family = AF_INET;
    return([self initWithAddress:&zeroAddress]);
 }
 
 
 - (id) initForLinkLocal
 {
-	struct sockaddr_in localWifiAddress;
+   struct sockaddr_in localWifiAddress;
 
-	bzero(&localWifiAddress, sizeof(localWifiAddress));
-	localWifiAddress.sin_len         = sizeof(localWifiAddress);
-	localWifiAddress.sin_family      = AF_INET;
-	localWifiAddress.sin_addr.s_addr = htonl(IN_LINKLOCALNETNUM);
+   bzero(&localWifiAddress, sizeof(localWifiAddress));
+   localWifiAddress.sin_len         = sizeof(localWifiAddress);
+   localWifiAddress.sin_family      = AF_INET;
+   localWifiAddress.sin_addr.s_addr = htonl(IN_LINKLOCALNETNUM);
 
    if ((self = [self initWithAddress:&localWifiAddress]) == nil)
       return(nil);
@@ -253,29 +253,29 @@
 
 static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void * info)
 {
-	NSAutoreleasePool     * pool;
+   NSAutoreleasePool     * pool;
    BKNetworkReachability * reachability;
 
    pool = [[NSAutoreleasePool alloc] init];
 
-	reachability                   = (BKNetworkReachability *) info;
+   reachability                   = (BKNetworkReachability *) info;
    reachability.reachabilityFlags = flags;
 
    if ((reachability.logUpdates))
       [reachability logNetworkReachabilityFlags];
 
-	[[NSNotificationCenter defaultCenter] postNotificationName:BKNetworkReachabilityNotification object:reachability];
+   [[NSNotificationCenter defaultCenter] postNotificationName:BKNetworkReachabilityNotification object:reachability];
    if ((reachability.notificationString))
       [[NSNotificationCenter defaultCenter] postNotificationName:reachability.notificationString object:reachability];
 
-	[pool release];
+   [pool release];
 }
 
 
 - (BOOL) startNotifier
 {
    SCNetworkReachabilityFlags    flags;
-	SCNetworkReachabilityContext	context = {0, self, NULL, NULL, NULL};
+   SCNetworkReachabilityContext  context = {0, self, NULL, NULL, NULL};
 
    @synchronized(self)
    {
@@ -308,7 +308,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
    if ((notificationString))
       [[NSNotificationCenter defaultCenter] postNotificationName:notificationString object:self];
 
-	return(YES);
+   return(YES);
 }
 
 
@@ -364,9 +364,11 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 
 - (NSString *) stringForNetworkReachabilityFlags
 {
-   SCNetworkReachabilityFlags flags = self.reachabilityFlags;
-   char       str[1024];
-   NSString * logString;
+   char                         str[1024];
+   NSString                   * logString;
+   SCNetworkReachabilityFlags   flags;
+
+   flags = self.reachabilityFlags;
 
    [self networkReachabilityFlagsFormat:str length:1024L flags:flags];
    logString = [NSString stringWithFormat:@"%s", str];

@@ -105,7 +105,7 @@
    UIBarButtonItem * barButtonItem;
 
    [super viewDidLoad];
-	[[NSNotificationCenter defaultCenter] postNotificationName:networkReachability.notificationString object:networkReachability];
+   [[NSNotificationCenter defaultCenter] postNotificationName:networkReachability.notificationString object:networkReachability];
 
    // Uncomment the following line to preserve selection between presentations.
    self.clearsSelectionOnViewWillAppear = NO;

@@ -45,26 +45,26 @@
 
 @interface BKNetworkReachability: NSObject
 {
-   BOOL                       notifierOn;
-	BOOL                       linkLocalRef;
-   BOOL                       logUpdates;
-	SCNetworkReachabilityRef   reachabilityRef;
-   SCNetworkReachabilityFlags reachabilityFlags;
-   NSString                 * notificationString;
+   BOOL                         notifierOn;
+   BOOL                         linkLocalRef;
+   BOOL                         logUpdates;
+   SCNetworkReachabilityRef     reachabilityRef;
+   SCNetworkReachabilityFlags   reachabilityFlags;
+   NSString                   * notificationString;
 }
 
-@property (nonatomic, readonly) BOOL connectionOnDemand;
-@property (nonatomic, readonly) BOOL connectionOnTraffic;
-@property (nonatomic, readonly) BOOL connectionRequired;
-@property (nonatomic, readonly) BOOL interventionRequired;
-@property (nonatomic, readonly) BOOL isDirect;
-@property (nonatomic, readonly) BOOL isLocalAddress;
-@property (nonatomic, readonly) BOOL isWWAN;
-@property (assign, readwrite)   BOOL logUpdates;
-@property (nonatomic, readonly) BOOL reachable;
-@property (nonatomic, readonly) SCNetworkReachabilityFlags reachabilityFlags;
-@property (nonatomic, readonly) BOOL transientConnection;
+@property (nonatomic, readonly) BOOL       connectionOnDemand;
+@property (nonatomic, readonly) BOOL       connectionOnTraffic;
+@property (nonatomic, readonly) BOOL       connectionRequired;
+@property (nonatomic, readonly) BOOL       interventionRequired;
+@property (nonatomic, readonly) BOOL       isDirect;
+@property (nonatomic, readonly) BOOL       isLocalAddress;
+@property (nonatomic, readonly) BOOL       isWWAN;
+@property (assign, readwrite)   BOOL       logUpdates;
+@property (nonatomic, readonly) BOOL       reachable;
+@property (nonatomic, readonly) BOOL       transientConnection;
 @property (nonatomic, retain)   NSString * notificationString;
+@property (nonatomic, readonly) SCNetworkReachabilityFlags reachabilityFlags;
 
 /// @name Creating and Initializing a BKNetworkReachability
 - (id) initWithHostName:(NSString *)hostName;

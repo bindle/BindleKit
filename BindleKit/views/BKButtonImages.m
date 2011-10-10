@@ -329,7 +329,7 @@
    CGFloat         minx;
    CGFloat         midx;
    CGFloat         maxx;
-	CGFloat         miny;
+   CGFloat         miny;
    CGFloat         midy;
    CGFloat         maxy;
 
@@ -355,17 +355,17 @@
    minx    = 2;
    midx    = (size.width/2);
    maxx    = size.width-2;
-	miny    = 2;
+   miny    = 2;
    midy    = (size.height/2);
    maxy    = size.height-2;
 
    // draws path for border
    CGContextMoveToPoint(context,   minx, midy);
    CGContextAddArcToPoint(context, minx, miny, midx, miny, BKButtonImagesCornerRadius);
-	CGContextAddArcToPoint(context, maxx, miny, maxx, midy, BKButtonImagesCornerRadius);
-	CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, BKButtonImagesCornerRadius);
-	CGContextAddArcToPoint(context, minx, maxy, minx, midy, BKButtonImagesCornerRadius);
-	CGContextClosePath(context);
+   CGContextAddArcToPoint(context, maxx, miny, maxx, midy, BKButtonImagesCornerRadius);
+   CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, BKButtonImagesCornerRadius);
+   CGContextAddArcToPoint(context, minx, maxy, minx, midy, BKButtonImagesCornerRadius);
+   CGContextClosePath(context);
    CGContextSaveGState(context);
 
    // draws border around button
@@ -375,10 +375,10 @@
    // draws path for gradient
    CGContextMoveToPoint(context,   minx, midy);
    CGContextAddArcToPoint(context, minx, miny, midx, miny, BKButtonImagesCornerRadius);
-	CGContextAddArcToPoint(context, maxx, miny, maxx, midy, BKButtonImagesCornerRadius);
-	CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, BKButtonImagesCornerRadius);
-	CGContextAddArcToPoint(context, minx, maxy, minx, midy, BKButtonImagesCornerRadius);
-	CGContextClosePath(context);
+   CGContextAddArcToPoint(context, maxx, miny, maxx, midy, BKButtonImagesCornerRadius);
+   CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, BKButtonImagesCornerRadius);
+   CGContextAddArcToPoint(context, minx, maxy, minx, midy, BKButtonImagesCornerRadius);
+   CGContextClosePath(context);
    CGContextSaveGState(context);
    CGContextClip(context);
 
