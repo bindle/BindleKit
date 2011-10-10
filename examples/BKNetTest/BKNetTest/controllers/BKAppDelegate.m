@@ -50,6 +50,7 @@
    UITabBarItem           * tabBarItem;
    UINavigationController * navigationController;
    BKNetworkReachability  * networkReachability;
+   UIAlertView            * helpAlert;
 
    //[[UIApplication  sharedApplication] setNetworkActivityIndicatorVisible:YES];
    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachabilityUpdate:) name:BKNetworkReachabilityNotification object:nil];
@@ -122,6 +123,11 @@
 
    [self.window addSubview:tabBarController.view];
    [self.window makeKeyAndVisible];
+
+   // display help message
+   helpAlert = [[UIAlertView alloc] initWithTitle:@"Usage" message:@"Tap a field to display a description of the field's data." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+   [helpAlert show];
+   [helpAlert release];
 
    return(YES);
 }
