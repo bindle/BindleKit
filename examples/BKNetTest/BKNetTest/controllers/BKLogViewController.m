@@ -180,6 +180,7 @@
    {
       cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
+      cell.detailTextLabel.font = [UIFont fontWithName:@"Courier" size:[UIFont labelFontSize]];
       [cell autorelease];
    };
    cell.detailTextLabel.text = [logs objectAtIndex:indexPath.row];
