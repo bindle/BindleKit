@@ -45,6 +45,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+   NSAutoreleasePool      * pool;
    NSMutableArray         * controllers;
    BKRootViewController   * rootController;
    UITabBarItem           * tabBarItem;
@@ -52,6 +53,8 @@
    BKNetworkReachability  * networkReachability;
    UIAlertView            * helpAlert;
    BOOL                     logWithNSLog;
+
+   pool = [[NSAutoreleasePool alloc] init];
 
    //[[UIApplication  sharedApplication] setNetworkActivityIndicatorVisible:YES];
    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachabilityUpdate:) name:BKNetworkReachabilityNotification object:nil];
@@ -64,60 +67,54 @@
    networkReachability                    = [[BKNetworkReachability alloc] initWithHostName:@"www.apple.com"];
    networkReachability.logUpdates         = logWithNSLog;
    networkReachability.notificationString = @"MyHostname";
+   [networkReachability autorelease];
    rootController                         = [[BKRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
    rootController.networkReachability     = networkReachability;
    rootController.title                   = @"Hostname";
+   [rootController startNotifier];
+   [rootController autorelease];
    tabBarItem                             = [[UITabBarItem alloc] initWithTitle:@"Hostname" image:nil tag:0];
+   [tabBarItem autorelease];
    navigationController                   = [[UINavigationController alloc] initWithRootViewController:rootController];
    navigationController.tabBarItem        = tabBarItem;
+   [navigationController autorelease];
    [controllers addObject:navigationController];
-
-   // frees resources for "Hostname"
-   [rootController       startNotifier];
-   [networkReachability  autorelease];
-   [rootController       release];
-   [tabBarItem           release];
-   [navigationController release];
 
 
    // create view for "Internet Connection"
    networkReachability                    = [[BKNetworkReachability alloc] initForInternetConnection];
    networkReachability.logUpdates         = logWithNSLog;
    networkReachability.notificationString = @"MyInternetConnection";
+   [networkReachability autorelease];
    rootController                         = [[BKRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
    rootController.networkReachability     = networkReachability;
    rootController.title                   = @"Internet Connection";
+   [rootController startNotifier];
+   [rootController autorelease];
    tabBarItem                             = [[UITabBarItem alloc] initWithTitle:@"Internet" image:nil tag:0];
+   [tabBarItem autorelease];
    navigationController                   = [[UINavigationController alloc] initWithRootViewController:rootController];
    navigationController.tabBarItem        = tabBarItem;
+   [navigationController autorelease];
    [controllers addObject:navigationController];
-
-   // frees resources for "Internet Connection"
-   [rootController       startNotifier];
-   [networkReachability  autorelease];
-   [rootController       release];
-   [tabBarItem           release];
-   [navigationController release];
 
 
    // create view for "Link Local"
    networkReachability                    = [[BKNetworkReachability alloc] initForLinkLocal];
    networkReachability.logUpdates         = logWithNSLog;
    networkReachability.notificationString = @"MyLinkLocal";
+   [networkReachability autorelease];
    rootController                         = [[BKRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
    rootController.networkReachability     = networkReachability;
    rootController.title                   = @"Link Local";
+   [rootController startNotifier];
+   [rootController autorelease];
    tabBarItem                             = [[UITabBarItem alloc] initWithTitle:@"Local" image:nil tag:0];
+   [tabBarItem autorelease];
    navigationController                   = [[UINavigationController alloc] initWithRootViewController:rootController];
    navigationController.tabBarItem        = tabBarItem;
+   [navigationController autorelease];
    [controllers addObject:navigationController];
-
-   // frees resources for "Link Local"
-   [rootController       startNotifier];
-   [networkReachability  autorelease];
-   [rootController       release];
-   [tabBarItem           release];
-   [navigationController release];
 
 
    // create tab bar controller
@@ -131,6 +128,8 @@
    helpAlert = [[UIAlertView alloc] initWithTitle:@"Usage" message:@"Tap a field to display a description of the field's data." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
    [helpAlert show];
    [helpAlert release];
+
+   [pool release];
 
    return(YES);
 }
