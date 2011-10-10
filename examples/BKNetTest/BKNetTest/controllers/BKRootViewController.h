@@ -46,6 +46,7 @@
    UIImage               * greenImage;
    NSMutableArray        * logs;
    UINavigationController * logsViewController;
+   BOOL                     useFlagNames;
    BKNetworkReachability * networkReachability;
 }
 
@@ -53,6 +54,7 @@
 
 - (void) startNotifier;
 - (void) networkReachabilityUpdate:(NSNotification *)note;
+- (void) displayFlags:(UIBarButtonItem *)sender;
 - (void) openLogs:(UIBarButtonItem *)sender;
 
 @end

@@ -90,6 +90,7 @@
    logs       = [[NSMutableArray alloc] initWithCapacity:1];
    redImage   = [[UIImage imageNamed:@"red.png"] retain];
    greenImage = [[UIImage imageNamed:@"green.png"] retain];
+   useFlagNames = NO;
 
    [pool release];
 
@@ -107,9 +108,12 @@
 	[[NSNotificationCenter defaultCenter] postNotificationName:networkReachability.notificationString object:networkReachability];
 
    // Uncomment the following line to preserve selection between presentations.
-   // self.clearsSelectionOnViewWillAppear = NO;
+   self.clearsSelectionOnViewWillAppear = NO;
 
-   // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+   barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Flags" style:UIBarButtonItemStyleBordered target:self action:@selector(displayFlags:)];
+   self.navigationItem.leftBarButtonItem = barButtonItem;
+   [barButtonItem release];
+
    barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logs" style:UIBarButtonItemStyleBordered target:self action:@selector(openLogs:)];
    self.navigationItem.rightBarButtonItem = barButtonItem;
    [barButtonItem release];
@@ -202,6 +206,7 @@
    if (cell == nil)
    {
       cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+      cell.textLabel.adjustsFontSizeToFitWidth = YES;
       cell.selectionStyle = UITableViewCellSelectionStyleGray;
       [cell autorelease];
    };
@@ -213,55 +218,55 @@
    switch(indexPath.row)
    {
       case 0:
-      cell.textLabel.text       = @"Reachable";
+      cell.textLabel.text       = ((useFlagNames)) ? @"kSCNetworkReachabilityFlagsReachable" : @"Reachable";
       cell.detailTextLabel.text = @"R";
       image = networkReachability.reachable ? greenImage : redImage;
       break;
 
       case 1:
-      cell.textLabel.text       = @"Using WWAN";
+      cell.textLabel.text       = ((useFlagNames)) ? @"kSCNetworkReachabilityFlagsIsWWAN" : @"Using WWAN";
       cell.detailTextLabel.text = @"W";
       image = networkReachability.isWWAN ? greenImage : redImage;
       break;
 
       case 2:
-      cell.textLabel.text       = @"Transient Connection";
+      cell.textLabel.text       = ((useFlagNames)) ? @"kSCNetworkReachabilityFlagsTransientConnection" : @"Transient Connection";
       cell.detailTextLabel.text = @"t";
       image = networkReachability.transientConnection ? greenImage : redImage;
       break;
 
       case 3:
-      cell.textLabel.text       = @"Connection Required";
+      cell.textLabel.text       = ((useFlagNames)) ? @"kSCNetworkReachabilityFlagsConnectionRequired" : @"Connection Required";
       cell.detailTextLabel.text = @"c";
       image = networkReachability.connectionRequired ? greenImage : redImage;
       break;
 
       case 4:
-      cell.textLabel.text       = @"Connection On Traffic";
+      cell.textLabel.text       = ((useFlagNames)) ? @"kSCNetworkReachabilityFlagsConnectionOnTraffic" : @"Connection On Traffic";
       cell.detailTextLabel.text = @"C";
       image = networkReachability.connectionOnTraffic ? greenImage : redImage;
       break;
 
       case 5:
-      cell.textLabel.text       = @"Intervention Required";
+      cell.textLabel.text       = ((useFlagNames)) ? @"kSCNetworkReachabilityFlagsInterventionRequired" : @"Intervention Required";
       cell.detailTextLabel.text = @"i";
       image = networkReachability.interventionRequired ? greenImage : redImage;
       break;
 
       case 6:
-      cell.textLabel.text       = @"Connection On Demand";
+      cell.textLabel.text       = ((useFlagNames)) ? @"kSCNetworkReachabilityFlagsConnectionOnDemand" : @"Connection On Demand";
       cell.detailTextLabel.text = @"D";
       image = networkReachability.connectionOnDemand ? greenImage : redImage;
       break;
 
       case 7:
-      cell.textLabel.text       = @"Local Address";
+      cell.textLabel.text       = ((useFlagNames)) ? @"kSCNetworkReachabilityFlagsIsLocalAddress" : @"Local Address";
       cell.detailTextLabel.text = @"l";
       image = networkReachability.isLocalAddress ? greenImage : redImage;
       break;
 
       case 8:
-      cell.textLabel.text       = @"Is Direct";
+      cell.textLabel.text       = ((useFlagNames)) ? @"kSCNetworkReachabilityFlagsIsDirect" : @"Is Direct";
       cell.detailTextLabel.text = @"d";
       image = networkReachability.isDirect ? greenImage : redImage;
       break;
@@ -271,6 +276,9 @@
       cell.detailTextLabel.text = nil;
       break;
    };
+
+   if ((useFlagNames))
+      cell.detailTextLabel.text = nil;
 
    imageView = [[UIImageView alloc] initWithImage:image];
    cell.accessoryView = imageView;
@@ -389,6 +397,23 @@
 
 
 #pragma mark - UIBarButtonItem targets
+
+- (void) displayFlags:(UIBarButtonItem *)sender
+{
+   if ((useFlagNames))
+   {
+      useFlagNames = NO;
+      sender.title = @"Flags";
+   }
+   else
+   {
+      useFlagNames = YES;
+      sender.title = @"Names";
+   };
+   [self.tableView reloadData];
+   return;
+}
+
 
 - (void) openLogs:(UIBarButtonItem *)sender
 {
