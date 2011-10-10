@@ -372,7 +372,7 @@
 - (void) networkReachabilityUpdate:(NSNotification *)note
 {
    NSAutoreleasePool * pool;
-   NSString          * logEntry;
+   NSArray           * logEntry;
    NSMutableIndexSet * indexSet;
 
    if ([note object] != networkReachability)
@@ -380,7 +380,7 @@
 
    pool = [[NSAutoreleasePool alloc] init];
 
-   logEntry = [networkReachability stringForNetworkReachabilityFlags];
+   logEntry = [NSArray arrayWithObjects:[NSDate date], [networkReachability stringForNetworkReachabilityFlags], nil];
    [logs addObject:logEntry];
 
    indexSet = [[NSMutableIndexSet alloc] initWithIndex:kSectionFlags];

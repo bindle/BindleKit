@@ -40,6 +40,7 @@
 @interface BKLogViewController : UITableViewController
 {
    NSMutableArray * logs;
+   NSDateFormatter * dateFormatter;
 }
 
 @property (nonatomic, assign) NSMutableArray * logs;

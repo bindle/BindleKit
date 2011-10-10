@@ -43,6 +43,7 @@
 
 - (void) dealloc
 {
+   [dateFormatter release];
    [super dealloc];
    return;
 }
@@ -63,6 +64,11 @@
       return(self);
 
    pool = [[NSAutoreleasePool alloc] init];
+
+   dateFormatter = [[NSDateFormatter alloc] init];
+   [dateFormatter setLocale:[NSLocale currentLocale]];
+   [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+   [dateFormatter setDateStyle:NSDateFormatterShortStyle];
 
    [pool release];
 
@@ -158,6 +164,7 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+   NSAutoreleasePool * pool;
    UITableViewCell * cell;
 
    // creates re-usable cell
@@ -183,7 +190,11 @@
       cell.detailTextLabel.font = [UIFont fontWithName:@"Courier" size:[UIFont labelFontSize]];
       [cell autorelease];
    };
-   cell.detailTextLabel.text = [logs objectAtIndex:indexPath.row];
+
+   pool = [[NSAutoreleasePool alloc] init];
+   cell.textLabel.text       = [dateFormatter stringFromDate:[[logs objectAtIndex:indexPath.row] objectAtIndex:0]];
+   cell.detailTextLabel.text = [[logs objectAtIndex:indexPath.row] objectAtIndex:1];
+   [pool release];
 
    return(cell);
 }
