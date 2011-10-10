@@ -51,15 +51,18 @@
    UINavigationController * navigationController;
    BKNetworkReachability  * networkReachability;
    UIAlertView            * helpAlert;
+   BOOL                     logWithNSLog;
 
    //[[UIApplication  sharedApplication] setNetworkActivityIndicatorVisible:YES];
    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachabilityUpdate:) name:BKNetworkReachabilityNotification object:nil];
+
+   logWithNSLog = NO;
 
    controllers = [[[NSMutableArray alloc] initWithCapacity:3] autorelease];
 
    // create view for "Hostname"
    networkReachability                    = [[BKNetworkReachability alloc] initWithHostName:@"www.apple.com"];
-   networkReachability.logUpdates         = YES;
+   networkReachability.logUpdates         = logWithNSLog;
    networkReachability.notificationString = @"MyHostname";
    rootController                         = [[BKRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
    rootController.networkReachability     = networkReachability;
@@ -79,7 +82,7 @@
 
    // create view for "Internet Connection"
    networkReachability                    = [[BKNetworkReachability alloc] initForInternetConnection];
-   networkReachability.logUpdates         = YES;
+   networkReachability.logUpdates         = logWithNSLog;
    networkReachability.notificationString = @"MyInternetConnection";
    rootController                         = [[BKRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
    rootController.networkReachability     = networkReachability;
@@ -99,7 +102,7 @@
 
    // create view for "Link Local"
    networkReachability                    = [[BKNetworkReachability alloc] initForLinkLocal];
-   networkReachability.logUpdates         = YES;
+   networkReachability.logUpdates         = logWithNSLog;
    networkReachability.notificationString = @"MyLinkLocal";
    rootController                         = [[BKRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
    rootController.networkReachability     = networkReachability;
