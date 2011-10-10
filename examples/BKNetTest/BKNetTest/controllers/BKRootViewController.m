@@ -202,7 +202,7 @@
    if (cell == nil)
    {
       cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-      cell.selectionStyle = UITableViewCellSelectionStyleNone;
+      cell.selectionStyle = UITableViewCellSelectionStyleGray;
       [cell autorelease];
    };
 
@@ -284,6 +284,69 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+   UIAlertView * infoAlert;
+   NSString    * alertTitle;
+   NSString    * alertMessage;
+
+   [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+   switch(indexPath.row)
+   {
+      case 0:
+      alertTitle   = @"Reachable";
+      alertMessage = @"Flag: kSCNetworkReachabilityFlagsReachable\n\nThe specified node name or address can be reached using the current network configuration.";
+      break;
+
+      case 1:
+      alertTitle   = @"Is WWAN";
+      alertMessage = @"The specified node name or address can be reached via a cellular connection, such as EDGE or GPRS.";
+      break;
+
+      case 2:
+      alertTitle   = @"Transient Connection";
+      alertMessage = @"The specified node name or address can be reached via a transient connection, such as PPP.";
+      break;
+
+      case 3:
+      alertTitle   = @"Connection Required";
+      alertMessage = @"The specified node name or address can be reached using the current network configuration, but a connection must first be established.";
+      break;
+
+      case 4:
+      alertTitle   = @"Connection On Traffic";
+      alertMessage = @"The specified node name or address can be reached using the current network configuration, but a connection must first be established. Any traffic directed to the specified name or address will initiate the connection.";
+      break;
+
+      case 5:
+      alertTitle   = @"Intervention Required";
+      alertMessage = @"The specified node name or address can be reached using the current network configuration, but a connection must first be established.\n\nIn addition, some form of user intervention will be required to establish this connection, such as providing a password, an authentication token, etc.\n\nCurrently, this flag is returned only when there is a dial-on-traffic configuration (kSCNetworkReachabilityFlagsConnectionOnTraffic), an attempt to connect has already been made, and when some error (such as no dial tone, no answer, bad password, etc.) occurred during the automatic connection attempt. In this case the PPP controller stops attempting to establish a connection until the user has intervened.";
+      break;
+
+      case 6:
+      alertTitle   = @"Connection On Demand";
+      alertMessage = @"The specified node name or address can be reached using the current network configuration, but a connection must first be established. The connection will be established \"On Demand\" by the CFSocketStream programming interface (see CFStream Socket Additions for information on this). Other functions will not establish the connection.";
+      break;
+
+      case 7:
+      alertTitle   = @"Local Address";
+      alertMessage = @"The specified node name or address is one that is associated with a network interface on the current system.";
+      break;
+
+      case 8:
+      alertTitle   = @"Is Direct";
+      alertMessage = @"Network traffic to the specified node name or address will not go through a gateway, but is routed directly to one of the interfaces in the system.";
+      break;
+
+      default:
+      alertTitle   = @"Unknown Option";
+      alertMessage = @"Unknown option";
+      break;
+   };
+
+   infoAlert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+   [infoAlert show];
+   [infoAlert release];
+
    return;
 }
 
