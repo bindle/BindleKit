@@ -23,6 +23,8 @@
 		A03BB3CE143E7F3400806765 /* BKRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03BB3CD143E7F3400806765 /* BKRootViewController.m */; };
 		A03BB3D4143E919F00806765 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03BB3D3143E919F00806765 /* SystemConfiguration.framework */; };
 		A06B98C2144190A90002EA7E /* BKLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A06B98C1144190A90002EA7E /* BKLogViewController.m */; };
+		A0C70C79144450180093D650 /* green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A0C70C77144450180093D650 /* green@2x.png */; };
+		A0C70C7A144450180093D650 /* red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A0C70C78144450180093D650 /* red@2x.png */; };
 		A0CDD9E5143ECC86000D32DB /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = A0CDD9E3143ECC86000D32DB /* green.png */; };
 		A0CDD9E6143ECC86000D32DB /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = A0CDD9E4143ECC86000D32DB /* red.png */; };
 /* End PBXBuildFile section */
@@ -74,6 +76,8 @@
 		A03BB3D3143E919F00806765 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A06B98C0144190A90002EA7E /* BKLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKLogViewController.h; sourceTree = "<group>"; };
 		A06B98C1144190A90002EA7E /* BKLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKLogViewController.m; sourceTree = "<group>"; };
+		A0C70C77144450180093D650 /* green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green@2x.png"; sourceTree = "<group>"; };
+		A0C70C78144450180093D650 /* red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red@2x.png"; sourceTree = "<group>"; };
 		A0CDD9E3143ECC86000D32DB /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
 		A0CDD9E4143ECC86000D32DB /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,9 +140,11 @@
 		A014854F143E790600A24446 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A0376BA6144174B100410C2E /* icons */,
 				A0CDD9E3143ECC86000D32DB /* green.png */,
 				A0CDD9E4143ECC86000D32DB /* red.png */,
+				A0C70C77144450180093D650 /* green@2x.png */,
+				A0C70C78144450180093D650 /* red@2x.png */,
+				A0376BA6144174B100410C2E /* icons */,
 				A0148570143E7B4100A24446 /* MainWindow_iPad.xib */,
 				A0148572143E7B4100A24446 /* MainWindow_iPhone.xib */,
 				A0148550143E790600A24446 /* BKNetTest-Info.plist */,
@@ -285,6 +291,8 @@
 				A0376BAC144174B100410C2E /* BindleKit114.png in Resources */,
 				A0376BAD144174B100410C2E /* BindleKit57.png in Resources */,
 				A0376BAE144174B100410C2E /* BindleKit72.png in Resources */,
+				A0C70C79144450180093D650 /* green@2x.png in Resources */,
+				A0C70C7A144450180093D650 /* red@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
