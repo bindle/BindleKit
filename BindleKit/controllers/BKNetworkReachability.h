@@ -51,6 +51,7 @@
    SCNetworkReachabilityRef     reachabilityRef;
    SCNetworkReachabilityFlags   reachabilityFlags;
    NSString                   * notificationString;
+   NSString                   * hostname;
 }
 
 @property (nonatomic, readonly) BOOL       connectionOnDemand;
@@ -64,6 +65,7 @@
 @property (nonatomic, readonly) BOOL       reachable;
 @property (nonatomic, readonly) BOOL       transientConnection;
 @property (nonatomic, retain)   NSString * notificationString;
+@property (nonatomic, retain)   NSString * hostname;
 @property (nonatomic, readonly) SCNetworkReachabilityFlags reachabilityFlags;
 
 /// @name Creating and Initializing a BKNetworkReachability

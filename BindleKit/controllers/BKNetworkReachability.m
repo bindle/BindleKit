@@ -67,6 +67,7 @@
 
 @synthesize logUpdates;
 @synthesize reachabilityFlags;
+@synthesize hostname;
 @synthesize notificationString;
 
 
@@ -83,7 +84,7 @@
 }
 
 
-- (id) initWithHostName:(NSString *)hostName
+- (id) initWithHostName:(NSString *)newHostname
 {
    NSAutoreleasePool * pool;
 
@@ -92,9 +93,11 @@
 
    pool = [[NSAutoreleasePool alloc] init];
 
+   hostname        = [newHostname retain];
+
    notifierOn      = NO;
    linkLocalRef    = NO;
-   reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
+   reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, [newHostname UTF8String]);
 
    [pool release];
 
@@ -143,9 +146,9 @@
 }
 
 
-+ (BKNetworkReachability *) reachabilityWithHostName:(NSString *)hostName;
++ (BKNetworkReachability *) reachabilityWithHostName:(NSString *)newHostname
 {
-   return([[[BKNetworkReachability alloc] initWithHostName:hostName] autorelease]);
+   return([[[BKNetworkReachability alloc] initWithHostName:newHostname] autorelease]);
 }
 
 
@@ -246,6 +249,42 @@
 {
    SCNetworkReachabilityFlags flags = self.reachabilityFlags;
    return((flags & kSCNetworkReachabilityFlagsTransientConnection) != 0);
+}
+
+
+#pragma mark - Setter methods
+
+- (void) setHostname:(NSString *)newHostname
+{
+   NSAutoreleasePool * pool;
+   BOOL                restartNotifier;
+
+   NSAssert((newHostname != nil), @"hostname must not be nil");
+
+   pool = [[NSAutoreleasePool alloc] init];
+
+   linkLocalRef = NO;
+
+   [hostname release];
+   hostname = [newHostname retain];
+
+   restartNotifier = NO;
+   if ((notifierOn))
+   {
+      [self stopNotifier];
+      restartNotifier = YES;
+   };
+
+   if ((reachabilityRef))
+      CFRelease(reachabilityRef);
+   reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, [hostname UTF8String]);
+
+   if ((restartNotifier))
+      [self startNotifier];
+
+   [pool release];
+
+   return;
 }
 
 
