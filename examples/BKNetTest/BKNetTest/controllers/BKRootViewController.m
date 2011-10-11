@@ -41,15 +41,15 @@
 # pragma mark - BKRootViewController Class Implementation
 @implementation BKRootViewController
 
+@synthesize logs;
 @synthesize networkReachability;
+@synthesize logsViewController;
 
 
 #pragma mark - Creating and Initializing a BKNetworkReachability
 
 - (void) dealloc
 {
-   [[NSNotificationCenter defaultCenter] removeObserver:self name:networkReachability.notificationString object:nil];
-   [logs release];
    [super dealloc];
    return;
 }
@@ -102,21 +102,27 @@
 
 - (void) viewDidLoad
 {
+   NSMutableArray  * barButtons;
    UIBarButtonItem * barButtonItem;
 
    [super viewDidLoad];
-   [[NSNotificationCenter defaultCenter] postNotificationName:networkReachability.notificationString object:networkReachability];
 
    // Uncomment the following line to preserve selection between presentations.
    self.clearsSelectionOnViewWillAppear = NO;
 
-   barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Flags" style:UIBarButtonItemStyleBordered target:self action:@selector(displayFlags:)];
-   self.navigationItem.leftBarButtonItem = barButtonItem;
+   barButtons = [[NSMutableArray alloc] initWithCapacity:2];
+
+   barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Open Logs" style:UIBarButtonItemStyleBordered target:self action:@selector(openLogs:)];
+   [barButtons addObject:barButtonItem];
    [barButtonItem release];
 
-   barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logs" style:UIBarButtonItemStyleBordered target:self action:@selector(openLogs:)];
-   self.navigationItem.rightBarButtonItem = barButtonItem;
+   barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Show Flags" style:UIBarButtonItemStyleBordered target:self action:@selector(displayFlags:)];
+   [barButtons addObject:barButtonItem];
    [barButtonItem release];
+
+   self.toolbarItems = barButtons;
+
+   [barButtons release];
 
    return;
 }
@@ -359,43 +365,6 @@
 }
 
 
-#pragma mark - NSNotification targets
-
-- (void) startNotifier
-{
-   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachabilityUpdate:) name:networkReachability.notificationString object:nil];
-   [networkReachability startNotifier];
-   return;
-}
-
-
-- (void) networkReachabilityUpdate:(NSNotification *)note
-{
-   NSAutoreleasePool * pool;
-   NSArray           * logEntry;
-   NSMutableIndexSet * indexSet;
-
-   if ([note object] != networkReachability)
-      return;
-
-   pool = [[NSAutoreleasePool alloc] init];
-
-   logEntry = [NSArray arrayWithObjects:[NSDate date], [networkReachability stringForNetworkReachabilityFlags], nil];
-   [logs addObject:logEntry];
-
-   indexSet = [[NSMutableIndexSet alloc] initWithIndex:kSectionFlags];
-   [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
-   [indexSet release];
-
-   if ((logsViewController))
-      [(UITableView *) [[logsViewController.viewControllers objectAtIndex:0] view] reloadData];
-
-   [pool release];
-
-   return;
-}
-
-
 #pragma mark - UIBarButtonItem targets
 
 - (void) displayFlags:(UIBarButtonItem *)sender
@@ -403,12 +372,12 @@
    if ((useFlagNames))
    {
       useFlagNames = NO;
-      sender.title = @"Flags";
+      sender.title = @"Show Flags";
    }
    else
    {
       useFlagNames = YES;
-      sender.title = @"Names";
+      sender.title = @"Show Names";
    };
    [self.tableView reloadData];
    return;

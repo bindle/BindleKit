@@ -50,10 +50,10 @@
    BKNetworkReachability  * networkReachability;
 }
 
-@property (nonatomic, retain) BKNetworkReachability * networkReachability;
+@property (nonatomic, readonly) UINavigationController * logsViewController;
+@property (nonatomic, assign) BKNetworkReachability    * networkReachability;
+@property (nonatomic, assign) NSMutableArray           * logs;
 
-- (void) startNotifier;
-- (void) networkReachabilityUpdate:(NSNotification *)note;
 - (void) displayFlags:(UIBarButtonItem *)sender;
 - (void) openLogs:(UIBarButtonItem *)sender;
 

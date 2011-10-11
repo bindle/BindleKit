@@ -41,11 +41,14 @@
 
 @interface BKAppDelegate : NSObject <UIApplicationDelegate>
 {
-   UITabBarController * tabBarController;
+   BKRootViewController   * rootController;
+   NSMutableArray         * reachabilityLogs;
+   NSMutableArray         * reachabilities;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 - (void) networkReachabilityUpdate:(NSNotification *)note;
+- (void) segmentedControlAction:(UISegmentedControl *)segmentedControl;
 
 @end

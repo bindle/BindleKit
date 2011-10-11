@@ -45,40 +45,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+   NSUInteger               pos;
    NSAutoreleasePool      * pool;
-   NSMutableArray         * controllers;
-   BKRootViewController   * rootController;
-   UITabBarItem           * tabBarItem;
-   UINavigationController * navigationController;
+   NSMutableArray         * logs;
    BKNetworkReachability  * networkReachability;
-   UIAlertView            * helpAlert;
+   UINavigationController * navigationController;
    BOOL                     logWithNSLog;
+   UISegmentedControl     * segmentedControl;
 
    pool = [[NSAutoreleasePool alloc] init];
 
    //[[UIApplication  sharedApplication] setNetworkActivityIndicatorVisible:YES];
-   //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachabilityUpdate:) name:BKNetworkReachabilityNotification object:nil];
+   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachabilityUpdate:) name:BKNetworkReachabilityNotification object:nil];
+
+   reachabilityLogs = [[NSMutableArray alloc] initWithCapacity:3];
+   reachabilities   = [[NSMutableArray alloc] initWithCapacity:3];
 
    logWithNSLog = NO;
-
-   controllers = [[[NSMutableArray alloc] initWithCapacity:3] autorelease];
 
    // create view for "Hostname"
    networkReachability                    = [[BKNetworkReachability alloc] initWithHostName:@"www.apple.com"];
    networkReachability.logUpdates         = logWithNSLog;
    networkReachability.notificationString = @"MyHostname";
+   [reachabilities addObject:networkReachability];
    [networkReachability autorelease];
-   rootController                         = [[BKRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
-   rootController.networkReachability     = networkReachability;
-   rootController.title                   = @"Hostname";
-   [rootController startNotifier];
-   [rootController autorelease];
-   tabBarItem                             = [[UITabBarItem alloc] initWithTitle:@"Hostname" image:nil tag:0];
-   [tabBarItem autorelease];
-   navigationController                   = [[UINavigationController alloc] initWithRootViewController:rootController];
-   navigationController.tabBarItem        = tabBarItem;
-   [navigationController autorelease];
-   [controllers addObject:navigationController];
+   logs = [[[NSMutableArray alloc] initWithCapacity:1] autorelease];
+   [reachabilityLogs addObject:logs];
 
 
    // create view for "Internet Connection"
@@ -86,17 +78,9 @@
    networkReachability.logUpdates         = logWithNSLog;
    networkReachability.notificationString = @"MyInternetConnection";
    [networkReachability autorelease];
-   rootController                         = [[BKRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
-   rootController.networkReachability     = networkReachability;
-   rootController.title                   = @"Internet Connection";
-   [rootController startNotifier];
-   [rootController autorelease];
-   tabBarItem                             = [[UITabBarItem alloc] initWithTitle:@"Internet" image:nil tag:0];
-   [tabBarItem autorelease];
-   navigationController                   = [[UINavigationController alloc] initWithRootViewController:rootController];
-   navigationController.tabBarItem        = tabBarItem;
-   [navigationController autorelease];
-   [controllers addObject:navigationController];
+   [reachabilities addObject:networkReachability];
+   logs = [[[NSMutableArray alloc] initWithCapacity:1] autorelease];
+   [reachabilityLogs addObject:logs];
 
 
    // create view for "Link Local"
@@ -104,30 +88,38 @@
    networkReachability.logUpdates         = logWithNSLog;
    networkReachability.notificationString = @"MyLinkLocal";
    [networkReachability autorelease];
+   [reachabilities addObject:networkReachability];
+   logs = [[[NSMutableArray alloc] initWithCapacity:1] autorelease];
+   [reachabilityLogs addObject:logs];
+
+   // create root view controller
    rootController                         = [[BKRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
-   rootController.networkReachability     = networkReachability;
-   rootController.title                   = @"Link Local";
-   [rootController startNotifier];
-   [rootController autorelease];
-   tabBarItem                             = [[UITabBarItem alloc] initWithTitle:@"Local" image:nil tag:0];
-   [tabBarItem autorelease];
+   rootController.title                   = @"Hostname";
+   rootController.networkReachability     = [reachabilities   objectAtIndex:0];
+   rootController.logs                    = [reachabilityLogs objectAtIndex:0];
+
+   // create root view controller's navigation controller
    navigationController                   = [[UINavigationController alloc] initWithRootViewController:rootController];
-   navigationController.tabBarItem        = tabBarItem;
-   [navigationController autorelease];
-   [controllers addObject:navigationController];
+   navigationController.toolbarHidden     = NO;
 
+   // add segmented control to navigation controller toolbar
+   segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Hostname", @"Internet", @"Local", nil]];
+   segmentedControl.selectedSegmentIndex   = 0;
+   segmentedControl.segmentedControlStyle  = UISegmentedControlStyleBar;
+   [segmentedControl addTarget:self action:@selector(segmentedControlAction:) forControlEvents:UIControlEventValueChanged];
+   [segmentedControl autorelease];
+   rootController.navigationItem.titleView = segmentedControl;
 
-   // create tab bar controller
-   tabBarController = [[UITabBarController alloc] init];
-   tabBarController.viewControllers = controllers;
-
-   [self.window addSubview:tabBarController.view];
+   [self.window addSubview:navigationController.view];
    [self.window makeKeyAndVisible];
 
-   // display help message
-   helpAlert = [[UIAlertView alloc] initWithTitle:@"Usage" message:@"Tap a field to display a description of the field's data." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-   [helpAlert show];
-   [helpAlert release];
+   // start notifications for network change
+   for(pos = 0; pos < [reachabilities count]; pos++)
+   {
+      networkReachability = [reachabilities objectAtIndex:pos];
+      [networkReachability startNotifier];
+      [[NSNotificationCenter defaultCenter] postNotificationName:BKNetworkReachabilityNotification object:networkReachability];
+   };
 
    [pool release];
 
@@ -198,7 +190,8 @@
 
 - (void)dealloc
 {
-   [tabBarController      release];
+   [reachabilities        release];
+   [reachabilityLogs      release];
    [_window               release];
 
    [super dealloc];
@@ -209,8 +202,65 @@
 
 - (void) networkReachabilityUpdate:(NSNotification *)note
 {
-   //if ([note object] == networkReachability)
-   //   [networkReachability logNetworkReachabilityFlags];
+   NSAutoreleasePool * pool;
+   NSArray           * logEntry;
+   NSInteger           pos;
+   NSInteger           currentPos;
+   BKNetworkReachability * reachability;
+   NSMutableArray        * logs;
+
+   currentPos = -1;
+   for(pos = 0; pos < [reachabilities count]; pos++)
+      if ([reachabilities objectAtIndex:pos] == [note object])
+         currentPos = pos;
+
+   if (currentPos == -1)
+      return;
+
+   pool = [[NSAutoreleasePool alloc] init];
+
+   reachability = [reachabilities   objectAtIndex:currentPos];
+   logs         = [reachabilityLogs objectAtIndex:currentPos];
+
+   logEntry = [NSArray arrayWithObjects:[NSDate date], [reachability stringForNetworkReachabilityFlags], nil];
+   [logs addObject:logEntry];
+
+   // reload data
+   [rootController.tableView reloadData];
+   if ((rootController.logsViewController))
+      [(UITableView *) [[rootController.logsViewController.viewControllers objectAtIndex:0] view] reloadData];
+
+   [pool release];
+
+   return;
+}
+
+
+- (void) segmentedControlAction:(UISegmentedControl *)segmentedControl
+{
+   rootController.logs                = [reachabilityLogs objectAtIndex:segmentedControl.selectedSegmentIndex];
+   rootController.networkReachability = [reachabilities objectAtIndex:segmentedControl.selectedSegmentIndex];
+   switch(segmentedControl.selectedSegmentIndex)
+   {
+      case 0:
+      rootController.title = @"Hostname";
+      break;
+
+      case 1:
+      rootController.title = @"Internet";
+      break;
+
+      case 2:
+      rootController.title = @"Local";
+      break;
+
+      default:
+      break;
+   };
+   [rootController.tableView reloadData];
+   if ((rootController.logsViewController.isViewLoaded))
+      if ((rootController.logsViewController.view.superview))
+         [[((UITableViewController *)rootController.logsViewController) tableView] reloadData];
    return;
 }
 
