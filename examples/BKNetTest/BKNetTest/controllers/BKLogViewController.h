@@ -39,7 +39,7 @@
 
 @interface BKLogViewController : UITableViewController
 {
-   NSMutableArray * logs;
+   NSMutableArray  * logs;
    NSDateFormatter * dateFormatter;
 }
 
