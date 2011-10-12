@@ -43,6 +43,10 @@
 @interface BKRootViewController : UITableViewController
 {
    BOOL                     useFlagNames;
+   BKPromptView           * prompt;
+   UIBarButtonItem        * barButtonItemLogs;
+   UIBarButtonItem        * barButtonItemFlags;
+   UIBarButtonItem        * barButtonItemHost;
    UIImage                * redImage;
    UIImage                * greenImage;
    NSMutableArray         * logs;
@@ -54,6 +58,8 @@
 @property (nonatomic, assign) BKNetworkReachability    * networkReachability;
 @property (nonatomic, assign) NSMutableArray           * logs;
 
+- (void) updateToolbar;
+- (void) changeHostname:(UIBarButtonItem *)sender;
 - (void) displayFlags:(UIBarButtonItem *)sender;
 - (void) openLogs:(UIBarButtonItem *)sender;
 

@@ -257,10 +257,8 @@
       default:
       break;
    };
+   [rootController updateToolbar];
    [rootController.tableView reloadData];
-   if ((rootController.logsViewController.isViewLoaded))
-      if ((rootController.logsViewController.view.superview))
-         [[((UITableViewController *)rootController.logsViewController) tableView] reloadData];
    return;
 }
 

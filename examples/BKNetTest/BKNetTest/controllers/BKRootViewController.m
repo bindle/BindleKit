@@ -50,6 +50,12 @@
 
 - (void) dealloc
 {
+   [prompt             release];
+   [redImage           release];
+   [greenImage         release];
+   [barButtonItemLogs  release];
+   [barButtonItemFlags release];
+   [barButtonItemHost  release];
    [super dealloc];
    return;
 }
@@ -87,10 +93,19 @@
 
    pool = [[NSAutoreleasePool alloc] init];
 
-   logs       = [[NSMutableArray alloc] initWithCapacity:1];
    redImage   = [[UIImage imageNamed:@"red.png"] retain];
    greenImage = [[UIImage imageNamed:@"green.png"] retain];
    useFlagNames = NO;
+
+   barButtonItemLogs  = [[UIBarButtonItem alloc] initWithTitle:@"Open Logs" style:UIBarButtonItemStyleBordered target:self action:@selector(openLogs:)];
+   barButtonItemFlags = [[UIBarButtonItem alloc] initWithTitle:@"Show Flags" style:UIBarButtonItemStyleBordered target:self action:@selector(displayFlags:)];
+   barButtonItemHost  = [[UIBarButtonItem alloc] initWithTitle:@"Change Host" style:UIBarButtonItemStyleBordered target:self action:@selector(changeHostname:)];
+
+   prompt = [[BKPromptView alloc] initWithTitle:@"New Hostname" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+   prompt.textField.clearButtonMode        = UITextFieldViewModeWhileEditing;
+   prompt.textField.autocorrectionType     = FALSE;
+   prompt.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+   prompt.textField.keyboardType           = UIKeyboardTypeEmailAddress;
 
    [pool release];
 
@@ -103,7 +118,6 @@
 - (void) viewDidLoad
 {
    NSMutableArray  * barButtons;
-   UIBarButtonItem * barButtonItem;
 
    [super viewDidLoad];
 
@@ -111,17 +125,11 @@
    self.clearsSelectionOnViewWillAppear = NO;
 
    barButtons = [[NSMutableArray alloc] initWithCapacity:2];
-
-   barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Open Logs" style:UIBarButtonItemStyleBordered target:self action:@selector(openLogs:)];
-   [barButtons addObject:barButtonItem];
-   [barButtonItem release];
-
-   barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Show Flags" style:UIBarButtonItemStyleBordered target:self action:@selector(displayFlags:)];
-   [barButtons addObject:barButtonItem];
-   [barButtonItem release];
-
+   [barButtons addObject:barButtonItemLogs];
+   [barButtons addObject:barButtonItemFlags];
+   if (networkReachability.hostname != nil)
+      [barButtons addObject:barButtonItemHost];
    self.toolbarItems = barButtons;
-
    [barButtons release];
 
    return;
@@ -367,6 +375,15 @@
 
 #pragma mark - UIBarButtonItem targets
 
+- (void) changeHostname:(UIBarButtonItem *)sender
+{
+   prompt.textField.text = nil;
+   prompt.textField.placeholder = networkReachability.hostname;
+   [prompt show];
+   return;
+}
+
+
 - (void) displayFlags:(UIBarButtonItem *)sender
 {
    if ((useFlagNames))
@@ -388,17 +405,61 @@
 {
    BKLogViewController * controller;
 
-   if (!(logsViewController))
-   {
-      controller = [[BKLogViewController alloc] initWithStyle:UITableViewStyleGrouped];
-      controller.logs = logs;
-      controller.title = [NSString stringWithFormat:@"%@ Logs", self.title];
+   if ((logsViewController))
+      [logsViewController release];
 
-      logsViewController = [[UINavigationController alloc] initWithRootViewController:controller];
-      [controller release];
-   };
+   controller = [[BKLogViewController alloc] initWithStyle:UITableViewStyleGrouped];
+   controller.logs = logs;
+   controller.title = [NSString stringWithFormat:@"%@ Logs", self.title];
+
+   logsViewController = [[UINavigationController alloc] initWithRootViewController:controller];
+   [controller release];
+
 
    [self presentModalViewController:logsViewController animated:YES];
+
+   return;
+}
+
+
+#pragma mark - BKPromptView delegate
+
+- (void) updateToolbar
+{
+   NSMutableArray  * barButtons;
+
+   if (([self.toolbarItems count] == 3) && (networkReachability.hostname != nil))
+      return;
+
+   if (self.isViewLoaded == NO)
+      return;
+   if (self.tableView.superview == nil)
+      return;
+
+   barButtons = [[NSMutableArray alloc] initWithCapacity:2];
+   [barButtons addObject:barButtonItemLogs];
+   [barButtons addObject:barButtonItemFlags];
+   if (networkReachability.hostname != nil)
+      [barButtons addObject:barButtonItemHost];
+   self.toolbarItems = barButtons;
+   [barButtons release];
+
+   return;
+}
+
+
+- (void) promptView:(BKPromptView *)promptView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+   NSObject * logEntry;
+
+   if ([promptView.textField.text length] == 0)
+      return;
+   networkReachability.hostname = promptView.textField.text;
+
+   logEntry = [[logs objectAtIndex:([logs count] - 1)] retain];
+   [logs removeAllObjects];
+   [logs addObject:logEntry];
+   [logEntry release];
 
    return;
 }
