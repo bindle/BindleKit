@@ -41,6 +41,7 @@
 
 @interface BKAppDelegate : NSObject <UIApplicationDelegate>
 {
+   UINavigationController * navigationController;
    BKRootViewController   * rootController;
    NSMutableArray         * reachabilityLogs;
    NSMutableArray         * reachabilities;

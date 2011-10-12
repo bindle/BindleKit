@@ -49,7 +49,6 @@
    NSAutoreleasePool      * pool;
    NSMutableArray         * logs;
    BKNetworkReachability  * networkReachability;
-   UINavigationController * navigationController;
    BOOL                     logWithNSLog;
    UISegmentedControl     * segmentedControl;
 
@@ -190,6 +189,7 @@
 
 - (void)dealloc
 {
+   [navigationController  release];
    [reachabilities        release];
    [reachabilityLogs      release];
    [_window               release];
