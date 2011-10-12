@@ -32,28 +32,47 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /*
- *  BindleKit/BindleKit.h - loads API for classes in BindleKit
+ *  BKPromptView.h - Prompt for user text
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/controllers/BKNetworkReachability.h>
-#import <BindleKit/models/BKNode.h>
-#import <BindleKit/models/BKMemoryCache.h>
-#import <BindleKit/models/BKQueue.h>
-#import <BindleKit/models/BKSelectionOption.h>
-#import <BindleKit/models/BKStack.h>
-#import <BindleKit/views/BKButtonImages.h>
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/controllers/iOS/BKSplitViewController.h>
-#import <BindleKit/views/iOS/BKButton.h>
-#import <BindleKit/views/iOS/BKPromptView.h>
-#endif
+@class BKPromptView;
 
-#ifdef TARGET_OS_MAC
-#endif
 
-/* end of header */
+# pragma mark - BKPromptViewDelegate Protocol Declaration
+@protocol BKPromptViewDelegate <NSObject>
+
+/// @name Responding to Actions
+- (void) promptView:(BKPromptView *)promptView clickedButtonAtIndex:(NSInteger)buttonIndex;
+
+/// @name Customizing Behavior
+- (void) willPresentPromptView:(BKPromptView *)promptView;
+- (void) didPresentPromptView:(BKPromptView *)promptView;
+- (void) promptView:(BKPromptView *)promptView willDismissWithButtonIndex:(NSInteger)buttonIndex;
+- (void) promptView:(BKPromptView *)promptView didDismissWithButtonIndex:(NSInteger)buttonIndex;
+
+/// @name Canceling
+- (void) promptViewCancel:(BKPromptView *)promptView;
+
+@end
+
+
+# pragma mark - BKPromptView Class Declaration
+@interface BKPromptView : UIAlertView
+{
+   id promptDelegate;
+}
+
+/// @name Configuring the text field
+@property (nonatomic, readonly) UITextField * textField;
+
+/// @name Creating Alert Views
+- (id) initWithTitle:(NSString *)title message:(NSString *)message
+   delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle
+   otherButtonTitles:(NSString *)otherButtonTitles, ...
+   NS_REQUIRES_NIL_TERMINATION;
+
+@end
+

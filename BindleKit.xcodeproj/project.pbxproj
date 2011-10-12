@@ -34,6 +34,8 @@
 		A092A667141706B40033C972 /* BKNode.h in Headers */ = {isa = PBXBuildFile; fileRef = A092A664141706B40033C972 /* BKNode.h */; };
 		A092A668141706B40033C972 /* BKNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A092A665141706B40033C972 /* BKNode.m */; };
 		A092A669141706B40033C972 /* BKNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A092A665141706B40033C972 /* BKNode.m */; };
+		A0C70C9C144526100093D650 /* BKPromptView.h in Headers */ = {isa = PBXBuildFile; fileRef = A0C70C9A144526100093D650 /* BKPromptView.h */; };
+		A0C70C9D144526100093D650 /* BKPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C70C9B144526100093D650 /* BKPromptView.m */; };
 		A0D32C9314186F0200641ABD /* BKStack.h in Headers */ = {isa = PBXBuildFile; fileRef = A0D32C9114186F0200641ABD /* BKStack.h */; };
 		A0D32C9414186F0200641ABD /* BKStack.h in Headers */ = {isa = PBXBuildFile; fileRef = A0D32C9114186F0200641ABD /* BKStack.h */; };
 		A0D32C9514186F0200641ABD /* BKStack.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D32C9214186F0200641ABD /* BKStack.m */; };
@@ -80,6 +82,8 @@
 		A07D350A140DC1E900832E1F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		A092A664141706B40033C972 /* BKNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKNode.h; sourceTree = "<group>"; };
 		A092A665141706B40033C972 /* BKNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKNode.m; sourceTree = "<group>"; };
+		A0C70C9A144526100093D650 /* BKPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKPromptView.h; sourceTree = "<group>"; };
+		A0C70C9B144526100093D650 /* BKPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKPromptView.m; sourceTree = "<group>"; };
 		A0D32C9114186F0200641ABD /* BKStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKStack.h; sourceTree = "<group>"; };
 		A0D32C9214186F0200641ABD /* BKStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKStack.m; sourceTree = "<group>"; };
 		A0D32C9814186F2800641ABD /* BKQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQueue.h; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 			children = (
 				A0410FBD14283FF800ACE897 /* BKButton.h */,
 				A0410FBE14283FF800ACE897 /* BKButton.m */,
+				A0C70C9A144526100093D650 /* BKPromptView.h */,
+				A0C70C9B144526100093D650 /* BKPromptView.m */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -263,6 +269,7 @@
 				A0410F98142801E300ACE897 /* BKButtonImages.h in Headers */,
 				A0410FBF14283FF800ACE897 /* BKButton.h in Headers */,
 				A014851D143D4F3200A24446 /* BKNetworkReachability.h in Headers */,
+				A0C70C9C144526100093D650 /* BKPromptView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +365,7 @@
 				A0410F9A142801E300ACE897 /* BKButtonImages.m in Sources */,
 				A0410FC014283FF800ACE897 /* BKButton.m in Sources */,
 				A014851F143D4F3200A24446 /* BKNetworkReachability.m in Sources */,
+				A0C70C9D144526100093D650 /* BKPromptView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
