@@ -63,36 +63,26 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
-   UILabel * label;
    UIView * aView;
    UIView * accView;
 
    aView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
    aView.backgroundColor = [UIColor lightGrayColor];
 
-   label = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 220, 40)];
-   label.text = @"Test";
-   [aView addSubview:label];
-
    accView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
    accView.backgroundColor = [UIColor clearColor];
 
-   textField = [[UITextField alloc] initWithFrame:CGRectMake(50, 150, 220, 40)];
+   textField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMidX(aView.frame)-110, 150, 220, 40)];
    textField.borderStyle                = UITextBorderStyleRoundedRect;
-   textField.adjustsFontSizeToFitWidth  = YES;
-   textField.autoresizesSubviews        = YES;
-   textField.textColor                  = [UIColor blueColor];
-   textField.textAlignment              = UITextAlignmentRight;
+   textField.textColor                  = [UIColor blackColor];
    textField.returnKeyType              = UIReturnKeyDone;
-   textField.autocapitalizationType     = UITextAutocapitalizationTypeNone;
-   textField.autocorrectionType         = UITextAutocorrectionTypeNo;
-   textField.clearButtonMode            = UITextFieldViewModeWhileEditing;
    textField.inputAccessoryView         = accView;
    textField.delegate                   = self;
    [aView addSubview:textField];
    [accView release];
 
    self.view = aView;
+   [aView release];
 
    return;
 }
@@ -103,18 +93,17 @@
 - (void)viewDidLoad
 {
    [super viewDidLoad];
+   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
-   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
 }
 
 
 - (void)viewDidUnload
 {
    [super viewDidUnload];
+   [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
-   [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+   keyboardSuperView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -129,9 +118,10 @@
    return(NO);
 }
 
-- (void) keyboardDidHide:(NSNotification *)note
+
+- (void)keyboardWillShow:(NSNotification *)notification
 {
-   keyboardSuperView = nil;
+   keyboardSuperView.hidden = NO;
    return;
 }
 - (void) keyboardDidShow:(NSNotification *)note
@@ -148,9 +138,17 @@
 // stops tracking touches to divider
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-   if ((keyboardSuperView))
+   CGRect newFrame;
+   CGRect bounds = [[UIScreen mainScreen] bounds];
+
+   newFrame = keyboardSuperFrame;
+   newFrame.origin.y = bounds.size.height;  
+
+   if ((keyboardSuperView.superview))
       if (keyboardSuperFrame.origin.y != keyboardSuperView.frame.origin.y)
-         [textField resignFirstResponder];
+         [UIView  animateWithDuration:0.2
+                  animations:^{keyboardSuperView.frame = newFrame;}
+                  completion:^(BOOL finished){ keyboardSuperView.hidden = YES; keyboardSuperView.frame = keyboardSuperFrame; [textField resignFirstResponder]; }];
    return;
 }
 
@@ -165,7 +163,7 @@
    if ((touch = [touches anyObject]))
    {
       point   = [touch locationInView:self.view];
-      if ((keyboardSuperView))
+      if ((keyboardSuperView.superview))
       {
          updateY = keyboardSuperView.frame.origin.y;
          if (point.y < keyboardSuperFrame.origin.y)
