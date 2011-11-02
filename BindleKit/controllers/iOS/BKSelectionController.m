@@ -274,11 +274,13 @@
 
 - (id) selectedValue
 {
+   BKSelectionOption * option;
    if (selectedIndex == BKSelectionIndexNone)
       return(nil);
    if (selectedIndex >= [listOfOptions count])
       return(nil);
-   return([[listOfOptions objectAtIndex:selectedIndex] value]);
+   option = [listOfOptions objectAtIndex:selectedIndex];
+   return(option.value);
 }
 
 
@@ -327,12 +329,12 @@
 - (void) setSelectedValue:(id)selectedValue
 {
    NSUInteger   pos;
-   id           value;
+   BKSelectionOption * option;
    selectedIndex = BKSelectionIndexNone;
    for(pos = 0; pos < [listOfOptions count]; pos++)
    {
-      value = [[listOfOptions objectAtIndex:pos] value];
-      if ([value isEqual:selectedValue])
+      option = [listOfOptions objectAtIndex:pos];
+      if ([option.value isEqual:selectedValue])
       {
          selectedIndex = pos;
          return;
@@ -344,11 +346,13 @@
 
 - (id) valueAtIndex:(NSUInteger)index
 {
+   BKSelectionOption * option;
    if (listOfOptions == nil)
       return(nil);
    if ([listOfOptions count] <= index)
       return(nil);
-   return([[listOfOptions objectAtIndex:index] value]);
+   option = [listOfOptions objectAtIndex:index];
+   return(option.value);
 }
 
 
@@ -369,7 +373,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    UITableViewCell * cell;
-   id                value;
+   BKSelectionOption * option;
 
    if (indexPath.row == selectedIndex)
    {
@@ -394,9 +398,9 @@
    cell.textLabel.text = [[listOfOptions objectAtIndex:indexPath.row] description];
    if (cell.textLabel.text == nil)
    {
-      value = [[listOfOptions objectAtIndex:indexPath.row] value];
-      if ([value isKindOfClass:[NSString class]])
-         cell.textLabel.text = value;
+      option = [listOfOptions objectAtIndex:indexPath.row];
+      if ([option.value isKindOfClass:[NSString class]])
+         cell.textLabel.text = option.value;
    };
 
    return(cell);
@@ -448,18 +452,16 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-   NSString * aDescription;
-   id         aValue;
+   BKSelectionOption * option;
 
-   aDescription = [[listOfOptions objectAtIndex:row] description];
-   if (aDescription == nil)
-   {
-      aValue = [[listOfOptions objectAtIndex:row] value];
-      if ([aValue isKindOfClass:[NSString class]])
-         aDescription = aValue;
-   };
-   return(aDescription);
+   option = [listOfOptions objectAtIndex:row];
 
+   if (option.description != nil)
+      return(option.description);
+   if ([option.value isKindOfClass:[NSString class]])
+      return(option.value);
+
+   return(nil);
 }
 
 
