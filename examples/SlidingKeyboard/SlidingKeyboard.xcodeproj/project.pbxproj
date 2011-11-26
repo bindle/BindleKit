@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A04C7E1A14819BCC00B2FFFE /* BindleKit57.png in Resources */ = {isa = PBXBuildFile; fileRef = A09D4E7C1475C4E000A2377D /* BindleKit57.png */; };
+		A04C7E1B14819BCF00B2FFFE /* BindleKit114.png in Resources */ = {isa = PBXBuildFile; fileRef = A09D4E7B1475C4E000A2377D /* BindleKit114.png */; };
 		A07A62351450D32900DDCD38 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07A62341450D32900DDCD38 /* UIKit.framework */; };
 		A07A62371450D32900DDCD38 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07A62361450D32900DDCD38 /* Foundation.framework */; };
 		A07A62391450D32900DDCD38 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07A62381450D32900DDCD38 /* CoreGraphics.framework */; };
@@ -14,6 +16,7 @@
 		A07A62411450D32900DDCD38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A07A62401450D32900DDCD38 /* main.m */; };
 		A07A62451450D32900DDCD38 /* SKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A07A62441450D32900DDCD38 /* SKAppDelegate.m */; };
 		A07A624D1450D3E800DDCD38 /* SKRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07A624C1450D3E800DDCD38 /* SKRootViewController.m */; };
+		A0C3247C1481A07800CB93DC /* BindleKit72.png in Resources */ = {isa = PBXBuildFile; fileRef = A09D4E7D1475C4E000A2377D /* BindleKit72.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,10 @@
 		A07A62441450D32900DDCD38 /* SKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKAppDelegate.m; sourceTree = "<group>"; };
 		A07A624B1450D3E800DDCD38 /* SKRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKRootViewController.h; sourceTree = "<group>"; };
 		A07A624C1450D3E800DDCD38 /* SKRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKRootViewController.m; sourceTree = "<group>"; };
+		A09D4E7A1475C4E000A2377D /* BindleKit100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit100.png; sourceTree = "<group>"; };
+		A09D4E7B1475C4E000A2377D /* BindleKit114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit114.png; sourceTree = "<group>"; };
+		A09D4E7C1475C4E000A2377D /* BindleKit57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit57.png; sourceTree = "<group>"; };
+		A09D4E7D1475C4E000A2377D /* BindleKit72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit72.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +94,7 @@
 		A07A623B1450D32900DDCD38 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A09D4E791475C4E000A2377D /* icons */,
 				A07A623C1450D32900DDCD38 /* SlidingKeyboard-Info.plist */,
 				A07A623D1450D32900DDCD38 /* InfoPlist.strings */,
 				A07A62401450D32900DDCD38 /* main.m */,
@@ -94,6 +102,18 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		A09D4E791475C4E000A2377D /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				A09D4E7A1475C4E000A2377D /* BindleKit100.png */,
+				A09D4E7B1475C4E000A2377D /* BindleKit114.png */,
+				A09D4E7C1475C4E000A2377D /* BindleKit57.png */,
+				A09D4E7D1475C4E000A2377D /* BindleKit72.png */,
+			);
+			name = icons;
+			path = ../icons;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -146,6 +166,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A07A623F1450D32900DDCD38 /* InfoPlist.strings in Resources */,
+				A04C7E1A14819BCC00B2FFFE /* BindleKit57.png in Resources */,
+				A04C7E1B14819BCF00B2FFFE /* BindleKit114.png in Resources */,
+				A0C3247C1481A07800CB93DC /* BindleKit72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
