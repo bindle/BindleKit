@@ -20,14 +20,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A07A62301450D32900DDCD38 /* SlidingKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlidingKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A07A62301450D32900DDCD38 /* SlidingKB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlidingKB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07A62341450D32900DDCD38 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A07A62361450D32900DDCD38 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A07A62381450D32900DDCD38 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A07A623C1450D32900DDCD38 /* SlidingKeyboard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SlidingKeyboard-Info.plist"; sourceTree = "<group>"; };
+		A07A623C1450D32900DDCD38 /* SlidingKB-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SlidingKB-Info.plist"; sourceTree = "<group>"; };
 		A07A623E1450D32900DDCD38 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A07A62401450D32900DDCD38 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A07A62421450D32900DDCD38 /* SlidingKeyboard-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SlidingKeyboard-Prefix.pch"; sourceTree = "<group>"; };
+		A07A62421450D32900DDCD38 /* SlidingKB-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SlidingKB-Prefix.pch"; sourceTree = "<group>"; };
 		A07A62431450D32900DDCD38 /* SKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKAppDelegate.h; sourceTree = "<group>"; };
 		A07A62441450D32900DDCD38 /* SKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKAppDelegate.m; sourceTree = "<group>"; };
 		A07A624B1450D3E800DDCD38 /* SKRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKRootViewController.h; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		A07A62311450D32900DDCD38 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A07A62301450D32900DDCD38 /* SlidingKeyboard.app */,
+				A07A62301450D32900DDCD38 /* SlidingKB.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -88,17 +88,18 @@
 				A07A624C1450D3E800DDCD38 /* SKRootViewController.m */,
 				A07A623B1450D32900DDCD38 /* Supporting Files */,
 			);
-			path = SlidingKeyboard;
+			name = SlidingKeyboard;
+			path = SlidingKB;
 			sourceTree = "<group>";
 		};
 		A07A623B1450D32900DDCD38 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				A09D4E791475C4E000A2377D /* icons */,
-				A07A623C1450D32900DDCD38 /* SlidingKeyboard-Info.plist */,
+				A07A623C1450D32900DDCD38 /* SlidingKB-Info.plist */,
 				A07A623D1450D32900DDCD38 /* InfoPlist.strings */,
 				A07A62401450D32900DDCD38 /* main.m */,
-				A07A62421450D32900DDCD38 /* SlidingKeyboard-Prefix.pch */,
+				A07A62421450D32900DDCD38 /* SlidingKB-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -118,9 +119,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A07A622F1450D32900DDCD38 /* SlidingKeyboard */ = {
+		A07A622F1450D32900DDCD38 /* SlidingKB */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A07A62481450D32900DDCD38 /* Build configuration list for PBXNativeTarget "SlidingKeyboard" */;
+			buildConfigurationList = A07A62481450D32900DDCD38 /* Build configuration list for PBXNativeTarget "SlidingKB" */;
 			buildPhases = (
 				A07A622C1450D32900DDCD38 /* Sources */,
 				A07A622D1450D32900DDCD38 /* Frameworks */,
@@ -130,9 +131,9 @@
 			);
 			dependencies = (
 			);
-			name = SlidingKeyboard;
+			name = SlidingKB;
 			productName = SlidingKeyboard;
-			productReference = A07A62301450D32900DDCD38 /* SlidingKeyboard.app */;
+			productReference = A07A62301450D32900DDCD38 /* SlidingKB.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -143,7 +144,7 @@
 			attributes = {
 				LastUpgradeCheck = 0420;
 			};
-			buildConfigurationList = A07A622A1450D32800DDCD38 /* Build configuration list for PBXProject "SlidingKeyboard" */;
+			buildConfigurationList = A07A622A1450D32800DDCD38 /* Build configuration list for PBXProject "SlidingKB" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -155,7 +156,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A07A622F1450D32900DDCD38 /* SlidingKeyboard */,
+				A07A622F1450D32900DDCD38 /* SlidingKB */,
 			);
 		};
 /* End PBXProject section */
@@ -248,8 +249,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SlidingKeyboard/SlidingKeyboard-Prefix.pch";
-				INFOPLIST_FILE = "SlidingKeyboard/SlidingKeyboard-Info.plist";
+				GCC_PREFIX_HEADER = "SlidingKB/SlidingKB-Prefix.pch";
+				INFOPLIST_FILE = "SlidingKB/SlidingKB-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -259,8 +261,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SlidingKeyboard/SlidingKeyboard-Prefix.pch";
-				INFOPLIST_FILE = "SlidingKeyboard/SlidingKeyboard-Info.plist";
+				GCC_PREFIX_HEADER = "SlidingKB/SlidingKB-Prefix.pch";
+				INFOPLIST_FILE = "SlidingKB/SlidingKB-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -269,7 +272,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A07A622A1450D32800DDCD38 /* Build configuration list for PBXProject "SlidingKeyboard" */ = {
+		A07A622A1450D32800DDCD38 /* Build configuration list for PBXProject "SlidingKB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A07A62461450D32900DDCD38 /* Debug */,
@@ -278,7 +281,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A07A62481450D32900DDCD38 /* Build configuration list for PBXNativeTarget "SlidingKeyboard" */ = {
+		A07A62481450D32900DDCD38 /* Build configuration list for PBXNativeTarget "SlidingKB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A07A62491450D32900DDCD38 /* Debug */,
