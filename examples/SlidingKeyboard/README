@@ -2,10 +2,11 @@ Dear All,
 
 This example is in response to a question on StackOverflow:
 
-http://stackoverflow.com/questions/7780753/imessage-style-receding-keyboard-in-an-ios-app
+http://stackoverflow.com/questions/7780753/
 
-This is not really apart of BindleKit, however I am considering writing a wrapper class to
-implement the sliding keyboard in a resuable manner.  If I write the wrapper class, it will
-be added to BindleKit and this example servese as my reminder to write it.
+This is not really apart of BindleKit, however I am considering writing a
+wrapper class to implement the sliding keyboard in a resuable manner.  If I
+write the wrapper class, it will be added to BindleKit and this example
+servese as my reminder to write it.
 
 -- David M. Syzdek
