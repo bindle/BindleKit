@@ -28,6 +28,8 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>UIRequiresPersistentWiFi</key>
+	<true/>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>CFBundleVersion</key>
