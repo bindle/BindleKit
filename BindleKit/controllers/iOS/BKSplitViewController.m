@@ -1187,6 +1187,9 @@
    if ((popoverController))
       return;
 
+   // removing parent controller to prevent problems with UIPopoverController
+   [aController setBKParentViewController:nil];
+
    // allocates new popover controller
    popoverController = [[UIPopoverController alloc]
                        initWithContentViewController:aController];
@@ -1197,6 +1200,9 @@
                style:UIBarButtonItemStylePlain
                target:self
                action:@selector(displayPopoverControllerFromSender:)];
+
+   // Adding self back as parent controller
+   [aController setBKParentViewController:self];
 
    // notifies delegate that controller has been added to popover controller
    [delegate splitViewController:self
