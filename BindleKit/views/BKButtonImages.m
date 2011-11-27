@@ -401,9 +401,9 @@
       return(nil);
 
    // calculates first color of gradient
-   components[0] = ((red   + 0.4516) > 1.0) ? 1.0 : (red   + 0.4516);
-   components[1] = ((green + 0.4516) > 1.0) ? 1.0 : (green + 0.4516);
-   components[2] = ((blue  + 0.4516) > 1.0) ? 1.0 : (blue  + 0.4516);
+   components[0] = ((red   + 0.4516) > 1.0) ? 1.0 : (red   + 0.7000);
+   components[1] = ((green + 0.4516) > 1.0) ? 1.0 : (green + 0.7000);
+   components[2] = ((blue  + 0.4516) > 1.0) ? 1.0 : (blue  + 0.7000);
    components[3] = alpha;
 
    // calculates second color of gradient
