@@ -43,6 +43,7 @@
 
 # pragma mark - BKPromptViewDelegate Protocol Declaration
 @protocol BKPromptViewDelegate <NSObject>
+@optional
 
 /// @name Responding to Actions
 - (void) promptView:(BKPromptView *)promptView clickedButtonAtIndex:(NSInteger)buttonIndex;
