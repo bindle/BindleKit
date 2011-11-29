@@ -148,8 +148,8 @@
 
 - (void) willPresentAlertView:(UIAlertView *)alertView
 {
-   if (([promptDelegate respondsToSelector:@selector(promptViewCancel:)]))
-      [promptDelegate promptViewCancel:self];
+   if (([promptDelegate respondsToSelector:@selector(willPresentPromptView:)]))
+      [promptDelegate willPresentPromptView:self];
    return;
 }
 
