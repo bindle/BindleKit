@@ -18,6 +18,7 @@
 		A0376B931441725000410C2E /* BindleKit114.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376B8F1441725000410C2E /* BindleKit114.png */; };
 		A0376B941441725000410C2E /* BindleKit57.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376B901441725000410C2E /* BindleKit57.png */; };
 		A0376B951441725000410C2E /* BindleKit72.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376B911441725000410C2E /* BindleKit72.png */; };
+		A0694F2D1484738400FC64BC /* BKPromptViewOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = A0694F2C1484738400FC64BC /* BKPromptViewOptions.m */; };
 		A0887A5D1421B1A400421AFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0887A5C1421B1A400421AFE /* UIKit.framework */; };
 		A0887A5F1421B1A400421AFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0887A5E1421B1A400421AFE /* Foundation.framework */; };
 		A0887A611421B1A400421AFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0887A601421B1A400421AFE /* CoreGraphics.framework */; };
@@ -67,6 +68,8 @@
 		A0376B8F1441725000410C2E /* BindleKit114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit114.png; sourceTree = "<group>"; };
 		A0376B901441725000410C2E /* BindleKit57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit57.png; sourceTree = "<group>"; };
 		A0376B911441725000410C2E /* BindleKit72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit72.png; sourceTree = "<group>"; };
+		A0694F2B1484738400FC64BC /* BKPromptViewOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKPromptViewOptions.h; sourceTree = "<group>"; };
+		A0694F2C1484738400FC64BC /* BKPromptViewOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKPromptViewOptions.m; sourceTree = "<group>"; };
 		A0887A581421B1A400421AFE /* BKCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BKCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0887A5C1421B1A400421AFE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A0887A5E1421B1A400421AFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -103,14 +106,9 @@
 			children = (
 				A0887A6B1421B1A400421AFE /* BKAppDelegate.h */,
 				A0887A6C1421B1A400421AFE /* BKAppDelegate.m */,
-				A00B7FA014390F88004A8798 /* BKButtonOptions.h */,
-				A00B7FA114390F88004A8798 /* BKButtonOptions.m */,
 				A02DC4721421B9C200D8F79F /* BKCatalogMenu.h */,
 				A02DC4731421B9C200D8F79F /* BKCatalogMenu.m */,
-				A00508481422CB01005C3D98 /* BKNumberController.h */,
-				A00508491422CB01005C3D98 /* BKNumberController.m */,
-				A0EF0EFB14395636000CF01A /* BKSplitVCOptions.h */,
-				A0EF0EFC14395636000CF01A /* BKSplitVCOptions.m */,
+				A0694F2A1484732200FC64BC /* Detail Views */,
 			);
 			name = Controllers;
 			path = BKCatalog/controllers;
@@ -154,6 +152,21 @@
 			name = icons;
 			path = ../icons;
 			sourceTree = SOURCE_ROOT;
+		};
+		A0694F2A1484732200FC64BC /* Detail Views */ = {
+			isa = PBXGroup;
+			children = (
+				A00508481422CB01005C3D98 /* BKNumberController.h */,
+				A00508491422CB01005C3D98 /* BKNumberController.m */,
+				A00B7FA014390F88004A8798 /* BKButtonOptions.h */,
+				A00B7FA114390F88004A8798 /* BKButtonOptions.m */,
+				A0694F2B1484738400FC64BC /* BKPromptViewOptions.h */,
+				A0694F2C1484738400FC64BC /* BKPromptViewOptions.m */,
+				A0EF0EFB14395636000CF01A /* BKSplitVCOptions.h */,
+				A0EF0EFC14395636000CF01A /* BKSplitVCOptions.m */,
+			);
+			name = "Detail Views";
+			sourceTree = "<group>";
 		};
 		A0887A4D1421B1A300421AFE = {
 			isa = PBXGroup;
@@ -316,6 +329,7 @@
 				A005084A1422CB01005C3D98 /* BKNumberController.m in Sources */,
 				A00B7FA214390F88004A8798 /* BKButtonOptions.m in Sources */,
 				A0EF0EFD14395636000CF01A /* BKSplitVCOptions.m in Sources */,
+				A0694F2D1484738400FC64BC /* BKPromptViewOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

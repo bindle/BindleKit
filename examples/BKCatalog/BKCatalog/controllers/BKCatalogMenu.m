@@ -39,10 +39,14 @@
 #import "BKNumberController.h"
 #import "BKButtonOptions.h"
 #import "BKSplitVCOptions.h"
+#import "BKPromptViewOptions.h"
 
 #define BKCatalogMenuCellButton       0
 #define BKCatalogMenuCellSelection    1
-#define BKCatalogMenuCellSplitView    2
+#define BKCatalogMenuCellPromptView   2
+#define BKCatalogMenuCellSplitView    3
+
+#define BKCatalogMenuCellCount        3
 
 @implementation BKCatalogMenu
 
@@ -139,8 +143,8 @@
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-      return(2);
-   return(3);
+      return(BKCatalogMenuCellCount);
+   return(BKCatalogMenuCellCount+1);
 }
 
 
@@ -167,6 +171,10 @@
 
       case BKCatalogMenuCellSelection:
       cell.textLabel.text = @"BKSelectionController";
+      break;
+
+      case BKCatalogMenuCellPromptView:
+      cell.textLabel.text = @"BKPromptView";
       break;
 
       default:
@@ -202,6 +210,10 @@
 
       case BKCatalogMenuCellSplitView:
       controller = [[BKSplitVCOptions alloc] init];
+      break;
+
+      case BKCatalogMenuCellPromptView:
+      controller = [[BKPromptViewOptions alloc] init];
       break;
 
       default:
