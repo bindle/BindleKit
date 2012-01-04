@@ -1,6 +1,6 @@
 /*
  *  Bindle Binaries Objective-C Kit
- *  Copyright (c) 2011, Bindle Binaries
+ *  Copyright (c) 2012 Bindle Binaries
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_START@
  *
@@ -32,29 +32,25 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /*
- *  BindleKit/BindleKit.h - loads API for classes in BindleKit
+ *  BKUserInterfaceIdiom.m - Determines Use Interface Idiom
  */
+#import "BKUserInterfaceIdiom.h"
 
-#import <Foundation/Foundation.h>
+@implementation UIDevice (BKInterfaceIdiom)
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/controllers/BKNetworkReachability.h>
-#import <BindleKit/models/BKNode.h>
-#import <BindleKit/models/BKMemoryCache.h>
-#import <BindleKit/models/BKQueue.h>
-#import <BindleKit/models/BKSelectionOption.h>
-#import <BindleKit/models/BKStack.h>
-#import <BindleKit/views/BKButtonImages.h>
+- (BKUserInterfaceIdiom) bkUserInterfaceIdiom
+{
+   if (!([self respondsToSelector:@selector(userInterfaceIdiom)]))
+      return(BKUserInterfaceIdiomPhone);
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/categories/BKUserInterfaceIdiom.h>
-#import <BindleKit/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/controllers/iOS/BKSplitViewController.h>
-#import <BindleKit/views/iOS/BKButton.h>
-#import <BindleKit/views/iOS/BKPromptView.h>
-#endif
+   switch(self.userInterfaceIdiom)
+   {
+      case UIUserInterfaceIdiomPhone: return(BKUserInterfaceIdiomPhone);
+      case UIUserInterfaceIdiomPad:   return(BKUserInterfaceIdiomPad);
+      default: break;
+   };
 
-#ifdef TARGET_OS_MAC
-#endif
+   return(BKUserInterfaceIdiomPhone);
+}
 
-/* end of header */
+@end

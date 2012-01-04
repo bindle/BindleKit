@@ -29,6 +29,8 @@
 		A064D96D140E047C00255FD3 /* BKSelectionOption.m in Sources */ = {isa = PBXBuildFile; fileRef = A064D96B140E047C00255FD3 /* BKSelectionOption.m */; };
 		A064D973140E053200255FD3 /* BKSelectionController.h in Headers */ = {isa = PBXBuildFile; fileRef = A064D971140E053200255FD3 /* BKSelectionController.h */; };
 		A064D974140E053200255FD3 /* BKSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A064D972140E053200255FD3 /* BKSelectionController.m */; };
+		A071421314B4204500F390D7 /* BKUserInterfaceIdiom.h in Headers */ = {isa = PBXBuildFile; fileRef = A071421114B4204500F390D7 /* BKUserInterfaceIdiom.h */; };
+		A071421414B4204500F390D7 /* BKUserInterfaceIdiom.m in Sources */ = {isa = PBXBuildFile; fileRef = A071421214B4204500F390D7 /* BKUserInterfaceIdiom.m */; };
 		A07D34F8140DC1E800832E1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07D34F7140DC1E800832E1F /* Foundation.framework */; };
 		A092A666141706B40033C972 /* BKNode.h in Headers */ = {isa = PBXBuildFile; fileRef = A092A664141706B40033C972 /* BKNode.h */; };
 		A092A667141706B40033C972 /* BKNode.h in Headers */ = {isa = PBXBuildFile; fileRef = A092A664141706B40033C972 /* BKNode.h */; };
@@ -72,6 +74,8 @@
 		A064D96B140E047C00255FD3 /* BKSelectionOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKSelectionOption.m; sourceTree = "<group>"; };
 		A064D971140E053200255FD3 /* BKSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKSelectionController.h; sourceTree = "<group>"; };
 		A064D972140E053200255FD3 /* BKSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKSelectionController.m; sourceTree = "<group>"; };
+		A071421114B4204500F390D7 /* BKUserInterfaceIdiom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKUserInterfaceIdiom.h; sourceTree = "<group>"; };
+		A071421214B4204500F390D7 /* BKUserInterfaceIdiom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKUserInterfaceIdiom.m; sourceTree = "<group>"; };
 		A07A7F261416D18000AB872D /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		A07D34F4140DC1E800832E1F /* libBindleKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libBindleKit.a; path = libiBindleKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07D34F7140DC1E800832E1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -167,6 +171,8 @@
 			children = (
 				A05CE1DB1416DF4D00B7002F /* BKStringDigest.h */,
 				A05CE1DC1416DF4D00B7002F /* BKStringDigest.m */,
+				A071421114B4204500F390D7 /* BKUserInterfaceIdiom.h */,
+				A071421214B4204500F390D7 /* BKUserInterfaceIdiom.m */,
 			);
 			name = Categories;
 			path = categories;
@@ -270,6 +276,7 @@
 				A0410FBF14283FF800ACE897 /* BKButton.h in Headers */,
 				A014851D143D4F3200A24446 /* BKNetworkReachability.h in Headers */,
 				A0C70C9C144526100093D650 /* BKPromptView.h in Headers */,
+				A071421314B4204500F390D7 /* BKUserInterfaceIdiom.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +373,7 @@
 				A0410FC014283FF800ACE897 /* BKButton.m in Sources */,
 				A014851F143D4F3200A24446 /* BKNetworkReachability.m in Sources */,
 				A0C70C9D144526100093D650 /* BKPromptView.m in Sources */,
+				A071421414B4204500F390D7 /* BKUserInterfaceIdiom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -60,7 +60,7 @@
    [masterController release];
 
    // if using iPhone, make visible and exit
-   if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+   if ([[UIDevice currentDevice] bkUserInterfaceIdiom] == BKUserInterfaceIdiomPhone)
    {
       rootController = masterNavigation;
       [self.window addSubview:masterNavigation.view];
