@@ -32,11 +32,36 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /*
- *  BKUserInterfaceIdiom.m - Determines Use Interface Idiom
+ *  BKDevice.m - Determines Use Interface Idiom
  */
-#import "BKUserInterfaceIdiom.h"
+#import "BKDevice.h"
 
-@implementation UIDevice (BKInterfaceIdiom)
+
+@implementation BKDevice
+
++ (BKUserInterfaceIdiom) userInterfaceIdiom
+{
+   UIDevice * device;
+
+   device = [UIDevice currentDevice];
+
+   if (!([device respondsToSelector:@selector(userInterfaceIdiom)]))
+      return(BKUserInterfaceIdiomPhone);
+
+   switch(device.userInterfaceIdiom)
+   {
+      case UIUserInterfaceIdiomPhone: return(BKUserInterfaceIdiomPhone);
+      case UIUserInterfaceIdiomPad:   return(BKUserInterfaceIdiomPad);
+      default: break;
+   };
+
+   return(BKUserInterfaceIdiomPhone);
+}
+
+@end
+
+
+@implementation UIDevice (BKUserInterfaceIdiom)
 
 - (BKUserInterfaceIdiom) bkUserInterfaceIdiom
 {

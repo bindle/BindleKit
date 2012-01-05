@@ -47,7 +47,7 @@
 #import <BindleKit/views/BKButtonImages.h>
 
 #if TARGET_OS_IPHONE
-#import <BindleKit/categories/BKUserInterfaceIdiom.h>
+#import <BindleKit/controllers/iOS/BKDevice.h>
 #import <BindleKit/controllers/iOS/BKSelectionController.h>
 #import <BindleKit/controllers/iOS/BKSplitViewController.h>
 #import <BindleKit/views/iOS/BKButton.h>

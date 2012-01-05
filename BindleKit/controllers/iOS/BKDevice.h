@@ -32,10 +32,11 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /*
- *  BKUserInterfaceIdiom.h - Determines Use Interface Idiom
+ *  BKDevice.h - Determines Use Interface Idiom
  */
 
 #import <UIKit/UIKit.h>
+
 
 enum bk_interface_idiom_enum
 {
@@ -45,8 +46,12 @@ enum bk_interface_idiom_enum
 };
 typedef enum bk_interface_idiom_enum BKUserInterfaceIdiom;
 
+
+@interface BKDevice : UIDevice
++ (BKUserInterfaceIdiom) userInterfaceIdiom;
+@end
+
+
 @interface UIDevice (BKUserInterfaceIdiom)
-
 @property (atomic, readonly) BKUserInterfaceIdiom bkUserInterfaceIdiom;
-
 @end
