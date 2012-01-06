@@ -123,7 +123,7 @@
    minimumViewSize.value = self.splitViewController.minimumViewSize.width;
 
    reverseViewOrder.on        = self.splitViewController.viewOrderReversed;
-   displayBothViews.on        = self.splitViewController.bothViewsDisplayed;
+   displayBothViews.on        = self.splitViewController.masterAlwaysDisplayed;
    userInteractionEnabled.on  = self.splitViewController.userInteractionEnabled;
    hideDivider.on             = self.splitViewController.dividerHidden;
    verticalLayout.on          = (self.splitViewController.viewLayout == BKSplitViewLayoutVertically);
@@ -321,7 +321,7 @@
 
       case BKControllerDisplayBothViews:
       toggle = (UISwitch *) sender;
-      self.splitViewController.bothViewsDisplayed = toggle.on;
+      self.splitViewController.masterAlwaysDisplayed = toggle.on;
       break;
 
       case BKControllerUserInteractionEnabled:

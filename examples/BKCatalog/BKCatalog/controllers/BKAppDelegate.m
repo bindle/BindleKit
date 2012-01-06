@@ -84,7 +84,7 @@
    splitViewController.userInteractionEnabled = YES;
    splitViewController.dividerSize            = CGSizeMake(20, 20);
    splitViewController.minimumViewSize        = CGSizeMake(120, 120);
-   splitViewController.bothViewsDisplayed     = NO;
+   splitViewController.masterAlwaysDisplayed  = NO;
 #endif
    rootController = splitViewController;
 
