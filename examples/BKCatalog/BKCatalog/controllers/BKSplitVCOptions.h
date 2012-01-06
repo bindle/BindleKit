@@ -42,7 +42,7 @@
 {
    UISlider * minimumViewSize;
    UISwitch * reverseViewOrder;
-   UISwitch * displayBothViews;
+   UISwitch * masterAlwaysVisible;
    UISwitch * userInteractionEnabled;
    UISwitch * hideDivider;
    UISwitch * verticalLayout;

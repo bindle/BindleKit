@@ -227,12 +227,12 @@
    
       case 4:
 
-      if (splitViewController.masterAlwaysDisplayed)
+      if (splitViewController.masterAlwaysVisible)
       {
-         splitViewController.masterAlwaysDisplayed = NO;
+         splitViewController.masterAlwaysVisible = NO;
          [sender setTitle:@"Show Master" forState:UIControlStateNormal];
       } else {
-         splitViewController.masterAlwaysDisplayed = YES;
+         splitViewController.masterAlwaysVisible = YES;
          [sender setTitle:@"Hide Master" forState:UIControlStateNormal];
       };
 

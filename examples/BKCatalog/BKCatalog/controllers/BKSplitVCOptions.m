@@ -39,7 +39,7 @@
 
 #define BKControllerMinimumViewSize         0
 #define BKControllerReverseViewOrder        1
-#define BKControllerDisplayBothViews        2
+#define BKControllerMasterAlwaysVisible     2
 #define BKControllerUserInteractionEnabled  3
 #define BKControllerHideDivider             4
 #define BKControllerVerticalLayout          5
@@ -50,7 +50,7 @@
 {
    [minimumViewSize         release];
    [reverseViewOrder        release];
-   [displayBothViews        release];
+   [masterAlwaysVisible     release];
    [userInteractionEnabled  release];
    [hideDivider             release];
    [verticalLayout          release];
@@ -86,9 +86,9 @@
    reverseViewOrder.tag   = BKControllerReverseViewOrder;
    [reverseViewOrder addTarget:self action:@selector(updateSVC:) forControlEvents:UIControlEventValueChanged];
 
-   displayBothViews       = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-   displayBothViews.tag   = BKControllerDisplayBothViews;
-   [displayBothViews addTarget:self action:@selector(updateSVC:) forControlEvents:UIControlEventValueChanged];
+   masterAlwaysVisible       = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+   masterAlwaysVisible.tag   = BKControllerMasterAlwaysVisible;
+   [masterAlwaysVisible addTarget:self action:@selector(updateSVC:) forControlEvents:UIControlEventValueChanged];
 
    userInteractionEnabled = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
    userInteractionEnabled.tag = BKControllerUserInteractionEnabled;
@@ -123,7 +123,7 @@
    minimumViewSize.value = self.splitViewController.minimumViewSize.width;
 
    reverseViewOrder.on        = self.splitViewController.viewOrderReversed;
-   displayBothViews.on        = self.splitViewController.masterAlwaysDisplayed;
+   masterAlwaysVisible.on     = self.splitViewController.masterAlwaysVisible;
    userInteractionEnabled.on  = self.splitViewController.userInteractionEnabled;
    hideDivider.on             = self.splitViewController.dividerHidden;
    verticalLayout.on          = (self.splitViewController.viewLayout == BKSplitViewLayoutVertically);
@@ -284,7 +284,7 @@
 
          case 1:
          cell.textLabel.text = @"Always display Master";
-         cell.accessoryView = displayBothViews;
+         cell.accessoryView = masterAlwaysVisible;
          break;
 
          default:
@@ -319,9 +319,9 @@
       self.splitViewController.viewOrderReversed = toggle.on;
       break;
 
-      case BKControllerDisplayBothViews:
+      case BKControllerMasterAlwaysVisible:
       toggle = (UISwitch *) sender;
-      self.splitViewController.masterAlwaysDisplayed = toggle.on;
+      self.splitViewController.masterAlwaysVisible = toggle.on;
       break;
 
       case BKControllerUserInteractionEnabled:

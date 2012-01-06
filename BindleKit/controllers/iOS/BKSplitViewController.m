@@ -91,7 +91,7 @@
 @synthesize dividerHidden;
 @synthesize minimumViewSize;
 @synthesize viewOrderReversed;
-@synthesize masterAlwaysDisplayed;
+@synthesize masterAlwaysVisible;
 @synthesize userInteractionEnabled;
 @synthesize animationsEnabled;
 @synthesize viewLayout;
@@ -177,11 +177,11 @@
 
 #pragma mark - Properties getters/setters
 
-- (void) setMasterAlwaysDisplayed:(BOOL)aBool
+- (void) setMasterAlwaysVisible:(BOOL)aBool
 {
-   if (aBool == masterAlwaysDisplayed)
+   if (aBool == masterAlwaysVisible)
       return;
-   masterAlwaysDisplayed = aBool;
+   masterAlwaysVisible = aBool;
    [self layoutViewsWithAnimations:animationsEnabled];
    return;
 }
@@ -649,7 +649,7 @@
 
 - (BOOL) layoutMasterForOrientation:(UIInterfaceOrientation)orientation
 {
-   if (masterAlwaysDisplayed == YES)
+   if (masterAlwaysVisible == YES)
       return(YES);
    if ( (orientation == UIInterfaceOrientationLandscapeLeft) ||
         (orientation == UIInterfaceOrientationLandscapeRight) )
