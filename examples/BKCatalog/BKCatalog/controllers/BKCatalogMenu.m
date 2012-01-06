@@ -142,7 +142,7 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   if ([[UIDevice currentDevice] bkUserInterfaceIdiom] == BKUserInterfaceIdiomPhone)
+   if ([BKDevice userInterfaceIdiom] == BKUserInterfaceIdiomPhone)
       return(BKCatalogMenuCellCount);
    return(BKCatalogMenuCellCount+1);
 }
@@ -222,7 +222,7 @@
    };
 
    // if an iPhone, push new controller onto navigation stack
-   if ([[UIDevice currentDevice] bkUserInterfaceIdiom] == BKUserInterfaceIdiomPhone)
+   if ([BKDevice userInterfaceIdiom] == BKUserInterfaceIdiomPhone)
    {
       [self.navigationController pushViewController:controller animated:YES];
       [controller release];
