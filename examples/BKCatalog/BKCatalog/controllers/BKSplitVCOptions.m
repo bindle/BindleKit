@@ -39,6 +39,7 @@
 
 #define BKControllerMinimumViewSize         0
 #define BKControllerReverseViewOrder        1
+#define BKControllermasterAlwaysHidden      6
 #define BKControllerMasterAlwaysVisible     2
 #define BKControllerUserInteractionEnabled  3
 #define BKControllerHideDivider             4
@@ -50,6 +51,7 @@
 {
    [minimumViewSize         release];
    [reverseViewOrder        release];
+   [masterAlwaysHidden      release];
    [masterAlwaysVisible     release];
    [userInteractionEnabled  release];
    [hideDivider             release];
@@ -85,6 +87,10 @@
    reverseViewOrder       = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
    reverseViewOrder.tag   = BKControllerReverseViewOrder;
    [reverseViewOrder addTarget:self action:@selector(updateSVC:) forControlEvents:UIControlEventValueChanged];
+
+   masterAlwaysHidden       = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+   masterAlwaysHidden.tag   = BKControllermasterAlwaysHidden;
+   [masterAlwaysHidden addTarget:self action:@selector(updateSVC:) forControlEvents:UIControlEventValueChanged];
 
    masterAlwaysVisible       = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
    masterAlwaysVisible.tag   = BKControllerMasterAlwaysVisible;
@@ -123,6 +129,7 @@
    minimumViewSize.value = self.splitViewController.minimumViewSize.width;
 
    reverseViewOrder.on        = self.splitViewController.viewOrderReversed;
+   masterAlwaysHidden.on      = self.splitViewController.masterAlwaysHidden;
    masterAlwaysVisible.on     = self.splitViewController.masterAlwaysVisible;
    userInteractionEnabled.on  = self.splitViewController.userInteractionEnabled;
    hideDivider.on             = self.splitViewController.dividerHidden;
@@ -225,7 +232,7 @@
       return(4);
 
       case 1:
-      return(2);
+      return(3);
 
       default:
       return(0);
@@ -287,6 +294,11 @@
          cell.accessoryView = masterAlwaysVisible;
          break;
 
+         case 2:
+         cell.textLabel.text = @"Always hide Master";
+         cell.accessoryView = masterAlwaysHidden;
+         break;
+
          default:
          break;
       };
@@ -317,6 +329,11 @@
       case BKControllerReverseViewOrder:
       toggle = (UISwitch *) sender;
       self.splitViewController.viewOrderReversed = toggle.on;
+      break;
+
+      case BKControllermasterAlwaysHidden:
+      toggle = (UISwitch *) sender;
+      self.splitViewController.masterAlwaysHidden = toggle.on;
       break;
 
       case BKControllerMasterAlwaysVisible:

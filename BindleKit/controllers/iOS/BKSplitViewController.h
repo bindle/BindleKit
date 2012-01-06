@@ -94,6 +94,7 @@ typedef enum {
    BOOL      dividerHidden;                      // hide slider bar (visual option only, does not affect funcitonality)
    CGSize    minimumViewSize;                    // minimum width/height each view
    BOOL      viewOrderReversed;                  // reverse order that the views are displayed
+   BOOL      masterAlwaysHidden;                 // always hide master view (do not show in landscape mode)
    BOOL      masterAlwaysVisible;                // always display master view (do not hide in portait mode)
    BOOL      userInteractionEnabled;             // allow views to be resized by sliding te divider
    BOOL      animationsEnabled;                  // animate changes when updated by properties
@@ -118,6 +119,7 @@ typedef enum {
 @property(nonatomic, assign) BOOL      dividerHidden;
 @property(nonatomic, assign) CGSize    minimumViewSize;
 @property(nonatomic, assign) BOOL      viewOrderReversed;
+@property(nonatomic, assign) BOOL      masterAlwaysHidden;
 @property(nonatomic, assign) BOOL      masterAlwaysVisible;
 @property(nonatomic, assign) BOOL      userInteractionEnabled;
 @property(nonatomic, assign) BOOL      animationsEnabled;

@@ -42,6 +42,7 @@
 {
    UISlider * minimumViewSize;
    UISwitch * reverseViewOrder;
+   UISwitch * masterAlwaysHidden;
    UISwitch * masterAlwaysVisible;
    UISwitch * userInteractionEnabled;
    UISwitch * hideDivider;
