@@ -290,7 +290,11 @@
          {
             // remove old controller's view if old controller is not in new list 
             if (aController.isViewLoaded == YES)
+            {
+               [aController viewWillDisappear:NO];
                [aController.view removeFromSuperview];
+               [aController viewDidDisappear:NO];
+            };
 
             // removes self as parentController of old controller
             [aController setBKParentViewController:nil];
@@ -373,6 +377,42 @@
 - (void)viewDidUnload
 {
    [super viewDidUnload];
+   return;
+}
+
+
+- (void) viewWillAppear:(BOOL)animated
+{
+   [super viewWillAppear:animated];
+   if (([controllers count]))
+      [[controllers objectAtIndex:1] viewWillAppear:animated];
+   return;
+}
+
+
+- (void) viewDidAppear:(BOOL)animated
+{
+   [super viewDidAppear:animated];
+   if (([controllers count]))
+      [[controllers objectAtIndex:1] viewDidAppear:animated];
+   return;
+}
+
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+   [super viewWillDisappear:animated];
+   if (([controllers count]))
+      [[controllers objectAtIndex:1] viewWillDisappear:animated];
+   return;
+}
+
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+   [super viewDidDisappear:animated];
+   if (([controllers count]))
+      [[controllers objectAtIndex:1] viewDidDisappear:animated];
    return;
 }
 
@@ -737,8 +777,10 @@
    {
       if (masterView.superview != self.view)
       {
+         [[controllers objectAtIndex:0] viewWillAppear:NO];
          [self.view addSubview:masterView];
          [self.view sendSubviewToBack:masterView];
+         [[controllers objectAtIndex:0] viewDidAppear:NO];
       };
       return;
    };
@@ -823,8 +865,10 @@
    // positions master view for beginning of animations
    if (masterView.superview != self.view)
    {
+      [[controllers objectAtIndex:0] viewWillAppear:NO];
       masterView.frame = masterFrame;
       [self.view addSubview:masterView];
+      [[controllers objectAtIndex:0] viewDidAppear:NO];
    };
 
    return;
@@ -908,7 +952,11 @@
    // positions detail view
    view1.frame = self.view.bounds;
    if (view1.superview != self.view)
+   {
+      [[controllers objectAtIndex:1] viewWillAppear:NO];
       [self.view addSubview:view1];
+      [[controllers objectAtIndex:1] viewDidAppear:NO];
+   };
    [self.view bringSubviewToFront:view1];
 
    // positions detail view
@@ -1074,7 +1122,11 @@
    // positions left view
    view0.frame = frame0;
    if (view0.superview != self.view)
+   {
+      [[controllers objectAtIndex:0] viewWillAppear:NO];
       [self.view addSubview:view0];
+      [[controllers objectAtIndex:0] viewWillAppear:NO];
+   };
    [view0 setNeedsLayout];
 
    // positions divider view if marked as visible
@@ -1093,7 +1145,11 @@
    // positions right view
    view1.frame = frame1;
    if (view1.superview != self.view)
+   {
+      [[controllers objectAtIndex:1] viewWillAppear:NO];
       [self.view addSubview:view1];
+      [[controllers objectAtIndex:1] viewDidAppear:NO];
+   };
    [view1 setNeedsLayout];
 
    // requests the view layout
@@ -1120,7 +1176,9 @@
    // removes master view
    if (removeView == YES)
    {
+      [[controllers objectAtIndex:0] viewWillDisappear:NO];
       [aController.view removeFromSuperview];
+      [[controllers objectAtIndex:0] viewDidDisappear:NO];
       [self loadPopoverController];
    };
 
