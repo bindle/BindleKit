@@ -58,6 +58,7 @@
 - (void) loadDividerView;
 
 // subview layout methods
+- (BOOL) layoutMasterForOrientation:(UIInterfaceOrientation)orientation;
 - (void) layoutViewsWithAnimations:(BOOL)useAnimations;
 - (void) willLayoutSplitViews:(UIInterfaceOrientation)orientation;
 - (void) layoutSingleView;
@@ -646,6 +647,17 @@
 
 #pragma mark - subview layout methods
 
+- (BOOL) layoutMasterForOrientation:(UIInterfaceOrientation)orientation
+{
+   if (masterAlwaysDisplayed == YES)
+      return(YES);
+   if ( (orientation == UIInterfaceOrientationLandscapeLeft) ||
+        (orientation == UIInterfaceOrientationLandscapeRight) )
+      return(YES);
+   return(NO);
+}
+
+
 - (void) layoutViewsWithAnimations:(BOOL)animate
 {
    if (!(controllers))
@@ -697,16 +709,12 @@
    if (orientation != self.interfaceOrientation)
       [self dismissPopoverControllerAnimated:NO];
 
-   // determines if moving to portrait mode without displaying both views and exits
-   if ((masterAlwaysDisplayed == NO) && (orientation == UIInterfaceOrientationPortrait))
-      return;
-   if ((masterAlwaysDisplayed == NO) && (orientation == UIInterfaceOrientationPortraitUpsideDown))
+   // determines if moving to orientation that does not display both views and exits
+   if (!([self layoutMasterForOrientation:orientation]))
       return;
 
    // unloads the popover controller if moving to landscape mode
-   if (  (masterAlwaysDisplayed == YES) ||
-         (orientation == UIInterfaceOrientationLandscapeLeft) ||
-         (orientation == UIInterfaceOrientationLandscapeRight) )
+   if (([self layoutMasterForOrientation:orientation]))
       [self unloadPopoverController];
 
    // if just an orientation change, add master view to self.view and exit
@@ -926,8 +934,7 @@
 
    // positions detail view in full screen
    orientation = self.interfaceOrientation;
-   if ( ((!(masterAlwaysDisplayed)) && (orientation == UIInterfaceOrientationPortrait)) ||
-        ((!(masterAlwaysDisplayed)) && (orientation == UIInterfaceOrientationPortraitUpsideDown)) )
+   if (!([self layoutMasterForOrientation:orientation]))
    {
       [self layoutSingleView];
       return;
@@ -1088,11 +1095,7 @@
 
    // determines if master view should be removed
    aController = [controllers objectAtIndex:0];
-   if (masterAlwaysDisplayed == YES)
-      removeView = NO;
-   else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft)
-      removeView = NO;
-   else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeRight)
+   if (([self layoutMasterForOrientation:self.interfaceOrientation]))
       removeView = NO;
    else if (aController.view.superview != self.view)
       removeView = NO;
@@ -1109,11 +1112,7 @@
    // determines if divider view should be removed
    if (dividerHidden == YES)
       removeView = YES;
-   else if (masterAlwaysDisplayed == YES)
-      removeView = NO;
-   else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft)
-      removeView = NO;
-   else if (self.interfaceOrientation == UIInterfaceOrientationLandscapeRight)
+   else if (([self layoutMasterForOrientation:self.interfaceOrientation]))
       removeView = NO;
    else
       removeView  = YES;
