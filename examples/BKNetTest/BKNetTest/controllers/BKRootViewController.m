@@ -122,7 +122,7 @@
    [super viewDidLoad];
 
    // Uncomment the following line to preserve selection between presentations.
-   self.clearsSelectionOnViewWillAppear = NO;
+   //self.clearsSelectionOnViewWillAppear = NO;
 
    barButtons = [[NSMutableArray alloc] initWithCapacity:2];
    [barButtons addObject:barButtonItemLogs];
