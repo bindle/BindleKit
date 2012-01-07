@@ -316,11 +316,11 @@
    {
       case 0:
       alertTitle   = @"Reachable";
-      alertMessage = @"Flag: kSCNetworkReachabilityFlagsReachable\n\nThe specified node name or address can be reached using the current network configuration.";
+      alertMessage = @"The specified node name or address can be reached using the current network configuration.";
       break;
 
       case 1:
-      alertTitle   = @"Is WWAN";
+      alertTitle   = @"Using WWAN";
       alertMessage = @"The specified node name or address can be reached via a cellular connection, such as EDGE or GPRS.";
       break;
 
