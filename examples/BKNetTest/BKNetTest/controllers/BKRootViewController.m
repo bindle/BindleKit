@@ -377,7 +377,7 @@
 
 - (void) changeHostname:(UIBarButtonItem *)sender
 {
-   prompt.textField.text = nil;
+   prompt.textField.text = networkReachability.hostname;
    prompt.textField.placeholder = networkReachability.hostname;
    [prompt show];
    return;
