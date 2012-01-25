@@ -125,6 +125,10 @@
       for(pos = 0; pos < [controllers count]; pos++)
          [[controllers objectAtIndex:pos] didReceiveMemoryWarning];
 
+   // nothing is left to do if view is currently loaded
+   if (self.isViewLoaded == YES)
+      return;
+
    // free horizontal divider view if not visible
    if (!(dividerHorzView.superview))
    {
@@ -138,10 +142,6 @@
       [dividerVertView release];
       dividerVertView = nil;
    };
-
-   // nothing is left to do if view is currently loaded
-   if (self.isViewLoaded == YES)
-      return;
 
    // free root view
    self.view = nil;
