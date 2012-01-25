@@ -41,3 +41,4 @@ Bugs:
    * When toggling bothViewsDisplayed to false when both the master view and
      detail view are displayed, the subviews in the detail view jump to the left
      of the detail view before beginning the animation. (syzdek).
+   * Fix handling of -(void)didReceiveMemoryWarning; (syzdek)
