@@ -40,14 +40,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-#pragma mark - Private UIViewController Category Declaration
-@interface UIViewController (BKSplitViewControllerInternal)
-
-- (void) setBKParentViewController:(UIViewController *)viewController;
-
-@end
-
-
 #pragma mark - Private BKSplitViewController Category Declaration
 @interface BKSplitViewController () <UIPopoverControllerDelegate>
 
@@ -295,9 +287,6 @@
                [aController.view removeFromSuperview];
                [aController viewDidDisappear:NO];
             };
-
-            // removes self as parentController of old controller
-            [aController setBKParentViewController:nil];
          };
       };
    };
@@ -305,10 +294,6 @@
    // assigns new UIViewControllers
    [controllers release];
    controllers = [[NSArray alloc] initWithArray:viewControllers];
-
-   // sets parent controller
-   for(pos = 0; pos < [controllers count]; pos++)
-      [[controllers objectAtIndex:pos] setBKParentViewController:self];
 
    // arranges views
    [self layoutViewsWithAnimations:NO];
@@ -1259,9 +1244,6 @@
    if ((popoverController))
       return;
 
-   // removing parent controller to prevent problems with UIPopoverController
-   [aController setBKParentViewController:nil];
-
    // allocates new popover controller
    popoverController = [[UIPopoverController alloc]
                        initWithContentViewController:aController];
@@ -1272,9 +1254,6 @@
                style:UIBarButtonItemStylePlain
                target:self
                action:@selector(displayPopoverControllerFromSender:)];
-
-   // Adding self back as parent controller
-   [aController setBKParentViewController:self];
 
    // notifies delegate that controller has been added to popover controller
    [delegate splitViewController:self
@@ -1312,9 +1291,6 @@
    // frees bar button item
    [barButton release];
    barButton = nil;
-
-   // sets controller's parentController to self again
-   [aController setBKParentViewController:self];
 
    return;
 }
@@ -1394,19 +1370,6 @@
            (([controller isKindOfClass:[UISplitViewController class]])) )
          return(controller);
    return(nil);
-}
-
-@end
-
-
-#pragma mark - Private UIViewController Category Implementation
-@implementation UIViewController (BKSplitViewControllerInternal)
-
-// allows BKSplitViewController to set itself as the parent of a controller
-- (void) setBKParentViewController:(UIViewController *)parent
-{
-   [self setValue:parent forKey:@"_parentViewController"];
-   return;
 }
 
 @end
