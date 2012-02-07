@@ -86,6 +86,40 @@
 }
 
 
++ (NSUInteger) indexForDescription:(NSString *)description inArray:(NSArray *)array
+{
+   BKSelectionOption * option;
+   NSUInteger          pos;
+
+   for(pos = 0; pos < [array count]; pos++)
+   {
+      option = [array objectAtIndex:pos];
+      if ([option isKindOfClass:[BKSelectionOption class]])
+         if ([description isEqual:[option description]])
+            return(pos);
+   };
+
+   return(0);
+}
+
+
++ (NSUInteger) indexForValue:(id)value inArray:(NSArray *)array
+{
+   BKSelectionOption * option;
+   NSUInteger          pos;
+
+   for(pos = 0; pos < [array count]; pos++)
+   {
+      option = [array objectAtIndex:pos];
+      if ([option isKindOfClass:[BKSelectionOption class]])
+         if ([value isEqual:[option value]])
+            return(pos);
+   };
+
+   return(0);
+}
+
+
 + (id) valueForDescription:(NSString *)description inArray:(NSArray *)array
 {
    BKSelectionOption * option;

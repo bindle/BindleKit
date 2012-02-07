@@ -50,6 +50,9 @@
 + (id) optionWithValue:(id)aValue andDescription:(NSString *)aDescription;
 
 + (NSString *) descriptionForValue:(id)value inArray:(NSArray *)array;
++ (NSUInteger) indexForDescription:(NSString *)description inArray:(NSArray *)array;
++ (NSUInteger) indexForValue:(id)value inArray:(NSArray *)array;
 + (id) valueForDescription:(NSString *)description inArray:(NSArray *)array;
+
 
 @end
