@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		A0FCC95614E248A2001A0644 /* Git Package Version */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = A0FCC95714E248A2001A0644 /* Build configuration list for PBXAggregateTarget "Git Package Version" */;
+			buildPhases = (
+				A0FCC95A14E248AA001A0644 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Git Package Version";
+			productName = "Git Package Version";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		A014851D143D4F3200A24446 /* BKNetworkReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = A014851B143D4F3200A24446 /* BKNetworkReachability.h */; };
 		A014851E143D4F3200A24446 /* BKNetworkReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = A014851B143D4F3200A24446 /* BKNetworkReachability.h */; };
@@ -49,7 +63,32 @@
 		A0F713641413526900252B5F /* BKMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */; };
 		A0F713651413526C00252B5F /* BKSelectionOption.m in Sources */ = {isa = PBXBuildFile; fileRef = A064D96B140E047C00255FD3 /* BKSelectionOption.m */; };
 		A0F713671413529D00252B5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F713661413529D00252B5F /* Foundation.framework */; };
+		A0FCC8FA14E22CD5001A0644 /* BKVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = A0FCC8F814E22CD5001A0644 /* BKVersion.h */; };
+		A0FCC8FB14E22CD5001A0644 /* BKVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = A0FCC8F814E22CD5001A0644 /* BKVersion.h */; };
+		A0FCC8FC14E22CD5001A0644 /* BKVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FCC8F914E22CD5001A0644 /* BKVersion.m */; };
+		A0FCC8FD14E22CD5001A0644 /* BKVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FCC8F914E22CD5001A0644 /* BKVersion.m */; };
+		A0FCC90714E23321001A0644 /* BKPackage.h in Headers */ = {isa = PBXBuildFile; fileRef = A0FCC90514E23320001A0644 /* BKPackage.h */; };
+		A0FCC90814E23321001A0644 /* BKPackage.h in Headers */ = {isa = PBXBuildFile; fileRef = A0FCC90514E23320001A0644 /* BKPackage.h */; };
+		A0FCC90914E23321001A0644 /* BKPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FCC90614E23320001A0644 /* BKPackage.m */; };
+		A0FCC90A14E23321001A0644 /* BKPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FCC90614E23320001A0644 /* BKPackage.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A0FCC95B14E248E8001A0644 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A07D34EB140DC1E800832E1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0FCC95614E248A2001A0644;
+			remoteInfo = "Git Package Version";
+		};
+		A0FCC95D14E248ED001A0644 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A07D34EB140DC1E800832E1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0FCC95614E248A2001A0644;
+			remoteInfo = "Git Package Version";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A014851B143D4F3200A24446 /* BKNetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKNetworkReachability.h; sourceTree = "<group>"; };
@@ -94,6 +133,11 @@
 		A0D32C9914186F2800641ABD /* BKQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQueue.m; sourceTree = "<group>"; };
 		A0F713591413520300252B5F /* libBindleKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBindleKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F713661413529D00252B5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		A0FCC8F814E22CD5001A0644 /* BKVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKVersion.h; sourceTree = "<group>"; };
+		A0FCC8F914E22CD5001A0644 /* BKVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKVersion.m; sourceTree = "<group>"; };
+		A0FCC90514E23320001A0644 /* BKPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKPackage.h; sourceTree = "<group>"; };
+		A0FCC90614E23320001A0644 /* BKPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKPackage.m; sourceTree = "<group>"; };
+		A0FCC92B14E237A5001A0644 /* git-package-version.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "git-package-version.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,12 +189,16 @@
 				A092A665141706B40033C972 /* BKNode.m */,
 				A0529AC7140DDCB500CFA6F8 /* BKMemoryCache.h */,
 				A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */,
+				A0FCC90514E23320001A0644 /* BKPackage.h */,
+				A0FCC90614E23320001A0644 /* BKPackage.m */,
 				A0D32C9814186F2800641ABD /* BKQueue.h */,
 				A0D32C9914186F2800641ABD /* BKQueue.m */,
 				A064D96A140E047C00255FD3 /* BKSelectionOption.h */,
 				A064D96B140E047C00255FD3 /* BKSelectionOption.m */,
 				A0D32C9114186F0200641ABD /* BKStack.h */,
 				A0D32C9214186F0200641ABD /* BKStack.m */,
+				A0FCC8F814E22CD5001A0644 /* BKVersion.h */,
+				A0FCC8F914E22CD5001A0644 /* BKVersion.m */,
 			);
 			name = Models;
 			path = models;
@@ -207,6 +255,7 @@
 				A0529ABC140DC95A00CFA6F8 /* README */,
 				A07A7F261416D18000AB872D /* TODO */,
 				A07D34F9140DC1E800832E1F /* BindleKit */,
+				A0FCC92A14E23719001A0644 /* build-aux */,
 				A07D34F6140DC1E800832E1F /* Frameworks */,
 				A07D34F5140DC1E800832E1F /* Products */,
 			);
@@ -257,6 +306,14 @@
 			path = support;
 			sourceTree = "<group>";
 		};
+		A0FCC92A14E23719001A0644 /* build-aux */ = {
+			isa = PBXGroup;
+			children = (
+				A0FCC92B14E237A5001A0644 /* git-package-version.sh */,
+			);
+			path = "build-aux";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -277,6 +334,8 @@
 				A014851D143D4F3200A24446 /* BKNetworkReachability.h in Headers */,
 				A0C70C9C144526100093D650 /* BKPromptView.h in Headers */,
 				A0A7D51414B5B140007B2D14 /* BKDevice.h in Headers */,
+				A0FCC8FA14E22CD5001A0644 /* BKVersion.h in Headers */,
+				A0FCC90714E23321001A0644 /* BKPackage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +349,8 @@
 				A0D32C9B14186F2800641ABD /* BKQueue.h in Headers */,
 				A0410F99142801E300ACE897 /* BKButtonImages.h in Headers */,
 				A014851E143D4F3200A24446 /* BKNetworkReachability.h in Headers */,
+				A0FCC8FB14E22CD5001A0644 /* BKVersion.h in Headers */,
+				A0FCC90814E23321001A0644 /* BKPackage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +368,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A0FCC95C14E248E8001A0644 /* PBXTargetDependency */,
 			);
 			name = iBindleKit;
 			productName = BindleKit;
@@ -324,6 +386,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A0FCC95E14E248ED001A0644 /* PBXTargetDependency */,
 			);
 			name = BindleKit;
 			productName = BindleKit;
@@ -352,9 +415,27 @@
 			targets = (
 				A07D34F3140DC1E800832E1F /* iBindleKit */,
 				A0F713581413520300252B5F /* BindleKit */,
+				A0FCC95614E248A2001A0644 /* Git Package Version */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A0FCC95A14E248AA001A0644 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "build-aux/git-package-version.sh ${PROJECT_DIR} ${PROJECT_DIR}/BindleKit ";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A07D34F0140DC1E800832E1F /* Sources */ = {
@@ -374,6 +455,8 @@
 				A014851F143D4F3200A24446 /* BKNetworkReachability.m in Sources */,
 				A0C70C9D144526100093D650 /* BKPromptView.m in Sources */,
 				A0A7D51514B5B140007B2D14 /* BKDevice.m in Sources */,
+				A0FCC8FC14E22CD5001A0644 /* BKVersion.m in Sources */,
+				A0FCC90914E23321001A0644 /* BKPackage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,10 +472,25 @@
 				A0D32C9D14186F2800641ABD /* BKQueue.m in Sources */,
 				A0410F9B142801E300ACE897 /* BKButtonImages.m in Sources */,
 				A0148520143D4F3200A24446 /* BKNetworkReachability.m in Sources */,
+				A0FCC8FD14E22CD5001A0644 /* BKVersion.m in Sources */,
+				A0FCC90A14E23321001A0644 /* BKPackage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A0FCC95C14E248E8001A0644 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0FCC95614E248A2001A0644 /* Git Package Version */;
+			targetProxy = A0FCC95B14E248E8001A0644 /* PBXContainerItemProxy */;
+		};
+		A0FCC95E14E248ED001A0644 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0FCC95614E248A2001A0644 /* Git Package Version */;
+			targetProxy = A0FCC95D14E248ED001A0644 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A07D3519140DC1E900832E1F /* Debug */ = {
@@ -503,6 +601,20 @@
 			};
 			name = Release;
 		};
+		A0FCC95814E248A2001A0644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A0FCC95914E248A2001A0644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -529,6 +641,15 @@
 			buildConfigurations = (
 				A0F713621413520300252B5F /* Debug */,
 				A0F713631413520300252B5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0FCC95714E248A2001A0644 /* Build configuration list for PBXAggregateTarget "Git Package Version" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0FCC95814E248A2001A0644 /* Debug */,
+				A0FCC95914E248A2001A0644 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

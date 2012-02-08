@@ -31,32 +31,45 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/*
- *  BindleKit/BindleKit.h - loads API for classes in BindleKit
+/**
+ *  Stores software package information.
  */
 
 #import <Foundation/Foundation.h>
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/controllers/BKNetworkReachability.h>
-#import <BindleKit/models/BKNode.h>
-#import <BindleKit/models/BKMemoryCache.h>
-#import <BindleKit/models/BKPackage.h>
-#import <BindleKit/models/BKQueue.h>
-#import <BindleKit/models/BKSelectionOption.h>
-#import <BindleKit/models/BKStack.h>
-#import <BindleKit/models/BKVersion.h>
-#import <BindleKit/views/BKButtonImages.h>
+@interface BKPackage : NSObject
+{
+   // API Information methods
+   NSUInteger   apiVersionCurrent;
+   NSUInteger   apiVersionRevision;
+   NSUInteger   apiVersionAge;
+   NSString   * apiVersionString;
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/controllers/iOS/BKDevice.h>
-#import <BindleKit/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/controllers/iOS/BKSplitViewController.h>
-#import <BindleKit/views/iOS/BKButton.h>
-#import <BindleKit/views/iOS/BKPromptView.h>
-#endif
+   // Package Information methods
+   NSString   * packageIdentifier;
+   NSString   * packageName;
+   NSString   * packageVersion;
+   NSString   * packageWebsite;
+   NSString   * packageLicense;
+}
 
-#ifdef TARGET_OS_MAC
-#endif
+/// @name API Information methods
+@property (nonatomic, assign) NSUInteger   apiVersionCurrent;
+@property (nonatomic, assign) NSUInteger   apiVersionRevision;
+@property (nonatomic, assign) NSUInteger   apiVersionAge;
+@property (nonatomic, retain) NSString   * apiVersionString;
+@property (nonatomic, assign) const char * UTF8ApiVersionString;
 
-/* end of header */
+/// @name Package Information methods
+@property (nonatomic, retain) NSString   * packageIdentifier;
+@property (nonatomic, retain) NSString   * packageName;
+@property (nonatomic, retain) NSString   * packageVersion;
+@property (nonatomic, retain) NSString   * packageWebsite;
+@property (nonatomic, retain) NSString   * packageLicense;
+@property (nonatomic, assign) const char * UTF8PackageIdentifier;
+@property (nonatomic, assign) const char * UTF8PackageName;
+@property (nonatomic, assign) const char * UTF8PackageVersion;
+@property (nonatomic, assign) const char * UTF8PackageWebsite;
+@property (nonatomic, assign) const char * UTF8PackageLicense;
+
+@end
