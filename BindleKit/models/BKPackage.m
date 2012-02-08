@@ -73,6 +73,22 @@
 }
 
 
+- (id) initWithName:(NSString *)name version:(NSString *)version
+{
+   if ((self = [super init]) == nil)
+      return(self);
+   self.packageName    = name;
+   self.packageVersion = version;
+   return(self);
+}
+
+
++ (id) packageWithName:(NSString *)name version:(NSString *)version
+{
+   return([[[BKPackage alloc] initWithName:name version:version] autorelease]);
+}
+
+
 #pragma mark - Getter/Setter methods
 
 - (const char *) UTF8ApiVersionString

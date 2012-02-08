@@ -53,6 +53,10 @@
    NSString   * packageLicense;
 }
 
+/// @name  Object Management Methods
+- (id) initWithName:(NSString *)name version:(NSString *)version;
++ (id) packageWithName:(NSString *)name version:(NSString *)version;
+
 /// @name API Information methods
 @property (nonatomic, assign) NSUInteger   apiVersionCurrent;
 @property (nonatomic, assign) NSUInteger   apiVersionRevision;

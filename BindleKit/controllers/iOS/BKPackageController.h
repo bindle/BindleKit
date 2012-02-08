@@ -1,6 +1,6 @@
 /*
  *  Bindle Binaries Objective-C Kit
- *  Copyright (c) 2012, Bindle Binaries
+ *  Copyright (c) 2011, Bindle Binaries
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_START@
  *
@@ -32,32 +32,36 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /*
- *  BindleKit/BindleKit.h - loads API for classes in BindleKit
+ *  BKPackageController.h - Manges the displaying of license information
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/controllers/BKNetworkReachability.h>
-#import <BindleKit/models/BKNode.h>
-#import <BindleKit/models/BKMemoryCache.h>
-#import <BindleKit/models/BKPackage.h>
-#import <BindleKit/models/BKQueue.h>
-#import <BindleKit/models/BKSelectionOption.h>
-#import <BindleKit/models/BKStack.h>
-#import <BindleKit/models/BKVersion.h>
-#import <BindleKit/views/BKButtonImages.h>
+@class BKPackage;
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/controllers/iOS/BKDevice.h>
-#import <BindleKit/controllers/iOS/BKPackageController.h>
-#import <BindleKit/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/controllers/iOS/BKSplitViewController.h>
-#import <BindleKit/views/iOS/BKButton.h>
-#import <BindleKit/views/iOS/BKPromptView.h>
-#endif
+@interface BKPackageController : UITableViewController <UIAlertViewDelegate>
+{
 
-#ifdef TARGET_OS_MAC
-#endif
+@private
 
-/* end of header */
+   // package information
+   NSMutableArray * packages;
+
+   // alerts
+   UIAlertView * alert;
+   BKPackage   * alertPackge;
+}
+
+// package management methods
+- (void) addPackage:(BKPackage *)package;
+- (void) insertPackage:(BKPackage *)package atIndex:(NSUInteger)index;
+- (void) removeAllPackages;
+- (void) removeLastPackage;
+- (void) removePackageAtIndex:(NSUInteger)index;
+
+// package query methods
+- (NSUInteger)  count;
+- (BKPackage *) lastPackage;
+- (BKPackage *) packageAtIndex:(NSUInteger)index;
+
+@end

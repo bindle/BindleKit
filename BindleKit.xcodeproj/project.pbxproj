@@ -71,6 +71,8 @@
 		A0FCC90814E23321001A0644 /* BKPackage.h in Headers */ = {isa = PBXBuildFile; fileRef = A0FCC90514E23320001A0644 /* BKPackage.h */; };
 		A0FCC90914E23321001A0644 /* BKPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FCC90614E23320001A0644 /* BKPackage.m */; };
 		A0FCC90A14E23321001A0644 /* BKPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FCC90614E23320001A0644 /* BKPackage.m */; };
+		A0FCC9C214E2913F001A0644 /* BKPackageController.h in Headers */ = {isa = PBXBuildFile; fileRef = A0FCC9C014E2913F001A0644 /* BKPackageController.h */; };
+		A0FCC9C314E2913F001A0644 /* BKPackageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FCC9C114E2913F001A0644 /* BKPackageController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +140,8 @@
 		A0FCC90514E23320001A0644 /* BKPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKPackage.h; sourceTree = "<group>"; };
 		A0FCC90614E23320001A0644 /* BKPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKPackage.m; sourceTree = "<group>"; };
 		A0FCC92B14E237A5001A0644 /* git-package-version.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "git-package-version.sh"; sourceTree = "<group>"; };
+		A0FCC9C014E2913F001A0644 /* BKPackageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKPackageController.h; sourceTree = "<group>"; };
+		A0FCC9C114E2913F001A0644 /* BKPackageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKPackageController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +244,8 @@
 			children = (
 				A0A7D51214B5B140007B2D14 /* BKDevice.h */,
 				A0A7D51314B5B140007B2D14 /* BKDevice.m */,
+				A0FCC9C014E2913F001A0644 /* BKPackageController.h */,
+				A0FCC9C114E2913F001A0644 /* BKPackageController.m */,
 				A064D971140E053200255FD3 /* BKSelectionController.h */,
 				A064D972140E053200255FD3 /* BKSelectionController.m */,
 				A0617452142028BA00BCEA6F /* BKSplitViewController.h */,
@@ -336,6 +342,7 @@
 				A0A7D51414B5B140007B2D14 /* BKDevice.h in Headers */,
 				A0FCC8FA14E22CD5001A0644 /* BKVersion.h in Headers */,
 				A0FCC90714E23321001A0644 /* BKPackage.h in Headers */,
+				A0FCC9C214E2913F001A0644 /* BKPackageController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +464,7 @@
 				A0A7D51514B5B140007B2D14 /* BKDevice.m in Sources */,
 				A0FCC8FC14E22CD5001A0644 /* BKVersion.m in Sources */,
 				A0FCC90914E23321001A0644 /* BKPackage.m in Sources */,
+				A0FCC9C314E2913F001A0644 /* BKPackageController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
