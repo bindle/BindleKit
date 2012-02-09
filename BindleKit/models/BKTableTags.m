@@ -153,7 +153,9 @@
 - (NSInteger) rowTagAtIndex:(NSUInteger)index inSection:(NSUInteger)section
 {
    NSMutableArray * rowTags;
+   NSAssert(([sectionTags count] > section), @"section index exceeds bounds");
    rowTags = [sectionRows objectAtIndex:section];
+   NSAssert(([rowTags count] > index), @"row tag index exceeds bounds");
    return([[rowTags objectAtIndex:index] intValue]);
 }
 
