@@ -97,6 +97,19 @@
 }
 
 
+- (NSInteger) indexOfSectionTag:(NSInteger)sectionTag
+{
+   NSNumber   * tagNumber;
+   NSUInteger   index;
+
+   tagNumber = [[NSNumber alloc] initWithInt:sectionTag];
+   index     = [sectionTags indexOfObject:tagNumber];
+   [tagNumber release];
+
+   return(index);
+}
+
+
 - (NSInteger) sectionCount
 {
    return([sectionRows count]);
@@ -138,6 +151,23 @@
    [tagNumber release];
 
    return;
+}
+
+
+- (NSInteger) indexofRowTag:(NSInteger)rowTag inSection:(NSInteger)section
+{
+   NSNumber       * tagNumber;
+   NSUInteger       index;
+   NSMutableArray * rowTags;
+
+   NSAssert(([sectionRows count] > section), @"section index exceeds bounds");
+
+   tagNumber = [[NSNumber alloc] initWithInt:rowTag];
+   rowTags   = [sectionRows objectAtIndex:section];
+   index     = [rowTags indexOfObject:tagNumber];
+   [tagNumber release];
+
+   return(index);
 }
 
 
