@@ -60,6 +60,10 @@
 		A0D32C9B14186F2800641ABD /* BKQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = A0D32C9814186F2800641ABD /* BKQueue.h */; };
 		A0D32C9C14186F2800641ABD /* BKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D32C9914186F2800641ABD /* BKQueue.m */; };
 		A0D32C9D14186F2800641ABD /* BKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D32C9914186F2800641ABD /* BKQueue.m */; };
+		A0E24F0E14E3DF410040D81D /* BKTableTags.h in Headers */ = {isa = PBXBuildFile; fileRef = A0E24F0C14E3DF410040D81D /* BKTableTags.h */; };
+		A0E24F0F14E3DF410040D81D /* BKTableTags.h in Headers */ = {isa = PBXBuildFile; fileRef = A0E24F0C14E3DF410040D81D /* BKTableTags.h */; };
+		A0E24F1014E3DF410040D81D /* BKTableTags.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E24F0D14E3DF410040D81D /* BKTableTags.m */; };
+		A0E24F1114E3DF410040D81D /* BKTableTags.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E24F0D14E3DF410040D81D /* BKTableTags.m */; };
 		A0F713641413526900252B5F /* BKMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0529AC8140DDCB500CFA6F8 /* BKMemoryCache.m */; };
 		A0F713651413526C00252B5F /* BKSelectionOption.m in Sources */ = {isa = PBXBuildFile; fileRef = A064D96B140E047C00255FD3 /* BKSelectionOption.m */; };
 		A0F713671413529D00252B5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F713661413529D00252B5F /* Foundation.framework */; };
@@ -133,6 +137,8 @@
 		A0D32C9214186F0200641ABD /* BKStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKStack.m; sourceTree = "<group>"; };
 		A0D32C9814186F2800641ABD /* BKQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQueue.h; sourceTree = "<group>"; };
 		A0D32C9914186F2800641ABD /* BKQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQueue.m; sourceTree = "<group>"; };
+		A0E24F0C14E3DF410040D81D /* BKTableTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKTableTags.h; sourceTree = "<group>"; };
+		A0E24F0D14E3DF410040D81D /* BKTableTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKTableTags.m; sourceTree = "<group>"; };
 		A0F713591413520300252B5F /* libBindleKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBindleKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F713661413529D00252B5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		A0FCC8F814E22CD5001A0644 /* BKVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKVersion.h; sourceTree = "<group>"; };
@@ -201,6 +207,8 @@
 				A064D96B140E047C00255FD3 /* BKSelectionOption.m */,
 				A0D32C9114186F0200641ABD /* BKStack.h */,
 				A0D32C9214186F0200641ABD /* BKStack.m */,
+				A0E24F0C14E3DF410040D81D /* BKTableTags.h */,
+				A0E24F0D14E3DF410040D81D /* BKTableTags.m */,
 				A0FCC8F814E22CD5001A0644 /* BKVersion.h */,
 				A0FCC8F914E22CD5001A0644 /* BKVersion.m */,
 			);
@@ -343,6 +351,7 @@
 				A0FCC8FA14E22CD5001A0644 /* BKVersion.h in Headers */,
 				A0FCC90714E23321001A0644 /* BKPackage.h in Headers */,
 				A0FCC9C214E2913F001A0644 /* BKPackageController.h in Headers */,
+				A0E24F0E14E3DF410040D81D /* BKTableTags.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +367,7 @@
 				A014851E143D4F3200A24446 /* BKNetworkReachability.h in Headers */,
 				A0FCC8FB14E22CD5001A0644 /* BKVersion.h in Headers */,
 				A0FCC90814E23321001A0644 /* BKPackage.h in Headers */,
+				A0E24F0F14E3DF410040D81D /* BKTableTags.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +475,7 @@
 				A0FCC8FC14E22CD5001A0644 /* BKVersion.m in Sources */,
 				A0FCC90914E23321001A0644 /* BKPackage.m in Sources */,
 				A0FCC9C314E2913F001A0644 /* BKPackageController.m in Sources */,
+				A0E24F1014E3DF410040D81D /* BKTableTags.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +493,7 @@
 				A0148520143D4F3200A24446 /* BKNetworkReachability.m in Sources */,
 				A0FCC8FD14E22CD5001A0644 /* BKVersion.m in Sources */,
 				A0FCC90A14E23321001A0644 /* BKPackage.m in Sources */,
+				A0E24F1114E3DF410040D81D /* BKTableTags.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,34 +31,32 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/*
- *  BindleKit/BindleKit.h - loads API for classes in BindleKit
+/**
+ *  Stores section and row tag information for UITableViews.
  */
-
+ 
 #import <Foundation/Foundation.h>
 
-#import <BindleKit/categories/BKStringDigest.h>
-#import <BindleKit/controllers/BKNetworkReachability.h>
-#import <BindleKit/models/BKNode.h>
-#import <BindleKit/models/BKMemoryCache.h>
-#import <BindleKit/models/BKPackage.h>
-#import <BindleKit/models/BKQueue.h>
-#import <BindleKit/models/BKSelectionOption.h>
-#import <BindleKit/models/BKStack.h>
-#import <BindleKit/models/BKTableTags.h>
-#import <BindleKit/models/BKVersion.h>
-#import <BindleKit/views/BKButtonImages.h>
+@interface BKTableTags : NSObject
+{
+   // table information
+   NSMutableArray * sectionTags;
+   NSMutableArray * sectionRows;
+}
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/controllers/iOS/BKDevice.h>
-#import <BindleKit/controllers/iOS/BKPackageController.h>
-#import <BindleKit/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/controllers/iOS/BKSplitViewController.h>
-#import <BindleKit/views/iOS/BKButton.h>
-#import <BindleKit/views/iOS/BKPromptView.h>
-#endif
+/// @name table tag management
+- (void) removeAllTags;
 
-#ifdef TARGET_OS_MAC
-#endif
+/// @name section management
+- (void)       addSectionWithTag:(NSInteger)sectionTag;
+- (NSUInteger) sectionCount;
+- (NSInteger)  sectionTagAtIndex:(NSUInteger)index;
 
-/* end of header */
+/// @name row management
+- (void)      addRowWithTagInLastSection:(NSInteger)rowTag;
+- (void)      addRowWithTag:(NSInteger)rowTag inSection:(NSUInteger)section;
+- (NSInteger) rowTagAtIndex:(NSUInteger)index inSection:(NSUInteger)section;
+- (NSInteger) rowTagAtIndex:(NSUInteger)index inSection:(NSUInteger)section;
+- (NSInteger) rowTagatIndexPath:(NSIndexPath *)indexPath;
+
+@end
