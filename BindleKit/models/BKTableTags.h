@@ -49,15 +49,15 @@
 
 /// @name section management
 - (void)       addSectionWithTag:(NSInteger)sectionTag;
-- (NSUInteger) sectionCount;
-- (NSInteger)  sectionTagAtIndex:(NSUInteger)index;
+- (NSInteger)  sectionCount;
+- (NSInteger)  sectionTagAtIndex:(NSInteger)index;
 
 /// @name row management
 - (void)      addRowWithTagInLastSection:(NSInteger)rowTag;
-- (void)      addRowWithTag:(NSInteger)rowTag inSection:(NSUInteger)section;
-- (NSUInteger) rowCountInSection:(NSUInteger)section;
-- (NSInteger) rowTagAtIndex:(NSUInteger)index inSection:(NSUInteger)section;
-- (NSInteger) rowTagAtIndex:(NSUInteger)index inSection:(NSUInteger)section;
+- (void)      addRowWithTag:(NSInteger)rowTag inSection:(NSInteger)section;
+- (NSInteger) rowCountInSection:(NSInteger)section;
+- (NSInteger) rowTagAtIndex:(NSInteger)index inSection:(NSInteger)section;
+- (NSInteger) rowTagAtIndex:(NSInteger)index inSection:(NSInteger)section;
 - (NSInteger) rowTagAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

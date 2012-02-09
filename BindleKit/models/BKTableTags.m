@@ -97,13 +97,13 @@
 }
 
 
-- (NSUInteger) sectionCount
+- (NSInteger) sectionCount
 {
    return([sectionRows count]);
 }
 
 
-- (NSInteger)  sectionTagAtIndex:(NSUInteger)index
+- (NSInteger)  sectionTagAtIndex:(NSInteger)index
 {
    NSAssert(([sectionTags count] > index), @"section index exceeds bounds");
    return([[sectionTags objectAtIndex:index] intValue]);
@@ -114,7 +114,7 @@
 
 - (void) addRowWithTagInLastSection:(NSInteger)rowTag
 {
-   NSUInteger       count;
+   NSInteger count;
 
    NSAssert(([sectionTags count] > 0), @"must have at least one section");
 
@@ -125,7 +125,7 @@
 }
 
 
-- (void) addRowWithTag:(NSInteger)rowTag inSection:(NSUInteger)section
+- (void) addRowWithTag:(NSInteger)rowTag inSection:(NSInteger)section
 {
    NSNumber       * tagNumber;
    NSMutableArray * rowTags;
@@ -141,7 +141,7 @@
 }
 
 
-- (NSUInteger) rowCountInSection:(NSUInteger)section
+- (NSInteger) rowCountInSection:(NSInteger)section
 {
    NSMutableArray * rowTags;
    NSAssert(([sectionTags count] > section), @"section index exceeds bounds");
@@ -150,7 +150,7 @@
 }
 
 
-- (NSInteger) rowTagAtIndex:(NSUInteger)index inSection:(NSUInteger)section
+- (NSInteger) rowTagAtIndex:(NSInteger)index inSection:(NSInteger)section
 {
    NSMutableArray * rowTags;
    NSAssert(([sectionTags count] > section), @"section index exceeds bounds");
@@ -162,8 +162,8 @@
 
 - (NSInteger) rowTagAtIndexPath:(NSIndexPath *)indexPath
 {
-   NSUInteger       section;
-   NSUInteger       row;
+   NSInteger        section;
+   NSInteger        row;
    NSMutableArray * rowTags;
 
    section = [indexPath indexAtPosition:0];
