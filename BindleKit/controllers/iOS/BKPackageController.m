@@ -281,6 +281,8 @@
          cancelButtonTitle:@"No"
          otherButtonTitles:@"Yes", nil];
       [alert show];
+      [alert release];
+      [alertTitle release];
       break;
 
       default:
