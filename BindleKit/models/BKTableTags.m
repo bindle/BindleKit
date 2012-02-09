@@ -78,7 +78,7 @@
 
 #pragma mark - section management
 
-- (void) addSectionWithTag:(NSInteger)sectionTag
+- (NSInteger) addSectionWithTag:(NSInteger)sectionTag
 {
    NSNumber       * tagNumber;
    NSMutableArray * rowTags;
@@ -93,7 +93,7 @@
    [sectionRows addObject:rowTags];
    [rowTags release];
 
-   return;
+   return([sectionRows count] - 1);
 }
 
 
@@ -125,20 +125,18 @@
 
 #pragma mark - row management
 
-- (void) addRowWithTagInLastSection:(NSInteger)rowTag
+- (NSInteger) addRowWithTagInLastSection:(NSInteger)rowTag
 {
    NSInteger count;
 
    NSAssert(([sectionRows count] > 0), @"must have at least one section");
 
    count = [sectionRows count];
-   [self addRowWithTag:rowTag inSection:(count-1)];
-   
-   return;
+   return([self addRowWithTag:rowTag inSection:(count-1)]);
 }
 
 
-- (void) addRowWithTag:(NSInteger)rowTag inSection:(NSInteger)section
+- (NSInteger) addRowWithTag:(NSInteger)rowTag inSection:(NSInteger)section
 {
    NSNumber       * tagNumber;
    NSMutableArray * rowTags;
@@ -150,7 +148,7 @@
    [rowTags addObject:tagNumber];
    [tagNumber release];
 
-   return;
+   return([rowTags count] - 1);
 }
 
 
