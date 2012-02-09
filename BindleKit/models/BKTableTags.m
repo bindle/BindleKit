@@ -141,6 +141,15 @@
 }
 
 
+- (NSUInteger) rowCountInSection:(NSUInteger)section
+{
+   NSMutableArray * rowTags;
+   NSAssert(([sectionTags count] > section), @"section index exceeds bounds");
+   rowTags = [sectionRows objectAtIndex:section];
+   return([rowTags count]);
+}
+
+
 - (NSInteger) rowTagAtIndex:(NSUInteger)index inSection:(NSUInteger)section
 {
    NSMutableArray * rowTags;

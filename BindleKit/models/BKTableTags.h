@@ -55,6 +55,7 @@
 /// @name row management
 - (void)      addRowWithTagInLastSection:(NSInteger)rowTag;
 - (void)      addRowWithTag:(NSInteger)rowTag inSection:(NSUInteger)section;
+- (NSUInteger) rowCountInSection:(NSUInteger)section;
 - (NSInteger) rowTagAtIndex:(NSUInteger)index inSection:(NSUInteger)section;
 - (NSInteger) rowTagAtIndex:(NSUInteger)index inSection:(NSUInteger)section;
 - (NSInteger) rowTagatIndexPath:(NSIndexPath *)indexPath;
