@@ -162,9 +162,18 @@
 
 - (NSInteger) rowTagatIndexPath:(NSIndexPath *)indexPath
 {
-   NSUInteger section = [indexPath indexAtPosition:0];
-   NSUInteger row     = [indexPath indexAtPosition:1];
-   return([self rowTagAtIndex:row inSection:section]);
+   NSUInteger       section;
+   NSUInteger       row;
+   NSMutableArray * rowTags;
+
+   section = [indexPath indexAtPosition:0];
+   row     = [indexPath indexAtPosition:1];
+
+   NSAssert(([sectionTags count] > section), @"section index exceeds bounds");
+   rowTags = [sectionRows objectAtIndex:section];
+   NSAssert(([rowTags count] > row), @"row tag index exceeds bounds");
+
+   return([[rowTags objectAtIndex:row] intValue]);
 }
 
 
