@@ -105,7 +105,7 @@
 
 - (NSInteger)  sectionTagAtIndex:(NSUInteger)index
 {
-   NSAssert(([sectionTags count] > 0), @"must have at least one section");
+   NSAssert(([sectionTags count] > index), @"section index exceeds bounds");
    return([[sectionTags objectAtIndex:index] intValue]);
 }
 
@@ -130,7 +130,7 @@
    NSNumber       * tagNumber;
    NSMutableArray * rowTags;
 
-   NSAssert(([sectionTags count] > 0), @"must have at least one section");
+   NSAssert(([sectionTags count] > section), @"section index exceeds bounds");
 
    tagNumber = [[NSNumber alloc] initWithInt:rowTag];
    rowTags   = [sectionRows objectAtIndex:section];
