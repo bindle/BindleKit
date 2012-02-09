@@ -58,6 +58,6 @@
 - (NSUInteger) rowCountInSection:(NSUInteger)section;
 - (NSInteger) rowTagAtIndex:(NSUInteger)index inSection:(NSUInteger)section;
 - (NSInteger) rowTagAtIndex:(NSUInteger)index inSection:(NSUInteger)section;
-- (NSInteger) rowTagatIndexPath:(NSIndexPath *)indexPath;
+- (NSInteger) rowTagAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

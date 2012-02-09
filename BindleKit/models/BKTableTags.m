@@ -160,7 +160,7 @@
 }
 
 
-- (NSInteger) rowTagatIndexPath:(NSIndexPath *)indexPath
+- (NSInteger) rowTagAtIndexPath:(NSIndexPath *)indexPath
 {
    NSUInteger       section;
    NSUInteger       row;
