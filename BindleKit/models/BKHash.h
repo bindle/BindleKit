@@ -1,6 +1,6 @@
 /*
  *  Bindle Binaries Objective-C Kit
- *  Copyright (c) 2011, Bindle Binaries
+ *  Copyright (c) 2012, Bindle Binaries
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_START@
  *
@@ -31,20 +31,51 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/*
- *  LBStringCrypto.h - expands NSString to include crypto digests
+/**
+ *  Provides easy way to produce hashes from strings.
  */
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (BKStringDigest)
+#pragma mark -
+@interface NSString (BKStringHash)
+- (NSString *) stringWithCryptHash;
+- (NSString *) stringWithCryptHashWithSalt:(NSString *)salt;
+- (NSString *) stringWithMD2Hash;
+- (NSString *) stringWithMD4Hash;
+- (NSString *) stringWithMD5Hash;
+- (NSString *) stringWithSHA1Hash;
+- (NSString *) stringWithSHA256Hash;
+@end
 
-- (NSString *) stringHashWithCrypt;
-- (NSString *) stringHashWithCryptWithSalt:(NSString *)salt;
-- (NSString *) stringHashWithMD2;
-- (NSString *) stringHashWithMD4;
-- (NSString *) stringHashWithMD5;
-- (NSString *) stringHashWithSHA1;
-- (NSString *) stringHashWithSHA256;
+#pragma mark -
+@interface BKHash : NSObject
+{
+   // internal data
+   NSString * _string;
+}
+
+@property (nonatomic, retain) NSString * string;
+
+/// @name Object Management Methods
+- (id) initWithString:(NSString *)string;
+
+/// @name Hashes for BKHash string
+- (NSString *) stringWithCryptHash;
+- (NSString *) stringWithCryptHashWithSalt:(NSString *)salt;
+- (NSString *) stringWithMD2Hash;
+- (NSString *) stringWithMD4Hash;
+- (NSString *) stringWithMD5Hash;
+- (NSString *) stringWithSHA1Hash;
+- (NSString *) stringWithSHA256Hash;
+
+/// @name Hashes for external strings
++ (NSString *) stringWithCryptHashOfString:(NSString *)string;
++ (NSString *) stringWithCryptHashOfString:(NSString *)string withSalt:(NSString *)salt;
++ (NSString *) stringWithMD2HashOfString:(NSString *)string;
++ (NSString *) stringWithMD4HashOfString:(NSString *)string;
++ (NSString *) stringWithMD5HashOfString:(NSString *)string;
++ (NSString *) stringWithSHA1HashOfString:(NSString *)string;
++ (NSString *) stringWithSHA256HashOfString:(NSString *)string;
 
 @end

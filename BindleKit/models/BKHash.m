@@ -1,6 +1,6 @@
 /*
  *  Bindle Binaries Objective-C Kit
- *  Copyright (c) 2011, Bindle Binaries
+ *  Copyright (c) 2012, Bindle Binaries
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_START@
  *
@@ -32,9 +32,10 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /*
- *  LBStringCrypto.m - expands NSString to include crypto digests
+ *  BKHash.m - Provides easy way to produce hashes from strings.
  */
-#import "BKStringDigest.h"
+#import "BKHash.h"
+
 
 #import <inttypes.h>
 #import <string.h>
@@ -42,32 +43,98 @@
 #define COMMON_DIGEST_FOR_OPENSSL 1
 #import <CommonCrypto/CommonDigest.h>
 
-const char LBBase64Table[] =
+
+#pragma mark -
+@implementation NSString (BKStringHash)
+
+- (NSString *) stringWithCryptHash
 {
-   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-   'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-   'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-   'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
-   'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
-   'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-   'w', 'x', 'y', 'z', '0', '1', '2', '3',
-   '4', '5', '6', '7', '8', '9', '+', '/'
-};
+   return([BKHash stringWithCryptHashOfString:self]);
+}
 
-@implementation NSString (BKStringDigest)
 
-- (NSString *) stringHashWithCrypt
+- (NSString *) stringWithCryptHashWithSalt:(NSString *)salt
+{
+   return([BKHash stringWithCryptHashOfString:self withSalt:salt]);
+}
+
+
+- (NSString *) stringWithMD2Hash
+{
+   return([BKHash stringWithMD2HashOfString:self]);
+}
+
+
+- (NSString *) stringWithMD4Hash
+{
+   return([BKHash stringWithMD4HashOfString:self]);
+}
+
+
+- (NSString *) stringWithMD5Hash
+{
+   return([BKHash stringWithMD5HashOfString:self]);
+}
+
+
+- (NSString *) stringWithSHA1Hash
+{
+   return([BKHash stringWithSHA1HashOfString:self]);
+}
+
+
+- (NSString *) stringWithSHA256Hash
+{
+   return([BKHash stringWithSHA256HashOfString:self]);
+}
+
+
+@end
+
+
+#pragma mark -
+@implementation BKHash
+
+// internal data
+@synthesize string = _string;
+
+
+#pragma mark - Object Management Methods
+
+- (id) initWithString:(NSString *)string
+{
+   if ((self = [super init]) == nil)
+      return(nil);
+   _string = [string retain];
+   return(self);
+}
+
+
+#pragma mark - Hashes for BKHash string
+
+- (NSString *) stringWithCryptHash
 {
    NSString          * hashString;
    NSString          * saltString;
    char                salt[3];
+   const char          b64Table[] =
+   {
+      'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+      'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+      'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+      'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
+      'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+      'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+      'w', 'x', 'y', 'z', '0', '1', '2', '3',
+      '4', '5', '6', '7', '8', '9', '+', '/'
+   };
 
-   salt[0] = LBBase64Table[arc4random()%64];
-   salt[1] = LBBase64Table[arc4random()%64];
+   salt[0] = b64Table[arc4random()%64];
+   salt[1] = b64Table[arc4random()%64];
    salt[2] = '\0';
 
    saltString = [[NSString alloc] initWithUTF8String:salt];
-   hashString = [self stringHashWithCryptWithSalt:saltString];
+   hashString = [_string stringWithCryptHashWithSalt:saltString];
 
    [saltString release];
 
@@ -75,7 +142,7 @@ const char LBBase64Table[] =
 }
 
 
-- (NSString *) stringHashWithCryptWithSalt:(NSString *)saltString
+- (NSString *) stringWithCryptHashWithSalt:(NSString *)saltString
 {
    NSAutoreleasePool * pool;
    const char        * salt;
@@ -85,7 +152,7 @@ const char LBBase64Table[] =
 
    pool       = [[NSAutoreleasePool alloc] init];
 
-   key        = [self UTF8String];
+   key        = [_string UTF8String];
    salt       = [saltString UTF8String];
    hash       = crypt(key, salt);
    hashString = [[NSString alloc] initWithUTF8String:hash];
@@ -96,10 +163,10 @@ const char LBBase64Table[] =
 }
 
 
-- (NSString *) stringHashWithMD2
+- (NSString *) stringWithMD2Hash
 {
    NSAutoreleasePool * pool;
-   NSString          * string;
+   NSString          * hashString;
    const char        * input;
    uint8_t             hash[MD2_DIGEST_LENGTH];
    char                cString[(MD2_DIGEST_LENGTH*2)+6];
@@ -109,7 +176,7 @@ const char LBBase64Table[] =
    pool = [[NSAutoreleasePool alloc] init];
 
    // hashes input
-   input = [self UTF8String];
+   input = [_string UTF8String];
    CC_MD2((uint8_t *)input, (CC_LONG)strlen(input), hash);
 
    // converts to ASCII
@@ -121,18 +188,18 @@ const char LBBase64Table[] =
    };
 
    // creates new NSString object of hash
-   string = [[NSString alloc] initWithUTF8String:cString];
+   hashString = [[NSString alloc] initWithUTF8String:cString];
 
    [pool release];
 
-   return([string autorelease]);
+   return([hashString autorelease]);
 }
 
 
-- (NSString *) stringHashWithMD4
+- (NSString *) stringWithMD4Hash
 {
    NSAutoreleasePool * pool;
-   NSString          * string;
+   NSString          * hashString;
    const char        * input;
    uint8_t             hash[MD4_DIGEST_LENGTH];
    char                cString[(MD4_DIGEST_LENGTH*2)+6];
@@ -142,7 +209,7 @@ const char LBBase64Table[] =
    pool = [[NSAutoreleasePool alloc] init];
 
    // hashes input
-   input = [self UTF8String];
+   input = [_string UTF8String];
    CC_MD4((uint8_t *)input, (CC_LONG)strlen(input), hash);
 
    // converts to ASCII
@@ -154,18 +221,18 @@ const char LBBase64Table[] =
    };
 
    // creates new NSString object of hash
-   string = [[NSString alloc] initWithUTF8String:cString];
+   hashString = [[NSString alloc] initWithUTF8String:cString];
 
    [pool release];
 
-   return([string autorelease]);
+   return([hashString autorelease]);
 }
 
 
-- (NSString *) stringHashWithMD5
+- (NSString *) stringWithMD5Hash
 {
    NSAutoreleasePool * pool;
-   NSString          * string;
+   NSString          * hashString;
    const char        * input;
    uint8_t             hash[MD5_DIGEST_LENGTH];
    char                cString[(MD5_DIGEST_LENGTH*2)+6];
@@ -175,7 +242,7 @@ const char LBBase64Table[] =
    pool = [[NSAutoreleasePool alloc] init];
 
    // hashes input
-   input = [self UTF8String];
+   input = [_string UTF8String];
    CC_MD5((uint8_t *)input, (CC_LONG)strlen(input), hash);
 
    // converts to ASCII
@@ -187,18 +254,18 @@ const char LBBase64Table[] =
    };
 
    // creates new NSString object of hash
-   string = [[NSString alloc] initWithUTF8String:cString];
+   hashString = [[NSString alloc] initWithUTF8String:cString];
 
    [pool release];
 
-   return([string autorelease]);
+   return([hashString autorelease]);
 }
 
 
-- (NSString *) stringHashWithSHA1
+- (NSString *) stringWithSHA1Hash
 {
    NSAutoreleasePool * pool;
-   NSString          * string;
+   NSString          * hashString;
    const char        * input;
    uint8_t             hash[SHA_DIGEST_LENGTH];
    char                cString[(SHA_DIGEST_LENGTH*2)+7];
@@ -208,7 +275,7 @@ const char LBBase64Table[] =
    pool = [[NSAutoreleasePool alloc] init];
 
    // hashes input
-   input = [self UTF8String];
+   input = [_string UTF8String];
    CC_SHA1((uint8_t *)input, (CC_LONG)strlen(input), hash);
 
    // converts to ASCII
@@ -220,18 +287,18 @@ const char LBBase64Table[] =
    };
 
    // creates new NSString object of hash
-   string = [[NSString alloc] initWithUTF8String:cString];
+   hashString = [[NSString alloc] initWithUTF8String:cString];
 
    [pool release];
 
-   return([string autorelease]);
+   return([hashString autorelease]);
 }
 
 
-- (NSString *) stringHashWithSHA256
+- (NSString *) stringWithSHA256Hash
 {
    NSAutoreleasePool * pool;
-   NSString          * string;
+   NSString          * hashString;
    const char        * input;
    uint8_t             hash[SHA256_DIGEST_LENGTH];
    char                cString[(SHA256_DIGEST_LENGTH*2)+9];
@@ -241,7 +308,7 @@ const char LBBase64Table[] =
    pool = [[NSAutoreleasePool alloc] init];
 
    // hashes input
-   input = [self UTF8String];
+   input = [_string UTF8String];
    CC_SHA256((uint8_t *)input, (CC_LONG)strlen(input), hash);
 
    // converts to ASCII
@@ -253,11 +320,104 @@ const char LBBase64Table[] =
    };
 
    // creates new NSString object of hash
-   string = [[NSString alloc] initWithUTF8String:cString];
+   hashString = [[NSString alloc] initWithUTF8String:cString];
 
    [pool release];
 
-   return([string autorelease]);
+   return([hashString autorelease]);
+}
+
+
+#pragma mark - Hashes for external strings
+
++ (NSString *) stringWithCryptHashOfString:(NSString *)string
+{
+   BKHash   * hash;
+   NSString * hashString;
+
+   hash       = [[BKHash alloc] initWithString:string];
+   hashString = [hash stringWithCryptHash];
+   [hash release];
+
+   return(hashString);
+}
+
+
++ (NSString *) stringWithCryptHashOfString:(NSString *)string withSalt:(NSString *)salt
+{
+   BKHash   * hash;
+   NSString * hashString;
+
+   hash       = [[BKHash alloc] initWithString:string];
+   hashString = [hash stringWithCryptHashWithSalt:salt];
+   [hash release];
+
+   return(hashString);
+}
+
+
++ (NSString *) stringWithMD2HashOfString:(NSString *)string
+{
+   BKHash   * hash;
+   NSString * hashString;
+
+   hash       = [[BKHash alloc] initWithString:string];
+   hashString = [hash stringWithMD2Hash];
+   [hash release];
+
+   return(hashString);
+}
+
+
++ (NSString *) stringWithMD4HashOfString:(NSString *)string
+{
+   BKHash   * hash;
+   NSString * hashString;
+
+   hash       = [[BKHash alloc] initWithString:string];
+   hashString = [hash stringWithMD4Hash];
+   [hash release];
+
+   return(hashString);
+}
+
+
++ (NSString *) stringWithMD5HashOfString:(NSString *)string
+{
+   BKHash   * hash;
+   NSString * hashString;
+
+   hash       = [[BKHash alloc] initWithString:string];
+   hashString = [hash stringWithMD5Hash];
+   [hash release];
+
+   return(hashString);
+}
+
+
++ (NSString *) stringWithSHA1HashOfString:(NSString *)string
+{
+   BKHash   * hash;
+   NSString * hashString;
+
+   hash       = [[BKHash alloc] initWithString:string];
+   hashString = [hash stringWithSHA1Hash];
+   [hash release];
+
+   return(hashString);
+}
+
+
++ (NSString *) stringWithSHA256HashOfString:(NSString *)string
+{
+   BKHash   * hash;
+   NSString * hashString;
+
+   hash       = [[BKHash alloc] initWithString:string];
+   hashString = [hash stringWithSHA256Hash];
+   [hash release];
+
+   return(hashString);
 }
 
 

@@ -37,8 +37,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import <BindleKit/categories/BKStringDigest.h>
 #import <BindleKit/controllers/BKNetworkReachability.h>
+#import <BindleKit/models/BKHash.h>
 #import <BindleKit/models/BKNode.h>
 #import <BindleKit/models/BKMemoryCache.h>
 #import <BindleKit/models/BKPackage.h>
