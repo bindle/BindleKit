@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		A0FCC95614E248A2001A0644 /* Git Package Version */ = {
+		A0FCC95614E248A2001A0644 /* Git Package Version (BindleKit) */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = A0FCC95714E248A2001A0644 /* Build configuration list for PBXAggregateTarget "Git Package Version" */;
+			buildConfigurationList = A0FCC95714E248A2001A0644 /* Build configuration list for PBXAggregateTarget "Git Package Version (BindleKit)" */;
 			buildPhases = (
 				A0FCC95A14E248AA001A0644 /* ShellScript */,
 			);
 			dependencies = (
 			);
-			name = "Git Package Version";
+			name = "Git Package Version (BindleKit)";
 			productName = "Git Package Version";
 		};
 /* End PBXAggregateTarget section */
@@ -423,7 +423,7 @@
 			targets = (
 				A07D34F3140DC1E800832E1F /* iBindleKit */,
 				A0F713581413520300252B5F /* BindleKit */,
-				A0FCC95614E248A2001A0644 /* Git Package Version */,
+				A0FCC95614E248A2001A0644 /* Git Package Version (BindleKit) */,
 			);
 		};
 /* End PBXProject section */
@@ -493,12 +493,12 @@
 /* Begin PBXTargetDependency section */
 		A0FCC95C14E248E8001A0644 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A0FCC95614E248A2001A0644 /* Git Package Version */;
+			target = A0FCC95614E248A2001A0644 /* Git Package Version (BindleKit) */;
 			targetProxy = A0FCC95B14E248E8001A0644 /* PBXContainerItemProxy */;
 		};
 		A0FCC95E14E248ED001A0644 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A0FCC95614E248A2001A0644 /* Git Package Version */;
+			target = A0FCC95614E248A2001A0644 /* Git Package Version (BindleKit) */;
 			targetProxy = A0FCC95D14E248ED001A0644 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -656,7 +656,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A0FCC95714E248A2001A0644 /* Build configuration list for PBXAggregateTarget "Git Package Version" */ = {
+		A0FCC95714E248A2001A0644 /* Build configuration list for PBXAggregateTarget "Git Package Version (BindleKit)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0FCC95814E248A2001A0644 /* Debug */,
