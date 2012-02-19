@@ -139,7 +139,7 @@
 }
 
 
-- (void) setTex:(NSString *)string
+- (void) setText:(NSString *)string
 {
    // changes saved title
    [string retain];
