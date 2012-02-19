@@ -88,7 +88,6 @@
    // creates activity label
    textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 120, 100)];
    textLabel.adjustsFontSizeToFitWidth = YES;
-   textLabel.text                = @"Searching...";
    textLabel.textColor           = [UIColor whiteColor];
    textLabel.textAlignment       = UITextAlignmentCenter;
    textLabel.minimumFontSize     = 20;
