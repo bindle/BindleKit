@@ -187,12 +187,20 @@
    textLabel.frame = CGRectMake(0, 0, size.width, size.height);
 
    // adjusts position of textLabel within self
-   offset           = (activityIndicator.frame.size.width / 2) + 2;
-   textLabel.center = CGPointMake(center.x + offset, center.y);
+   if (([textLabel.text length]))
+   {
+      offset           = (activityIndicator.frame.size.width / 2) + 2;
+      textLabel.center = CGPointMake(center.x + offset, center.y);
+   };
 
    // adjusts position of activityIndicator within self
-   offset                   = (textLabel.frame.size.width / 2) + 2;
-   activityIndicator.center = CGPointMake(center.x - offset, center.y);
+   if (([textLabel.text length]))
+   {
+      offset                   = (textLabel.frame.size.width / 2) + 2;
+      activityIndicator.center = CGPointMake(center.x - offset, center.y);
+   } else {
+      activityIndicator.center = center;
+   };
 
    return;
 }
