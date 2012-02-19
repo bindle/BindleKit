@@ -188,12 +188,12 @@
 		A0410FBC14283FF800ACE897 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				A028021B14F0CAD100095E98 /* BKActivityDisplayController.h */,
+				A028021C14F0CAD100095E98 /* BKActivityDisplayController.m */,
 				A0410FBD14283FF800ACE897 /* BKButton.h */,
 				A0410FBE14283FF800ACE897 /* BKButton.m */,
 				A0C70C9A144526100093D650 /* BKPromptView.h */,
 				A0C70C9B144526100093D650 /* BKPromptView.m */,
-				A028021B14F0CAD100095E98 /* BKActivityDisplayController.h */,
-				A028021C14F0CAD100095E98 /* BKActivityDisplayController.m */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
