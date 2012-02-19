@@ -86,7 +86,7 @@
                               UIViewAutoresizingFlexibleTopMargin;
 
    // creates activity label
-   textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 120, 100)];
+   textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1, 100)];
    textLabel.adjustsFontSizeToFitWidth = YES;
    textLabel.textColor           = [UIColor whiteColor];
    textLabel.textAlignment       = UITextAlignmentCenter;
