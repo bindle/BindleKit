@@ -25,6 +25,8 @@
 		A014851E143D4F3200A24446 /* BKNetworkReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = A014851B143D4F3200A24446 /* BKNetworkReachability.h */; };
 		A014851F143D4F3200A24446 /* BKNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A014851C143D4F3200A24446 /* BKNetworkReachability.m */; };
 		A0148520143D4F3200A24446 /* BKNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A014851C143D4F3200A24446 /* BKNetworkReachability.m */; };
+		A028021D14F0CAD100095E98 /* BKActivityDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = A028021B14F0CAD100095E98 /* BKActivityDisplayController.h */; };
+		A028021E14F0CAD100095E98 /* BKActivityDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = A028021C14F0CAD100095E98 /* BKActivityDisplayController.m */; };
 		A03F4B2514E5D60C0077F16D /* BKHash.h in Headers */ = {isa = PBXBuildFile; fileRef = A03F4B2314E5D60C0077F16D /* BKHash.h */; };
 		A03F4B2614E5D60C0077F16D /* BKHash.h in Headers */ = {isa = PBXBuildFile; fileRef = A03F4B2314E5D60C0077F16D /* BKHash.h */; };
 		A03F4B2714E5D60C0077F16D /* BKHash.m in Sources */ = {isa = PBXBuildFile; fileRef = A03F4B2414E5D60C0077F16D /* BKHash.m */; };
@@ -99,6 +101,8 @@
 /* Begin PBXFileReference section */
 		A014851B143D4F3200A24446 /* BKNetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKNetworkReachability.h; sourceTree = "<group>"; };
 		A014851C143D4F3200A24446 /* BKNetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKNetworkReachability.m; sourceTree = "<group>"; };
+		A028021B14F0CAD100095E98 /* BKActivityDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKActivityDisplayController.h; sourceTree = "<group>"; };
+		A028021C14F0CAD100095E98 /* BKActivityDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKActivityDisplayController.m; sourceTree = "<group>"; };
 		A03F4B2314E5D60C0077F16D /* BKHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKHash.h; sourceTree = "<group>"; };
 		A03F4B2414E5D60C0077F16D /* BKHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKHash.m; sourceTree = "<group>"; };
 		A0410F96142801E300ACE897 /* BKButtonImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKButtonImages.h; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 				A0410FBE14283FF800ACE897 /* BKButton.m */,
 				A0C70C9A144526100093D650 /* BKPromptView.h */,
 				A0C70C9B144526100093D650 /* BKPromptView.m */,
+				A028021B14F0CAD100095E98 /* BKActivityDisplayController.h */,
+				A028021C14F0CAD100095E98 /* BKActivityDisplayController.m */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 				A0FCC9C214E2913F001A0644 /* BKPackageController.h in Headers */,
 				A0E24F0E14E3DF410040D81D /* BKTableTags.h in Headers */,
 				A03F4B2514E5D60C0077F16D /* BKHash.h in Headers */,
+				A028021D14F0CAD100095E98 /* BKActivityDisplayController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +474,7 @@
 				A0FCC9C314E2913F001A0644 /* BKPackageController.m in Sources */,
 				A0E24F1014E3DF410040D81D /* BKTableTags.m in Sources */,
 				A03F4B2714E5D60C0077F16D /* BKHash.m in Sources */,
+				A028021E14F0CAD100095E98 /* BKActivityDisplayController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

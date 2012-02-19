@@ -32,34 +32,38 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /*
- *  BindleKit/BindleKit.h - loads API for classes in BindleKit
+ *  BKActivityDisplayController.h - Control display of activity monitor
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-#import <BindleKit/controllers/BKNetworkReachability.h>
-#import <BindleKit/models/BKHash.h>
-#import <BindleKit/models/BKNode.h>
-#import <BindleKit/models/BKMemoryCache.h>
-#import <BindleKit/models/BKPackage.h>
-#import <BindleKit/models/BKQueue.h>
-#import <BindleKit/models/BKSelectionOption.h>
-#import <BindleKit/models/BKStack.h>
-#import <BindleKit/models/BKTableTags.h>
-#import <BindleKit/models/BKVersion.h>
-#import <BindleKit/views/BKButtonImages.h>
+@interface BKActivityDisplayController : UIView
+{
+   // internal information
+   BOOL                      visible;
+   UIViewController        * contentsController;
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/controllers/iOS/BKDevice.h>
-#import <BindleKit/controllers/iOS/BKPackageController.h>
-#import <BindleKit/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/controllers/iOS/BKSplitViewController.h>
-#import <BindleKit/views/iOS/BKButton.h>
-#import <BindleKit/views/iOS/BKPromptView.h>
-#import <BindleKit/views/iOS/BKActivityDisplayController.h>
-#endif
+   // user parameters
+   NSString                * text;
 
-#ifdef TARGET_OS_MAC
-#endif
+   // internal views
+   UILabel                 * textLabel;
+   UIActivityIndicatorView * activityIndicator;
+}
 
-/* end of header */
+// internal information
+@property (nonatomic, readonly) BOOL     visible;
+
+// user parameters
+@property (nonatomic, retain) UIFont   * font;
+@property (nonatomic, retain) NSString * text;
+
+// Object Management Methods
+- (id) initWithContentsController:(UIViewController *)controller;
+
+// control activity display
+- (void) adjustPositionsToView:(UIView *)view;
+- (void) dismiss;
+- (void) show;
+
+@end
