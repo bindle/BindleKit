@@ -145,6 +145,8 @@
    [text release];
    text = string;
 
+   textLabel.text = text;
+
    // adjusts view elements
    if ((self.superview))
       [self adjustPositionsToView:self.superview];
