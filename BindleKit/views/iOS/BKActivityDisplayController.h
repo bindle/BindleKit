@@ -47,6 +47,7 @@
    NSString                * text;
 
    // internal views
+   UIView                  * bezel;
    UILabel                 * textLabel;
    UIActivityIndicatorView * activityIndicator;
 }

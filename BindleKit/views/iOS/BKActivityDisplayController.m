@@ -36,6 +36,7 @@
  */
 #import "BKActivityDisplayController.h"
 
+#import <QuartzCore/QuartzCore.h>
 
 @implementation BKActivityDisplayController
 
@@ -54,6 +55,7 @@
    [text              release];
 
    // internal views
+   [bezel             release];
    [textLabel         release];
    [activityIndicator release];
 
@@ -79,11 +81,24 @@
    if ((self = [super initWithFrame:aFrame]) == nil)
       return(self);
    self.autoresizesSubviews = YES;
-   self.backgroundColor     = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.60];
+   self.backgroundColor     = [UIColor clearColor];
    self.autoresizingMask    = UIViewAutoresizingFlexibleLeftMargin |
                               UIViewAutoresizingFlexibleRightMargin |
                               UIViewAutoresizingFlexibleBottomMargin |
                               UIViewAutoresizingFlexibleTopMargin;
+
+   // creates background view
+   bezel = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 106, 106)];
+   bezel.backgroundColor     = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.60];
+   bezel.autoresizingMask    =   UIViewAutoresizingFlexibleLeftMargin |
+                                 UIViewAutoresizingFlexibleRightMargin |
+                                 UIViewAutoresizingFlexibleBottomMargin |
+                                 UIViewAutoresizingFlexibleTopMargin;
+   bezel.layer.cornerRadius  = 9;
+   bezel.clipsToBounds       = YES;
+   bezel.layer.borderColor   = [[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.80] CGColor];
+   bezel.layer.borderWidth   = 1.0;
+   [self addSubview:bezel];
 
    // creates activity label
    textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1, 100)];
@@ -181,28 +196,27 @@
    self.frame  = view.frame;
    center      = view.center;
 
-   // adjusts size of textlabel
-   size            = view.frame.size;
-   size.width      = size.width - activityIndicator.frame.size.width - 20;
-   size.height     = textLabel.frame.size.height;
-   size.width      = [text sizeWithFont:self.font constrainedToSize:size].width;
-   textLabel.frame = CGRectMake(0, 0, size.width, size.height);
+   // adjusts size/position of background
+   size.width   = (activityIndicator.frame.size.width * 4.0);
+   size.height  = size.width;
+   bezel.frame  = CGRectMake(0, 0, size.width, size.height);
+   bezel.center = center;
 
    // adjusts position of textLabel within self
    if (([textLabel.text length]))
    {
-      offset           = (activityIndicator.frame.size.width / 2) + 2;
-      textLabel.center = CGPointMake(center.x + offset, center.y);
+      size.width       = bezel.frame.size.width - 12;
+      size.height      = activityIndicator.frame.size.height;
+      textLabel.frame  = CGRectMake(0, 0, size.width, size.height);
+      offset           = (activityIndicator.frame.size.height / 2) + 2;
+      textLabel.center = CGPointMake(center.x, center.y + offset);
    };
 
    // adjusts position of activityIndicator within self
+   offset = 0;
    if (([textLabel.text length]))
-   {
-      offset                   = (textLabel.frame.size.width / 2) + 2;
-      activityIndicator.center = CGPointMake(center.x - offset, center.y);
-   } else {
-      activityIndicator.center = center;
-   };
+      offset = (textLabel.frame.size.height / 2) + 2;
+   activityIndicator.center = CGPointMake(center.x, center.y - offset);
 
    return;
 }
