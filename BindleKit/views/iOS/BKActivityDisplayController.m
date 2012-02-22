@@ -90,8 +90,8 @@
    textLabel.adjustsFontSizeToFitWidth = YES;
    textLabel.textColor           = [UIColor whiteColor];
    textLabel.textAlignment       = UITextAlignmentCenter;
-   textLabel.minimumFontSize     = 20;
-   textLabel.font                = [textLabel.font fontWithSize:25];
+   textLabel.minimumFontSize     = 10;
+   textLabel.font                = [textLabel.font fontWithSize:20];
    textLabel.backgroundColor     = [UIColor clearColor];
    textLabel.autoresizingMask    =  UIViewAutoresizingFlexibleLeftMargin |
                                     UIViewAutoresizingFlexibleRightMargin |
