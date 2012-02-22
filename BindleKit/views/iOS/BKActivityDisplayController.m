@@ -43,17 +43,11 @@
 // internal information
 @synthesize visible;
 
-// user parameters
-@synthesize text;
-
 
 #pragma mark - Object Management Methods
 
 - (void) dealloc
 {
-   // user parameters
-   [text              release];
-
    // internal views
    [bezel             release];
    [textLabel         release];
@@ -153,14 +147,19 @@
 }
 
 
+- (NSString *) text
+{
+   return(textLabel.text);
+}
+
+
 - (void) setText:(NSString *)string
 {
    // changes saved title
-   [string retain];
-   [text release];
-   text = string;
-
-   textLabel.text = text;
+   if ( ((string)) && ((textLabel.text)) )
+      if (([string isEqualToString:textLabel.text]))
+         return;
+   textLabel.text = string;
 
    // adjusts view elements
    if ((self.superview))

@@ -43,9 +43,6 @@
    BOOL                      visible;
    UIViewController        * contentsController;
 
-   // user parameters
-   NSString                * text;
-
    // internal views
    UIView                  * bezel;
    UILabel                 * textLabel;
