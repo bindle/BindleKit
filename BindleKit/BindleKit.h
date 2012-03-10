@@ -51,6 +51,7 @@
 
 #if TARGET_OS_IPHONE
 #import <BindleKit/controllers/iOS/BKDevice.h>
+#import <BindleKit/controllers/iOS/BKListController.h>
 #import <BindleKit/controllers/iOS/BKPackageController.h>
 #import <BindleKit/controllers/iOS/BKSelectionController.h>
 #import <BindleKit/controllers/iOS/BKSplitViewController.h>
