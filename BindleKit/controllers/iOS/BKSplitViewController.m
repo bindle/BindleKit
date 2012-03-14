@@ -1276,7 +1276,7 @@
 
    // dismisses popover controller view
    if (popoverController.popoverVisible != YES)
-      [popoverController presentPopoverFromRect:CGRectZero inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
+      [popoverController presentPopoverFromRect:CGRectMake(0, 0, 2, 2) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
    [popoverController dismissPopoverAnimated:NO];
 
    // informs delegate that controller's view will be shown
