@@ -45,6 +45,7 @@
 - (void) dealloc
 {
    [numberView release];
+   [super dealloc];
    return;
 }
 
