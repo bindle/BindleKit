@@ -285,8 +285,7 @@
 		A00508441422C7B3005C3D98 /* libBindleKit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			name = libBindleKit.a;
-			path = libiBindleKit.a;
+			path = libBindleKit.a;
 			remoteRef = A00508431422C7B3005C3D98 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
