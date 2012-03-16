@@ -36,8 +36,8 @@
  */
 
 #import <UIKit/UIKit.h>
-#define BINDLEKIT_REPLACES_UISPLITVIEWCONTROLLER 1
 #import <BindleKit/BindleKit.h>
+
 #import "BKCatalogMenu.h"
 #import "BKNumberController.h"
 #import "BKButtonOptions.h"

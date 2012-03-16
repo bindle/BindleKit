@@ -126,14 +126,14 @@
    tableView.dataSource      = self;
    tableView.allowsSelection = NO;
 
-   minimumViewSize.value = self.splitViewController.minimumViewSize.width;
+   minimumViewSize.value = self.bkSplitViewController.minimumViewSize.width;
 
-   reverseViewOrder.on        = self.splitViewController.viewOrderReversed;
-   masterAlwaysHidden.on      = self.splitViewController.masterAlwaysHidden;
-   masterAlwaysVisible.on     = self.splitViewController.masterAlwaysVisible;
-   userInteractionEnabled.on  = self.splitViewController.userInteractionEnabled;
-   hideDivider.on             = self.splitViewController.dividerHidden;
-   verticalLayout.on          = (self.splitViewController.viewLayout == BKSplitViewLayoutVertically);
+   reverseViewOrder.on        = self.bkSplitViewController.viewOrderReversed;
+   masterAlwaysHidden.on      = self.bkSplitViewController.masterAlwaysHidden;
+   masterAlwaysVisible.on     = self.bkSplitViewController.masterAlwaysVisible;
+   userInteractionEnabled.on  = self.bkSplitViewController.userInteractionEnabled;
+   hideDivider.on             = self.bkSplitViewController.dividerHidden;
+   verticalLayout.on          = (self.bkSplitViewController.viewLayout == BKSplitViewLayoutVertically);
 
    self.tableView = tableView;
    [tableView release];
@@ -323,37 +323,37 @@
    {
       case BKControllerMinimumViewSize:
       slider = (UISlider *) sender;
-      self.splitViewController.minimumViewSize = CGSizeMake(slider.value, slider.value);
+      self.bkSplitViewController.minimumViewSize = CGSizeMake(slider.value, slider.value);
       break;
 
       case BKControllerReverseViewOrder:
       toggle = (UISwitch *) sender;
-      self.splitViewController.viewOrderReversed = toggle.on;
+      self.bkSplitViewController.viewOrderReversed = toggle.on;
       break;
 
       case BKControllermasterAlwaysHidden:
       toggle = (UISwitch *) sender;
-      self.splitViewController.masterAlwaysHidden = toggle.on;
+      self.bkSplitViewController.masterAlwaysHidden = toggle.on;
       break;
 
       case BKControllerMasterAlwaysVisible:
       toggle = (UISwitch *) sender;
-      self.splitViewController.masterAlwaysVisible = toggle.on;
+      self.bkSplitViewController.masterAlwaysVisible = toggle.on;
       break;
 
       case BKControllerUserInteractionEnabled:
       toggle = (UISwitch *) sender;
-      self.splitViewController.userInteractionEnabled = toggle.on;
+      self.bkSplitViewController.userInteractionEnabled = toggle.on;
       break;
 
       case BKControllerHideDivider:
       toggle = (UISwitch *) sender;
-      self.splitViewController.dividerHidden = toggle.on;
+      self.bkSplitViewController.dividerHidden = toggle.on;
       break;
 
       case BKControllerVerticalLayout:
       toggle = (UISwitch *) sender;
-      self.splitViewController.viewLayout = toggle.on ? BKSplitViewLayoutVertically : BKSplitViewLayoutHorizontally;
+      self.bkSplitViewController.viewLayout = toggle.on ? BKSplitViewLayoutVertically : BKSplitViewLayoutHorizontally;
       break;
 
       default:

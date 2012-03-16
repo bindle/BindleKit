@@ -235,7 +235,7 @@
 
    // adds views to splitview controllers
    viewControllers = [[NSArray alloc] initWithObjects:self.navigationController, navigation, nil];
-   self.splitViewController.viewControllers = viewControllers;
+   self.bkSplitViewController.viewControllers = viewControllers;
 
    [controller release];
    [navigation release];
@@ -247,7 +247,7 @@
 
 #pragma mark - UISplitViewController delegate methods
 
-- (void) splitViewController:(UISplitViewController*)svc
+- (void) splitViewController:(BKSplitViewController*)svc
          willHideViewController:(UIViewController *)aViewController
          withBarButtonItem:(UIBarButtonItem*)barButtonItem
          forPopoverController:(UIPopoverController*)pc
@@ -256,7 +256,7 @@
    UINavigationController * navigationController;
    UIViewController       * detailController;
 
-   controller = [self.splitViewController.viewControllers objectAtIndex:1];
+   controller = [svc.viewControllers objectAtIndex:1];
    detailController = controller;
    if (([controller isKindOfClass:[UINavigationController class]]))
    {
@@ -275,7 +275,7 @@
 }
 
 
-- (void) splitViewController:(UISplitViewController*)svc
+- (void) splitViewController:(BKSplitViewController*)svc
          willShowViewController:(UIViewController *)aViewController
          invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
@@ -283,7 +283,7 @@
    UINavigationController * navigationController;
    UIViewController       * detailController;
 
-   controller = [self.splitViewController.viewControllers objectAtIndex:1];
+   controller = [svc.viewControllers objectAtIndex:1];
    detailController = controller;
    if (([controller isKindOfClass:[UINavigationController class]]))
    {
@@ -300,7 +300,7 @@
 }
 
 
-- (void) splitViewController:(UISplitViewController*)svc
+- (void) splitViewController:(BKSplitViewController*)svc
          popoverController:(UIPopoverController*)pc
          willPresentViewController:(UIViewController *)aViewController
 {

@@ -43,11 +43,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-   UIViewController <UISplitViewControllerDelegate> * masterController;
+   UIViewController <BKSplitViewControllerDelegate> * masterController;
    UIViewController       * detailController;
    UINavigationController * masterNavigation;
    UINavigationController * detailNavigation;
-   UISplitViewController  * splitViewController;
+   BKSplitViewController  * splitViewController;
    NSArray                * controllers;
 
    // creating master view controller
@@ -78,14 +78,12 @@
    [detailController release];
 
    // creating split view controller
-   splitViewController = [[UISplitViewController alloc] init];
+   splitViewController = [[BKSplitViewController alloc] init];
    splitViewController.delegate = masterController;
-#ifdef BINDLEKIT_REPLACES_UISPLITVIEWCONTROLLER
    splitViewController.userInteractionEnabled = YES;
    splitViewController.dividerSize            = CGSizeMake(20, 20);
    splitViewController.minimumViewSize        = CGSizeMake(120, 120);
    splitViewController.masterAlwaysVisible    = NO;
-#endif
    rootController = splitViewController;
 
    // add subviews to split view controller

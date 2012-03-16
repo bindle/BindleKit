@@ -40,7 +40,7 @@
 
 #import "BKNumberController.h"
 
-@interface BKCatalogMenu : UITableViewController <UISplitViewControllerDelegate, BKSplitViewControllerDelegate>
+@interface BKCatalogMenu : UITableViewController <BKSplitViewControllerDelegate>
 {
    UIBarButtonItem     * barButton;
    UIPopoverController * popoverController;

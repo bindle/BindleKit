@@ -249,7 +249,7 @@
 
 #pragma mark - UISplitViewController delegate methods
 
-- (void) splitViewController:(UISplitViewController*)svc
+- (void) splitViewController:(BKSplitViewController*)svc
          willHideViewController:(UIViewController *)aViewController
          withBarButtonItem:(UIBarButtonItem*)barButtonItem
          forPopoverController:(UIPopoverController*)pc
@@ -260,7 +260,7 @@ NSLog(@"detail: willHideViewController");
 }
 
 
-- (void) splitViewController:(UISplitViewController*)svc
+- (void) splitViewController:(BKSplitViewController*)svc
          willShowViewController:(UIViewController *)aViewController
          invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
@@ -270,7 +270,7 @@ NSLog(@"detail: invalidatingBarButtonItem");
 }
 
 
-- (void) splitViewController:(UISplitViewController*)svc
+- (void) splitViewController:(BKSplitViewController*)svc
          popoverController:(UIPopoverController*)pc
          willPresentViewController:(UIViewController *)aViewController
 {
