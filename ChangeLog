@@ -1,0 +1,15 @@
+
+Bindle Binaries Objective-C Kit
+Copyright (C) 2012 Bindle Binaries <syzdek@bindlebinaries.com>.
+
+0.2
+      - Fixing BKCatalog example. (syzdek)
+      - Updating BKSplitViewController to use -(void)addChildViewController:
+        to set the parent/child relationships in view controllers. (syzdek)
+      - Updating Xcode project with Xcode modernize. (syzdek)
+      - Fixing warning generated from UIPopoverController due to use of
+        CGZeroRect(). (syzdek)
+
+0.1   2012-03-11
+      - Creating first pre-alpha release of BindleKit Framework. (syzdek)
+

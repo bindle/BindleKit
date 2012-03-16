@@ -119,6 +119,7 @@
 		A0529AF4140DE01B00CFA6F8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A0529AF5140DE01B00CFA6F8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A0529AF6140DE01B00CFA6F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A052A8B11512CC7F00599FD6 /* ChangeLog */ = {isa = PBXFileReference; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
 		A0617452142028BA00BCEA6F /* BKSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKSplitViewController.h; sourceTree = "<group>"; };
 		A0617453142028BA00BCEA6F /* BKSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKSplitViewController.m; sourceTree = "<group>"; };
 		A064D96A140E047C00255FD3 /* BKSelectionOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKSelectionOption.h; sourceTree = "<group>"; };
@@ -269,6 +270,7 @@
 		A07D34E9140DC1E800832E1F = {
 			isa = PBXGroup;
 			children = (
+				A052A8B11512CC7F00599FD6 /* ChangeLog */,
 				A0529ABB140DC95A00CFA6F8 /* COPYING */,
 				A0529ABC140DC95A00CFA6F8 /* README */,
 				A07A7F261416D18000AB872D /* TODO */,
