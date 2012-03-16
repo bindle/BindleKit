@@ -1247,6 +1247,11 @@
    if ((popoverController))
       return;
 
+   // removes controller as a child controller of split view controller
+   if (([aController.parentViewController isEqual:self]))
+      if (([aController respondsToSelector:@selector(removeFromParentViewController)]))
+         [aController removeFromParentViewController];
+
    // allocates new popover controller
    popoverController = [[UIPopoverController alloc]
                        initWithContentViewController:aController];
@@ -1294,6 +1299,11 @@
    // frees bar button item
    [barButton release];
    barButton = nil;
+
+   // removes controller as a child controller of split view controller
+   if (!([aController.parentViewController isEqual:self]))
+      if (([self respondsToSelector:@selector(addChildViewController:)]))
+         [self addChildViewController:aController];
 
    return;
 }
