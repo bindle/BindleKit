@@ -294,6 +294,9 @@
    // assigns new UIViewControllers
    [controllers release];
    controllers = [[NSArray alloc] initWithArray:viewControllers];
+   if (([self respondsToSelector:@selector(addChildViewController:)]))
+      for(pos = 0; pos < [controllers count]; pos++)
+         [self addChildViewController:[controllers objectAtIndex:pos]];
 
    // arranges views
    [self layoutViewsWithAnimations:NO];
@@ -1360,14 +1363,12 @@
 @implementation UIViewController (BKSplitViewController)
 
 // updates splitViewController property to include BKSplitViewController
-- (UISplitViewController *) splitViewController
+- (BKSplitViewController *) bkSplitViewController
 {
    id controller;
-   if (!(controller = [self parentViewController]))
-      return(nil);
+   controller = self;
    while ((controller = [controller parentViewController]))
-      if ( (([controller isKindOfClass:[BKSplitViewController class]])) ||
-           (([controller isKindOfClass:[UISplitViewController class]])) )
+      if (([controller isKindOfClass:[BKSplitViewController class]]))
          return(controller);
    return(nil);
 }
