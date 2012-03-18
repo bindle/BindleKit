@@ -2,7 +2,7 @@
 Bindle Binaries Objective-C Kit
 Copyright (C) 2012 Bindle Binaries <syzdek@bindlebinaries.com>.
 
-0.2
+0.2   2012-0317
       - Fixing BKCatalog example. (syzdek)
       - Updating BKSplitViewController to use -(void)addChildViewController:
         to set the parent/child relationships in view controllers. (syzdek)
