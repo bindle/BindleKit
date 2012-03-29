@@ -101,6 +101,8 @@
    barButtonItemFlags = [[UIBarButtonItem alloc] initWithTitle:@"Show Flags" style:UIBarButtonItemStyleBordered target:self action:@selector(displayFlags:)];
    barButtonItemHost  = [[UIBarButtonItem alloc] initWithTitle:@"Change Host" style:UIBarButtonItemStyleBordered target:self action:@selector(changeHostname:)];
 
+   barButtonItemFlags.possibleTitles = [NSSet setWithObjects:@"Show Flags", @"Show Names", nil];
+
    prompt = [[BKPromptView alloc] initWithTitle:@"New Hostname" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
    prompt.textField.clearButtonMode        = UITextFieldViewModeWhileEditing;
    prompt.textField.autocorrectionType     = FALSE;
