@@ -97,7 +97,7 @@
    greenImage = [[UIImage imageNamed:@"green.png"] retain];
    useFlagNames = NO;
 
-   barButtonItemLogs  = [[UIBarButtonItem alloc] initWithTitle:@"Open Logs" style:UIBarButtonItemStyleBordered target:self action:@selector(openLogs:)];
+   barButtonItemLogs  = [[UIBarButtonItem alloc] initWithTitle:@"Logs" style:UIBarButtonItemStyleBordered target:self action:@selector(openLogs:)];
    barButtonItemFlags = [[UIBarButtonItem alloc] initWithTitle:@"Show Flags" style:UIBarButtonItemStyleBordered target:self action:@selector(displayFlags:)];
    barButtonItemHost  = [[UIBarButtonItem alloc] initWithTitle:@"Change Host" style:UIBarButtonItemStyleBordered target:self action:@selector(changeHostname:)];
 
