@@ -15,9 +15,9 @@
 		A02DC4741421B9C200D8F79F /* BKCatalogMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A02DC4731421B9C200D8F79F /* BKCatalogMenu.m */; };
 		A0376B821441596100410C2E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0376B811441596100410C2E /* SystemConfiguration.framework */; };
 		A0376B921441725000410C2E /* BindleKit100.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376B8E1441725000410C2E /* BindleKit100.png */; };
-		A0376B931441725000410C2E /* BindleKit114.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376B8F1441725000410C2E /* BindleKit114.png */; };
-		A0376B941441725000410C2E /* BindleKit57.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376B901441725000410C2E /* BindleKit57.png */; };
-		A0376B951441725000410C2E /* BindleKit72.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376B911441725000410C2E /* BindleKit72.png */; };
+		A0376B931441725000410C2E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376B8F1441725000410C2E /* Icon@2x.png */; };
+		A0376B941441725000410C2E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376B901441725000410C2E /* Icon.png */; };
+		A0376B951441725000410C2E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376B911441725000410C2E /* Icon-72.png */; };
 		A0694F2D1484738400FC64BC /* BKPromptViewOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = A0694F2C1484738400FC64BC /* BKPromptViewOptions.m */; };
 		A0887A5D1421B1A400421AFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0887A5C1421B1A400421AFE /* UIKit.framework */; };
 		A0887A5F1421B1A400421AFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0887A5E1421B1A400421AFE /* Foundation.framework */; };
@@ -65,9 +65,9 @@
 		A02DC4731421B9C200D8F79F /* BKCatalogMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKCatalogMenu.m; sourceTree = "<group>"; };
 		A0376B811441596100410C2E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A0376B8E1441725000410C2E /* BindleKit100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit100.png; sourceTree = "<group>"; };
-		A0376B8F1441725000410C2E /* BindleKit114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit114.png; sourceTree = "<group>"; };
-		A0376B901441725000410C2E /* BindleKit57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit57.png; sourceTree = "<group>"; };
-		A0376B911441725000410C2E /* BindleKit72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit72.png; sourceTree = "<group>"; };
+		A0376B8F1441725000410C2E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		A0376B901441725000410C2E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A0376B911441725000410C2E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		A0694F2B1484738400FC64BC /* BKPromptViewOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKPromptViewOptions.h; sourceTree = "<group>"; };
 		A0694F2C1484738400FC64BC /* BKPromptViewOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKPromptViewOptions.m; sourceTree = "<group>"; };
 		A0887A581421B1A400421AFE /* BKCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BKCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,9 +145,9 @@
 			isa = PBXGroup;
 			children = (
 				A0376B8E1441725000410C2E /* BindleKit100.png */,
-				A0376B8F1441725000410C2E /* BindleKit114.png */,
-				A0376B901441725000410C2E /* BindleKit57.png */,
-				A0376B911441725000410C2E /* BindleKit72.png */,
+				A0376B8F1441725000410C2E /* Icon@2x.png */,
+				A0376B901441725000410C2E /* Icon.png */,
+				A0376B911441725000410C2E /* Icon-72.png */,
 			);
 			name = icons;
 			path = ../icons;
@@ -310,9 +310,9 @@
 				A02DC46E1421B8A500D8F79F /* MainWindow_iPad.xib in Resources */,
 				A02DC4711421B8B500D8F79F /* MainWindow_iPhone.xib in Resources */,
 				A0376B921441725000410C2E /* BindleKit100.png in Resources */,
-				A0376B931441725000410C2E /* BindleKit114.png in Resources */,
-				A0376B941441725000410C2E /* BindleKit57.png in Resources */,
-				A0376B951441725000410C2E /* BindleKit72.png in Resources */,
+				A0376B931441725000410C2E /* Icon@2x.png in Resources */,
+				A0376B941441725000410C2E /* Icon.png in Resources */,
+				A0376B951441725000410C2E /* Icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
