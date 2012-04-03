@@ -2,6 +2,10 @@
 Bindle Binaries Objective-C Kit
 Copyright (C) 2012 Bindle Binaries <syzdek@bindlebinaries.com>.
 
+0.3
+      - Adding copyright information to BKNetTest. (syzdek)
+      - Updating icon file names for examples. (syzdek)
+
 0.2   2012-0317
       - Fixing BKCatalog example. (syzdek)
       - Updating BKSplitViewController to use -(void)addChildViewController:
