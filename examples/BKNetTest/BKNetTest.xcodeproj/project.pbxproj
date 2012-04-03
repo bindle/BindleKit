@@ -15,9 +15,9 @@
 		A0148559143E790600A24446 /* BKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0148558143E790600A24446 /* BKAppDelegate.m */; };
 		A0148584143E7D5200A24446 /* libBindleKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A014857F143E7D2E00A24446 /* libBindleKit.a */; };
 		A0376BAB144174B100410C2E /* BindleKit100.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376BA7144174B100410C2E /* BindleKit100.png */; };
-		A0376BAC144174B100410C2E /* BindleKit114.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376BA8144174B100410C2E /* BindleKit114.png */; };
-		A0376BAD144174B100410C2E /* BindleKit57.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376BA9144174B100410C2E /* BindleKit57.png */; };
-		A0376BAE144174B100410C2E /* BindleKit72.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376BAA144174B100410C2E /* BindleKit72.png */; };
+		A0376BAC144174B100410C2E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376BA8144174B100410C2E /* Icon@2x.png */; };
+		A0376BAD144174B100410C2E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376BA9144174B100410C2E /* Icon.png */; };
+		A0376BAE144174B100410C2E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376BAA144174B100410C2E /* Icon-72.png */; };
 		A03BB3CE143E7F3400806765 /* BKRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03BB3CD143E7F3400806765 /* BKRootViewController.m */; };
 		A03BB3D4143E919F00806765 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03BB3D3143E919F00806765 /* SystemConfiguration.framework */; };
 		A06B98C2144190A90002EA7E /* BKLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A06B98C1144190A90002EA7E /* BKLogViewController.m */; };
@@ -64,9 +64,9 @@
 		A0148558143E790600A24446 /* BKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKAppDelegate.m; sourceTree = "<group>"; };
 		A0148576143E7D2E00A24446 /* BindleKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BindleKit.xcodeproj; path = ../../BindleKit.xcodeproj; sourceTree = "<group>"; };
 		A0376BA7144174B100410C2E /* BindleKit100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit100.png; sourceTree = "<group>"; };
-		A0376BA8144174B100410C2E /* BindleKit114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit114.png; sourceTree = "<group>"; };
-		A0376BA9144174B100410C2E /* BindleKit57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit57.png; sourceTree = "<group>"; };
-		A0376BAA144174B100410C2E /* BindleKit72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit72.png; sourceTree = "<group>"; };
+		A0376BA8144174B100410C2E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		A0376BA9144174B100410C2E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A0376BAA144174B100410C2E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		A03BB3CC143E7F3400806765 /* BKRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKRootViewController.h; sourceTree = "<group>"; };
 		A03BB3CD143E7F3400806765 /* BKRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKRootViewController.m; sourceTree = "<group>"; };
 		A03BB3D3143E919F00806765 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -193,9 +193,9 @@
 			isa = PBXGroup;
 			children = (
 				A0376BA7144174B100410C2E /* BindleKit100.png */,
-				A0376BA8144174B100410C2E /* BindleKit114.png */,
-				A0376BA9144174B100410C2E /* BindleKit57.png */,
-				A0376BAA144174B100410C2E /* BindleKit72.png */,
+				A0376BA8144174B100410C2E /* Icon@2x.png */,
+				A0376BA9144174B100410C2E /* Icon.png */,
+				A0376BAA144174B100410C2E /* Icon-72.png */,
 			);
 			name = icons;
 			path = ../icons;
@@ -280,9 +280,9 @@
 				A0CDD9E5143ECC86000D32DB /* green.png in Resources */,
 				A0CDD9E6143ECC86000D32DB /* red.png in Resources */,
 				A0376BAB144174B100410C2E /* BindleKit100.png in Resources */,
-				A0376BAC144174B100410C2E /* BindleKit114.png in Resources */,
-				A0376BAD144174B100410C2E /* BindleKit57.png in Resources */,
-				A0376BAE144174B100410C2E /* BindleKit72.png in Resources */,
+				A0376BAC144174B100410C2E /* Icon@2x.png in Resources */,
+				A0376BAD144174B100410C2E /* Icon.png in Resources */,
+				A0376BAE144174B100410C2E /* Icon-72.png in Resources */,
 				A0C70C79144450180093D650 /* green@2x.png in Resources */,
 				A0C70C7A144450180093D650 /* red@2x.png in Resources */,
 			);
