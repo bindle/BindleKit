@@ -47,6 +47,8 @@
    UIBarButtonItem        * barButtonItemLogs;
    UIBarButtonItem        * barButtonItemFlags;
    UIBarButtonItem        * barButtonItemHost;
+   UIBarButtonItem        * barButtonItemFlex;
+   UIBarButtonItem        * barButtonItemLegal;
    UIImage                * redImage;
    UIImage                * greenImage;
    NSMutableArray         * logs;

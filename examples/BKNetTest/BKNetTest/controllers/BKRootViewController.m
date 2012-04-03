@@ -56,6 +56,8 @@
    [barButtonItemLogs  release];
    [barButtonItemFlags release];
    [barButtonItemHost  release];
+   [barButtonItemFlex  release];
+   [barButtonItemLegal release];
    [super dealloc];
    return;
 }
@@ -99,7 +101,9 @@
 
    barButtonItemLogs  = [[UIBarButtonItem alloc] initWithTitle:@"Logs" style:UIBarButtonItemStyleBordered target:self action:@selector(openLogs:)];
    barButtonItemFlags = [[UIBarButtonItem alloc] initWithTitle:@"Show Flags" style:UIBarButtonItemStyleBordered target:self action:@selector(displayFlags:)];
-   barButtonItemHost  = [[UIBarButtonItem alloc] initWithTitle:@"Change Host" style:UIBarButtonItemStyleBordered target:self action:@selector(changeHostname:)];
+   barButtonItemHost  = [[UIBarButtonItem alloc] initWithTitle:@"Hostname" style:UIBarButtonItemStyleBordered target:self action:@selector(changeHostname:)];
+   barButtonItemFlex  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+   barButtonItemLegal = [[UIBarButtonItem alloc] initWithTitle:@"Legal" style:UIBarButtonItemStyleBordered target:self action:@selector(displayCopyright:)];
 
    barButtonItemFlags.possibleTitles = [NSSet setWithObjects:@"Show Flags", @"Show Names", nil];
 
@@ -131,6 +135,8 @@
    [barButtons addObject:barButtonItemFlags];
    if (networkReachability.hostname != nil)
       [barButtons addObject:barButtonItemHost];
+   [barButtons addObject:barButtonItemFlex];
+   [barButtons addObject:barButtonItemLegal];
    self.toolbarItems = barButtons;
    [barButtons release];
 
@@ -386,6 +392,41 @@
 }
 
 
+- (void) dismissLegal:(UIBarButtonItem *)sender
+{
+   [self dismissModalViewControllerAnimated:YES];
+   return;
+}
+
+
+- (void) displayCopyright:(UIBarButtonItem *)sender
+{
+   UIBarButtonItem        * dismissButton;
+   BKPackageController    * pkgController;
+   UINavigationController * navController;
+   NSAutoreleasePool      * pool;
+
+   pool = [[NSAutoreleasePool alloc] init];
+
+   dismissButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissLegal:)];
+   [dismissButton autorelease];
+
+   pkgController = [[BKPackageController alloc] initWithStyle:UITableViewStyleGrouped];
+   pkgController.title = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+   pkgController.navigationItem.rightBarButtonItem = dismissButton;
+   [pkgController autorelease];
+
+   navController = [[UINavigationController alloc] initWithRootViewController:pkgController];
+   [navController autorelease];
+
+   [self presentModalViewController:navController animated:YES];
+
+   [pool release];
+
+   return;
+}
+
+
 - (void) displayFlags:(UIBarButtonItem *)sender
 {
    if ((useFlagNames))
@@ -430,7 +471,7 @@
 {
    NSMutableArray  * barButtons;
 
-   if (([self.toolbarItems count] == 3) && (networkReachability.hostname != nil))
+   if (([self.toolbarItems count] == 5) && (networkReachability.hostname != nil))
       return;
 
    if (self.isViewLoaded == NO)
@@ -443,6 +484,8 @@
    [barButtons addObject:barButtonItemFlags];
    if (networkReachability.hostname != nil)
       [barButtons addObject:barButtonItemHost];
+   [barButtons addObject:barButtonItemFlex];
+   [barButtons addObject:barButtonItemLegal];
    self.toolbarItems = barButtons;
    [barButtons release];
 
