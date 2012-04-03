@@ -13,8 +13,6 @@
 		A0148553143E790600A24446 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0148551143E790600A24446 /* InfoPlist.strings */; };
 		A0148555143E790600A24446 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0148554143E790600A24446 /* main.m */; };
 		A0148559143E790600A24446 /* BKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0148558143E790600A24446 /* BKAppDelegate.m */; };
-		A0148574143E7B4100A24446 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0148570143E7B4100A24446 /* MainWindow_iPad.xib */; };
-		A0148575143E7B4100A24446 /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0148572143E7B4100A24446 /* MainWindow_iPhone.xib */; };
 		A0148584143E7D5200A24446 /* libBindleKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A014857F143E7D2E00A24446 /* libBindleKit.a */; };
 		A0376BAB144174B100410C2E /* BindleKit100.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376BA7144174B100410C2E /* BindleKit100.png */; };
 		A0376BAC144174B100410C2E /* BindleKit114.png in Resources */ = {isa = PBXBuildFile; fileRef = A0376BA8144174B100410C2E /* BindleKit114.png */; };
@@ -64,8 +62,6 @@
 		A0148556143E790600A24446 /* BKNetTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BKNetTest-Prefix.pch"; sourceTree = "<group>"; };
 		A0148557143E790600A24446 /* BKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKAppDelegate.h; sourceTree = "<group>"; };
 		A0148558143E790600A24446 /* BKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKAppDelegate.m; sourceTree = "<group>"; };
-		A0148571143E7B4100A24446 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
-		A0148573143E7B4100A24446 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
 		A0148576143E7D2E00A24446 /* BindleKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BindleKit.xcodeproj; path = ../../BindleKit.xcodeproj; sourceTree = "<group>"; };
 		A0376BA7144174B100410C2E /* BindleKit100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit100.png; sourceTree = "<group>"; };
 		A0376BA8144174B100410C2E /* BindleKit114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BindleKit114.png; sourceTree = "<group>"; };
@@ -145,8 +141,6 @@
 				A0C70C77144450180093D650 /* green@2x.png */,
 				A0C70C78144450180093D650 /* red@2x.png */,
 				A0376BA6144174B100410C2E /* icons */,
-				A0148570143E7B4100A24446 /* MainWindow_iPad.xib */,
-				A0148572143E7B4100A24446 /* MainWindow_iPhone.xib */,
 				A0148550143E790600A24446 /* BKNetTest-Info.plist */,
 				A0148551143E790600A24446 /* InfoPlist.strings */,
 			);
@@ -283,8 +277,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0148553143E790600A24446 /* InfoPlist.strings in Resources */,
-				A0148574143E7B4100A24446 /* MainWindow_iPad.xib in Resources */,
-				A0148575143E7B4100A24446 /* MainWindow_iPhone.xib in Resources */,
 				A0CDD9E5143ECC86000D32DB /* green.png in Resources */,
 				A0CDD9E6143ECC86000D32DB /* red.png in Resources */,
 				A0376BAB144174B100410C2E /* BindleKit100.png in Resources */,
@@ -327,22 +319,6 @@
 				A0148552143E790600A24446 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		A0148570143E7B4100A24446 /* MainWindow_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A0148571143E7B4100A24446 /* en */,
-			);
-			name = MainWindow_iPad.xib;
-			sourceTree = "<group>";
-		};
-		A0148572143E7B4100A24446 /* MainWindow_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A0148573143E7B4100A24446 /* en */,
-			);
-			name = MainWindow_iPhone.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

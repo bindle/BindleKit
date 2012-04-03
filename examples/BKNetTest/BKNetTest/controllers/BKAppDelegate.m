@@ -109,6 +109,7 @@
    [segmentedControl autorelease];
    rootController.navigationItem.titleView = segmentedControl;
 
+   self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
    [self.window addSubview:navigationController.view];
    [self.window makeKeyAndVisible];
 
