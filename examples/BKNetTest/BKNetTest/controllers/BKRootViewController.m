@@ -111,7 +111,7 @@
    prompt.textField.clearButtonMode        = UITextFieldViewModeWhileEditing;
    prompt.textField.autocorrectionType     = FALSE;
    prompt.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-   prompt.textField.keyboardType           = UIKeyboardTypeEmailAddress;
+   prompt.textField.keyboardType           = UIKeyboardTypeURL;
 
    [pool release];
 
