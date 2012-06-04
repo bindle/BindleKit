@@ -31,37 +31,53 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/*
- *  BindleKit/BindleKit.h - loads API for classes in BindleKit
+/**
+ *  Objective-C wrapper for POSIX regular expressions using NSString.
  */
 
 #import <Foundation/Foundation.h>
+#import <regex.h>
 
-#import <BindleKit/controllers/BKNetworkReachability.h>
-#import <BindleKit/models/BKHash.h>
-#import <BindleKit/models/BKNode.h>
-#import <BindleKit/models/BKMemoryCache.h>
-#import <BindleKit/models/BKPackage.h>
-#import <BindleKit/models/BKQueue.h>
-#import <BindleKit/models/BKPosixRegex.h>
-#import <BindleKit/models/BKSelectionOption.h>
-#import <BindleKit/models/BKStack.h>
-#import <BindleKit/models/BKTableTags.h>
-#import <BindleKit/models/BKVersion.h>
-#import <BindleKit/views/BKButtonImages.h>
+@interface BKPosixRegex : NSObject
+{
+   // Regular expressions information
+   regex_t          regex;
+   NSString       * regexString;
+   NSInteger        regexFlags;
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/controllers/iOS/BKDevice.h>
-#import <BindleKit/controllers/iOS/BKListController.h>
-#import <BindleKit/controllers/iOS/BKPackageController.h>
-#import <BindleKit/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/controllers/iOS/BKSplitViewController.h>
-#import <BindleKit/views/iOS/BKButton.h>
-#import <BindleKit/views/iOS/BKPromptView.h>
-#import <BindleKit/views/iOS/BKActivityDisplayController.h>
-#endif
+   // matches
+   NSMutableArray * matches;
 
-#ifdef TARGET_OS_MAC
-#endif
+   // error reporting
+   NSString       * errorMessage;
+   NSInteger        errorCode;
+}
 
-/* end of header */
+// Regular expressions information
+@property (nonatomic, assign)  NSInteger   options;
+@property (nonatomic, retain)  NSString  * pattern;
+
+// matches
+@property (nonatomic, readonly) NSArray   * matches;
+
+// error reporting
+@property (nonatomic, readonly) NSString  * errorMessage;
+@property (nonatomic, readonly) NSInteger   errorCode;
+
+/// @name Object Management Methods
+- (id) initWithPattern:(NSString *)pattern;
+- (id) initWithPattern:(NSString *)pattern andOptions:(NSInteger)options;
++ (id) regexWithPattern:(NSString *)pattern;
++ (id) regexWithPattern:(NSString *)pattern andOptions:(NSInteger)options;
+
+/// @name Compare Strings
+- (BOOL) executeWithString:(NSString *)string;
+- (BOOL) executeWithUTF8String:(const char *)string;
+
+/// @name Common Patterns
+- (id) initWithIPv4AddressPattern;
+- (id) initWithIPv6AddressPattern;
+- (id) regexWithIPv4AddressPattern;
+- (id) regexWithIPv6AddressPattern;
+
+@end

@@ -52,6 +52,10 @@
 		A092A669141706B40033C972 /* BKNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A092A665141706B40033C972 /* BKNode.m */; };
 		A0A7D51414B5B140007B2D14 /* BKDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = A0A7D51214B5B140007B2D14 /* BKDevice.h */; };
 		A0A7D51514B5B140007B2D14 /* BKDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A7D51314B5B140007B2D14 /* BKDevice.m */; };
+		A0BF01B3157ACD7400CF7690 /* BKPosixRegex.h in Headers */ = {isa = PBXBuildFile; fileRef = A0BF01B1157ACD7400CF7690 /* BKPosixRegex.h */; };
+		A0BF01B4157ACD7400CF7690 /* BKPosixRegex.h in Headers */ = {isa = PBXBuildFile; fileRef = A0BF01B1157ACD7400CF7690 /* BKPosixRegex.h */; };
+		A0BF01B5157ACD7400CF7690 /* BKPosixRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BF01B2157ACD7400CF7690 /* BKPosixRegex.m */; };
+		A0BF01B6157ACD7400CF7690 /* BKPosixRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BF01B2157ACD7400CF7690 /* BKPosixRegex.m */; };
 		A0C431C1150B8A6B000047D0 /* BKListController.h in Headers */ = {isa = PBXBuildFile; fileRef = A0C431BF150B8A6B000047D0 /* BKListController.h */; };
 		A0C431C2150B8A6B000047D0 /* BKListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C431C0150B8A6B000047D0 /* BKListController.m */; };
 		A0C70C9C144526100093D650 /* BKPromptView.h in Headers */ = {isa = PBXBuildFile; fileRef = A0C70C9A144526100093D650 /* BKPromptView.h */; };
@@ -138,6 +142,8 @@
 		A092A665141706B40033C972 /* BKNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKNode.m; sourceTree = "<group>"; };
 		A0A7D51214B5B140007B2D14 /* BKDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKDevice.h; sourceTree = "<group>"; };
 		A0A7D51314B5B140007B2D14 /* BKDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKDevice.m; sourceTree = "<group>"; };
+		A0BF01B1157ACD7400CF7690 /* BKPosixRegex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKPosixRegex.h; sourceTree = "<group>"; };
+		A0BF01B2157ACD7400CF7690 /* BKPosixRegex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKPosixRegex.m; sourceTree = "<group>"; };
 		A0C431BF150B8A6B000047D0 /* BKListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKListController.h; sourceTree = "<group>"; };
 		A0C431C0150B8A6B000047D0 /* BKListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKListController.m; sourceTree = "<group>"; };
 		A0C70C9A144526100093D650 /* BKPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKPromptView.h; sourceTree = "<group>"; };
@@ -216,6 +222,8 @@
 				A0FCC90614E23320001A0644 /* BKPackage.m */,
 				A0D32C9814186F2800641ABD /* BKQueue.h */,
 				A0D32C9914186F2800641ABD /* BKQueue.m */,
+				A0BF01B1157ACD7400CF7690 /* BKPosixRegex.h */,
+				A0BF01B2157ACD7400CF7690 /* BKPosixRegex.m */,
 				A064D96A140E047C00255FD3 /* BKSelectionOption.h */,
 				A064D96B140E047C00255FD3 /* BKSelectionOption.m */,
 				A0D32C9114186F0200641ABD /* BKStack.h */,
@@ -359,6 +367,7 @@
 				A03F4B2514E5D60C0077F16D /* BKHash.h in Headers */,
 				A028021D14F0CAD100095E98 /* BKActivityDisplayController.h in Headers */,
 				A0C431C1150B8A6B000047D0 /* BKListController.h in Headers */,
+				A0BF01B3157ACD7400CF7690 /* BKPosixRegex.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +384,7 @@
 				A0FCC90814E23321001A0644 /* BKPackage.h in Headers */,
 				A0E24F0F14E3DF410040D81D /* BKTableTags.h in Headers */,
 				A03F4B2614E5D60C0077F16D /* BKHash.h in Headers */,
+				A0BF01B4157ACD7400CF7690 /* BKPosixRegex.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +496,7 @@
 				A03F4B2714E5D60C0077F16D /* BKHash.m in Sources */,
 				A028021E14F0CAD100095E98 /* BKActivityDisplayController.m in Sources */,
 				A0C431C2150B8A6B000047D0 /* BKListController.m in Sources */,
+				A0BF01B5157ACD7400CF7690 /* BKPosixRegex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +515,7 @@
 				A0FCC90A14E23321001A0644 /* BKPackage.m in Sources */,
 				A0E24F1114E3DF410040D81D /* BKTableTags.m in Sources */,
 				A03F4B2814E5D60C0077F16D /* BKHash.m in Sources */,
+				A0BF01B6157ACD7400CF7690 /* BKPosixRegex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
