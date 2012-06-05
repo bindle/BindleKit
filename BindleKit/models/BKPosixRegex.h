@@ -80,10 +80,4 @@
 - (id) regexWithIPv4AddressPattern;
 - (id) regexWithIPv6AddressPattern;
 
-/// @name Common Patterns
-- (id) initWithIPv4AddressPattern;
-- (id) initWithIPv6AddressPattern;
-- (id) regexWithIPv4AddressPattern;
-- (id) regexWithIPv6AddressPattern;
-
 @end
