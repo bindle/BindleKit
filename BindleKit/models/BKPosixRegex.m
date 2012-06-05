@@ -37,6 +37,14 @@
 #import "BKPosixRegex.h"
 
 
+@interface BKPosixRegex ()
+
+// manages internal state
+- (void) regexCompile;
+
+@end
+
+
 @implementation BKPosixRegex
 
 // Regular expressions information
@@ -87,8 +95,6 @@
 - (id) initWithPattern:(NSString *)pattern andOptions:(NSInteger)options
 {
    NSAutoreleasePool * pool;
-   NSInteger           err;
-   char                msg[1024];
 
    NSAssert((pattern != nil), @"pattern is required");
    if ((self = [super init]) == nil)
@@ -99,18 +105,7 @@
    // Regular expressions information
    regexFlags  = options;
    regexString = [pattern retain];
-   if ((err = regcomp(&regex, [regexString UTF8String], regexFlags)))
-   {
-      regerror(err, &regex, msg, 1023);
-      errorCode    = err;
-      errorMessage = [NSString stringWithUTF8String:msg];
-   };
-
-   // matches
-   matches = [[NSMutableArray alloc] initWithCapacity:1];
-
-   // error reporting
-   errorCode = 0;
+   [self regexCompile];
 
    [pool release];
 
@@ -134,61 +129,60 @@
 
 - (void) setOptions:(NSInteger)options
 {
-   NSInteger           err;
-   char                msg[1024];
-   NSAutoreleasePool * pool;
-
-   pool = [[NSAutoreleasePool alloc] init];
-
    @synchronized(self)
    {
-      [matches removeAllObjects];
-
       regexFlags = options;
-
-      errorCode = 0;
-
-      regfree(&regex);
-      if ((err = regcomp(&regex, [regexString UTF8String], regexFlags)))
-      {
-         regerror(err, &regex, msg, 1023);
-         errorCode    = err;
-         errorMessage = [NSString stringWithUTF8String:msg];
-      };
+      [self regexCompile];
    };
-
-   [pool release];
-
    return;
 }
 
 
 - (void) setPattern:(NSString *)pattern
 {
+   NSAssert((pattern != nil), @"pattern is required");
+   @synchronized(self)
+   {
+      [regexString release];
+      regexString = [pattern retain];
+      [self regexCompile];
+   };
+   return;
+}
+
+
+#pragma mark - Manages internal state
+
+- (void) regexCompile
+{
    NSInteger           err;
    char                msg[1024];
    NSAutoreleasePool * pool;
-
-   NSAssert((pattern != nil), @"pattern must not be nil");
 
    pool = [[NSAutoreleasePool alloc] init];
 
    @synchronized(self)
    {
-      [matches removeAllObjects];
-
-      [regexString release];
-      regexString = [pattern retain];
-
+      // resets error code
       errorCode = 0;
 
-      regfree(&regex);
+      // frees old compiled regular expression
+      if ((matches))
+         regfree(&regex);
+
+      // compiles new regular expression
       if ((err = regcomp(&regex, [regexString UTF8String], regexFlags)))
       {
          regerror(err, &regex, msg, 1023);
          errorCode    = err;
-         errorMessage = [NSString stringWithUTF8String:msg];
+         [errorMessage release];
+         errorMessage = [[NSString stringWithUTF8String:msg] retain];
       };
+
+      // resets array of substring matches
+      if (!(matches))
+         matches = [[NSMutableArray alloc] initWithCapacity:1];
+      [matches removeAllObjects];
    };
 
    [pool release];
