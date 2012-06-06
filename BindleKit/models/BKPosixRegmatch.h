@@ -32,54 +32,41 @@
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
 /**
- *  Objective-C wrapper for POSIX regular expressions using NSString.
+ *  Class contain matched information for POSIX regular expressions.
  */
 
 #import <Foundation/Foundation.h>
 #import <regex.h>
 
-@interface BKPosixRegex : NSObject
+@interface BKPosixRegmatch : NSObject
 {
-   // Regular expressions information
-   regex_t          regex;
-   NSString       * regexString;
-   NSInteger        regexFlags;
-   NSMutableArray * subExpressions;
+   // string information
+   NSString   * _string;
+   NSString   * _subString;
+   NSRange      _range;
+};
 
-   // matches
-   NSMutableArray * matches;
+// string information
+@property (nonatomic, readonly) NSString   * string;
+@property (nonatomic, readonly) NSString   * subString;
 
-   // error reporting
-   NSString       * errorMessage;
-   NSInteger        errorCode;
-}
-
-// Regular expressions information
-@property (nonatomic, assign)   NSInteger   options;
-@property (nonatomic, retain)   NSString  * pattern;
-@property (nonatomic, readonly) NSArray   * subExpressions;
-
-// matches
-@property (nonatomic, readonly) NSArray   * matches;
-
-// error reporting
-@property (nonatomic, readonly) NSString  * errorMessage;
-@property (nonatomic, readonly) NSInteger   errorCode;
+// match information
+@property (nonatomic, readonly) NSUInteger   startOfMatch;
+@property (nonatomic, readonly) NSUInteger   endOfMatch;
+@property (nonatomic, readonly) NSRange      range;
 
 /// @name Object Management Methods
-- (id) initWithPattern:(NSString *)pattern;
-- (id) initWithPattern:(NSString *)pattern andOptions:(NSInteger)options;
-+ (id) regexWithPattern:(NSString *)pattern;
-+ (id) regexWithPattern:(NSString *)pattern andOptions:(NSInteger)options;
+- (id) initWithRange:(NSRange)range andString:(NSString *)string;
+- (id) initWithRange:(NSRange)range andUTF8String:(const char *)string;
+- (id) initWithRegmatch:(regmatch_t)regmatch andString:(NSString *)string;
+- (id) initWithRegmatch:(regmatch_t)regmatch andUTF8String:(const char *)string;
++ (id) matchWithRange:(NSRange)range andString:(NSString *)string;
++ (id) matchWithRange:(NSRange)range andUTF8String:(const char *)string;
++ (id) matchWithRegmatch:(regmatch_t)regmatch andString:(NSString *)string;
++ (id) matchWithRegmatch:(regmatch_t)regmatch andUTF8String:(const char *)string;
 
-/// @name Compare Strings
-- (BOOL) executeWithString:(NSString *)string;
-- (BOOL) executeWithUTF8String:(const char *)string;
-
-/// @name Common Patterns
-- (id) initWithIPv4AddressPattern;
-- (id) initWithIPv6AddressPattern;
-+ (id) regexWithIPv4AddressPattern;
-+ (id) regexWithIPv6AddressPattern;
+/// @name Comparing matches
+- (NSComparisonResult) rangeCompare:(BKPosixRegmatch *)match;
+- (NSComparisonResult) subStringCompare:(BKPosixRegmatch *)match;
 
 @end

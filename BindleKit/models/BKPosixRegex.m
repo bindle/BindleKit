@@ -37,6 +37,10 @@
 #import "BKPosixRegex.h"
 
 
+#import <BindleKit/models/BKStack.h>
+#import <BindleKit/models/BKPosixRegmatch.h>
+
+
 @interface BKPosixRegex ()
 
 // manages internal state
@@ -50,6 +54,7 @@
 // Regular expressions information
 @synthesize options = regexFlags;
 @synthesize pattern = regexString;
+@synthesize subExpressions;
 
 // matches
 @synthesize matches;
@@ -66,6 +71,7 @@
    // Regular expressions information
    regfree(&regex);
    [regexString release];
+   [subExpressions release];
 
    // matches
    [matches release];
@@ -155,9 +161,15 @@
 
 - (void) regexCompile
 {
+   NSInteger           i;
+   const char        * str;
    NSInteger           err;
    char                msg[1024];
+   size_t              len;
+   size_t              bol;
+   BKStack           * stack;
    NSAutoreleasePool * pool;
+   NSRange             range;
 
    pool = [[NSAutoreleasePool alloc] init];
 
@@ -166,23 +178,70 @@
       // resets error code
       errorCode = 0;
 
-      // frees old compiled regular expression
+      // frees old information
       if ((matches))
+      {
          regfree(&regex);
+         [matches removeAllObjects];
+      };
+      if ((subExpressions))
+         [subExpressions removeAllObjects];
 
       // compiles new regular expression
-      if ((err = regcomp(&regex, [regexString UTF8String], regexFlags)))
+      str = [regexString UTF8String];
+      if ((err = regcomp(&regex, str, regexFlags)))
       {
          regerror(err, &regex, msg, 1023);
          errorCode    = err;
          [errorMessage release];
          errorMessage = [[NSString stringWithUTF8String:msg] retain];
+         [pool release];
+         return;
       };
 
-      // resets array of substring matches
+      // allocates arrays
       if (!(matches))
          matches = [[NSMutableArray alloc] initWithCapacity:1];
-      [matches removeAllObjects];
+      if (!(subExpressions))
+         subExpressions = [[NSMutableArray alloc] initWithCapacity:1];
+
+      // generates array of sub-expressions
+      if (!(err))
+      {
+         // save initial regex string
+         range = NSMakeRange(0, [regexString length]);
+         [subExpressions addObject:[BKPosixRegmatch matchWithRange:range
+            andString:regexString]];
+
+         // save sub expressions
+         stack = [[[BKStack alloc] init] autorelease];
+         for(i = 0; i < strlen(str); i++)
+         {
+            switch(str[i])
+            {
+               // start of sub expression
+               case '(':
+               [stack push:[NSNumber numberWithInt:i]]; // saves position of opening parentheses
+               break;
+
+               // end of sub expression
+               case ')':
+               bol   = [[stack pop] intValue]+1;  // retrieves position of opening parentheses
+               len   = i - bol;                   // calculates length of subexpression
+               len   = (len > 1023) ? 1023 : len; // verifies length is within bounds
+               range = NSMakeRange(bol, len);     // create range of sub expression
+               [subExpressions addObject:[BKPosixRegmatch matchWithRange:range
+                  andString:regexString]];
+               break;
+
+               default:
+               break;
+            };
+         };
+
+         // sorts sub expressions
+         [subExpressions sortUsingSelector:@selector(rangeCompare:)];
+      };
    };
 
    [pool release];
@@ -214,12 +273,11 @@
 /// @param string        The string used when executing the regular expression.
 - (BOOL) executeWithUTF8String:(const char *)string
 {
-   NSInteger    err;
-   regmatch_t   pmatches[512];
-   char         msg[1024];
-   NSUInteger   x;
-   char         str[2048];
-   size_t       strlen;
+   NSInteger         err;
+   regmatch_t        pmatches[512];
+   char              msg[1024];
+   NSUInteger        x;
+   BKPosixRegmatch * match;
 
    @synchronized(self)
    {
@@ -235,16 +293,11 @@
          return(NO);
       };
 
-      for(x = 0; ((x < 512) && (pmatches[x].rm_eo > -1)); x++)
+      for(x = 0; ((x < 512) && (x <= regex.re_nsub)); x++)
       {
-         memset(str, 0, 2048);
-         if ((strlen = pmatches[x].rm_eo - pmatches[x].rm_so))
-         {
-            strncpy(str, &string[pmatches[x].rm_so], ((strlen > 2047) ? 2047 : strlen));
-            [matches addObject:[NSString stringWithUTF8String:str]];
-         } else {
-            [matches addObject:[NSString stringWithUTF8String:str]];
-         };
+         match = [[BKPosixRegmatch alloc] initWithRegmatch:pmatches[x] andUTF8String:string];
+         [matches addObject:match];
+         [match release];
       };
    };
 
@@ -276,7 +329,7 @@
 //   9: 2001:470:b:84a:::69  ==> not found
 //
 
-   if ((self = [self initWithPattern:@"^:{0,1}([[:xdigit:]]{1,4}:){0,6}[[:xdigit:]]{0,4}:([[:xdigit:]]{1,4}:){0,7}[[:xdigit:]]{0,4}$"]) == nil)
+   if ((self = [self initWithPattern:@"^:{0,1}(([[:xdigit:]]{1,4}:){0,6})[[:xdigit:]]{0,4}:(([[:xdigit:]]{1,4}:){0,7})[[:xdigit:]]{0,4}$"]) == nil)
       return(self);
    return(self);
 }

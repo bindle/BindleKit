@@ -44,6 +44,7 @@
 #import <BindleKit/models/BKPackage.h>
 #import <BindleKit/models/BKQueue.h>
 #import <BindleKit/models/BKPosixRegex.h>
+#import <BindleKit/models/BKPosixRegmatch.h>
 #import <BindleKit/models/BKSelectionOption.h>
 #import <BindleKit/models/BKStack.h>
 #import <BindleKit/models/BKTableTags.h>
