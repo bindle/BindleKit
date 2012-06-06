@@ -282,13 +282,13 @@
 }
 
 
-- (id) regexWithIPv4AddressPattern
++ (id) regexWithIPv4AddressPattern
 {
    return([[[BKPosixRegex alloc] initWithIPv4AddressPattern] autorelease]);
 }
 
 
-- (id) regexWithIPv6AddressPattern
++ (id) regexWithIPv6AddressPattern
 {
    return([[[BKPosixRegex alloc] initWithIPv6AddressPattern] autorelease]);
 }
