@@ -274,7 +274,7 @@
 - (BOOL) executeWithUTF8String:(const char *)string
 {
    NSInteger         err;
-   regmatch_t        pmatches[512];
+   regmatch_t        pmatches[64];
    char              msg[1024];
    NSUInteger        x;
    BKPosixRegmatch * match;
@@ -293,7 +293,7 @@
          return(NO);
       };
 
-      for(x = 0; ((x < 512) && (x <= regex.re_nsub)); x++)
+      for(x = 0; ((x < 64) && (x <= regex.re_nsub)); x++)
       {
          match = [[BKPosixRegmatch alloc] initWithRegmatch:pmatches[x] andUTF8String:string];
          [matches addObject:match];
