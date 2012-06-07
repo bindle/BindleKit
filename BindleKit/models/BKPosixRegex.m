@@ -284,6 +284,7 @@
       errorCode = 0;
 
       [matches removeAllObjects];
+      memset(pmatches, 0, sizeof(pmatches));
 
       if ((err = regexec(&regex, string, 512, pmatches, 0)))
       {
