@@ -278,6 +278,9 @@
    char              msg[1024];
    NSUInteger        x;
    BKPosixRegmatch * match;
+   NSAutoreleasePool * pool;
+
+   pool = [[NSAutoreleasePool alloc] init];
 
    @synchronized(self)
    {
@@ -290,7 +293,8 @@
       {
          regerror(err, &regex, msg, 1023);
          errorCode    = err;
-         errorMessage = [NSString stringWithUTF8String:msg];
+         errorMessage = [[NSString stringWithUTF8String:msg] retain];
+         [pool release];
          return(NO);
       };
 
@@ -304,6 +308,8 @@
          [match release];
       };
    };
+
+   [pool release];
 
    return(YES);
 }
