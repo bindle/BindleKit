@@ -302,7 +302,7 @@
       };
    };
 
-   return(err == 0);
+   return(YES);
 }
 
 
