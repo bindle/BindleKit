@@ -294,6 +294,9 @@
          return(NO);
       };
 
+      if ((regexFlags & REG_NOSUB))
+         return(YES);
+
       for(x = 0; ((x < 64) && (x <= regex.re_nsub)); x++)
       {
          match = [[BKPosixRegmatch alloc] initWithRegmatch:pmatches[x] andUTF8String:string];
