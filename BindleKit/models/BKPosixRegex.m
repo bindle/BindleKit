@@ -303,9 +303,8 @@
 
       for(x = 0; ((x < 64) && (x <= regex.re_nsub)); x++)
       {
-         match = [[BKPosixRegmatch alloc] initWithRegmatch:pmatches[x] andUTF8String:string];
+         match = [BKPosixRegmatch matchWithRegmatch:pmatches[x] andUTF8String:string];
          [matches addObject:match];
-         [match release];
       };
    };
 
