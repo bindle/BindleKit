@@ -69,8 +69,8 @@
 /// @name Object Management Methods
 - (id) initWithPattern:(NSString *)pattern;
 - (id) initWithPattern:(NSString *)pattern andOptions:(NSInteger)options;
-+ (id) regexWithPattern:(NSString *)pattern;
-+ (id) regexWithPattern:(NSString *)pattern andOptions:(NSInteger)options;
++ (id) expressionWithPattern:(NSString *)pattern;
++ (id) expressionWithPattern:(NSString *)pattern andOptions:(NSInteger)options;
 
 /// @name Compare Strings
 - (BOOL) executeWithString:(NSString *)string;
@@ -79,7 +79,7 @@
 /// @name Common Patterns
 - (id) initWithIPv4AddressPattern;
 - (id) initWithIPv6AddressPattern;
-+ (id) regexWithIPv4AddressPattern;
-+ (id) regexWithIPv6AddressPattern;
++ (id) expressionWithIPv4AddressPattern;
++ (id) expressionWithIPv6AddressPattern;
 
 @end

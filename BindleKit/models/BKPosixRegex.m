@@ -119,13 +119,13 @@
 }
 
 
-+ (id) regexWithPattern:(NSString *)pattern
++ (id) expressionWithPattern:(NSString *)pattern
 {
    return([[[BKPosixRegex alloc] initWithPattern:pattern] autorelease]);
 }
 
 
-+ (id) regexWithPattern:(NSString *)pattern andOptions:(NSInteger)options
++ (id) expressionWithPattern:(NSString *)pattern andOptions:(NSInteger)options
 {
    return([[[BKPosixRegex alloc] initWithPattern:pattern andOptions:options] autorelease]);
 }
@@ -335,13 +335,13 @@
 }
 
 
-+ (id) regexWithIPv4AddressPattern
++ (id) expressionWithIPv4AddressPattern
 {
    return([[[BKPosixRegex alloc] initWithIPv4AddressPattern] autorelease]);
 }
 
 
-+ (id) regexWithIPv6AddressPattern
++ (id) expressionWithIPv6AddressPattern
 {
    return([[[BKPosixRegex alloc] initWithIPv6AddressPattern] autorelease]);
 }
