@@ -85,7 +85,7 @@ if test -f ${SRCDIR}/.git/config;then
 
    # calculate GAV from GPV
    GAV=`echo ${GPV} |sed -e 's/\.g[[:xdigit:]]\{0,\}$//g'`;
-   GAV=`echo ${GAV} |sed -e 's/.0$//g'`;
+   GAV=`echo ${GAV} |sed -e 's/\.0$//g'`;
 
    # write data to file and display results
    if test "x${GPV}" != "x";then
