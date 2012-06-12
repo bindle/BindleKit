@@ -48,7 +48,7 @@ run_appledoc =	appledoc \
 
 all:
 	mkdir -p docs
-	${run_appledoc}
+	PATH=${PATH}:/usr/local/bin ${run_appledoc}
 
 clean:
 	rm -Rf docs/

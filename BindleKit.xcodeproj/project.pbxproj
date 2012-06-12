@@ -400,6 +400,22 @@
 		};
 /* End PBXHeadersBuildPhase section */
 
+/* Begin PBXLegacyTarget section */
+		A06DE7B11587375A0009F87D /* BindleKit Docset */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = A06DE7B41587375A0009F87D /* Build configuration list for PBXLegacyTarget "BindleKit Docset" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			dependencies = (
+			);
+			name = "BindleKit Docset";
+			passBuildSettingsInEnvironment = 1;
+			productName = "BindleKit Docset";
+		};
+/* End PBXLegacyTarget section */
+
 /* Begin PBXNativeTarget section */
 		A07D34F3140DC1E800832E1F /* iBindleKit */ = {
 			isa = PBXNativeTarget;
@@ -461,6 +477,7 @@
 				A07D34F3140DC1E800832E1F /* iBindleKit */,
 				A0F713581413520300252B5F /* BindleKit */,
 				A0FCC95614E248A2001A0644 /* Git Package Version (BindleKit) */,
+				A06DE7B11587375A0009F87D /* BindleKit Docset */,
 			);
 		};
 /* End PBXProject section */
@@ -547,6 +564,43 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		A06DE7B21587375A0009F87D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEBUGGING_SYMBOLS = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A06DE7B31587375A0009F87D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		A07D3519140DC1E900832E1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -678,6 +732,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A06DE7B41587375A0009F87D /* Build configuration list for PBXLegacyTarget "BindleKit Docset" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A06DE7B21587375A0009F87D /* Debug */,
+				A06DE7B31587375A0009F87D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		A07D34EE140DC1E800832E1F /* Build configuration list for PBXProject "BindleKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
