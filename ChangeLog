@@ -1,23 +1,24 @@
 
-Bindle Binaries Objective-C Kit
+Bindle Binaries Objective-C Kit  
 Copyright (C) 2012 Bindle Binaries <syzdek@bindlebinaries.com>.
 
-0.3
-      - Adding copyright information to BKNetTest. (syzdek)
-      - Updating icon file names for examples. (syzdek)
-      - Adding BKPosixRegex class. (syzdek)
-      - Adding BKPosixRegmatch class. (syzdek)
-      - Adding Xcode target for building and installing documentation
-        docsets. (syzdek)
+### 0.3
+   - Adding copyright information to BKNetTest. (syzdek)
+   - Updating icon file names for examples. (syzdek)
+   - Adding BKPosixRegex class. (syzdek)
+   - Adding BKPosixRegmatch class. (syzdek)
+   - Adding Xcode target for building and installing documentation
+     docsets. (syzdek)
+   - Updating accompanying text files to use _markdown_ syntax. (syzdek)
 
-0.2   2012-03-17
-      - Fixing BKCatalog example. (syzdek)
-      - Updating BKSplitViewController to use -(void)addChildViewController:
-        to set the parent/child relationships in view controllers. (syzdek)
-      - Updating Xcode project with Xcode modernize. (syzdek)
-      - Fixing warning generated from UIPopoverController due to use of
-        CGZeroRect(). (syzdek)
+### 0.2   (2012-03-17)
+   - Fixing BKCatalog example. (syzdek)
+   - Updating BKSplitViewController to use -(void)addChildViewController:
+     to set the parent/child relationships in view controllers. (syzdek)
+   - Updating Xcode project with Xcode modernize. (syzdek)
+   - Fixing warning generated from UIPopoverController due to use of
+     CGZeroRect(). (syzdek)
 
-0.1   2012-03-11
-      - Creating first pre-alpha release of BindleKit Framework. (syzdek)
+### 0.1   (2012-03-11)
+   - Creating first pre-alpha release of BindleKit Framework. (syzdek)
 
