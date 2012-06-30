@@ -1,0 +1,52 @@
+
+BindleKit To-Do List
+====================
+
+Bindle Binaries Objective-C Kit  
+Copyright (c) 2011 Bindle Binaries <syzdek@bindlebinaries.com>.
+
+Documentation
+-------------
+* Document BKMemoryCache class. (syzdek)
+* Document BKNode class. (syzdek)
+* Document BKQueue class. (syzdek)
+* Document BKSelectionOption class. (syzdek)
+* Document BKSelectionController class. (syzdek)
+* Document BKSplitViewController class. (syzdek)
+* Document NSString(BKStringDigest) category. (syzdek)
+* Write BindleKit manual/guide. (syzdek)
+* Create website for BindleKit. (syzdek)
+* Publish documentation sets on website. (syzdek)
+* Add demo of BKSelectionController to BKCatalog. (syzdek)
+
+Consistency
+-----------
+* Write unit tests for BKMemoryCache class. (syzdek)
+* Write unit tests for BKNode class. (syzdek)
+* Write unit tests for BKQueue class. (syzdek)
+* Write unit tests for BKSelectionOption class. (syzdek)
+* Write unit tests for BKSelectionController class. (syzdek)
+* Write unit tests for BKStack class. (syzdek)
+
+Development
+-----------
+* Write controller for lock/password protected screen on iOS. (syzdek)
+* Add to BKSplitViewController the ability to toggle the use of the popover
+  controller in either portrait or landscape orientations rather than assume
+  that only the standard UISplitViewController behavior is desired. (syzdek)
+* Add rounded corners to the detail view and master view in a
+  BKSplitViewController when displaying both views without a divider view
+  seperating the two views. (syzdek)
+
+Bugs
+----
+   BKSplitViewController
+   ---------------------
+   * When rotating from an orientation with the popover controller to an
+     orientation with the master view displayed and the viewOrderReversed had
+     been updated since the last orientation transition, the master view does
+     not cleanly transition into the window. (syzdek)
+   * When toggling bothViewsDisplayed to false when both the master view and
+     detail view are displayed, the subviews in the detail view jump to the left
+     of the detail view before beginning the animation. (syzdek).
+   * Fix handling of -(void)didReceiveMemoryWarning; (syzdek)

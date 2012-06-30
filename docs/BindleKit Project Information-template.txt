@@ -1,0 +1,84 @@
+
+Bindle Binaries Objective-C Kit
+===============================
+
+   The Bindle Binaries Objective-C Kit is a collection of Objective-C classes
+   that were created to fulfill a need in a particular project but may be of use
+   in additional iOS or OS X projects.  Example of resuable classes contained
+   within the Bindle Binaries Objective-C Kit include BKSplitViewController,
+   BKReachability, and BKPosixRegex.
+
+
+Contents
+--------
+
+   1. Disclaimer
+   2. Maintainers
+   3. Community
+   4. Source Code
+
+
+Disclaimer
+----------
+
+   This software is provided by the copyright holders and contributors "as
+   is" and any express or implied warranties, including, but not limited to,
+   the implied warranties of merchantability and fitness for a particular
+   purpose are disclaimed. In no event shall Bindle Binaries be liable for
+   any direct, indirect, incidental, special, exemplary, or consequential
+   damages (including, but not limited to, procurement of substitute goods or
+   services; loss of use, data, or profits; or business interruption) however
+   caused and on any theory of liability, whether in contract, strict
+   liability, or tort (including negligence or otherwise) arising in any way
+   out of the use of this software, even if advised of the possibility of
+   such damage.
+
+
+Maintainers
+-----------
+
+   David M. Syzdek  
+   Bindle Binaries  
+   syzdek@bindlebinaries.com
+
+
+Community
+---------
+
+   Source Code Repository:  
+   https://github.com/bindle/BindleKit/
+
+   Documentation:  
+   http://bindle.github.com/BindleKit/
+
+   Wiki:  
+   https://github.com/bindle/BindleKit/wiki
+
+
+Source Code
+-----------
+
+   The source code for this project is maintained using git
+   (http://git-scm.com).  The following contains information to checkout the
+   source code from the git repository.
+
+   Browse Source:
+      https://github.com/bindle/BindleKit
+      http://scm.bindlebinaries.com/scm/com.bindlebinaries/BindleKit.git
+
+   Git URLs:
+      git://github.com/bindle/BindleKit.git
+      git://git.scm.bindlebinaries.com/pub/scm/com.bindlebinaries/BindleKit.git
+      http://http.scm.bindlebinaries.com/pub/scm/com.bindlebinaries/BindleKit.git
+      ssh://ssh.scm.bindlebinaries.com/pub/scm/com.bindlebinaries/BindleKit.git
+
+   Downloading Source:
+
+      $ git clone git://github.com/bindle/BindleKit.git
+
+   Git Branches:
+      master - Current release of packages.
+      next   - changes staged for next release
+      pu     - proposed updates for next release
+      xx/yy+ - branch for testing new changes before merging to 'pu' branch
+
