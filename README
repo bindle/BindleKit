@@ -2,11 +2,11 @@
 Bindle Binaries Objective-C Kit
 ===============================
 
-   The Bindle Binaries Objective-C Kit is a collection of Objective-C
-   classes that were created to fulfill a need in a particular project but
-   may be of use in additional iOS or OS X projects.  For example the
-   BKMemoryCache class is generic enough to be used in projects other than
-   the one for which it was originally written.
+   The Bindle Binaries Objective-C Kit is a collection of Objective-C classes
+   that were created to fulfill a need in a particular project but may be of use
+   in additional iOS or OS X projects.  Example of resuable classes contained
+   within the Bindle Binaries Objective-C Kit include BKSplitViewController,
+   BKReachability, and BKPosixRegex.
 
 
 Contents
@@ -14,11 +14,12 @@ Contents
 
    1. Disclaimer
    2. Maintainers
-   3. Source Code
+   3. Community
+   4. Source Code
 
 
 Disclaimer
-==========
+----------
 
    This software is provided by the copyright holders and contributors "as
    is" and any express or implied warranties, including, but not limited to,
@@ -34,15 +35,28 @@ Disclaimer
 
 
 Maintainers
-===========
+-----------
 
-   David M. Syzdek
-   Bindle Binaries
+   David M. Syzdek  
+   Bindle Binaries  
    syzdek@bindlebinaries.com
 
 
+Community
+---------
+
+   Source Code Repository:  
+   https://github.com/bindle/BindleKit/
+
+   Documentation:  
+   http://bindle.github.com/BindleKit/
+
+   Wiki:  
+   https://github.com/bindle/BindleKit/wiki
+
+
 Source Code
-===========
+-----------
 
    The source code for this project is maintained using git
    (http://git-scm.com).  The following contains information to checkout the
