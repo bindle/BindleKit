@@ -1,0 +1,18 @@
+
+The Bindle Binaries Objective-C Kit is a collection of Objective-C classes that
+were created to fulfill a need in a particular project but may be of use in
+additional iOS or OS X projects.  Example of resuable classes contained within
+the Bindle Binaries Objective-C Kit include BKSplitViewController,
+BKReachability, and BKPosixRegex.
+
+The BindleKit [Project Information](docs/BindleKit%20Information.html)
+page contains basic instructions for integrating BindleKit into iOS and Mac OS X
+applications.  The source code for [BindleKit](https://github.com/bindle/BindleKit/) and this
+[documentation](http://bindle.github.com/BindleKit/) are available for download
+from [Github](https://github.com/).
+
+@note This documentation was generated from
+[BindleKit](https://github.com/bindle/BindleKit/) *@VERSION@*.
+
+@warning The documentation for the Bindle Binaries Objective-C Kit is
+incomplete. Documentation will be expanded and updated as time permits.
