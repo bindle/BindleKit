@@ -34,22 +34,63 @@
 #   Makefile - Generates Xcode Documentation Sets from comments in source code
 #
 
+GITURL ?= git@github.com:bindle/BindleKit.git
+
 run_appledoc =	appledoc \
-	--output docs/ \
+	--output docs/appledoc/ \
+   --index-desc docs/appledoc/tmp/appledoc.txt \
 	--project-name "BindleKit" \
-	--project-version "`git describe  --abbrev=7 |sed -e 's/v//g' -e 's/-/./g'`" \
+	--project-version "`git describe  --long --abbrev=7 |sed -e 's/v//g' -e 's/-/./g'`" \
 	--project-company "Bindle Binaries" \
 	--company-id com.bindlebinaries \
 	--create-html \
-	--verbose 6 \
+	--verbose 2 \
 	--keep-intermediate-files \
+	--no-repeat-first-par \
 	--docset-platform-family iphoneos \
+   --include "./docs/appledoc/tmp/BindleKit Change Log-template.txt" \
+	--include "./docs/appledoc/tmp/BindleKit License-template.txt" \
+	--include "./docs/appledoc/tmp/BindleKit Project Information-template.txt" \
+	--include "./docs/appledoc/tmp/BindleKit To Do List-template.txt" \
 	BindleKit
 
-all:
-	mkdir -p docs
+all: docset
+
+.PHONY: docset gh-pages
+
+docset:
+	@PATH=${PATH}:/usr/local/bin which appledoc > /dev/null 2>&1 || \
+	{ \
+	   MSG="Appledoc (https://github.com/tomaz/appledoc) must"; \
+	   echo "$${MSG} be installed before the LdapKit docset can be built."; \
+	   exit 1; \
+	}
+	@mkdir -p ./docs/appledoc/tmp/project/
+	VER=`git describe  --long --abbrev=7 |sed -e 's/v//g' -e 's/-/./g'`; \
+	    sed -e "s/[@]VERSION[@]/$$VER/g" docs/appledoc.txt \
+	    > docs/appledoc/tmp/appledoc.txt
+	grep -v '@\([[:alnum:]]\{1,\}_[[:alnum:]]\{1,\}\)\{1,\}@' ChangeLog \
+	    > "./docs/appledoc/tmp/BindleKit Change Log-template.txt"
+	grep -v '@\([[:alnum:]]\{1,\}_[[:alnum:]]\{1,\}\)\{1,\}@' COPYING \
+	    > "./docs/appledoc/tmp/BindleKit License-template.txt"
+	grep -v '@\([[:alnum:]]\{1,\}_[[:alnum:]]\{1,\}\)\{1,\}@' README \
+	    > "./docs/appledoc/tmp/BindleKit Project Information-template.txt"
+	grep -v '@\([[:alnum:]]\{1,\}_[[:alnum:]]\{1,\}\)\{1,\}@' TODO \
+	    > "./docs/appledoc/tmp/BindleKit To Do List-template.txt"
 	PATH=${PATH}:/usr/local/bin ${run_appledoc}
 
+gh-pages: docset
+	test -d ./docs/github/ || git clone -b gh-pages $(GITURL) ./docs/github
+	cd ./docs/github && git fetch origin
+	cd ./docs/github && git reset --hard origin/gh-pages
+	rsync -rav --delete --exclude=.git/ ./docs/appledoc/html/ ./docs/github
+	cd ./docs/github && git add .
+	VER=`git describe --long --abbrev=7 |sed -e 's/-/./g'`; \
+	   cd ./docs/github && git commit -m "Generating documentation from $$VER" .
+
+update-git: gh-pages
+	cd ./docs/github && git push
+
 clean:
-	rm -Rf docs/
+	rm -Rf ./docs/appledoc/*
 
