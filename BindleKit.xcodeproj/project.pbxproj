@@ -134,6 +134,7 @@
 		A064D96B140E047C00255FD3 /* BKSelectionOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKSelectionOption.m; sourceTree = "<group>"; };
 		A064D971140E053200255FD3 /* BKSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKSelectionController.h; sourceTree = "<group>"; };
 		A064D972140E053200255FD3 /* BKSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKSelectionController.m; sourceTree = "<group>"; };
+		A070F761159F97BD00D0C083 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		A073B461157F178C00F30BAB /* BKPosixRegmatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKPosixRegmatch.h; sourceTree = "<group>"; };
 		A073B462157F178C00F30BAB /* BKPosixRegmatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKPosixRegmatch.m; sourceTree = "<group>"; };
 		A07A7F261416D18000AB872D /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
@@ -288,6 +289,7 @@
 			children = (
 				A052A8B11512CC7F00599FD6 /* ChangeLog */,
 				A0529ABB140DC95A00CFA6F8 /* COPYING */,
+				A070F761159F97BD00D0C083 /* Makefile */,
 				A0529ABC140DC95A00CFA6F8 /* README */,
 				A07A7F261416D18000AB872D /* TODO */,
 				A07D34F9140DC1E800832E1F /* BindleKit */,
@@ -739,6 +741,7 @@
 				A06DE7B31587375A0009F87D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A07D34EE140DC1E800832E1F /* Build configuration list for PBXProject "BindleKit" */ = {
 			isa = XCConfigurationList;
