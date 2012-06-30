@@ -1,21 +1,26 @@
 
-Bindle Binaries Objective-C Kit
+BindleKit To-Do List
+====================
+
+Bindle Binaries Objective-C Kit  
 Copyright (c) 2011 Bindle Binaries <syzdek@bindlebinaries.com>.
 
-Documentation:
+Documentation
+-------------
 * Document BKMemoryCache class. (syzdek)
 * Document BKNode class. (syzdek)
 * Document BKQueue class. (syzdek)
 * Document BKSelectionOption class. (syzdek)
 * Document BKSelectionController class. (syzdek)
 * Document BKSplitViewController class. (syzdek)
-* Document NSString (BKStringDigest) category. (syzdek)
+* Document NSString(BKStringDigest) category. (syzdek)
 * Write BindleKit manual/guide. (syzdek)
 * Create website for BindleKit. (syzdek)
 * Publish documentation sets on website. (syzdek)
 * Add demo of BKSelectionController to BKCatalog. (syzdek)
 
-Consistency:
+Consistency
+-----------
 * Write unit tests for BKMemoryCache class. (syzdek)
 * Write unit tests for BKNode class. (syzdek)
 * Write unit tests for BKQueue class. (syzdek)
@@ -23,7 +28,8 @@ Consistency:
 * Write unit tests for BKSelectionController class. (syzdek)
 * Write unit tests for BKStack class. (syzdek)
 
-Development:
+Development
+-----------
 * Write controller for lock/password protected screen on iOS. (syzdek)
 * Add to BKSplitViewController the ability to toggle the use of the popover
   controller in either portrait or landscape orientations rather than assume
@@ -32,8 +38,10 @@ Development:
   BKSplitViewController when displaying both views without a divider view
   seperating the two views. (syzdek)
 
-Bugs:
-   BKSplitViewController:
+Bugs
+----
+   BKSplitViewController
+   ---------------------
    * When rotating from an orientation with the popover controller to an
      orientation with the master view displayed and the viewOrderReversed had
      been updated since the last orientation transition, the master view does
