@@ -34,11 +34,18 @@
 #   Makefile - Generates Xcode Documentation Sets from comments in source code
 #
 
-GITURL ?= git@github.com:bindle/BindleKit.git
+GITURL		?= git@github.com:bindle/BindleKit.git
+
+SRCPAGES	= docs/appledoc/tmp/appledoc.txt \
+		  docs/appledoc/tmp/BindleKit\ Change\ Log-template.txt \
+		  docs/appledoc/tmp/BindleKit\ License-template.txt \
+		  docs/appledoc/tmp/BindleKit\ Project\ Information-template.txt \
+		  docs/appledoc/tmp/BindleKit\ To\ Do\ List-template.txt
+
 
 run_appledoc =	appledoc \
 	--output docs/appledoc/ \
-   --index-desc docs/appledoc/tmp/appledoc.txt \
+	--index-desc docs/appledoc/tmp/appledoc.txt \
 	--project-name "BindleKit" \
 	--project-version "`git describe  --long --abbrev=7 |sed -e 's/v//g' -e 's/-/./g'`" \
 	--project-company "Bindle Binaries" \
@@ -48,17 +55,31 @@ run_appledoc =	appledoc \
 	--keep-intermediate-files \
 	--no-repeat-first-par \
 	--docset-platform-family iphoneos \
-   --include "./docs/appledoc/tmp/BindleKit Change Log-template.txt" \
+	--include "./docs/appledoc/tmp/BindleKit Change Log-template.txt" \
 	--include "./docs/appledoc/tmp/BindleKit License-template.txt" \
 	--include "./docs/appledoc/tmp/BindleKit Project Information-template.txt" \
 	--include "./docs/appledoc/tmp/BindleKit To Do List-template.txt" \
 	BindleKit
 
+# substitution routine
+do_subst = sed \
+	-e "s/[@]\([[:alnum:]]\{1,\}_[[:alnum:]]\{1,\}\)\{1,\}[@]//g" \
+	-e "s/Development Version/`git describe --abbrev=1 |sed -e 's/v//g' -e 's/-/./g' -e 's/.g[[:xdigit:]]\{1,\}//g' `/g" \
+	-e "s/[@]VERSION[@]/`git describe --long --abbrev=7 |sed -e 's/v//g' -e 's/-/./g'`/g"
+do_subst_dt = \
+	echo "do_subst < $${SRCFILE} > \"${@}\""; \
+	mkdir -p `dirname "${@}"` || exit 1; \
+	${do_subst} < $${SRCFILE} > "${@}" || exit 1; \
+	chmod 0644 "${@}"
+
+
 all: docset
+
 
 .PHONY: docset gh-pages
 
-docset:
+
+docset: $(SRCPAGES)
 	@PATH=${PATH}:/usr/local/bin which appledoc > /dev/null 2>&1 || \
 	{ \
 	   MSG="Appledoc (https://github.com/tomaz/appledoc) must"; \
@@ -66,18 +87,8 @@ docset:
 	   exit 1; \
 	}
 	@mkdir -p ./docs/appledoc/tmp/project/
-	VER=`git describe  --long --abbrev=7 |sed -e 's/v//g' -e 's/-/./g'`; \
-	    sed -e "s/[@]VERSION[@]/$$VER/g" docs/appledoc.txt \
-	    > docs/appledoc/tmp/appledoc.txt
-	grep -v '@\([[:alnum:]]\{1,\}_[[:alnum:]]\{1,\}\)\{1,\}@' ChangeLog \
-	    > "./docs/appledoc/tmp/BindleKit Change Log-template.txt"
-	grep -v '@\([[:alnum:]]\{1,\}_[[:alnum:]]\{1,\}\)\{1,\}@' COPYING \
-	    > "./docs/appledoc/tmp/BindleKit License-template.txt"
-	grep -v '@\([[:alnum:]]\{1,\}_[[:alnum:]]\{1,\}\)\{1,\}@' README \
-	    > "./docs/appledoc/tmp/BindleKit Project Information-template.txt"
-	grep -v '@\([[:alnum:]]\{1,\}_[[:alnum:]]\{1,\}\)\{1,\}@' TODO \
-	    > "./docs/appledoc/tmp/BindleKit To Do List-template.txt"
-	PATH=${PATH}:/usr/local/bin ${run_appledoc}
+	@PATH=${PATH}:/usr/local/bin ${run_appledoc}
+
 
 gh-pages: docset
 	test -d ./docs/github/ || git clone -b gh-pages $(GITURL) ./docs/github
@@ -88,9 +99,26 @@ gh-pages: docset
 	VER=`git describe --long --abbrev=7 |sed -e 's/-/./g'`; \
 	   cd ./docs/github && git commit -m "Generating documentation from $$VER" .
 
+
 update-git: gh-pages
 	cd ./docs/github && git push
 
+
+docs/appledoc/tmp/appledoc.txt: Makefile docs/appledoc.txt
+	@SRCFILE=docs/appledoc.txt; $(do_subst_dt)
+
+docs/appledoc/tmp/BindleKit\ Change\ Log-template.txt: Makefile ChangeLog
+	@SRCFILE=ChangeLog; $(do_subst_dt)
+
+docs/appledoc/tmp/BindleKit\ License-template.txt: Makefile COPYING
+	@SRCFILE=COPYING; $(do_subst_dt)
+
+docs/appledoc/tmp/BindleKit\ Project\ Information-template.txt: Makefile README
+	@SRCFILE=README; $(do_subst_dt)
+
+docs/appledoc/tmp/BindleKit\ To\ Do\ List-template.txt: Makefile TODO
+	@SRCFILE=TODO; $(do_subst_dt)
+
 clean:
-	rm -Rf ./docs/appledoc/*
+	rm -Rf ./docs/appledoc
 
