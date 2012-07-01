@@ -134,7 +134,7 @@
 		A064D96B140E047C00255FD3 /* BKSelectionOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKSelectionOption.m; sourceTree = "<group>"; };
 		A064D971140E053200255FD3 /* BKSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKSelectionController.h; sourceTree = "<group>"; };
 		A064D972140E053200255FD3 /* BKSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKSelectionController.m; sourceTree = "<group>"; };
-		A070F761159F97BD00D0C083 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		A070F761159F97BD00D0C083 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; indentWidth = 8; path = Makefile; sourceTree = "<group>"; tabWidth = 8; usesTabs = 1; };
 		A070F764159F9B7D00D0C083 /* appledoc.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = appledoc.txt; sourceTree = "<group>"; };
 		A073B461157F178C00F30BAB /* BKPosixRegmatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKPosixRegmatch.h; sourceTree = "<group>"; };
 		A073B462157F178C00F30BAB /* BKPosixRegmatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKPosixRegmatch.m; sourceTree = "<group>"; };
