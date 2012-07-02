@@ -53,10 +53,13 @@
    NSString   * packageLicense;
 }
 
+#pragma mark - Object Management Methods
 /// @name  Object Management Methods
 - (id) initWithName:(NSString *)name version:(NSString *)version;
 + (id) packageWithName:(NSString *)name version:(NSString *)version;
 
+
+#pragma mark - API Information methods
 /// @name API Information methods
 @property (nonatomic, assign) NSUInteger   apiVersionCurrent;
 @property (nonatomic, assign) NSUInteger   apiVersionRevision;
@@ -64,6 +67,8 @@
 @property (nonatomic, retain) NSString   * apiVersionString;
 @property (nonatomic, assign) const char * UTF8ApiVersionString;
 
+
+#pragma mark - Package Information methods
 /// @name Package Information methods
 @property (nonatomic, retain) NSString   * packageIdentifier;
 @property (nonatomic, retain) NSString   * packageName;

@@ -31,7 +31,7 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/*
+/**
  *  Provides library version information.
  *
  *  BKVersion provides API and package information about the Bindle Binaries
@@ -43,21 +43,40 @@
 
 @interface BKVersion : BKPackage
 
+#pragma mark - Object Management Methods
 /// @name Object Management Methods
+
+/// Initializes a BKPackage object with information from Bindle Binaries Objective-C Kit.
 - (id) initWithBindleKit;
+
+/// Creates a BKPackage object with information from Bindle Binaries Objective-C Kit.
 + (id) packageWithBindleKit;
 
+
+#pragma mark - API Information methods
 /// @name API Information methods
 + (NSUInteger) apiVersionCurrent;
 + (NSUInteger) apiVersionRevision;
 + (NSUInteger) apiVersionAge;
 + (NSString *) apiVersionString;
 
+
+#pragma mark - Package Information methods
 /// @name Package Information methods
+
+/// The Bindle Binaries Objective-C Kit package identifier.
 + (NSString *) packageIdentifier;
+
+/// The Bindle Binaries Objective-C Kit package name.
 + (NSString *) packageName;
+
+/// The Bindle Binaries Objective-C Kit package version.
 + (NSString *) packageVersion;
+
+/// The Bindle Binaries Objective-C Kit package website.
 + (NSString *) packageWebsite;
+
+/// The Bindle Binaries Objective-C Kit package license.
 + (NSString *) packageLicense;
 
 @end
