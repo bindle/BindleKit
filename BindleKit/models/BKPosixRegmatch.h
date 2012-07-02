@@ -46,15 +46,6 @@
    NSRange      _range;
 };
 
-// string information
-@property (nonatomic, readonly) NSString   * string;
-@property (nonatomic, readonly) NSString   * subString;
-
-// match information
-@property (nonatomic, readonly) NSUInteger   startOfMatch;
-@property (nonatomic, readonly) NSUInteger   endOfMatch;
-@property (nonatomic, readonly) NSRange      range;
-
 /// @name Object Management Methods
 - (id) initWithRange:(NSRange)range andString:(NSString *)string;
 - (id) initWithRange:(NSRange)range andUTF8String:(const char *)string;
@@ -65,8 +56,45 @@
 + (id) matchWithRegmatch:(regmatch_t)regmatch andString:(NSString *)string;
 + (id) matchWithRegmatch:(regmatch_t)regmatch andUTF8String:(const char *)string;
 
-/// @name Comparing matches
+
+#pragma mark - Compared String
+/// @name String Information
+
+/// The original string used to match the regular expression.
+@property (nonatomic, readonly) NSString   * fullString;
+
+/// The sub-string from the original which matched the regular expression.
+@property (nonatomic, readonly) NSString   * subString;
+
+
+#pragma mark - Match Parameters
+/// @name Match Parameters
+
+/// The starting index of the sub-string within the original string.
+@property (nonatomic, readonly) NSUInteger   startOfMatch;
+
+/// The ending index of the sub-string within the original string.
+@property (nonatomic, readonly) NSUInteger   endOfMatch;
+
+/// The range of the sub-string within the original string.
+@property (nonatomic, readonly) NSRange      range;
+
+
+#pragma mark - Comparing Matches
+/// @name Comparing Matches
+
+/// Compares two objects using the range of the matched sub-strings.
+///
+/// This method is used for sorting the results of a regular expression by
+/// the location of the matched sub-strings.
+/// @param match The object to compare with the receiver.
 - (NSComparisonResult) rangeCompare:(BKPosixRegmatch *)match;
+
+/// Compares two objects using the matched sub-strings for comparison.
+///
+/// This method is used for sorting the results of a regular expression by
+/// the comparison of the matched sub-strings.
+/// @param match The object to compare with the receiver.
 - (NSComparisonResult) subStringCompare:(BKPosixRegmatch *)match;
 
 @end

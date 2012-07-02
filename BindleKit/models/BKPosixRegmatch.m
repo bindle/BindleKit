@@ -39,8 +39,8 @@
 @implementation BKPosixRegmatch
 
 // string information
-@synthesize string    = _string;
-@synthesize subString = _subString;
+@synthesize fullString = _string;
+@synthesize subString  = _subString;
 
 // match information
 @synthesize startOfMatch;

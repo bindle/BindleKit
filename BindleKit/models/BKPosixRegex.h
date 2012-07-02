@@ -54,32 +54,107 @@
    NSInteger        errorCode;
 }
 
-// Regular expressions information
-@property (nonatomic, assign)   NSInteger   options;
-@property (nonatomic, retain)   NSString  * pattern;
-@property (nonatomic, readonly) NSArray   * subExpressions;
 
-// matches
-@property (nonatomic, readonly) NSArray   * matches;
-
-// error reporting
-@property (nonatomic, readonly) NSString  * errorMessage;
-@property (nonatomic, readonly) NSInteger   errorCode;
-
+#pragma mark - Object Management Methods
 /// @name Object Management Methods
+
+/// Initialize a new object using a provided pattern.
+/// @param pattern Regular expression used to initialize object.
 - (id) initWithPattern:(NSString *)pattern;
+
+/// Initialize a new object using a provided pattern.
+/// @param pattern Regular expression used to initialize object.
+/// @param options Is the bitwise OR of zero or more flags. See `-options` for
+/// poossible values.
 - (id) initWithPattern:(NSString *)pattern andOptions:(NSInteger)options;
+
+/// Creates a new object using a provided pattern.
+/// @param pattern Regular expression used to initialize object.
 + (id) expressionWithPattern:(NSString *)pattern;
+
+/// Creates a new object using a provided pattern.
+/// @param pattern Regular expression used to initialize object.
+/// @param options Is the bitwise OR of zero or more flags. See `-options` for
+/// poossible values.
 + (id) expressionWithPattern:(NSString *)pattern andOptions:(NSInteger)options;
 
-/// @name Compare Strings
-- (BOOL) executeWithString:(NSString *)string;
-- (BOOL) executeWithUTF8String:(const char *)string;
 
+#pragma mark - Common Patterns
 /// @name Common Patterns
+
+/// Initializes an object using a pattern to match IPv4 addresses.
 - (id) initWithIPv4AddressPattern;
+
+/// Initializes an object using a pattern to match IPv6 addresses.
 - (id) initWithIPv6AddressPattern;
+
+/// Creates an object using a pattern to match IPv4 addresses.
 + (id) expressionWithIPv4AddressPattern;
+
+/// Creates an object using a pattern to match IPv6 addresses.
 + (id) expressionWithIPv6AddressPattern;
+
+
+#pragma mark - Regular Expressions
+/// @name Regular Expressions
+
+/// options is the bitwise OR of zero or more optional flags.
+///
+/// See regex(3) man page for a detailed explanation of regular expression flags.
+///
+/// Flag           | Description
+/// ---------------|-------------
+/// `REG_EXTENDED` | Compile modern regular expressions.
+/// `REG_BASIC`    | Compile obsolete regular expressions.
+/// `REG_NOSPEC`   | Compile with recognition of all special characters turned off.
+/// `REG_ICASE`    | Compile for matching that ignores upper/lower case distinctions.
+/// `REG_NOSUB`    | Compile for matching that need only report success or failure.
+/// `REG_NEWLINE`  | Compile for newline-sensitive matching.
+@property (nonatomic, assign)   NSInteger   options;
+
+/// The string containing the regular expression.
+@property (nonatomic, retain) NSString * pattern;
+
+/// The sub-expressions contained, if any, within -pattern.
+@property (nonatomic, readonly) NSArray * subExpressions;
+
+
+#pragma mark - Matches
+/// @name Matches
+
+/// The resulting matches and sub-matches from executing a regular expression.
+/// @return Returns an array containing `BKPosixRegmatch` objects.
+@property (nonatomic, readonly) NSArray * matches;
+
+
+#pragma mark - Error Reporting
+/// @name Error Reporting
+
+/// The error message returned by a regular expression.
+@property (nonatomic, readonly) NSString * errorMessage;
+
+/// The error code returned by a regular expression.
+@property (nonatomic, readonly) NSInteger errorCode;
+
+
+#pragma mark - Compare Strings
+/// @name Compare Strings
+
+/// Executes the POSIX regular expression
+///
+/// Matches the compiled regulare expression aganst the provided string NSString
+/// object.
+/// @param string String to be matched by regulare expression.
+/// @return Returns `FALSE` if a match is not found.  If a match is found,
+/// `-matches` is populated and this method returns `TRUE`.
+- (BOOL) executeWithString:(NSString *)string;
+
+/// Executes the POSIX regular expression
+///
+/// Matches the compiled regulare expression aganst the provided string.
+/// @param string String to be matched by regulare expression.
+/// @return Returns `FALSE` if a match is not found.  If a match is found,
+/// `-matches` is populated and this method returns `TRUE`.
+- (BOOL) executeWithUTF8String:(const char *)string;
 
 @end

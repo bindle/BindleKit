@@ -252,9 +252,6 @@
 
 #pragma mark - Compare Strings
 
-/// Executes the POSIX regular expression
-/// Executes the regulare expression using the provided NSString.
-/// @param string        The string used when executing the regular expression.
 - (BOOL) executeWithString:(NSString *)string
 {
    BOOL                result;
@@ -268,9 +265,6 @@
 }
 
 
-/// Executes the POSIX regular expression
-/// Executes the regulare expression using the provided UTF8 string.
-/// @param string        The string used when executing the regular expression.
 - (BOOL) executeWithUTF8String:(const char *)string
 {
    NSInteger         err;
