@@ -31,7 +31,7 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/**
+/*
  *  Provides easy way to produce hashes from strings.
  */
 

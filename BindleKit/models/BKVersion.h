@@ -31,7 +31,7 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/**
+/*
  *  Provides library version information.
  *
  *  BKVersion provides API and package information about the Bindle Binaries

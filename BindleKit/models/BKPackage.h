@@ -31,7 +31,7 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/**
+/*
  *  Stores software package information.
  */
 
