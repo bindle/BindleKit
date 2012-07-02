@@ -31,21 +31,37 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/*
- *  Provides easy way to produce hashes from strings.
+/**
+ *  Provides easy way to produce hashes from NSString objects.
  */
 
 #import <Foundation/Foundation.h>
 
 #pragma mark -
 @interface NSString (BKStringHash)
+
+/// Provides a crypt hash of the receiver's data.
 - (NSString *) stringWithCryptHash;
+
+/// Provides a crypt hash of the receiver's data.
+/// @param salt The salt used by the crypt operation
 - (NSString *) stringWithCryptHashWithSalt:(NSString *)salt;
+
+/// Provides a MD2 hash of the receiver's data.
 - (NSString *) stringWithMD2Hash;
+
+/// Provides a MD4 hash of the receiver's data.
 - (NSString *) stringWithMD4Hash;
+
+/// Provides a MD5 hash of the receiver's data.
 - (NSString *) stringWithMD5Hash;
+
+/// Provides a SHA1 hash of the receiver's data.
 - (NSString *) stringWithSHA1Hash;
+
+/// Provides a SHA256 hash of the receiver's data.
 - (NSString *) stringWithSHA256Hash;
+
 @end
 
 #pragma mark -
