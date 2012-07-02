@@ -31,7 +31,7 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/*
+/**
  *  Stores software package information.
  */
 
@@ -55,7 +55,15 @@
 
 #pragma mark - Object Management Methods
 /// @name  Object Management Methods
+
+/// Initializes a package object.
+/// @param name The name of the package.
+/// @param version The referenced version of the package.
 - (id) initWithName:(NSString *)name version:(NSString *)version;
+
+/// Creates a package object.
+/// @param name The name of the package.
+/// @param version The referenced version of the package.
 + (id) packageWithName:(NSString *)name version:(NSString *)version;
 
 
@@ -70,15 +78,35 @@
 
 #pragma mark - Package Information methods
 /// @name Package Information methods
+
+/// The dot notated identifier of the package.
 @property (nonatomic, retain) NSString   * packageIdentifier;
+
+/// The name of the package.
 @property (nonatomic, retain) NSString   * packageName;
+
+/// The referenced version of the package.
 @property (nonatomic, retain) NSString   * packageVersion;
+
+/// The website of the package, if available.
 @property (nonatomic, retain) NSString   * packageWebsite;
+
+/// The license of the package.
 @property (nonatomic, retain) NSString   * packageLicense;
+
+/// The UTF8 string of the identifier of the package.
 @property (nonatomic, assign) const char * UTF8PackageIdentifier;
+
+/// The UTF8 string name of the package.
 @property (nonatomic, assign) const char * UTF8PackageName;
+
+/// The UTF8 string of referenced version of the package.
 @property (nonatomic, assign) const char * UTF8PackageVersion;
+
+/// The UTF8 string of the website of the package, if available.
 @property (nonatomic, assign) const char * UTF8PackageWebsite;
+
+/// The UTF8 string of the license of the package, if available.
 @property (nonatomic, assign) const char * UTF8PackageLicense;
 
 @end
