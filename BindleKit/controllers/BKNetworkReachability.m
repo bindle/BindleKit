@@ -79,6 +79,7 @@
    if ((reachabilityRef))
       CFRelease(reachabilityRef);
    [notificationString release];
+   [hostname release];
    [super dealloc];
    return;
 }
