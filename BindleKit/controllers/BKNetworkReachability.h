@@ -45,15 +45,22 @@
 
 @interface BKNetworkReachability: NSObject
 {
-   BOOL                         notifierOn;
+   // monitoring information
    BOOL                         linkLocalRef;
-   BOOL                         logUpdates;
    SCNetworkReachabilityRef     reachabilityRef;
    SCNetworkReachabilityFlags   reachabilityFlags;
+
+   // notification information
+   BOOL                         notifierOn;
+   BOOL                         logUpdates;
    NSString                   * notificationString;
+
+   // host information
    NSString                   * hostname;
 }
 
+// @name monitoring information
+@property (nonatomic, readonly) SCNetworkReachabilityFlags reachabilityFlags;
 @property (nonatomic, readonly) BOOL       connectionOnDemand;
 @property (nonatomic, readonly) BOOL       connectionOnTraffic;
 @property (nonatomic, readonly) BOOL       connectionRequired;
@@ -64,9 +71,10 @@
 @property (assign, readwrite)   BOOL       logUpdates;
 @property (nonatomic, readonly) BOOL       reachable;
 @property (nonatomic, readonly) BOOL       transientConnection;
+
+// @name notification information
 @property (nonatomic, retain)   NSString * notificationString;
 @property (nonatomic, retain)   NSString * hostname;
-@property (nonatomic, readonly) SCNetworkReachabilityFlags reachabilityFlags;
 
 /// @name Creating and Initializing a BKNetworkReachability
 - (id) initWithHostName:(NSString *)hostName;

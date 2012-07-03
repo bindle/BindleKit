@@ -65,20 +65,32 @@
 #pragma mark - BKNetworkReachability Class Implementation
 @implementation BKNetworkReachability
 
-@synthesize logUpdates;
+// monitoring information
 @synthesize reachabilityFlags;
-@synthesize hostname;
+
+// notification information
+@synthesize logUpdates;
 @synthesize notificationString;
+
+// host information
+@synthesize hostname;
 
 
 #pragma mark - Creating and Initializing a BKNetworkReachability
 
 - (void) dealloc
 {
+   // stops notifier
    [self stopNotifier];
+
+   // monitoring information
    if ((reachabilityRef))
       CFRelease(reachabilityRef);
+
+   // notification information
    [notificationString release];
+
+   // host information
    [hostname release];
    [super dealloc];
    return;
