@@ -1,0 +1,1229 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>BKPosixRegex Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">BindleKit </a></h1>
+				<a id="developerHome" href="../index.html">Bindle Binaries</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">BKPosixRegex Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/errorCode">&nbsp;&nbsp;&nbsp;&nbsp;errorCode</option>
+	
+	<option value="//api/name/errorMessage">&nbsp;&nbsp;&nbsp;&nbsp;errorMessage</option>
+	
+	<option value="//api/name/matches">&nbsp;&nbsp;&nbsp;&nbsp;matches</option>
+	
+	<option value="//api/name/options">&nbsp;&nbsp;&nbsp;&nbsp;options</option>
+	
+	<option value="//api/name/pattern">&nbsp;&nbsp;&nbsp;&nbsp;pattern</option>
+	
+	<option value="//api/name/subExpressions">&nbsp;&nbsp;&nbsp;&nbsp;subExpressions</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/expressionWithIPv4AddressPattern">&nbsp;&nbsp;&nbsp;&nbsp;+ expressionWithIPv4AddressPattern</option>
+	
+	<option value="//api/name/expressionWithIPv6AddressPattern">&nbsp;&nbsp;&nbsp;&nbsp;+ expressionWithIPv6AddressPattern</option>
+	
+	<option value="//api/name/expressionWithPattern:">&nbsp;&nbsp;&nbsp;&nbsp;+ expressionWithPattern:</option>
+	
+	<option value="//api/name/expressionWithPattern:andOptions:">&nbsp;&nbsp;&nbsp;&nbsp;+ expressionWithPattern:andOptions:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/executeWithString:">&nbsp;&nbsp;&nbsp;&nbsp;- executeWithString:</option>
+	
+	<option value="//api/name/executeWithUTF8String:">&nbsp;&nbsp;&nbsp;&nbsp;- executeWithUTF8String:</option>
+	
+	<option value="//api/name/initWithIPv4AddressPattern">&nbsp;&nbsp;&nbsp;&nbsp;- initWithIPv4AddressPattern</option>
+	
+	<option value="//api/name/initWithIPv6AddressPattern">&nbsp;&nbsp;&nbsp;&nbsp;- initWithIPv6AddressPattern</option>
+	
+	<option value="//api/name/initWithPattern:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithPattern:</option>
+	
+	<option value="//api/name/initWithPattern:andOptions:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithPattern:andOptions:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Object Management Methods">Object Management Methods</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Common Patterns">Common Patterns</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Regular Expressions">Regular Expressions</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Matches">Matches</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Error Reporting">Error Reporting</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Compare Strings">Compare Strings</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/errorCode">errorCode</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/errorMessage">errorMessage</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/matches">matches</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/options">options</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pattern">pattern</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/subExpressions">subExpressions</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/expressionWithIPv4AddressPattern">expressionWithIPv4AddressPattern</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/expressionWithIPv6AddressPattern">expressionWithIPv6AddressPattern</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/expressionWithPattern:">expressionWithPattern:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/expressionWithPattern:andOptions:">expressionWithPattern:andOptions:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/executeWithString:">executeWithString:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/executeWithUTF8String:">executeWithUTF8String:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithIPv4AddressPattern">initWithIPv4AddressPattern</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithIPv6AddressPattern">initWithIPv6AddressPattern</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithPattern:">initWithPattern:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithPattern:andOptions:">initWithPattern:andOptions:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="BKPosixRegex Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">BKPosixRegex Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">BKPosixRegex.h<br />BKPosixRegex.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Objective-C wrapper for POSIX regular expressions using NSString.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Object Management Methods" name="task_Object Management Methods"></a>
+						<h3 class="subsubtitle task-title">Object Management Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithPattern:">&ndash;&nbsp;initWithPattern:</a></code>
+		<span class="tooltip"><p>Initialize a new object using a provided <a href="#//api/name/pattern">pattern</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithPattern:andOptions:">&ndash;&nbsp;initWithPattern:andOptions:</a></code>
+		<span class="tooltip"><p>Initialize a new object using a provided <a href="#//api/name/pattern">pattern</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/expressionWithPattern:">+&nbsp;expressionWithPattern:</a></code>
+		<span class="tooltip"><p>Creates a new object using a provided <a href="#//api/name/pattern">pattern</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/expressionWithPattern:andOptions:">+&nbsp;expressionWithPattern:andOptions:</a></code>
+		<span class="tooltip"><p>Creates a new object using a provided <a href="#//api/name/pattern">pattern</a>.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Common Patterns" name="task_Common Patterns"></a>
+						<h3 class="subsubtitle task-title">Common Patterns</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithIPv4AddressPattern">&ndash;&nbsp;initWithIPv4AddressPattern</a></code>
+		<span class="tooltip"><p>Initializes an object using a <a href="#//api/name/pattern">pattern</a> to match IPv4 addresses.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithIPv6AddressPattern">&ndash;&nbsp;initWithIPv6AddressPattern</a></code>
+		<span class="tooltip"><p>Initializes an object using a <a href="#//api/name/pattern">pattern</a> to match IPv6 addresses.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/expressionWithIPv4AddressPattern">+&nbsp;expressionWithIPv4AddressPattern</a></code>
+		<span class="tooltip"><p>Creates an object using a <a href="#//api/name/pattern">pattern</a> to match IPv4 addresses.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/expressionWithIPv6AddressPattern">+&nbsp;expressionWithIPv6AddressPattern</a></code>
+		<span class="tooltip"><p>Creates an object using a <a href="#//api/name/pattern">pattern</a> to match IPv6 addresses.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Regular Expressions" name="task_Regular Expressions"></a>
+						<h3 class="subsubtitle task-title">Regular Expressions</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/options">&nbsp;&nbsp;options</a></code>
+		<span class="tooltip"><p>options is the bitwise OR of zero or more optional flags.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pattern">&nbsp;&nbsp;pattern</a></code>
+		<span class="tooltip"><p>The string containing the regular expression.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/subExpressions">&nbsp;&nbsp;subExpressions</a></code>
+		<span class="tooltip"><p>The sub-expressions contained, if any, within <a href="#//api/name/pattern">pattern</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Matches" name="task_Matches"></a>
+						<h3 class="subsubtitle task-title">Matches</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/matches">&nbsp;&nbsp;matches</a></code>
+		<span class="tooltip"><p>The resulting matches and sub-matches from executing a regular expression.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Error Reporting" name="task_Error Reporting"></a>
+						<h3 class="subsubtitle task-title">Error Reporting</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/errorMessage">&nbsp;&nbsp;errorMessage</a></code>
+		<span class="tooltip"><p>The error message returned by a regular expression.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/errorCode">&nbsp;&nbsp;errorCode</a></code>
+		<span class="tooltip"><p>The error code returned by a regular expression.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Compare Strings" name="task_Compare Strings"></a>
+						<h3 class="subsubtitle task-title">Compare Strings</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/executeWithString:">&ndash;&nbsp;executeWithString:</a></code>
+		<span class="tooltip"><p>Executes the POSIX regular expression</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/executeWithUTF8String:">&ndash;&nbsp;executeWithUTF8String:</a></code>
+		<span class="tooltip"><p>Executes the POSIX regular expression</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/errorCode" title="errorCode"></a>
+	<h3 class="subsubtitle method-title">errorCode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The error code returned by a regular expression.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSInteger errorCode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/errorMessage" title="errorMessage"></a>
+	<h3 class="subsubtitle method-title">errorMessage</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The error message returned by a regular expression.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *errorMessage</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/matches" title="matches"></a>
+	<h3 class="subsubtitle method-title">matches</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The resulting matches and sub-matches from executing a regular expression.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSArray *matches</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns an array containing <a href="../Classes/BKPosixRegmatch.html"><code>BKPosixRegmatch</code></a> objects.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/options" title="options"></a>
+	<h3 class="subsubtitle method-title">options</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>options is the bitwise OR of zero or more optional flags.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSInteger options</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>See regex(3) man page for a detailed explanation of regular expression flags.</p>
+
+<table>
+<thead>
+<tr>
+<th>Flag           </th>
+<th> Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REG_EXTENDED</code> </td>
+<td> Compile modern regular expressions.</td>
+</tr>
+<tr>
+<td><code>REG_BASIC</code>    </td>
+<td> Compile obsolete regular expressions.</td>
+</tr>
+<tr>
+<td><code>REG_NOSPEC</code>   </td>
+<td> Compile with recognition of all special characters turned off.</td>
+</tr>
+<tr>
+<td><code>REG_ICASE</code>    </td>
+<td> Compile for matching that ignores upper/lower case distinctions.</td>
+</tr>
+<tr>
+<td><code>REG_NOSUB</code>    </td>
+<td> Compile for matching that need only report success or failure.</td>
+</tr>
+<tr>
+<td><code>REG_NEWLINE</code>  </td>
+<td> Compile for newline-sensitive matching.</td>
+</tr>
+</tbody>
+</table>
+
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pattern" title="pattern"></a>
+	<h3 class="subsubtitle method-title">pattern</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The string containing the regular expression.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSString *pattern</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/subExpressions" title="subExpressions"></a>
+	<h3 class="subsubtitle method-title">subExpressions</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The sub-expressions contained, if any, within <a href="#//api/name/pattern">pattern</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSArray *subExpressions</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/expressionWithIPv4AddressPattern" title="expressionWithIPv4AddressPattern"></a>
+	<h3 class="subsubtitle method-title">expressionWithIPv4AddressPattern</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates an object using a <a href="#//api/name/pattern">pattern</a> to match IPv4 addresses.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (id)expressionWithIPv4AddressPattern</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/expressionWithIPv6AddressPattern" title="expressionWithIPv6AddressPattern"></a>
+	<h3 class="subsubtitle method-title">expressionWithIPv6AddressPattern</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates an object using a <a href="#//api/name/pattern">pattern</a> to match IPv6 addresses.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (id)expressionWithIPv6AddressPattern</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/expressionWithPattern:" title="expressionWithPattern:"></a>
+	<h3 class="subsubtitle method-title">expressionWithPattern:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a new object using a provided <a href="#//api/name/pattern">pattern</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (id)expressionWithPattern:(NSString *)<em>pattern</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pattern</em></dt>
+			<dd><p>Regular expression used to initialize object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/expressionWithPattern:andOptions:" title="expressionWithPattern:andOptions:"></a>
+	<h3 class="subsubtitle method-title">expressionWithPattern:andOptions:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a new object using a provided <a href="#//api/name/pattern">pattern</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (id)expressionWithPattern:(NSString *)<em>pattern</em> andOptions:(NSInteger)<em>options</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pattern</em></dt>
+			<dd><p>Regular expression used to initialize object.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>Is the bitwise OR of zero or more flags. See <a href="#//api/name/options"><code>options</code></a> for
+poossible values.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/executeWithString:" title="executeWithString:"></a>
+	<h3 class="subsubtitle method-title">executeWithString:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Executes the POSIX regular expression</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)executeWithString:(NSString *)<em>string</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>String to be matched by regulare expression.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns <code>FALSE</code> if a match is not found.  If a match is found,
+<a href="#//api/name/matches"><code>matches</code></a> is populated and this method returns <code>TRUE</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Matches the compiled regulare expression aganst the provided string NSString
+object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/executeWithUTF8String:" title="executeWithUTF8String:"></a>
+	<h3 class="subsubtitle method-title">executeWithUTF8String:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Executes the POSIX regular expression</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)executeWithUTF8String:(const char *)<em>string</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>String to be matched by regulare expression.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns <code>FALSE</code> if a match is not found.  If a match is found,
+<a href="#//api/name/matches"><code>matches</code></a> is populated and this method returns <code>TRUE</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Matches the compiled regulare expression aganst the provided string.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithIPv4AddressPattern" title="initWithIPv4AddressPattern"></a>
+	<h3 class="subsubtitle method-title">initWithIPv4AddressPattern</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initializes an object using a <a href="#//api/name/pattern">pattern</a> to match IPv4 addresses.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithIPv4AddressPattern</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithIPv6AddressPattern" title="initWithIPv6AddressPattern"></a>
+	<h3 class="subsubtitle method-title">initWithIPv6AddressPattern</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initializes an object using a <a href="#//api/name/pattern">pattern</a> to match IPv6 addresses.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithIPv6AddressPattern</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithPattern:" title="initWithPattern:"></a>
+	<h3 class="subsubtitle method-title">initWithPattern:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initialize a new object using a provided <a href="#//api/name/pattern">pattern</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithPattern:(NSString *)<em>pattern</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pattern</em></dt>
+			<dd><p>Regular expression used to initialize object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithPattern:andOptions:" title="initWithPattern:andOptions:"></a>
+	<h3 class="subsubtitle method-title">initWithPattern:andOptions:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initialize a new object using a provided <a href="#//api/name/pattern">pattern</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithPattern:(NSString *)<em>pattern</em> andOptions:(NSInteger)<em>options</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pattern</em></dt>
+			<dd><p>Regular expression used to initialize object.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>Is the bitwise OR of zero or more flags. See <a href="#//api/name/options"><code>options</code></a> for
+poossible values.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKPosixRegex.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2012 Bindle Binaries. All rights reserved. (Last updated: 2012-07-02)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
