@@ -25,6 +25,10 @@
 		A014851E143D4F3200A24446 /* BKNetworkReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = A014851B143D4F3200A24446 /* BKNetworkReachability.h */; };
 		A014851F143D4F3200A24446 /* BKNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A014851C143D4F3200A24446 /* BKNetworkReachability.m */; };
 		A0148520143D4F3200A24446 /* BKNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A014851C143D4F3200A24446 /* BKNetworkReachability.m */; };
+		A024C24D15A3B52500D8E38A /* BKNetworkReachabilityResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = A024C24B15A3B52500D8E38A /* BKNetworkReachabilityResolver.h */; };
+		A024C24E15A3B52500D8E38A /* BKNetworkReachabilityResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = A024C24B15A3B52500D8E38A /* BKNetworkReachabilityResolver.h */; };
+		A024C24F15A3B52500D8E38A /* BKNetworkReachabilityResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = A024C24C15A3B52500D8E38A /* BKNetworkReachabilityResolver.m */; };
+		A024C25015A3B52500D8E38A /* BKNetworkReachabilityResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = A024C24C15A3B52500D8E38A /* BKNetworkReachabilityResolver.m */; };
 		A028021D14F0CAD100095E98 /* BKActivityDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = A028021B14F0CAD100095E98 /* BKActivityDisplayController.h */; };
 		A028021E14F0CAD100095E98 /* BKActivityDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = A028021C14F0CAD100095E98 /* BKActivityDisplayController.m */; };
 		A03F4B2514E5D60C0077F16D /* BKHash.h in Headers */ = {isa = PBXBuildFile; fileRef = A03F4B2314E5D60C0077F16D /* BKHash.h */; };
@@ -111,6 +115,8 @@
 /* Begin PBXFileReference section */
 		A014851B143D4F3200A24446 /* BKNetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKNetworkReachability.h; sourceTree = "<group>"; };
 		A014851C143D4F3200A24446 /* BKNetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKNetworkReachability.m; sourceTree = "<group>"; };
+		A024C24B15A3B52500D8E38A /* BKNetworkReachabilityResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKNetworkReachabilityResolver.h; sourceTree = "<group>"; };
+		A024C24C15A3B52500D8E38A /* BKNetworkReachabilityResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKNetworkReachabilityResolver.m; sourceTree = "<group>"; };
 		A028021B14F0CAD100095E98 /* BKActivityDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKActivityDisplayController.h; sourceTree = "<group>"; };
 		A028021C14F0CAD100095E98 /* BKActivityDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKActivityDisplayController.m; sourceTree = "<group>"; };
 		A03F4B2314E5D60C0077F16D /* BKHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKHash.h; sourceTree = "<group>"; };
@@ -262,6 +268,8 @@
 			children = (
 				A014851B143D4F3200A24446 /* BKNetworkReachability.h */,
 				A014851C143D4F3200A24446 /* BKNetworkReachability.m */,
+				A024C24B15A3B52500D8E38A /* BKNetworkReachabilityResolver.h */,
+				A024C24C15A3B52500D8E38A /* BKNetworkReachabilityResolver.m */,
 				A064D970140E053200255FD3 /* iOS */,
 			);
 			name = Controllers;
@@ -390,6 +398,7 @@
 				A0C431C1150B8A6B000047D0 /* BKListController.h in Headers */,
 				A0BF01B3157ACD7400CF7690 /* BKPosixRegex.h in Headers */,
 				A073B463157F178C00F30BAB /* BKPosixRegmatch.h in Headers */,
+				A024C24D15A3B52500D8E38A /* BKNetworkReachabilityResolver.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +417,7 @@
 				A03F4B2614E5D60C0077F16D /* BKHash.h in Headers */,
 				A0BF01B4157ACD7400CF7690 /* BKPosixRegex.h in Headers */,
 				A073B464157F178C00F30BAB /* BKPosixRegmatch.h in Headers */,
+				A024C24E15A3B52500D8E38A /* BKNetworkReachabilityResolver.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +548,7 @@
 				A0C431C2150B8A6B000047D0 /* BKListController.m in Sources */,
 				A0BF01B5157ACD7400CF7690 /* BKPosixRegex.m in Sources */,
 				A073B465157F178C00F30BAB /* BKPosixRegmatch.m in Sources */,
+				A024C24F15A3B52500D8E38A /* BKNetworkReachabilityResolver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +569,7 @@
 				A03F4B2814E5D60C0077F16D /* BKHash.m in Sources */,
 				A0BF01B6157ACD7400CF7690 /* BKPosixRegex.m in Sources */,
 				A073B466157F178C00F30BAB /* BKPosixRegmatch.m in Sources */,
+				A024C25015A3B52500D8E38A /* BKNetworkReachabilityResolver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
