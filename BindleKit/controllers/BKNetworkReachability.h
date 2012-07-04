@@ -78,15 +78,17 @@
 @property (nonatomic, readonly) BOOL       isDirect;
 @property (nonatomic, readonly) BOOL       isLocalAddress;
 @property (nonatomic, readonly) BOOL       isWWAN;
-@property (assign, readwrite)   BOOL       logUpdates;
 @property (nonatomic, readonly) BOOL       reachable;
 @property (nonatomic, readonly) BOOL       transientConnection;
+
+/// @name host information
+@property (nonatomic, retain)   NSString * hostname;
 
 /// @name Manage Notifications
 - (BOOL) startNotifier;
 - (void) stopNotifier;
 @property (nonatomic, retain)   NSString * notificationString;
-@property (nonatomic, retain)   NSString * hostname;
+@property (assign, readwrite)   BOOL       logUpdates;
 
 /// @name Network Flag Handling
 - (void) logNetworkReachabilityFlags;
