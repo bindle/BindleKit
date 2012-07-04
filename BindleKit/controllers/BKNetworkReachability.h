@@ -31,8 +31,9 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/*
- *  BKNetworkReachability.m - Wrapper class for SCNetworkReachability
+/**
+ *  BKNetworkReachability is an Objective-C interface to the
+ *  SCNetworkReachability programming interface.
  */
 
 
