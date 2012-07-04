@@ -42,6 +42,8 @@
 #import <UIKit/UIKit.h>
 
 
+@class BKButtonImages;
+
 enum
 {
    BKButtonColorBlack           = 0x000000,
