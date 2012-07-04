@@ -59,6 +59,16 @@
    NSString                   * hostname;
 }
 
+/// @name Creating and Initializing a BKNetworkReachability object
+- (id) initWithHostName:(NSString *)hostName;
+- (id) initWithAddress:(struct sockaddr_in *)hostAddress;
+- (id) initForInternetConnection;
+- (id) initForLinkLocal;
++ (BKNetworkReachability *) reachabilityWithHostName:(NSString *)hostName;
++ (BKNetworkReachability *) reachabilityWithAddress:(struct sockaddr_in *)hostAddress;
++ (BKNetworkReachability *) reachabilityForInternetConnection;
++ (BKNetworkReachability *) reachabilityForLinkLocal;
+
 // @name monitoring information
 @property (nonatomic, readonly) SCNetworkReachabilityFlags reachabilityFlags;
 @property (nonatomic, readonly) BOOL       connectionOnDemand;
@@ -72,23 +82,11 @@
 @property (nonatomic, readonly) BOOL       reachable;
 @property (nonatomic, readonly) BOOL       transientConnection;
 
-// @name notification information
-@property (nonatomic, retain)   NSString * notificationString;
-@property (nonatomic, retain)   NSString * hostname;
-
-/// @name Creating and Initializing a BKNetworkReachability
-- (id) initWithHostName:(NSString *)hostName;
-- (id) initWithAddress:(struct sockaddr_in *)hostAddress;
-- (id) initForInternetConnection;
-- (id) initForLinkLocal;
-+ (BKNetworkReachability *) reachabilityWithHostName:(NSString *)hostName;
-+ (BKNetworkReachability *) reachabilityWithAddress:(struct sockaddr_in *)hostAddress;
-+ (BKNetworkReachability *) reachabilityForInternetConnection;
-+ (BKNetworkReachability *) reachabilityForLinkLocal;
-
-/// @name manage notifications
+/// @name Manage Notifications
 - (BOOL) startNotifier;
 - (void) stopNotifier;
+@property (nonatomic, retain)   NSString * notificationString;
+@property (nonatomic, retain)   NSString * hostname;
 
 /// @name Network Flag Handling
 - (void) logNetworkReachabilityFlags;
