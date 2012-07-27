@@ -38,6 +38,7 @@
 # saves srcdir from command line arguments
 if test "x${1}" == "x";then
    echo "Usage: ${0} srcdir [ savedir ]" 1>&2;
+   echo "Usage: ${0} auto" 1>&2;
    exit 1;
 fi;
 SRCDIR=$1;
@@ -51,6 +52,23 @@ if test "x${2}" != "x";then
       exit 1;
    fi
 fi;
+
+# auto determines locations
+if test "x${SRCDIR}" == "xauto";then
+   SRCDIR=`git rev-parse --show-toplevel 2> /dev/null`
+   if test "x${SRCDIR}" == "x";then
+      echo "${0}: unable to detect root of source directory." 1>&2;
+      exit 1;
+   fi
+   if test "x${2}" == "x";then
+      TMPDIR=`dirname ${0}`
+      TMPDIR=`echo ${TMPDIR} |sed -e 's/build-aux\/.*$/build-aux/g'`
+      TMP=`basename ${TMPDIR}`
+      if text "x${TMP}" == "xbuild-dir";then
+         OUTDIR=${TMPDIR}
+      fi
+   fi
+fi
 
 GPV="" # git project version (XXX.YYY.ZZZ.gCCC)
 GBV="" # git build version (gCCC)
