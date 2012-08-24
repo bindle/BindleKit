@@ -108,7 +108,7 @@ if test -f ${SRCDIR}/.git/config;then
 
    # write data to file and display results
    if test "x${GPV}" != "x";then
-      rm -f ${GIT_VERSION_FILE} ${GIT_VERSION_HEADER} ${GIT_VERSION_PREFIX_HEADER_DIR}
+      rm -f ${GIT_VERSION_FILE} ${GIT_VERSION_HEADER} ${GIT_VERSION_PREFIX_HEADER}
 
       # writes git version file
       if test -d ${GIT_VERSION_FILE_DIR};then
