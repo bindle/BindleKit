@@ -64,12 +64,13 @@ if test "x${SRCDIR}" == "xauto";then
       TMPDIR=`dirname ${0}`
       TMPDIR=`echo ${TMPDIR} |sed -e 's/build-aux\/.*$/build-aux/g'`
       TMP=`basename ${TMPDIR}`
-      if text "x${TMP}" == "xbuild-dir";then
+      if test "x${TMP}" == "xbuild-aux";then
          OUTDIR=${TMPDIR}
       fi
    fi
 fi
 
+# clears git information
 GPV="" # git project version (XXX.YYY.ZZZ.gCCC)
 GBV="" # git build version (gCCC)
 GAV="" # git application version (XXX.YYY.ZZZ)
