@@ -1,0 +1,3 @@
+[submodule "contrib/bindletools"]
+	path = contrib/bindletools
+	url = git://github.com/bindle/bindletools.git
