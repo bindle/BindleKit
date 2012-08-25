@@ -7,27 +7,27 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		A0CE171915E98DF900AC6A2F /* BindleKit: Git Submodules */ = {
+		A019D34515E990650012308A /* BindleKit: Git Submodules */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = A0CE171A15E98DF900AC6A2F /* Build configuration list for PBXAggregateTarget "BindleKit: Git Submodules" */;
+			buildConfigurationList = A019D34615E990650012308A /* Build configuration list for PBXAggregateTarget "BindleKit: Git Submodules" */;
 			buildPhases = (
-				A0CE171D15E98E0000AC6A2F /* ShellScript */,
+				A019D34B15E9907B0012308A /* ShellScript */,
 			);
 			dependencies = (
 			);
 			name = "BindleKit: Git Submodules";
 			productName = "BindleKit: Git Submodules";
 		};
-		A0FCC95614E248A2001A0644 /* BindleKit: Git Package Version */ = {
+		A0FCC95614E248A2001A0644 /* BindleKit: Git Version */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = A0FCC95714E248A2001A0644 /* Build configuration list for PBXAggregateTarget "BindleKit: Git Package Version" */;
+			buildConfigurationList = A0FCC95714E248A2001A0644 /* Build configuration list for PBXAggregateTarget "BindleKit: Git Version" */;
 			buildPhases = (
 				A0FCC95A14E248AA001A0644 /* ShellScript */,
 			);
 			dependencies = (
-				A0CE171F15E98E1500AC6A2F /* PBXTargetDependency */,
+				A019D34A15E9906D0012308A /* PBXTargetDependency */,
 			);
-			name = "BindleKit: Git Package Version";
+			name = "BindleKit: Git Version";
 			productName = "Git Package Version";
 		};
 /* End PBXAggregateTarget section */
@@ -108,11 +108,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A0CE171E15E98E1500AC6A2F /* PBXContainerItemProxy */ = {
+		A019D34915E9906D0012308A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A07D34EB140DC1E800832E1F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A0CE171915E98DF900AC6A2F;
+			remoteGlobalIDString = A019D34515E990650012308A;
 			remoteInfo = "BindleKit: Git Submodules";
 		};
 		A0FCC95B14E248E8001A0644 /* PBXContainerItemProxy */ = {
@@ -134,6 +134,7 @@
 /* Begin PBXFileReference section */
 		A014851B143D4F3200A24446 /* BKNetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKNetworkReachability.h; sourceTree = "<group>"; };
 		A014851C143D4F3200A24446 /* BKNetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKNetworkReachability.m; sourceTree = "<group>"; };
+		A019D35015E991E70012308A /* bindletools.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bindletools.xcodeproj; path = bindletools/bindletools.xcodeproj; sourceTree = "<group>"; };
 		A024C24B15A3B52500D8E38A /* BKNetworkReachabilityResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKNetworkReachabilityResolver.h; sourceTree = "<group>"; };
 		A024C24C15A3B52500D8E38A /* BKNetworkReachabilityResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKNetworkReachabilityResolver.m; sourceTree = "<group>"; };
 		A028021B14F0CAD100095E98 /* BKActivityDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKActivityDisplayController.h; sourceTree = "<group>"; };
@@ -217,6 +218,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A019D34C15E991090012308A /* Contributed Software */ = {
+			isa = PBXGroup;
+			children = (
+				A019D35015E991E70012308A /* bindletools.xcodeproj */,
+			);
+			name = "Contributed Software";
+			path = contrib;
+			sourceTree = "<group>";
+		};
+		A019D35115E991E70012308A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		A0410FA614282F8C00ACE897 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +347,7 @@
 				A07A7F261416D18000AB872D /* TODO */,
 				A07D34F9140DC1E800832E1F /* BindleKit */,
 				A070F763159F9B5200D0C083 /* Documentation */,
+				A019D34C15E991090012308A /* Contributed Software */,
 				A07D34F6140DC1E800832E1F /* Frameworks */,
 				A07D34F5140DC1E800832E1F /* Products */,
 			);
@@ -433,16 +451,16 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXLegacyTarget section */
-		A06DE7B11587375A0009F87D /* BindleKit Docset */ = {
+		A06DE7B11587375A0009F87D /* BindleKit: Docset */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = A06DE7B41587375A0009F87D /* Build configuration list for PBXLegacyTarget "BindleKit Docset" */;
+			buildConfigurationList = A06DE7B41587375A0009F87D /* Build configuration list for PBXLegacyTarget "BindleKit: Docset" */;
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
 			dependencies = (
 			);
-			name = "BindleKit Docset";
+			name = "BindleKit: Docset";
 			passBuildSettingsInEnvironment = 1;
 			productName = "BindleKit Docset";
 		};
@@ -504,19 +522,25 @@
 			mainGroup = A07D34E9140DC1E800832E1F;
 			productRefGroup = A07D34F5140DC1E800832E1F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A019D35115E991E70012308A /* Products */;
+					ProjectRef = A019D35015E991E70012308A /* bindletools.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				A07D34F3140DC1E800832E1F /* iBindleKit */,
 				A0F713581413520300252B5F /* BindleKit */,
-				A0FCC95614E248A2001A0644 /* BindleKit: Git Package Version */,
-				A06DE7B11587375A0009F87D /* BindleKit Docset */,
-				A0CE171915E98DF900AC6A2F /* BindleKit: Git Submodules */,
+				A0FCC95614E248A2001A0644 /* BindleKit: Git Version */,
+				A06DE7B11587375A0009F87D /* BindleKit: Docset */,
+				A019D34515E990650012308A /* BindleKit: Git Submodules */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A0CE171D15E98E0000AC6A2F /* ShellScript */ = {
+		A019D34B15E9907B0012308A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -527,7 +551,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "git rev-parse --show-toplevel > /dev/null || exit 1\ncd `git rev-parse --show-toplevel`\ngit submodule init\ngit submodule sync\ngit submodule update";
+			shellScript = "git rev-parse --show-toplevel > /dev/null || exi t1\ncd `git rev-parse --show-toplevel`\ngit submodule init\ngit submodule sync\ngit submodule update";
 			showEnvVarsInLog = 0;
 		};
 		A0FCC95A14E248AA001A0644 /* ShellScript */ = {
@@ -541,7 +565,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "contrib/bindletools/build-aux/git-package-version.sh auto";
+			shellScript = "contrib/bindletools/build-aux/git-package-version.sh ${PROJECT_DIR} ${PROJECT_DIR}/BindleKit";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -600,24 +624,38 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A0CE171F15E98E1500AC6A2F /* PBXTargetDependency */ = {
+		A019D34A15E9906D0012308A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A0CE171915E98DF900AC6A2F /* BindleKit: Git Submodules */;
-			targetProxy = A0CE171E15E98E1500AC6A2F /* PBXContainerItemProxy */;
+			target = A019D34515E990650012308A /* BindleKit: Git Submodules */;
+			targetProxy = A019D34915E9906D0012308A /* PBXContainerItemProxy */;
 		};
 		A0FCC95C14E248E8001A0644 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A0FCC95614E248A2001A0644 /* BindleKit: Git Package Version */;
+			target = A0FCC95614E248A2001A0644 /* BindleKit: Git Version */;
 			targetProxy = A0FCC95B14E248E8001A0644 /* PBXContainerItemProxy */;
 		};
 		A0FCC95E14E248ED001A0644 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A0FCC95614E248A2001A0644 /* BindleKit: Git Package Version */;
+			target = A0FCC95614E248A2001A0644 /* BindleKit: Git Version */;
 			targetProxy = A0FCC95D14E248ED001A0644 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		A019D34715E990650012308A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A019D34815E990650012308A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		A06DE7B21587375A0009F87D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -786,7 +824,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A06DE7B41587375A0009F87D /* Build configuration list for PBXLegacyTarget "BindleKit Docset" */ = {
+		A019D34615E990650012308A /* Build configuration list for PBXAggregateTarget "BindleKit: Git Submodules" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A019D34715E990650012308A /* Debug */,
+				A019D34815E990650012308A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A06DE7B41587375A0009F87D /* Build configuration list for PBXLegacyTarget "BindleKit: Docset" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A06DE7B21587375A0009F87D /* Debug */,
@@ -813,14 +859,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A0CE171A15E98DF900AC6A2F /* Build configuration list for PBXAggregateTarget "BindleKit: Git Submodules" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A0CE171B15E98DF900AC6A2F /* Debug */,
-				A0CE171C15E98DF900AC6A2F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
 		A0F713611413520300252B5F /* Build configuration list for PBXNativeTarget "BindleKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -830,7 +868,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A0FCC95714E248A2001A0644 /* Build configuration list for PBXAggregateTarget "BindleKit: Git Package Version" */ = {
+		A0FCC95714E248A2001A0644 /* Build configuration list for PBXAggregateTarget "BindleKit: Git Version" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0FCC95814E248A2001A0644 /* Debug */,
