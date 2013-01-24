@@ -11,6 +11,7 @@ Copyright (C) 2012 Bindle Binaries <syzdek@bindlebinaries.com>.
      docsets. (syzdek)
    - Updating accompanying text files to use _markdown_ syntax. (syzdek)
    - Updating git-package-version.sh to be more robust. (syzdek)
+   - Enabling Automatic Reference Counting on all targets. (syzdek)
 
 #### 0.2   (2012-03-17)
    - Fixing BKCatalog example. (syzdek)
