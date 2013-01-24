@@ -79,10 +79,8 @@
    textField.inputAccessoryView         = accView;
    textField.delegate                   = self;
    [aView addSubview:textField];
-   [accView release];
 
    self.view = aView;
-   [aView release];
 
    return;
 }

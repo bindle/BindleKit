@@ -246,6 +246,7 @@
 		A07A62491450D32900DDCD38 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SlidingKB/SlidingKB-Prefix.pch";
 				INFOPLIST_FILE = "SlidingKB/SlidingKB-Info.plist";
@@ -257,6 +258,7 @@
 		A07A624A1450D32900DDCD38 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SlidingKB/SlidingKB-Prefix.pch";
 				INFOPLIST_FILE = "SlidingKB/SlidingKB-Info.plist";
