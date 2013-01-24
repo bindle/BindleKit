@@ -170,8 +170,6 @@
 - (void) leftRotate
 {
    id anObject;
-   NSAutoreleasePool * pool;
-   pool = [[NSAutoreleasePool alloc] init];
    @synchronized(self)
    {
       if ([self count] > 1)
@@ -181,7 +179,6 @@
          [self push:anObject];
       };
    };
-   [pool release];
    return;
 }
 
@@ -189,8 +186,6 @@
 - (void) rightRotate
 {
    id anObject;
-   NSAutoreleasePool * pool;
-   pool = [[NSAutoreleasePool alloc] init];
    @synchronized(self)
    {
       if ([self count] > 1)
@@ -199,7 +194,6 @@
          [dataset insertObject:anObject atIndex:0];
       };
    };
-   [pool release];
    return;
 }
 
@@ -208,8 +202,6 @@
 {
    id object0;
    id object1;
-   NSAutoreleasePool * pool;
-   pool = [[NSAutoreleasePool alloc] init];
    @synchronized(self)
    {
       if ([self count] > 1)
@@ -220,7 +212,6 @@
          [self push:object0];
       };
    };
-   [pool release];
    return;
 }
 
