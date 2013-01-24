@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:BindleKit.xcodeproj">
+   </FileRef>
+   <Group
+      location = "container:examples"
+      name = "Examples">
+      <FileRef
+         location = "group:BKCatalog/BKCatalog.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:BKNetTest/BKNetTest.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:BKTest/BKTest.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:SlidingKeyboard/SlidingKB.xcodeproj">
+      </FileRef>
+   </Group>
+</Workspace>
