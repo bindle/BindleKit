@@ -296,21 +296,18 @@
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-   NSAutoreleasePool * pool;
+   @autoreleasepool
+   {
+      // opens website
+      if (alert.cancelButtonIndex != buttonIndex)
+         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:alertPackge.packageWebsite]];
 
-   pool = [[NSAutoreleasePool alloc] init];
-
-   // opens website
-   if (alert.cancelButtonIndex != buttonIndex)
-      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:alertPackge.packageWebsite]];
-
-   // frees alert
-   [alert       release];
-   [alertPackge release];
-   alert       = nil;
-   alertPackge = nil;
-
-   [pool release];
+      // frees alert
+      [alert       release];
+      [alertPackge release];
+      alert       = nil;
+      alertPackge = nil;
+   };
 
    return;
 }
