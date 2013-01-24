@@ -249,7 +249,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SlidingKB/SlidingKB-Prefix.pch";
 				INFOPLIST_FILE = "SlidingKB/SlidingKB-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -261,7 +260,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SlidingKB/SlidingKB-Prefix.pch";
 				INFOPLIST_FILE = "SlidingKB/SlidingKB-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
