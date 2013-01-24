@@ -109,7 +109,7 @@
    if ((_errorCode = getaddrinfo(hostname, NULL, hintsp, &res)))
    {
       [_errorMessage release];
-      _errorMessage = [[NSString alloc] initWithUTF8String:gai_strerror(_errorCode)];
+      _errorMessage = [[NSString alloc] initWithUTF8String:gai_strerror((int)_errorCode)];
    };
 
    // saves results
