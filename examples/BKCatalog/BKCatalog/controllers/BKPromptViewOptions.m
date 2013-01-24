@@ -38,15 +38,6 @@
 
 @implementation BKPromptViewOptions
 
-
-- (void) dealloc
-{
-   [resultLabel release];
-   [super dealloc];
-   return;
-}
-
-
 - (void) didReceiveMemoryWarning
 {
    [super didReceiveMemoryWarning];
@@ -84,7 +75,6 @@
    tableView.allowsSelection = NO;
 
    self.tableView = tableView;
-   [tableView release];
 
    return;
 }
@@ -206,7 +196,7 @@
       cell = [tableView dequeueReusableCellWithIdentifier:@"BKPromptViewOptionsResult"];
       if (cell == nil)
       {
-         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"BKButtonOptionsSlider"] autorelease];
+         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"BKButtonOptionsSlider"];
          cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
       };
       cell.tag                  = indexPath.section;
@@ -218,7 +208,7 @@
       cell = [tableView dequeueReusableCellWithIdentifier:@"BKPromptViewOptionsDesc"];
       if (cell == nil)
       {
-         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"BKButtonOptionsDesc"] autorelease];
+         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"BKButtonOptionsDesc"];
          cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
       };
       cell.detailTextLabel.text = sectDesc;
@@ -228,7 +218,7 @@
       cell = [tableView dequeueReusableCellWithIdentifier:@"BKPromptViewOptionsButton"];
       if (cell == nil)
       {
-         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"BKButtonOptionsButton"] autorelease];
+         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"BKButtonOptionsButton"];
          button = [BKButton grayButton];
          button.frame = CGRectMake(0, 0, 120, 40);
          [button addTarget:self action:@selector(generatePromptView:) forControlEvents:UIControlEventTouchUpInside];
@@ -257,7 +247,6 @@
          message:nil delegate:self cancelButtonTitle:@"Cancel"
          otherButtonTitles:@"Enter", nil];
       [promptView show];
-      [promptView release];
       break;
 
       case 2:
@@ -266,7 +255,6 @@
          otherButtonTitles:@"Enter", nil];
       promptView.textField.secureTextEntry = YES;
       [promptView show];
-      [promptView release];
       break;
 
       default:

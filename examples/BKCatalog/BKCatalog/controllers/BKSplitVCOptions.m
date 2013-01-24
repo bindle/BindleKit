@@ -47,22 +47,6 @@
 
 @implementation BKSplitVCOptions
 
-- (void) dealloc
-{
-   [minimumViewSize         release];
-   [reverseViewOrder        release];
-   [masterAlwaysHidden      release];
-   [masterAlwaysVisible     release];
-   [userInteractionEnabled  release];
-   [hideDivider             release];
-   [verticalLayout          release];
-
-   [super dealloc];
-
-   return;
-}
-
-
 - (void) didReceiveMemoryWarning
 {
    [super didReceiveMemoryWarning];
@@ -136,7 +120,6 @@
    verticalLayout.on          = (self.bkSplitViewController.viewLayout == BKSplitViewLayoutVertically);
 
    self.tableView = tableView;
-   [tableView release];
 
    return;
 }
@@ -248,7 +231,7 @@
    cell = [tableView dequeueReusableCellWithIdentifier:@"BKSplitVCoptions"];
    if (cell == nil)
    {
-      cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"BKSplitVCoptions"] autorelease];
+      cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"BKSplitVCoptions"];
    };
 
    switch(indexPath.section)

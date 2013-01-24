@@ -41,15 +41,6 @@
 
 @synthesize numberView;
 
-
-- (void) dealloc
-{
-   [numberView release];
-   [super dealloc];
-   return;
-}
-
-
 - (void) didReceiveMemoryWarning
 {
    [super didReceiveMemoryWarning];
@@ -145,7 +136,6 @@
 
    // saves root view
    self.view  = aView;
-   [aView release];
 
    return;
 }

@@ -57,7 +57,6 @@
    // creating navigation controller
    masterNavigation = [[UINavigationController alloc] initWithRootViewController:masterController];
    masterNavigation.navigationBar.barStyle = UIBarStyleDefault;
-   [masterController release];
 
    // if using iPhone, make visible and exit
    if ([BKDevice userInterfaceIdiom] == BKUserInterfaceIdiomPhone)
@@ -75,7 +74,6 @@
    // creating navigation controller
    detailNavigation = [[UINavigationController alloc] initWithRootViewController:detailController];
    detailNavigation.navigationBar.barStyle = UIBarStyleDefault;
-   [detailController release];
 
    // creating split view controller
    splitViewController = [[BKSplitViewController alloc] init];
@@ -89,9 +87,6 @@
    // add subviews to split view controller
    controllers = [[NSArray alloc] initWithObjects:masterNavigation, detailNavigation, nil];
    splitViewController.viewControllers = controllers;
-   [controllers release];
-   [detailNavigation release];
-   [masterNavigation release];
 
    // add split view controller view to window as root view
    [self.window addSubview:splitViewController.view];
@@ -164,10 +159,7 @@
 
 - (void)dealloc
 {
-   [rootController   release];
-   [_window          release];
 
-   [super dealloc];
 
    return;
 }

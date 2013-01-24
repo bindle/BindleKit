@@ -437,6 +437,7 @@
 		A0887A7F1421B1A400421AFE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BKCatalog/other/BKCatalog-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -449,6 +450,7 @@
 		A0887A801421B1A400421AFE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BKCatalog/other/BKCatalog-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;

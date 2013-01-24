@@ -50,14 +50,6 @@
 
 @implementation BKCatalogMenu
 
-
-- (void) dealloc
-{
-   [super dealloc];
-   return;
-}
-
-
 - (void) didReceiveMemoryWarning
 {
    [super didReceiveMemoryWarning];
@@ -155,7 +147,7 @@
    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
    if (cell == nil)
    {
-      cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+      cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
    };
 
    cell.tag = indexPath.row;
@@ -225,7 +217,6 @@
    if ([BKDevice userInterfaceIdiom] == BKUserInterfaceIdiomPhone)
    {
       [self.navigationController pushViewController:controller animated:YES];
-      [controller release];
       return;
    };
 
@@ -237,9 +228,6 @@
    viewControllers = [[NSArray alloc] initWithObjects:self.navigationController, navigation, nil];
    self.bkSplitViewController.viewControllers = viewControllers;
 
-   [controller release];
-   [navigation release];
-   [viewControllers release];
 
    return;
 }

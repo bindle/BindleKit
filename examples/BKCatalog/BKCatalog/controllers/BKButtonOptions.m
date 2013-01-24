@@ -55,20 +55,6 @@
 
 @implementation BKButtonOptions
 
-- (void) dealloc
-{
-   [redSlider    release];
-   [greenSlider  release];
-   [blueSlider   release];
-   [alphaSlider  release];
-   [customButton release];
-
-   [super dealloc];
-
-   return;
-}
-
-
 - (void) didReceiveMemoryWarning
 {
    [super didReceiveMemoryWarning];
@@ -78,35 +64,33 @@
 
 - (id) initWithStyle:(UITableViewStyle)style
 {
-   NSAutoreleasePool * pool;
 
    if ((self = [super initWithStyle:style]) == nil)
       return(self);
 
-   pool = [[NSAutoreleasePool alloc] init];
+   @autoreleasepool
+   {
+      self.title = @"BKButton Demo";
 
-   self.title = @"BKButton Demo";
+      redSlider   = [[UISlider alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
+      greenSlider = [[UISlider alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
+      blueSlider  = [[UISlider alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
+      alphaSlider = [[UISlider alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
 
-   redSlider   = [[UISlider alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
-   greenSlider = [[UISlider alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
-   blueSlider  = [[UISlider alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
-   alphaSlider = [[UISlider alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
+      redSlider.value   = ((CGFloat)((BKButtonColorGreen >> 16) & 0xFF)) / 255.0;
+      greenSlider.value = ((CGFloat)((BKButtonColorGreen >>  8) & 0xFF)) / 255.0;
+      blueSlider.value  = ((CGFloat)((BKButtonColorGreen >>  0) & 0xFF)) / 255.0;
+      alphaSlider.value = 1.0;
 
-   redSlider.value   = ((CGFloat)((BKButtonColorGreen >> 16) & 0xFF)) / 255.0;
-   greenSlider.value = ((CGFloat)((BKButtonColorGreen >>  8) & 0xFF)) / 255.0;
-   blueSlider.value  = ((CGFloat)((BKButtonColorGreen >>  0) & 0xFF)) / 255.0;
-   alphaSlider.value = 1.0;
-
-   [redSlider   addTarget:self action:@selector(updatedSliderValue:) forControlEvents:UIControlEventValueChanged];
-   [greenSlider addTarget:self action:@selector(updatedSliderValue:) forControlEvents:UIControlEventValueChanged];
-   [blueSlider  addTarget:self action:@selector(updatedSliderValue:) forControlEvents:UIControlEventValueChanged];
-   [alphaSlider addTarget:self action:@selector(updatedSliderValue:) forControlEvents:UIControlEventValueChanged];
+      [redSlider   addTarget:self action:@selector(updatedSliderValue:) forControlEvents:UIControlEventValueChanged];
+      [greenSlider addTarget:self action:@selector(updatedSliderValue:) forControlEvents:UIControlEventValueChanged];
+      [blueSlider  addTarget:self action:@selector(updatedSliderValue:) forControlEvents:UIControlEventValueChanged];
+      [alphaSlider addTarget:self action:@selector(updatedSliderValue:) forControlEvents:UIControlEventValueChanged];
 
 
-   customButton = [[BKButton buttonWithRGB:BKButtonColorGreen] retain];
-   [customButton setTitle:@"Generate" forState:UIControlStateNormal];
-
-   [pool release];
+      customButton = [BKButton buttonWithRGB:BKButtonColorGreen];
+      [customButton setTitle:@"Generate" forState:UIControlStateNormal];
+   };
 
    return(self);
 }
@@ -127,7 +111,6 @@
    tableView.allowsSelection = NO;
 
    self.tableView = tableView;
-   [tableView release];
 
    return;
 }
@@ -236,7 +219,7 @@
       cell = [tableView dequeueReusableCellWithIdentifier:@"BKButtonOptionsSlider"];
       if (cell == nil)
       {
-         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"BKButtonOptionsSlider"] autorelease];
+         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"BKButtonOptionsSlider"];
          cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
       };
       cell.accessoryView        = nil;
@@ -248,7 +231,7 @@
       cell = [tableView dequeueReusableCellWithIdentifier:@"BKButtonOptionsDesc"];
       if (cell == nil)
       {
-         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"BKButtonOptionsDesc"] autorelease];
+         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"BKButtonOptionsDesc"];
          cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
       };
    }
@@ -257,7 +240,7 @@
       cell = [tableView dequeueReusableCellWithIdentifier:@"BKButtonOptionsButton"];
       if (cell == nil)
       {
-         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"BKButtonOptionsButton"] autorelease];
+         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"BKButtonOptionsButton"];
          button = [BKButton redButton];
          button.frame = CGRectMake(0, 0, 120, 40);
          [button addTarget:self action:@selector(generateCustomButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -391,7 +374,6 @@
       images = [[BKButtonImages alloc] initWithRGB:button.tag];
       [button setBackgroundImage:[images createUIImageForState:BKButtonImageStateNormal]      forState:UIControlStateNormal];
       [button setBackgroundImage:[images createUIImageForState:BKButtonImageStateHighlighted] forState:UIControlStateHighlighted];
-      [images release];
    } else {
       cell.detailTextLabel.text = [NSString stringWithFormat:@"+ (UIButton *) [BKButton %@]", buttonTitle];
    };
@@ -414,22 +396,20 @@
 
 - (void) updatedSliderValue:(UISlider *)slider
 {
-   NSAutoreleasePool * pool;
    NSIndexPath       * indexPath;
    NSUInteger          indexes[2];
    UITableViewCell   * cell;
 
-   pool = [[NSAutoreleasePool alloc] init];
+   @autoreleasepool
+   {
+      indexes[0] = 0;
+      indexes[1] = 5;
 
-   indexes[0] = 0;
-   indexes[1] = 5;
+      indexPath  = [NSIndexPath indexPathWithIndexes:indexes length:2];
+      cell       = [self.tableView cellForRowAtIndexPath:indexPath];
 
-   indexPath  = [NSIndexPath indexPathWithIndexes:indexes length:2];
-   cell       = [self.tableView cellForRowAtIndexPath:indexPath];
-
-   cell.detailTextLabel.text = [self customButtonText];
-
-   [pool release];
+      cell.detailTextLabel.text = [self customButtonText];
+   };
 
    return;
 }
@@ -455,7 +435,6 @@
    images = [images initWithRed:redSlider.value green:greenSlider.value blue:blueSlider.value alpha:alphaSlider.value];
    [customButton setBackgroundImage:[images createUIImageForState:BKButtonImageStateNormal]      forState:UIControlStateNormal];
    [customButton setBackgroundImage:[images createUIImageForState:BKButtonImageStateHighlighted] forState:UIControlStateHighlighted];
-   [images release];
 
    return;
 }
