@@ -50,15 +50,6 @@
 
 - (void) dealloc
 {
-   [prompt             release];
-   [redImage           release];
-   [greenImage         release];
-   [barButtonItemLogs  release];
-   [barButtonItemFlags release];
-   [barButtonItemHost  release];
-   [barButtonItemFlex  release];
-   [barButtonItemLegal release];
-   [super dealloc];
    return;
 }
 
@@ -70,13 +61,11 @@
    {
       if (!(logsViewController.isViewLoaded))
       {
-         [logsViewController release];
          logsViewController = nil;
          return;
       };
       if (!(logsViewController.view.superview))
       {
-         [logsViewController release];
          logsViewController = nil;
          return;
       };
@@ -88,32 +77,30 @@
 
 - (id) initWithStyle:(UITableViewStyle)style
 {
-   NSAutoreleasePool * pool;
 
    if ((self = [super initWithStyle:style]) == nil)
       return(self);
 
-   pool = [[NSAutoreleasePool alloc] init];
+   @autoreleasepool
+   {
+      redImage   = [UIImage imageNamed:@"red.png"];
+      greenImage = [UIImage imageNamed:@"green.png"];
+      useFlagNames = NO;
 
-   redImage   = [[UIImage imageNamed:@"red.png"] retain];
-   greenImage = [[UIImage imageNamed:@"green.png"] retain];
-   useFlagNames = NO;
+      barButtonItemLogs  = [[UIBarButtonItem alloc] initWithTitle:@"Logs" style:UIBarButtonItemStyleBordered target:self action:@selector(openLogs:)];
+      barButtonItemFlags = [[UIBarButtonItem alloc] initWithTitle:@"Show Flags" style:UIBarButtonItemStyleBordered target:self action:@selector(displayFlags:)];
+      barButtonItemHost  = [[UIBarButtonItem alloc] initWithTitle:@"Hostname" style:UIBarButtonItemStyleBordered target:self action:@selector(changeHostname:)];
+      barButtonItemFlex  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+      barButtonItemLegal = [[UIBarButtonItem alloc] initWithTitle:@"Legal" style:UIBarButtonItemStyleBordered target:self action:@selector(displayCopyright:)];
 
-   barButtonItemLogs  = [[UIBarButtonItem alloc] initWithTitle:@"Logs" style:UIBarButtonItemStyleBordered target:self action:@selector(openLogs:)];
-   barButtonItemFlags = [[UIBarButtonItem alloc] initWithTitle:@"Show Flags" style:UIBarButtonItemStyleBordered target:self action:@selector(displayFlags:)];
-   barButtonItemHost  = [[UIBarButtonItem alloc] initWithTitle:@"Hostname" style:UIBarButtonItemStyleBordered target:self action:@selector(changeHostname:)];
-   barButtonItemFlex  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-   barButtonItemLegal = [[UIBarButtonItem alloc] initWithTitle:@"Legal" style:UIBarButtonItemStyleBordered target:self action:@selector(displayCopyright:)];
+      barButtonItemFlags.possibleTitles = [NSSet setWithObjects:@"Show Flags", @"Show Names", nil];
 
-   barButtonItemFlags.possibleTitles = [NSSet setWithObjects:@"Show Flags", @"Show Names", nil];
-
-   prompt = [[BKPromptView alloc] initWithTitle:@"New Hostname" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-   prompt.textField.clearButtonMode        = UITextFieldViewModeWhileEditing;
-   prompt.textField.autocorrectionType     = FALSE;
-   prompt.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-   prompt.textField.keyboardType           = UIKeyboardTypeURL;
-
-   [pool release];
+      prompt = [[BKPromptView alloc] initWithTitle:@"New Hostname" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+      prompt.textField.clearButtonMode        = UITextFieldViewModeWhileEditing;
+      prompt.textField.autocorrectionType     = FALSE;
+      prompt.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+      prompt.textField.keyboardType           = UIKeyboardTypeURL;
+   };
 
    return(self);
 }
@@ -138,7 +125,6 @@
    [barButtons addObject:barButtonItemFlex];
    [barButtons addObject:barButtonItemLegal];
    self.toolbarItems = barButtons;
-   [barButtons release];
 
    return;
 }
@@ -166,7 +152,6 @@
    [super viewDidAppear:animated];
    indexSet = [[NSMutableIndexSet alloc] initWithIndex:kSectionFlags];
    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
-   [indexSet release];
    return;
 }
 
@@ -230,7 +215,6 @@
       cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
       cell.textLabel.adjustsFontSizeToFitWidth = YES;
       cell.selectionStyle = UITableViewCellSelectionStyleGray;
-      [cell autorelease];
    };
 
    image = nil;
@@ -304,7 +288,6 @@
 
    imageView = [[UIImageView alloc] initWithImage:image];
    cell.accessoryView = imageView;
-   [imageView release];
 
    return(cell);
 }
@@ -375,7 +358,6 @@
 
    infoAlert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
    [infoAlert show];
-   [infoAlert release];
 
    return;
 }
@@ -404,24 +386,19 @@
    UIBarButtonItem        * dismissButton;
    BKPackageController    * pkgController;
    UINavigationController * navController;
-   NSAutoreleasePool      * pool;
 
-   pool = [[NSAutoreleasePool alloc] init];
+   @autoreleasepool
+   {
+      dismissButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissLegal:)];
 
-   dismissButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissLegal:)];
-   [dismissButton autorelease];
+      pkgController = [[BKPackageController alloc] initWithStyle:UITableViewStyleGrouped];
+      pkgController.title = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+      pkgController.navigationItem.rightBarButtonItem = dismissButton;
 
-   pkgController = [[BKPackageController alloc] initWithStyle:UITableViewStyleGrouped];
-   pkgController.title = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-   pkgController.navigationItem.rightBarButtonItem = dismissButton;
-   [pkgController autorelease];
+      navController = [[UINavigationController alloc] initWithRootViewController:pkgController];
 
-   navController = [[UINavigationController alloc] initWithRootViewController:pkgController];
-   [navController autorelease];
-
-   [self presentModalViewController:navController animated:YES];
-
-   [pool release];
+      [self presentModalViewController:navController animated:YES];
+   };
 
    return;
 }
@@ -448,15 +425,12 @@
 {
    BKLogViewController * controller;
 
-   if ((logsViewController))
-      [logsViewController release];
 
    controller = [[BKLogViewController alloc] initWithStyle:UITableViewStyleGrouped];
    controller.logs = logs;
    controller.title = [NSString stringWithFormat:@"%@ Logs", self.title];
 
    logsViewController = [[UINavigationController alloc] initWithRootViewController:controller];
-   [controller release];
 
 
    [self presentModalViewController:logsViewController animated:YES];
@@ -487,7 +461,6 @@
    [barButtons addObject:barButtonItemFlex];
    [barButtons addObject:barButtonItemLegal];
    self.toolbarItems = barButtons;
-   [barButtons release];
 
    return;
 }
@@ -501,10 +474,9 @@
       return;
    networkReachability.hostname = promptView.textField.text;
 
-   logEntry = [[logs objectAtIndex:([logs count] - 1)] retain];
+   logEntry = [logs objectAtIndex:([logs count] - 1)];
    [logs removeAllObjects];
    [logs addObject:logEntry];
-   [logEntry release];
 
    return;
 }

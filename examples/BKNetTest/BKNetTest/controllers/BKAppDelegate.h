@@ -47,7 +47,7 @@
    NSMutableArray         * reachabilities;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, strong) IBOutlet UIWindow *window;
 
 - (void) networkReachabilityUpdate:(NSNotification *)note;
 - (void) segmentedControlAction:(UISegmentedControl *)segmentedControl;

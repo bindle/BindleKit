@@ -40,15 +40,6 @@
 
 @synthesize logs;
 
-
-- (void) dealloc
-{
-   [dateFormatter release];
-   [super dealloc];
-   return;
-}
-
-
 - (void) didReceiveMemoryWarning
 {
    [super didReceiveMemoryWarning];    
@@ -58,19 +49,17 @@
 
 - (id) initWithStyle:(UITableViewStyle)style
 {
-   NSAutoreleasePool * pool;
 
    if ((self = [super initWithStyle:style]) == nil)
       return(self);
 
-   pool = [[NSAutoreleasePool alloc] init];
-
-   dateFormatter = [[NSDateFormatter alloc] init];
-   [dateFormatter setLocale:[NSLocale currentLocale]];
-   [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
-   [dateFormatter setDateStyle:NSDateFormatterShortStyle];
-
-   [pool release];
+   @autoreleasepool
+   {
+      dateFormatter = [[NSDateFormatter alloc] init];
+      [dateFormatter setLocale:[NSLocale currentLocale]];
+      [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+      [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+   };
 
    return(self);
 }
@@ -90,7 +79,6 @@
    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
    barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(closeLogs:)];
    self.navigationItem.rightBarButtonItem = barButtonItem;
-   [barButtonItem release];
 
    return;
 }
@@ -164,7 +152,6 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   NSAutoreleasePool * pool;
    UITableViewCell * cell;
 
    // creates re-usable cell
@@ -177,7 +164,6 @@
          cell.selectionStyle = UITableViewCellSelectionStyleGray;
          cell.textLabel.textAlignment = UITextAlignmentCenter;
          cell.textLabel.text          = @"Clear Logs";
-         [cell autorelease];
       };
       return(cell);
    };
@@ -188,13 +174,13 @@
       cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
       cell.detailTextLabel.font = [UIFont fontWithName:@"Courier" size:[UIFont labelFontSize]];
-      [cell autorelease];
    };
 
-   pool = [[NSAutoreleasePool alloc] init];
-   cell.textLabel.text       = [dateFormatter stringFromDate:[[logs objectAtIndex:indexPath.row] objectAtIndex:0]];
-   cell.detailTextLabel.text = [[logs objectAtIndex:indexPath.row] objectAtIndex:1];
-   [pool release];
+   @autoreleasepool
+   {
+      cell.textLabel.text       = [dateFormatter stringFromDate:[[logs objectAtIndex:indexPath.row] objectAtIndex:0]];
+      cell.detailTextLabel.text = [[logs objectAtIndex:indexPath.row] objectAtIndex:1];
+   };
 
    return(cell);
 }
@@ -204,23 +190,20 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   NSAutoreleasePool * pool;
    NSString          * logEntry;
    NSIndexSet        * indexSet;
 
-   pool = [[NSAutoreleasePool alloc] init];
+   @autoreleasepool
+   {
+      [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-   [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+      logEntry = [logs objectAtIndex:([logs count] - 1)];
+      [logs removeAllObjects];
+      [logs addObject:logEntry];
 
-   logEntry = [[[logs objectAtIndex:([logs count] - 1)] retain] autorelease];
-   [logs removeAllObjects];
-   [logs addObject:logEntry];
-
-   indexSet = [[NSIndexSet alloc] initWithIndex:0];
-   [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
-   [indexSet release];
-
-   [pool release];
+      indexSet = [[NSIndexSet alloc] initWithIndex:0];
+      [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
+   };
 
    return;
 }

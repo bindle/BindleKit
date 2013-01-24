@@ -39,11 +39,11 @@
 
 @interface BKLogViewController : UITableViewController
 {
-   NSMutableArray  * logs;
+   NSMutableArray  * __weak logs;
    NSDateFormatter * dateFormatter;
 }
 
-@property (nonatomic, assign) NSMutableArray * logs;
+@property (nonatomic, weak) NSMutableArray * logs;
 
 - (void) closeLogs:(UIBarButtonItem *)sender;
 

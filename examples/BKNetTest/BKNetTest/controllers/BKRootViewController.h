@@ -51,14 +51,14 @@
    UIBarButtonItem        * barButtonItemLegal;
    UIImage                * redImage;
    UIImage                * greenImage;
-   NSMutableArray         * logs;
+   NSMutableArray         * __weak logs;
    UINavigationController * logsViewController;
-   BKNetworkReachability  * networkReachability;
+   BKNetworkReachability  * __weak networkReachability;
 }
 
 @property (nonatomic, readonly) UINavigationController * logsViewController;
-@property (nonatomic, assign) BKNetworkReachability    * networkReachability;
-@property (nonatomic, assign) NSMutableArray           * logs;
+@property (nonatomic, weak) BKNetworkReachability    * networkReachability;
+@property (nonatomic, weak) NSMutableArray           * logs;
 
 - (void) updateToolbar;
 - (void) changeHostname:(UIBarButtonItem *)sender;
