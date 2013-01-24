@@ -84,7 +84,7 @@
    NSMutableArray * rowTags;
 
    // adds tag to sectionTags
-   tagNumber = [[NSNumber alloc] initWithInt:sectionTag];
+   tagNumber = [[NSNumber alloc] initWithLong:sectionTag];
    [sectionTags addObject:tagNumber];
    [tagNumber release];
 
@@ -102,7 +102,7 @@
    NSNumber   * tagNumber;
    NSUInteger   index;
 
-   tagNumber = [[NSNumber alloc] initWithInt:sectionTag];
+   tagNumber = [[NSNumber alloc] initWithLong:sectionTag];
    index     = [sectionTags indexOfObject:tagNumber];
    [tagNumber release];
 
@@ -143,7 +143,7 @@
 
    NSAssert(([sectionRows count] > section), @"section index exceeds bounds");
 
-   tagNumber = [[NSNumber alloc] initWithInt:rowTag];
+   tagNumber = [[NSNumber alloc] initWithLong:rowTag];
    rowTags   = [sectionRows objectAtIndex:section];
    [rowTags addObject:tagNumber];
    [tagNumber release];
@@ -160,7 +160,7 @@
 
    NSAssert(([sectionRows count] > section), @"section index exceeds bounds");
 
-   tagNumber = [[NSNumber alloc] initWithInt:rowTag];
+   tagNumber = [[NSNumber alloc] initWithLong:rowTag];
    rowTags   = [sectionRows objectAtIndex:section];
    index     = [rowTags indexOfObject:tagNumber];
    [tagNumber release];
