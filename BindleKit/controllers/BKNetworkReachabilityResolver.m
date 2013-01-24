@@ -91,31 +91,29 @@
    struct addrinfo     hints;
    struct addrinfo   * hintsp;
    struct addrinfo   * res;
-   NSAutoreleasePool * pool;
 
-   pool = [[NSAutoreleasePool alloc] init];
-
-   hostname = [_hostname UTF8String];
-
-   // configures lookup
-   memset(&hints, 0, sizeof(struct addrinfo));
-   hints.ai_flags    = AI_V4MAPPED|AI_ALL;
-   hints.ai_family   = PF_UNSPEC;
-   hints.ai_socktype = 0; // any socket type (STREAM/DGRAM/RAW)
-   hints.ai_protocol = 0; // any protocol (UDP/TCP)
-   hintsp            = &hints;
-
-   // performs lookup
-   if ((_errorCode = getaddrinfo(hostname, NULL, hintsp, &res)))
+   @autoreleasepool
    {
-      [_errorMessage release];
-      _errorMessage = [[NSString alloc] initWithUTF8String:gai_strerror((int)_errorCode)];
+      hostname = [_hostname UTF8String];
+
+      // configures lookup
+      memset(&hints, 0, sizeof(struct addrinfo));
+      hints.ai_flags    = AI_V4MAPPED|AI_ALL;
+      hints.ai_family   = PF_UNSPEC;
+      hints.ai_socktype = 0; // any socket type (STREAM/DGRAM/RAW)
+      hints.ai_protocol = 0; // any protocol (UDP/TCP)
+      hintsp            = &hints;
+
+      // performs lookup
+      if ((_errorCode = getaddrinfo(hostname, NULL, hintsp, &res)))
+      {
+         [_errorMessage release];
+         _errorMessage = [[NSString alloc] initWithUTF8String:gai_strerror((int)_errorCode)];
+      };
+
+      // saves results
+      _addr = res;
    };
-
-   // saves results
-   _addr = res;
-
-   [pool release];
 
    return;
 }
