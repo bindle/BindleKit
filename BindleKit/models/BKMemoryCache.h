@@ -33,6 +33,10 @@
  */
 /*
  *  BKMemoryCache.m - Caches objects in memory
+ *
+ *  @warning Pruning the cache will remove all objects from cache even if
+ *  they are still used.  This is because -retainCount is not allowed with
+ *  ARC enabled.  Must design a work around.
  */
 
 #import <Foundation/Foundation.h>

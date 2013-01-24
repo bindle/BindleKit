@@ -220,11 +220,12 @@ static BKMemoryCache * BKMemoryCacheRegistery;
 }
 
 
+#pragma warning Will purge all objects from cache even if they are still used.
 - (void) pruneCache
 {
    NSUInteger          pos;
    NSString          * key;
-   id                  value;
+   //id                  value;
    NSArray           * keys;
    NSAutoreleasePool * pool;
 
@@ -242,8 +243,8 @@ static BKMemoryCache * BKMemoryCacheRegistery;
          for(pos = 0; pos < [keys count]; pos++)
          {
             key   = [keys objectAtIndex:pos];
-            value = [cacheData objectForKey:key];
-            if ([value retainCount] < 2)
+            //value = [cacheData objectForKey:key];
+            //if ([value retainCount] < 2)
                [cacheData removeObjectForKey:key];
          };
 
