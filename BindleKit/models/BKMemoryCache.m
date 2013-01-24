@@ -227,37 +227,35 @@ static BKMemoryCache * BKMemoryCacheRegistery;
    NSString          * key;
    //id                  value;
    NSArray           * keys;
-   NSAutoreleasePool * pool;
 
-   pool = [[NSAutoreleasePool alloc] init];
-
-   @synchronized(self)
+   @autoreleasepool
    {
-      // nothing to do if cache dictionary does not exist
-      if (cacheData != nil)
+      @synchronized(self)
       {
-         // list of keys to check
-         keys = [cacheData allKeys];
-
-         // if remove if value of key is only retained by cache
-         for(pos = 0; pos < [keys count]; pos++)
+         // nothing to do if cache dictionary does not exist
+         if (cacheData != nil)
          {
-            key   = [keys objectAtIndex:pos];
-            //value = [cacheData objectForKey:key];
-            //if ([value retainCount] < 2)
-               [cacheData removeObjectForKey:key];
-         };
+            // list of keys to check
+            keys = [cacheData allKeys];
 
-         // remove dictionary if no values are present
-         if ([cacheData count] == 0)
-         {
-            [cacheData release];
-            cacheData = nil;
+            // if remove if value of key is only retained by cache
+            for(pos = 0; pos < [keys count]; pos++)
+            {
+               key   = [keys objectAtIndex:pos];
+               //value = [cacheData objectForKey:key];
+               //if ([value retainCount] < 2)
+                  [cacheData removeObjectForKey:key];
+            };
+
+            // remove dictionary if no values are present
+            if ([cacheData count] == 0)
+            {
+               [cacheData release];
+               cacheData = nil;
+            };
          };
       };
    };
-
-   [pool release];
 
    return;
 }
@@ -269,9 +267,6 @@ static BKMemoryCache * BKMemoryCacheRegistery;
    NSArray           * names;
    NSString          * name;
    BKMemoryCache     * cache;
-   NSAutoreleasePool * pool;
-
-   pool = [[NSAutoreleasePool alloc] init];
 
    @synchronized(self)
    {
@@ -299,8 +294,6 @@ static BKMemoryCache * BKMemoryCacheRegistery;
          };
       };
    };
-
-   [pool release];
 
    return;
 }
