@@ -50,9 +50,6 @@
 # pragma mark - BKPromptView Class Implementation
 @implementation BKPromptView
 
-@synthesize delegate = promptDelegate;
-
-
 - (void) dealloc
 {
    [super dealloc];
@@ -61,7 +58,8 @@
 
 
 - (id) initWithTitle:(NSString *)title message:(NSString *)message
-   delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle
+   delegate:(id <BKPromptViewDelegate>)delegate
+   cancelButtonTitle:(NSString *)cancelButtonTitle
    otherButtonTitles:(NSString *)otherButtonTitles, ...
 {
    va_list    args;
@@ -86,13 +84,13 @@
 
 #pragma mark - Getter methods
 
-- (id) delegate
+- (id <BKPromptViewDelegate>) delegate
 {
    return(promptDelegate);
 }
 
 
-- (void) setDelegate:(id)delegate
+- (void) setDelegate:(id <BKPromptViewDelegate>)delegate
 {
    promptDelegate = delegate;
 }

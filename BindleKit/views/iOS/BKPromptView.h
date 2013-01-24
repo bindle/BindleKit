@@ -42,7 +42,7 @@
 
 
 # pragma mark - BKPromptViewDelegate Protocol Declaration
-@protocol BKPromptViewDelegate <NSObject>
+@protocol BKPromptViewDelegate <NSObject, UIAlertViewDelegate>
 @optional
 
 /// @name Responding to Actions
@@ -63,7 +63,7 @@
 # pragma mark - BKPromptView Class Declaration
 @interface BKPromptView : UIAlertView
 {
-   id promptDelegate;
+   id <BKPromptViewDelegate> promptDelegate;
 }
 
 /// @name Configuring the text field
@@ -71,7 +71,8 @@
 
 /// @name Creating Alert Views
 - (id) initWithTitle:(NSString *)title message:(NSString *)message
-   delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle
+   delegate:(id <BKPromptViewDelegate>)delegate
+   cancelButtonTitle:(NSString *)cancelButtonTitle
    otherButtonTitles:(NSString *)otherButtonTitles, ...
    NS_REQUIRES_NIL_TERMINATION;
 
