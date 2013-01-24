@@ -39,14 +39,6 @@
 
 @implementation BKRootController
 
-
-- (void) dealloc
-{
-   [super dealloc];
-   return;
-}
-
-
 - (id) init
 {
    if (!(self = [super init]))
@@ -101,11 +93,9 @@
    // create root view
    rootView  = [[UIView alloc] initWithFrame:bounds];
    [rootView addSubview:rootLabel];
-   [rootLabel release];
 
    // assign root view to view controller's view property
    self.view = rootView;
-   [rootView release];
 
    return;
 }

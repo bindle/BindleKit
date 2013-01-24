@@ -44,29 +44,19 @@
 @synthesize controller;
 
 
-- (void) dealloc
-{
-   [controller release];
-   [_window release];
-   [super dealloc];
-   return;
-}
-
-
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-   NSAutoreleasePool * pool;
 
-   pool = [[NSAutoreleasePool alloc] init];
+   @autoreleasepool
+   {
+      self.controller  = [[BKRootController alloc] init];
 
-   self.controller  = [[[BKRootController alloc] init] autorelease];
+      self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+      self.window.backgroundColor = [UIColor whiteColor];
+      [self.window addSubview:self.controller.view];
+      [self.window makeKeyAndVisible];
 
-   self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-   self.window.backgroundColor = [UIColor whiteColor];
-   [self.window addSubview:self.controller.view];
-   [self.window makeKeyAndVisible];
-
-   [pool release];
+   };
 
    return(YES);
 }

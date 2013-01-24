@@ -362,6 +362,7 @@
 		A0CBB5231481A91100CD2599 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BKTest/other/BKTest-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -375,6 +376,7 @@
 		A0CBB5241481A91100CD2599 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BKTest/other/BKTest-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
