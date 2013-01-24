@@ -98,7 +98,7 @@
 }
 
 
-- (id) initWithPattern:(NSString *)pattern andOptions:(NSInteger)options
+- (id) initWithPattern:(NSString *)pattern andOptions:(int)options
 {
    NSAutoreleasePool * pool;
 
@@ -125,7 +125,7 @@
 }
 
 
-+ (id) expressionWithPattern:(NSString *)pattern andOptions:(NSInteger)options
++ (id) expressionWithPattern:(NSString *)pattern andOptions:(int)options
 {
    return([[[BKPosixRegex alloc] initWithPattern:pattern andOptions:options] autorelease]);
 }
@@ -133,7 +133,7 @@
 
 #pragma mark - Getter/Setter methods
 
-- (void) setOptions:(NSInteger)options
+- (void) setOptions:(int)options
 {
    @synchronized(self)
    {
@@ -163,7 +163,7 @@
 {
    NSInteger           i;
    const char        * str;
-   NSInteger           err;
+   int                 err;
    char                msg[1024];
    size_t              len;
    size_t              bol;
@@ -221,7 +221,7 @@
             {
                // start of sub expression
                case '(':
-               [stack push:[NSNumber numberWithInt:i]]; // saves position of opening parentheses
+               [stack push:[NSNumber numberWithLong:i]]; // saves position of opening parentheses
                break;
 
                // end of sub expression
@@ -267,7 +267,7 @@
 
 - (BOOL) executeWithUTF8String:(const char *)string
 {
-   NSInteger         err;
+   int               err;
    regmatch_t        pmatches[64];
    char              msg[1024];
    NSUInteger        x;

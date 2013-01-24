@@ -43,7 +43,7 @@
    // Regular expressions information
    regex_t          regex;
    NSString       * regexString;
-   NSInteger        regexFlags;
+   int              regexFlags;
    NSMutableArray * subExpressions;
 
    // matches
@@ -66,7 +66,7 @@
 /// @param pattern Regular expression used to initialize object.
 /// @param options Is the bitwise OR of zero or more flags. See `-options` for
 /// poossible values.
-- (id) initWithPattern:(NSString *)pattern andOptions:(NSInteger)options;
+- (id) initWithPattern:(NSString *)pattern andOptions:(int)options;
 
 /// Creates a new object using a provided pattern.
 /// @param pattern Regular expression used to initialize object.
@@ -76,7 +76,7 @@
 /// @param pattern Regular expression used to initialize object.
 /// @param options Is the bitwise OR of zero or more flags. See `-options` for
 /// poossible values.
-+ (id) expressionWithPattern:(NSString *)pattern andOptions:(NSInteger)options;
++ (id) expressionWithPattern:(NSString *)pattern andOptions:(int)options;
 
 
 #pragma mark - Common Patterns
@@ -110,7 +110,7 @@
 /// `REG_ICASE`    | Compile for matching that ignores upper/lower case distinctions.
 /// `REG_NOSUB`    | Compile for matching that need only report success or failure.
 /// `REG_NEWLINE`  | Compile for newline-sensitive matching.
-@property (nonatomic, assign)   NSInteger   options;
+@property (nonatomic, assign)   int   options;
 
 /// The string containing the regular expression.
 @property (nonatomic, retain) NSString * pattern;
