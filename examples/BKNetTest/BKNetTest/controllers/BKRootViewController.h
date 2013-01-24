@@ -40,7 +40,7 @@
 
 #import "BKLogViewController.h"
 
-@interface BKRootViewController : UITableViewController
+@interface BKRootViewController : UITableViewController <BKPromptViewDelegate>
 {
    BOOL                     useFlagNames;
    BKPromptView           * prompt;
