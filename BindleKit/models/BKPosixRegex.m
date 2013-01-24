@@ -188,7 +188,6 @@
             errorCode    = err;
             [errorMessage release];
             errorMessage = [[NSString stringWithUTF8String:msg] retain];
-            [pool release];
             return;
          };
 
@@ -279,7 +278,6 @@
             regerror(err, &regex, msg, 1023);
             errorCode    = err;
             errorMessage = [[NSString stringWithUTF8String:msg] retain];
-            [pool release];
             return(NO);
          };
 
