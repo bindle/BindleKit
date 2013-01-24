@@ -71,7 +71,7 @@
    NSString * _string;
 }
 
-@property (nonatomic, retain) NSString * string;
+@property (nonatomic, strong) NSString * string;
 
 /// @name Object Management Methods
 - (id) initWithString:(NSString *)string;

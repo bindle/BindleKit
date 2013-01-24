@@ -72,7 +72,7 @@
 @property (nonatomic, assign) NSUInteger   apiVersionCurrent;
 @property (nonatomic, assign) NSUInteger   apiVersionRevision;
 @property (nonatomic, assign) NSUInteger   apiVersionAge;
-@property (nonatomic, retain) NSString   * apiVersionString;
+@property (nonatomic, strong) NSString   * apiVersionString;
 @property (nonatomic, assign) const char * UTF8ApiVersionString;
 
 
@@ -80,19 +80,19 @@
 /// @name Package Information methods
 
 /// The dot notated identifier of the package.
-@property (nonatomic, retain) NSString   * packageIdentifier;
+@property (nonatomic, strong) NSString   * packageIdentifier;
 
 /// The name of the package.
-@property (nonatomic, retain) NSString   * packageName;
+@property (nonatomic, strong) NSString   * packageName;
 
 /// The referenced version of the package.
-@property (nonatomic, retain) NSString   * packageVersion;
+@property (nonatomic, strong) NSString   * packageVersion;
 
 /// The website of the package, if available.
-@property (nonatomic, retain) NSString   * packageWebsite;
+@property (nonatomic, strong) NSString   * packageWebsite;
 
 /// The license of the package.
-@property (nonatomic, retain) NSString   * packageLicense;
+@property (nonatomic, strong) NSString   * packageLicense;
 
 /// The UTF8 string of the identifier of the package.
 @property (nonatomic, assign) const char * UTF8PackageIdentifier;

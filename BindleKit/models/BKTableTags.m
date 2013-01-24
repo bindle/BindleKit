@@ -41,18 +41,6 @@
 
 #pragma mark - Object Management Methods
 
-- (void) dealloc
-{
-   // table information
-   [sectionTags release];
-   [sectionRows release];
-
-   [super dealloc];
-
-   return;
-}
-
-
 - (id) init
 {
    if ((self = [super init]) == nil)
@@ -86,12 +74,10 @@
    // adds tag to sectionTags
    tagNumber = [[NSNumber alloc] initWithLong:sectionTag];
    [sectionTags addObject:tagNumber];
-   [tagNumber release];
 
    // adds array of row tags for section
    rowTags = [[NSMutableArray alloc] initWithCapacity:1];
    [sectionRows addObject:rowTags];
-   [rowTags release];
 
    return([sectionRows count] - 1);
 }
@@ -104,7 +90,6 @@
 
    tagNumber = [[NSNumber alloc] initWithLong:sectionTag];
    index     = [sectionTags indexOfObject:tagNumber];
-   [tagNumber release];
 
    return(index);
 }
@@ -146,7 +131,6 @@
    tagNumber = [[NSNumber alloc] initWithLong:rowTag];
    rowTags   = [sectionRows objectAtIndex:section];
    [rowTags addObject:tagNumber];
-   [tagNumber release];
 
    return([rowTags count] - 1);
 }
@@ -163,7 +147,6 @@
    tagNumber = [[NSNumber alloc] initWithLong:rowTag];
    rowTags   = [sectionRows objectAtIndex:section];
    index     = [rowTags indexOfObject:tagNumber];
-   [tagNumber release];
 
    return(index);
 }

@@ -92,20 +92,6 @@
 
 #pragma mark - Creating and Initializing a BKSplitViewController
 
-- (void) dealloc
-{
-   [controllers      release];
-   [barButton        release];
-   [dividerHorzView   release];
-   [dividerVertView   release];
-   [popoverController release];
-
-   [super dealloc];
-
-   return;
-}
-
-
 - (void) didReceiveMemoryWarning
 {
    NSUInteger pos;
@@ -124,14 +110,12 @@
    // free horizontal divider view if not visible
    if (!(dividerHorzView.superview))
    {
-      [dividerHorzView release];
       dividerHorzView = nil;
    };
 
    // free vertical divider view if not visible
    if (!(dividerVertView.superview))
    {
-      [dividerVertView release];
       dividerVertView = nil;
    };
 
@@ -158,8 +142,6 @@
    controller0 = [[UIViewController alloc] init];
    controller1 = [[UIViewController alloc] init];
    controllers = [[NSArray alloc] initWithObjects:controller0, controller1, nil];
-   [controller0 release];
-   [controller1 release];
 
    // sets default values for split view controller
    [self setDefaults];
@@ -292,7 +274,6 @@
    };
 
    // assigns new UIViewControllers
-   [controllers release];
    controllers = [[NSArray alloc] initWithArray:viewControllers];
    if (([self respondsToSelector:@selector(addChildViewController:)]))
       for(pos = 0; pos < [controllers count]; pos++)
@@ -350,7 +331,6 @@
    rootView.backgroundColor       = [UIColor blackColor];
    rootView.autoresizesSubviews   = TRUE;
    self.view = rootView;
-   [rootView   release];
 
    // load popoverController
    [self loadPopoverController];
@@ -615,9 +595,8 @@
    [bgImageView addSubview:grImageView];
 
    // releases resources
-   [grImageView release];
 
-   return([bgImageView autorelease]);
+   return(bgImageView);
 }
 
 
@@ -630,7 +609,7 @@
       if (viewLayout == BKSplitViewLayoutHorizontally)
       {
          if (!(dividerHorzView))
-            dividerHorzView = [[self dividerImageView:BKSplitViewLayoutHorizontally] retain];
+            dividerHorzView = [self dividerImageView:BKSplitViewLayoutHorizontally];
          dividerView = dividerHorzView;
          if ((dividerVertView.superview))
             [dividerVertView removeFromSuperview];
@@ -640,7 +619,7 @@
       if (viewLayout == BKSplitViewLayoutVertically)
       {
          if (!(dividerVertView))
-            dividerVertView = [[self dividerImageView:BKSplitViewLayoutVertically] retain];
+            dividerVertView = [self dividerImageView:BKSplitViewLayoutVertically];
          dividerView = dividerVertView;
          if ((dividerHorzView.superview))
             [dividerHorzView removeFromSuperview];
@@ -1290,11 +1269,9 @@
              invalidatingBarButtonItem:barButton];
 
    // frees popoverController
-   [popoverController release];
    popoverController = nil;
 
    // frees bar button item
-   [barButton release];
    barButton = nil;
 
    // removes controller as a child controller of split view controller

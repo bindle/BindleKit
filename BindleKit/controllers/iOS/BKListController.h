@@ -50,9 +50,9 @@
 @interface BKListController : UITableViewController
 {
    // delegates
-   id <BKListControllerDelegate> delegate;
-   id <UITableViewDataSource>    tableDataSource;
-   id <UITableViewDelegate>      tableDelegate;
+   id <BKListControllerDelegate> __weak delegate;
+   id <UITableViewDataSource>    __weak tableDataSource;
+   id <UITableViewDelegate>      __weak tableDelegate;
 
    // identity
    NSInteger tag;
@@ -71,15 +71,15 @@
 }
 
 // delegates
-@property (nonatomic, assign) id <BKListControllerDelegate> delegate;
-@property (nonatomic, assign) id <UITableViewDataSource>    tableDataSource;
-@property (nonatomic, assign) id <UITableViewDelegate>      tableDelegate;
+@property (nonatomic, weak) id <BKListControllerDelegate> delegate;
+@property (nonatomic, weak) id <UITableViewDataSource>    tableDataSource;
+@property (nonatomic, weak) id <UITableViewDelegate>      tableDelegate;
 
 // identity
 @property (nonatomic, assign) NSInteger tag;
 
 // data source selectors
-@property (nonatomic, retain) NSArray * data;
+@property (nonatomic, strong) NSArray * data;
 @property (nonatomic, assign) SEL       cellTextLabelSelector;
 @property (nonatomic, assign) SEL       cellDetailTextLabelSelector;
 @property (nonatomic, assign) SEL       cellAccessoryViewSelector;

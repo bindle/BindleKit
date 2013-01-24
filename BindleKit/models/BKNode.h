@@ -45,8 +45,8 @@
    NSMutableArray * nodeSubNodes;
 }
 
-@property (nonatomic, retain) NSString      * nodeName;
-@property (nonatomic, retain) id <NSObject>   nodeData;
+@property (nonatomic, strong) NSString      * nodeName;
+@property (nonatomic, strong) id <NSObject>   nodeData;
 @property (assign, readwrite) NSInteger       nodeType;
 
 #pragma mark - Node management methods

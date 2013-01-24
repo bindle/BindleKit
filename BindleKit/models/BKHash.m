@@ -105,7 +105,7 @@
 {
    if ((self = [super init]) == nil)
       return(nil);
-   _string = [string retain];
+   _string = string;
    return(self);
 }
 
@@ -136,8 +136,6 @@
    saltString = [[NSString alloc] initWithUTF8String:salt];
    hashString = [_string stringWithCryptHashWithSalt:saltString];
 
-   [saltString release];
-
    return(hashString);
 }
 
@@ -157,7 +155,7 @@
       hashString = [[NSString alloc] initWithUTF8String:hash];
    };
 
-   return([hashString autorelease]);
+   return(hashString);
 }
 
 
@@ -187,7 +185,7 @@
       // creates new NSString object of hash
       hashString = [[NSString alloc] initWithUTF8String:cString];
    };
-   return([hashString autorelease]);
+   return(hashString);
 }
 
 
@@ -218,7 +216,7 @@
       hashString = [[NSString alloc] initWithUTF8String:cString];
    };
 
-   return([hashString autorelease]);
+   return(hashString);
 }
 
 
@@ -249,7 +247,7 @@
       hashString = [[NSString alloc] initWithUTF8String:cString];
    };
 
-   return([hashString autorelease]);
+   return(hashString);
 }
 
 
@@ -280,7 +278,7 @@
       hashString = [[NSString alloc] initWithUTF8String:cString];
    };
 
-   return([hashString autorelease]);
+   return(hashString);
 }
 
 
@@ -311,7 +309,7 @@
       hashString = [[NSString alloc] initWithUTF8String:cString];
    };
 
-   return([hashString autorelease]);
+   return(hashString);
 }
 
 
@@ -324,7 +322,6 @@
 
    hash       = [[BKHash alloc] initWithString:string];
    hashString = [hash stringWithCryptHash];
-   [hash release];
 
    return(hashString);
 }
@@ -337,7 +334,6 @@
 
    hash       = [[BKHash alloc] initWithString:string];
    hashString = [hash stringWithCryptHashWithSalt:salt];
-   [hash release];
 
    return(hashString);
 }
@@ -350,7 +346,6 @@
 
    hash       = [[BKHash alloc] initWithString:string];
    hashString = [hash stringWithMD2Hash];
-   [hash release];
 
    return(hashString);
 }
@@ -363,7 +358,6 @@
 
    hash       = [[BKHash alloc] initWithString:string];
    hashString = [hash stringWithMD4Hash];
-   [hash release];
 
    return(hashString);
 }
@@ -376,7 +370,6 @@
 
    hash       = [[BKHash alloc] initWithString:string];
    hashString = [hash stringWithMD5Hash];
-   [hash release];
 
    return(hashString);
 }
@@ -389,7 +382,6 @@
 
    hash       = [[BKHash alloc] initWithString:string];
    hashString = [hash stringWithSHA1Hash];
-   [hash release];
 
    return(hashString);
 }
@@ -402,7 +394,6 @@
 
    hash       = [[BKHash alloc] initWithString:string];
    hashString = [hash stringWithSHA256Hash];
-   [hash release];
 
    return(hashString);
 }

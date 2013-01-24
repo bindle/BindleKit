@@ -55,11 +55,8 @@
 - (void) dealloc
 {
    // host information
-   [_hostname release];
    if ((_addr))
       freeaddrinfo(_addr);
-
-   [super dealloc];
 
    return;
 }
@@ -77,7 +74,7 @@
 
    // error information
    _errorCode    = 0;
-   _errorMessage = [@"success" retain];
+   _errorMessage = @"success";
 
    return(self);
 }
@@ -106,10 +103,7 @@
 
       // performs lookup
       if ((_errorCode = getaddrinfo(hostname, NULL, hintsp, &res)))
-      {
-         [_errorMessage release];
          _errorMessage = [[NSString alloc] initWithUTF8String:gai_strerror((int)_errorCode)];
-      };
 
       // saves results
       _addr = res;

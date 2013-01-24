@@ -68,12 +68,7 @@
    if ((pushedCGImage))
       CGImageRelease(pushedCGImage);
 
-   [normalImage release];
-   [pushedImage release];
-
    CGColorSpaceRelease(color);
-
-   [super dealloc];
 
    return;
 }
@@ -100,7 +95,7 @@
 + (id) imagesWithRed:(CGFloat)redChannel green:(CGFloat)greenChannel
    blue:(CGFloat)blueChannel alpha:(CGFloat)alphaChannel
 {
-   return([[[BKButtonImages alloc] initWithRed:redChannel green:greenChannel blue:blueChannel alpha:alphaChannel] autorelease]);
+   return([[BKButtonImages alloc] initWithRed:redChannel green:greenChannel blue:blueChannel alpha:alphaChannel]);
 }
 
 
@@ -110,7 +105,7 @@
 /// @return Returns an initialized instance of BKButtonImages.
 + (id) imagesWithRGB:(NSUInteger)rgbColor
 {
-   return([[[BKButtonImages alloc] initWithRGB:rgbColor] autorelease]);
+   return([[BKButtonImages alloc] initWithRGB:rgbColor]);
 }
 
 
@@ -120,7 +115,7 @@
 /// @return Returns an initialized instance of BKButtonImages.
 + (id) imagesWithRGBA:(NSUInteger)rgbaColor;
 {
-   return([[[BKButtonImages alloc] initWithRGBA:rgbaColor] autorelease]);
+   return([[BKButtonImages alloc] initWithRGBA:rgbaColor]);
 }
 
 
@@ -274,11 +269,7 @@
       CGImageRelease(pushedCGImage);
    pushedCGImage = nil;
 
-   if ((normalImage))
-      [normalImage release];
    normalImage = nil;
-   if ((pushedImage))
-      [pushedImage release];
    pushedImage = nil;
 
    red   = redChannel;
@@ -306,11 +297,7 @@
       CGImageRelease(pushedCGImage);
    pushedCGImage = nil;
 
-   if ((normalImage))
-      [normalImage release];
    normalImage = nil;
-   if ((pushedImage))
-      [pushedImage release];
    pushedImage = nil;
 
    strokeRed   = redChannel;
@@ -550,23 +537,23 @@
       {
          // BKButtonImageStateNormal
          case BKButtonImageStateNormal:
-         if ((exportImage = [normalImage retain]))
-            return([exportImage autorelease]);
+         if ((exportImage = normalImage))
+            return(exportImage);
          if (!(image = [self createCGImageForState:BKButtonImageStateNormal]))
             return(nil);
          normalImage = [UIImage imageWithCGImage:image];
          normalImage = [normalImage stretchableImageWithLeftCapWidth:(size.width/2) topCapHeight:(size.height/2)+3];
-         return([normalImage retain]);
+         return(normalImage);
 
          // BKButtonImageStateHighlighted
          case BKButtonImageStateHighlighted:
-         if ((exportImage = [pushedImage retain]))
-            return([exportImage autorelease]);
+         if ((exportImage = pushedImage))
+            return(exportImage);
          if (!(image = [self createCGImageForState:BKButtonImageStateHighlighted]))
             return(nil);
          pushedImage = [UIImage imageWithCGImage:image];
          pushedImage = [pushedImage stretchableImageWithLeftCapWidth:(size.width/2) topCapHeight:(size.height/2)+3];
-         return([pushedImage retain]);
+         return(pushedImage);
 
          // catch all
          default:
@@ -595,21 +582,21 @@
       {
          // BKButtonImageStateNormal
          case BKButtonImageStateNormal:
-         if ((exportImage = [normalImage retain]))
-            return([exportImage autorelease]);
+         if ((exportImage = normalImage))
+            return(exportImage);
          if (!(image = [self createCGImageForState:BKButtonImageStateNormal]))
             return(nil);
          normalImage = [[NSImage alloc] initWithCGImage:image size:imageSize];
-         return([normalImage retain]);
+         return(normalImage);
 
          // BKButtonImageStateHighlighted
          case BKButtonImageStateHighlighted:
-         if ((exportImage = [pushedImage retain]))
-            return([exportImage autorelease]);
+         if ((exportImage = pushedImage))
+            return(exportImage);
          if (!(image = [self createCGImageForState:BKButtonImageStateHighlighted]))
             return(nil);
          pushedImage = [[NSImage alloc] initWithCGImage:image size:imageSize];
-         return([pushedImage retain]);
+         return(pushedImage);
 
          // catch all
          default:

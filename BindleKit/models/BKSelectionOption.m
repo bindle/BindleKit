@@ -42,15 +42,6 @@
 @synthesize description;
 
 
-- (void) dealloc
-{
-   self.value       = nil;
-   self.description = nil;
-   [super dealloc];
-   return;
-}
-
-
 - (id) initWithValue:(id)aValue andDescription:(NSString *)aDescription
 {
    if ((self = [super init]) == nil)
@@ -65,7 +56,7 @@
 {
    BKSelectionOption * option;
    option = [[BKSelectionOption alloc] initWithValue:aValue andDescription:aDescription];
-   return([option autorelease]);
+   return(option);
 }
 
 

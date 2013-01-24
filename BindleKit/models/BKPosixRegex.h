@@ -113,7 +113,7 @@
 @property (nonatomic, assign)   int   options;
 
 /// The string containing the regular expression.
-@property (nonatomic, retain) NSString * pattern;
+@property (nonatomic, strong) NSString * pattern;
 
 /// The sub-expressions contained, if any, within -pattern.
 @property (nonatomic, readonly) NSArray * subExpressions;

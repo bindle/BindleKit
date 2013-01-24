@@ -46,19 +46,6 @@
 
 #pragma mark - Object Management Methods
 
-- (void) dealloc
-{
-   // internal views
-   [bezel             release];
-   [textLabel         release];
-   [activityIndicator release];
-
-   [super dealloc];
-
-   return;
-}
-
-
 - (id) init
 {
    NSAssert(false, @"use -(id)initWithContentsController:");

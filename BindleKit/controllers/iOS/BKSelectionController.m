@@ -58,21 +58,6 @@
 - (void) dealloc
 {
    [self dismissSelectionAnimated:NO];
-
-   // common state variables
-   [listOfOptions release];
-
-   // iPad state variables
-   [tableViewController release];
-   [popoverController   release];
-
-   // iPhone state variables
-   [actionSheet release];
-   [pickerView release];
-   [navigationBar release];
-
-   [super dealloc];
-
    return;
 }
 
@@ -103,8 +88,7 @@
 
 - (void) setTitle:(NSString *)aTitle
 {
-   [title release];
-   title = [aTitle retain];
+   title = aTitle;
    navigationBar.topItem.title = aTitle;
    return;
 }
@@ -129,7 +113,6 @@
    tableViewController = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
    tableViewController.clearsSelectionOnViewWillAppear = YES;
    tableViewController.tableView                       = aView;
-   [aView release];
 
    // create popover
    popoverController = [[UIPopoverController alloc] initWithContentViewController:tableViewController];
@@ -165,14 +148,12 @@
    // creates navigation item for navigation bar
    navigationItem = [[UINavigationItem alloc] initWithTitle:nil];
    [navigationBar pushNavigationItem:navigationItem animated:NO];
-   [navigationItem release];
 
    // creates done button
    doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                          target:self
                                          action:@selector(barButtonItemTarget:)];
    navigationBar.topItem.rightBarButtonItem = doneButton;
-   [doneButton release];
 
    // creates picker
    aFrame     = CGRectMake(0, navigationBar.frame.size.height, 0, 0);
@@ -207,7 +188,6 @@
    BKSelectionOption * option;
    option = [[BKSelectionOption alloc] initWithValue:aValue andDescription:aDescription];
    [listOfOptions addObject:option];
-   [option release];
    dataHasChanged = YES;
    return;
 }
@@ -326,7 +306,7 @@
 }
 
 
-- (void) setSelectedValue:(id)selectedValue
+- (void) setSelectedValue:(id <NSObject>)selectedValue
 {
    NSUInteger   pos;
    BKSelectionOption * option;
@@ -380,7 +360,7 @@
       cell = [tableView dequeueReusableCellWithIdentifier:@"Selected Cell"];
       if (cell == nil)
       {
-         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Selected Cell"] autorelease];
+         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Selected Cell"];
          cell.accessoryType       = UITableViewCellAccessoryNone;
          cell.accessoryType       = UITableViewCellAccessoryCheckmark;
          cell.textLabel.textColor = cell.detailTextLabel.textColor;
@@ -389,7 +369,7 @@
       cell = [tableView dequeueReusableCellWithIdentifier:@"Unselected Cell"];
       if (cell == nil)
       {
-         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Unselected Cell"] autorelease];
+         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Unselected Cell"];
          cell.accessoryType  = UITableViewCellAccessoryNone;
       };
    };

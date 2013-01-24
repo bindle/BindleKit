@@ -57,7 +57,7 @@
 @interface BKSelectionController : NSObject <UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 {
    // common state variables
-   id <BKSelectionDelegate>   delegate;            // notify object when a selection is made
+   id <BKSelectionDelegate>   __weak delegate;     // notify object when a selection is made
    NSInteger                  tag;                 // used to identify selection controller
    NSString                 * title;               // title to display for prompts
    UIUserInterfaceIdiom       userInterfaceIdiom;  // should use UIPopoverController or UIPickerView
@@ -78,13 +78,13 @@
    UINavigationBar          * navigationBar;       // used to dismiss the pickerView
 }
 
-@property (assign, readwrite) id <BKSelectionDelegate>   delegate;
+@property (nonatomic, weak)   id <BKSelectionDelegate>   delegate;
 @property (assign, readwrite) NSInteger                  tag;
-@property (nonatomic, retain) NSString                 * title;
-@property (nonatomic, retain) NSArray                  * options;
+@property (nonatomic, strong) NSString                 * title;
+@property (nonatomic, strong) NSArray                  * options;
 @property (assign, readwrite) NSInteger                  selectedIndex;
-@property (assign, readwrite) id                         selectedValue;
-@property (assign, readwrite) NSString                 * selectedDescription;
+@property (nonatomic, strong) id <NSObject>              selectedValue;
+@property (nonatomic, strong) NSString                 * selectedDescription;
 @property (assign, readonly)  BOOL                       isPresented;
 
 - (id)   initWithRootController:(UIViewController *)aController;

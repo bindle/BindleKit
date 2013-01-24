@@ -223,7 +223,7 @@ static NSString *   bk_package_version_string;
 
 + (id) packageWithBindleKit
 {
-   return([[[BKVersion alloc] initWithBindleKit] autorelease]);
+   return([[BKVersion alloc] initWithBindleKit]);
 }
 
 

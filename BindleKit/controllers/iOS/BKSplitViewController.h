@@ -84,7 +84,7 @@ typedef enum {
 @interface BKSplitViewController : UIViewController
 {
    // Members common with UISplitViewController
-   id <BKSplitViewControllerDelegate> delegate;  // notify of view events
+   id <BKSplitViewControllerDelegate> __weak delegate;  // notify of view events
    NSArray * controllers;                        // list of view controllers
 
    // Members specific to BKSplitViewController
@@ -110,7 +110,7 @@ typedef enum {
 }
 
 // Properties common with UISplitViewController
-@property(nonatomic, assign) id <BKSplitViewControllerDelegate> delegate;
+@property(nonatomic, weak) id <BKSplitViewControllerDelegate> delegate;
 @property(nonatomic, copy)   NSArray * viewControllers;
 
 // Properties specific to BKSplitViewController

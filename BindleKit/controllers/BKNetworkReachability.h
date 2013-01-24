@@ -83,12 +83,12 @@
 @property (nonatomic, readonly) BOOL       transientConnection;
 
 /// @name host information
-@property (nonatomic, retain)   NSString * hostname;
+@property (nonatomic, strong)   NSString * hostname;
 
 /// @name Manage Notifications
 - (BOOL) startNotifier;
 - (void) stopNotifier;
-@property (nonatomic, retain)   NSString * notificationString;
+@property (nonatomic, strong)   NSString * notificationString;
 @property (assign, readwrite)   BOOL       logUpdates;
 
 /// @name Network Flag Handling

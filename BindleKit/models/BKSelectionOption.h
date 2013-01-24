@@ -43,8 +43,8 @@
    NSString * description;
 }
 
-@property (nonatomic, retain) id         value;
-@property (nonatomic, retain) NSString * description;
+@property (nonatomic, strong) id         value;
+@property (nonatomic, strong) NSString * description;
 
 - (id) initWithValue:(id)aValue andDescription:(NSString *)aDescription;
 + (id) optionWithValue:(id)aValue andDescription:(NSString *)aDescription;

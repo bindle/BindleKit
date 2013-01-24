@@ -48,7 +48,7 @@
 {
    BKNode * node;
    node = [[BKNode alloc] initWithName:aName];
-   return([node autorelease]);
+   return(node);
 }
 
 
@@ -56,16 +56,7 @@
 {
    BKNode * node;
    node = [[BKNode alloc] initWithName:aName andSubName:aSubName];
-   return([node autorelease]);
-}
-
-
-- (void) dealloc
-{
-   [nodeName         release];
-   [nodeSubNodes release];
-   [super dealloc];
-   return;
+   return(node);
 }
 
 
@@ -97,7 +88,6 @@
 
    aNode = [[BKNode alloc] initWithName:aSubName];
    [nodeSubNodes addObject:aNode];
-   [aNode release];
 
    return(self);
 }
@@ -218,7 +208,6 @@
 {
    @synchronized(self)
    {
-      [nodeSubNodes release];
       nodeSubNodes = nil;
    };
    return;
@@ -231,9 +220,9 @@
    [self initializeSubNodes];
    @synchronized(self)
    {
-      aNode = [[nodeSubNodes objectAtIndex:index] retain];
+      aNode = [nodeSubNodes objectAtIndex:index];
    };
-   return([aNode autorelease]);
+   return(aNode);
 }
 
 
@@ -245,9 +234,9 @@
    @synchronized(self)
    {
       aNode = [nodeSubNodes objectAtIndex:index];
-      aName = [aNode.nodeName retain];
+      aName = aNode.nodeName;
    };
-   return([aName autorelease]);
+   return(aName);
 }
 
 @end

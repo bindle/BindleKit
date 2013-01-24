@@ -40,14 +40,6 @@
 @implementation BKStack
 #pragma mark - Creating and Initializing a Mutable Array
 
-- (void) dealloc
-{
-   [dataset release];
-   [super dealloc];
-   return;
-}
-
-
 /// Initializes an instance of BKStack.
 /// @return Returns an initialized instance of BKStack.
 - (id) init
@@ -110,12 +102,12 @@
          count = [dataset count];
          if (count > 0)
          {
-            anObject = [[dataset objectAtIndex:(count - 1)] retain];
+            anObject = [dataset objectAtIndex:(count - 1)];
             [dataset removeObjectAtIndex:(count - 1)];
          };
       };
    };
-   return([anObject autorelease]);
+   return(anObject);
 }
 
 
@@ -158,10 +150,10 @@
       {
          count = [dataset count];
          if (count > 0)
-            anObject = [[dataset objectAtIndex:(count - 1)] retain];
+            anObject = [dataset objectAtIndex:(count - 1)];
       };
    };
-   return([anObject autorelease]);
+   return(anObject);
 }
 
 

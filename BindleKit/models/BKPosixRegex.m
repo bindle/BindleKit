@@ -70,16 +70,6 @@
 {
    // Regular expressions information
    regfree(&regex);
-   [regexString release];
-   [subExpressions release];
-
-   // matches
-   [matches release];
-
-   // error reporting
-   [errorMessage release];
-
-   [super dealloc];
 
    return;
 }
@@ -106,7 +96,7 @@
 
    // Regular expressions information
    regexFlags  = options;
-   regexString = [pattern retain];
+   regexString = pattern;
    [self regexCompile];
 
    return(self);
@@ -115,13 +105,13 @@
 
 + (id) expressionWithPattern:(NSString *)pattern
 {
-   return([[[BKPosixRegex alloc] initWithPattern:pattern] autorelease]);
+   return([[BKPosixRegex alloc] initWithPattern:pattern]);
 }
 
 
 + (id) expressionWithPattern:(NSString *)pattern andOptions:(int)options
 {
-   return([[[BKPosixRegex alloc] initWithPattern:pattern andOptions:options] autorelease]);
+   return([[BKPosixRegex alloc] initWithPattern:pattern andOptions:options]);
 }
 
 
@@ -143,8 +133,7 @@
    NSAssert((pattern != nil), @"pattern is required");
    @synchronized(self)
    {
-      [regexString release];
-      regexString = [pattern retain];
+      regexString = pattern;
       [self regexCompile];
    };
    return;
@@ -186,8 +175,7 @@
          {
             regerror(err, &regex, msg, 1023);
             errorCode    = err;
-            [errorMessage release];
-            errorMessage = [[NSString stringWithUTF8String:msg] retain];
+            errorMessage = [NSString stringWithUTF8String:msg];
             return;
          };
 
@@ -206,7 +194,7 @@
                andString:regexString]];
 
             // save sub expressions
-            stack = [[[BKStack alloc] init] autorelease];
+            stack = [[BKStack alloc] init];
             for(i = 0; i < strlen(str); i++)
             {
                switch(str[i])
@@ -277,7 +265,7 @@
          {
             regerror(err, &regex, msg, 1023);
             errorCode    = err;
-            errorMessage = [[NSString stringWithUTF8String:msg] retain];
+            errorMessage = [NSString stringWithUTF8String:msg];
             return(NO);
          };
 
@@ -328,13 +316,13 @@
 
 + (id) expressionWithIPv4AddressPattern
 {
-   return([[[BKPosixRegex alloc] initWithIPv4AddressPattern] autorelease]);
+   return([[BKPosixRegex alloc] initWithIPv4AddressPattern]);
 }
 
 
 + (id) expressionWithIPv6AddressPattern
 {
-   return([[[BKPosixRegex alloc] initWithIPv6AddressPattern] autorelease]);
+   return([[BKPosixRegex alloc] initWithIPv6AddressPattern]);
 }
 
 

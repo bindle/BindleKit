@@ -51,9 +51,7 @@ static BKMemoryCache * BKMemoryCacheRegistery;
 
 - (void) dealloc
 {
-   [cacheData release];
    [self unregisterToReceiveMemoryWarning];
-   [super dealloc];
    return;
 }
 
@@ -143,7 +141,6 @@ static BKMemoryCache * BKMemoryCacheRegistery;
       cache = [[BKMemoryCache alloc] init];
       if ([BKMemoryCacheRegistery objectForKey:name] == nil)
          [BKMemoryCacheRegistery setObject:cache forKey:name];
-      [cache release];
    };
    return;
 }
@@ -213,10 +210,10 @@ static BKMemoryCache * BKMemoryCacheRegistery;
    @synchronized(self)
    {
       if (cacheData != nil)
-         value = [[cacheData objectForKey:key] retain];
+         value = [cacheData objectForKey:key];
    };
 
-   return([value autorelease]);
+   return(value);
 }
 
 
@@ -249,10 +246,7 @@ static BKMemoryCache * BKMemoryCacheRegistery;
 
             // remove dictionary if no values are present
             if ([cacheData count] == 0)
-            {
-               [cacheData release];
                cacheData = nil;
-            };
          };
       };
    };
@@ -288,10 +282,7 @@ static BKMemoryCache * BKMemoryCacheRegistery;
 
          // remove dictionary if no values are present
          if ([cacheData count] == 0)
-         {
-            [cacheData release];
             cacheData = nil;
-         };
       };
    };
 

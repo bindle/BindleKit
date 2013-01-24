@@ -50,13 +50,6 @@
 # pragma mark - BKPromptView Class Implementation
 @implementation BKPromptView
 
-- (void) dealloc
-{
-   [super dealloc];
-   return;
-}
-
-
 - (id) initWithTitle:(NSString *)title message:(NSString *)message
    delegate:(id <BKPromptViewDelegate>)delegate
    cancelButtonTitle:(NSString *)cancelButtonTitle

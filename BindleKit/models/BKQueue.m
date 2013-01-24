@@ -44,14 +44,6 @@
 #pragma mark -
 @implementation BKQueue
 
-- (void) dealloc
-{
-   [dataset release];
-   [super dealloc];
-   return;
-}
-
-
 - (id) init
 {
    if ((self = [super init]) == nil)
@@ -106,9 +98,9 @@
    @synchronized(self)
    {
       if ((dataset))
-         anObject = [[dataset objectAtIndex:0] retain];
+         anObject = [dataset objectAtIndex:0];
    };
-   return([anObject autorelease]);
+   return(anObject);
 }
 
 
@@ -120,11 +112,11 @@
    {
       if ((dataset))
       {
-         anObject = [[dataset objectAtIndex:0] retain];
+         anObject = [dataset objectAtIndex:0];
          [dataset removeObjectAtIndex:0];
       };
    };
-   return([anObject autorelease]);
+   return(anObject);
 }
 
 

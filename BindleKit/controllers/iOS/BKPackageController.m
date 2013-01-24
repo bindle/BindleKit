@@ -44,28 +44,12 @@
 
 #pragma mark - Object Management Methods
 
-- (void) dealloc
-{
-   // package information
-   [packages release];
-
-   // alerts
-   [alert       release];
-   [alertPackge release];
-
-   [super dealloc];
-
-   return;
-}
-
-
 - (void) didReceiveMemoryWarning
 {
    // Releases the view if it doesn't have a superview.
    [super didReceiveMemoryWarning];
 
    // frees alert
-   [alert release];
    alert = nil;
 
    return;
@@ -90,7 +74,6 @@
    package  = [[BKVersion alloc] initWithBindleKit];
    packages = [[NSMutableArray alloc] initWithCapacity:1];
    [packages addObject:package];
-   [package release];
 
    return(self);
 }
@@ -203,7 +186,7 @@
       cell = [tableView dequeueReusableCellWithIdentifier:@"DataCell"];
       if (cell == nil)
       {
-         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"DataCell"] autorelease];
+         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"DataCell"];
          cell.selectionStyle                            = UITableViewCellSelectionStyleNone;
          cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
          cell.detailTextLabel.numberOfLines             = 1;
@@ -214,7 +197,7 @@
       cell = [tableView dequeueReusableCellWithIdentifier:@"TextCell"];
       if (cell == nil)
       {
-         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TextCell"] autorelease];
+         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TextCell"];
          cell.selectionStyle                 = UITableViewCellSelectionStyleNone;
          cell.textLabel.font                 = [UIFont fontWithName:@"Courier" size:10];
          cell.textLabel.numberOfLines        = 0;
@@ -266,13 +249,11 @@
    {
       case 1:
       // saves package
-      [alertPackge release];
-      alertPackge = [[packages objectAtIndex:indexPath.section] retain];
+      alertPackge = [packages objectAtIndex:indexPath.section];
       alertTitle = [[NSString alloc] initWithFormat:@"Open the website for %@?", alertPackge.packageName];
    
       // free old alert
       [alert dismissWithClickedButtonIndex:0 animated:YES];
-      [alert release];
 
       // create alert
       alert = [[UIAlertView alloc] initWithTitle:@"Open Webpage"
@@ -281,8 +262,6 @@
          cancelButtonTitle:@"No"
          otherButtonTitles:@"Yes", nil];
       [alert show];
-      [alert release];
-      [alertTitle release];
       break;
 
       default:
@@ -303,8 +282,6 @@
          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:alertPackge.packageWebsite]];
 
       // frees alert
-      [alert       release];
-      [alertPackge release];
       alert       = nil;
       alertPackge = nil;
    };

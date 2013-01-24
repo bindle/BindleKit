@@ -62,14 +62,6 @@
 
 #pragma mark - Object Management Methods
 
-- (void) dealloc
-{
-   [data release];
-   [super dealloc];
-   return;
-}
-
-
 - (id) initWithStyle:(UITableViewStyle)style
 {
    if ((self = [super initWithStyle:style]) == nil)
@@ -148,19 +140,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   id                item;
+   id <NSObject>     item;
    UITableViewCell * cell;
 
    cell = [tableView dequeueReusableCellWithIdentifier:@"BKListControllerCell"];
    if (!(cell))
    {
-      cell = [[[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:@"BKListControllerCell"] autorelease];
+      cell = [[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:@"BKListControllerCell"];
       cell.accessoryType  = cellAccessoryType;
       cell.selectionStyle = cellSelectionStyle;
    };
 
    item = [data objectAtIndex:indexPath.row];
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
    if ((cellTextLabelSelector))
       if (([item respondsToSelector:cellTextLabelSelector]))
          cell.textLabel.text = [item performSelector:cellTextLabelSelector];
@@ -173,6 +167,7 @@
    if ((cellImageSelector))
       if (([item respondsToSelector:cellImageSelector]))
          cell.imageView.image = [item performSelector:cellImageSelector];
+#pragma clang diagnostic pop
 
    return cell;
 }

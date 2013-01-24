@@ -53,8 +53,8 @@
 @property (nonatomic, readonly) BOOL     visible;
 
 // user parameters
-@property (nonatomic, retain) UIFont   * font;
-@property (nonatomic, retain) NSString * text;
+@property (nonatomic, strong) UIFont   * font;
+@property (nonatomic, strong) NSString * text;
 
 // Object Management Methods
 - (id) initWithContentsController:(UIViewController *)controller;

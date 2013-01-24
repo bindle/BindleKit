@@ -87,12 +87,6 @@
    if ((reachabilityRef))
       CFRelease(reachabilityRef);
 
-   // notification information
-   [notificationString release];
-
-   // host information
-   [hostname release];
-   [super dealloc];
    return;
 }
 
@@ -104,7 +98,7 @@
 
    @autoreleasepool
    {
-      hostname        = [newHostname retain];
+      hostname        = newHostname;
       notifierOn      = NO;
       linkLocalRef    = NO;
       reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, [newHostname UTF8String]);
@@ -157,25 +151,25 @@
 
 + (BKNetworkReachability *) reachabilityWithHostName:(NSString *)newHostname
 {
-   return([[[BKNetworkReachability alloc] initWithHostName:newHostname] autorelease]);
+   return([[BKNetworkReachability alloc] initWithHostName:newHostname]);
 }
 
 
 + (BKNetworkReachability *) reachabilityWithAddress:(struct sockaddr_in *)hostAddress
 {
-   return([[[BKNetworkReachability alloc] initWithAddress:hostAddress] autorelease]);
+   return([[BKNetworkReachability alloc] initWithAddress:hostAddress]);
 }
 
 
 + (BKNetworkReachability *) reachabilityForInternetConnection
 {
-   return([[[BKNetworkReachability alloc] initForInternetConnection] autorelease]);
+   return([[BKNetworkReachability alloc] initForInternetConnection]);
 }
 
 
 + (BKNetworkReachability *) reachabilityForLinkLocal
 {
-   return([[[BKNetworkReachability alloc] initForLinkLocal] autorelease]);
+   return([[BKNetworkReachability alloc] initForLinkLocal]);
 }
 
 
@@ -270,9 +264,7 @@
    NSAssert((newHostname != nil), @"hostname must not be nil");
 
    linkLocalRef = NO;
-
-   [hostname release];
-   hostname = [newHostname retain];
+   hostname     = newHostname;
 
    restartNotifier = NO;
    if ((notifierOn))
@@ -303,7 +295,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 
    @autoreleasepool
    {
-      reachability                   = (BKNetworkReachability *) info;
+      reachability                   = (__bridge BKNetworkReachability *) info;
       reachability.reachabilityFlags = flags;
 
       if ((reachability.logUpdates))
@@ -321,7 +313,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 - (BOOL) startNotifier
 {
    SCNetworkReachabilityFlags    flags;
-   SCNetworkReachabilityContext  context = {0, self, NULL, NULL, NULL};
+   SCNetworkReachabilityContext  context = {0, (__bridge void *)(self), NULL, NULL, NULL};
 
    @synchronized(self)
    {

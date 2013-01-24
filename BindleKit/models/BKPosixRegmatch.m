@@ -50,25 +50,13 @@
 
 #pragma mark - Object Management Methods
 
-- (void) dealloc
-{
-   // string information
-   [_string    release];
-   [_subString release];
-
-   [super dealloc];
-
-   return;
-}
-
-
 - (id) initWithRange:(NSRange)range andString:(NSString *)string
 {
    if ((self = [super init]) == nil)
       return(self);
 
-   _string    = [string retain];
-   _subString = [[string substringWithRange:range] retain];
+   _string    = string;
+   _subString = [string substringWithRange:range];
    _range     = range;
 
    return(self);
@@ -82,7 +70,6 @@
 
    str   = [[NSString alloc] initWithUTF8String:string];
    match = [[BKPosixRegmatch alloc] initWithRange:range andString:str];
-   [str release];
 
    return(match);
 }
@@ -103,7 +90,6 @@
 
    str   = [[NSString alloc] initWithUTF8String:string];
    match = [[BKPosixRegmatch alloc] initWithRegmatch:regmatch andString:str];
-   [str release];
 
    return(match);
 }
@@ -111,25 +97,25 @@
 
 + (id) matchWithRange:(NSRange)range andString:(NSString *)string
 {
-   return([[[BKPosixRegmatch alloc] initWithRange:range andString:string] autorelease]);
+   return([[BKPosixRegmatch alloc] initWithRange:range andString:string]);
 }
 
 
 + (id) matchWithRange:(NSRange)range andUTF8String:(const char *)string
 {
-   return([[[BKPosixRegmatch alloc] initWithRange:range andString:[NSString stringWithUTF8String:string]] autorelease]);
+   return([[BKPosixRegmatch alloc] initWithRange:range andString:[NSString stringWithUTF8String:string]]);
 }
 
 
 + (id) matchWithRegmatch:(regmatch_t)regmatch andString:(NSString *)string
 {
-   return([[[BKPosixRegmatch alloc] initWithRegmatch:regmatch andString:string] autorelease]);
+   return([[BKPosixRegmatch alloc] initWithRegmatch:regmatch andString:string]);
 }
 
 
 + (id) matchWithRegmatch:(regmatch_t)regmatch andUTF8String:(const char *)string
 {
-   return([[[BKPosixRegmatch alloc] initWithRegmatch:regmatch andString:[NSString stringWithUTF8String:string]] autorelease]);
+   return([[BKPosixRegmatch alloc] initWithRegmatch:regmatch andString:[NSString stringWithUTF8String:string]]);
 }
 
 

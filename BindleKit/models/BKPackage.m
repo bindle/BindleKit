@@ -55,24 +55,6 @@
 
 #pragma mark - Object Management Methods
 
-- (void) dealloc
-{
-   // API Information methods
-   [apiVersionString release];
-
-   // Package Information methods
-   [packageIdentifier  release];
-   [packageName        release];
-   [packageVersion     release];
-   [packageWebsite     release];
-   [packageLicense     release];
-
-   [super dealloc];
-
-   return;
-}
-
-
 - (id) initWithName:(NSString *)name version:(NSString *)version
 {
    if ((self = [super init]) == nil)
@@ -85,7 +67,7 @@
 
 + (id) packageWithName:(NSString *)name version:(NSString *)version
 {
-   return([[[BKPackage alloc] initWithName:name version:version] autorelease]);
+   return([[BKPackage alloc] initWithName:name version:version]);
 }
 
 
@@ -99,7 +81,6 @@
 
 - (void) setUTF8ApiVersionString:(const char *)string
 {
-   [apiVersionString release];
    apiVersionString = nil;
    if ((string))
       apiVersionString = [[NSString alloc] initWithUTF8String:string];
@@ -115,7 +96,6 @@
 
 - (void) setUTF8PackageIdentifier:(const char *)string
 {
-   [packageIdentifier release];
    packageIdentifier = nil;
    if ((string))
       packageIdentifier = [[NSString alloc] initWithUTF8String:string];
@@ -131,7 +111,6 @@
 
 - (void) setUTF8PackageName:(const char *)string
 {
-   [packageName release];
    packageName = nil;
    if ((string))
       packageName = [[NSString alloc] initWithUTF8String:string];
@@ -147,7 +126,6 @@
 
 - (void) setUTF8PackageVersion:(const char *)string
 {
-   [packageVersion release];
    packageVersion = nil;
    if ((string))
       packageVersion = [[NSString alloc] initWithUTF8String:string];
@@ -163,7 +141,6 @@
 
 - (void) setUTF8PackageWebsite:(const char *)string
 {
-   [packageWebsite release];
    packageWebsite = nil;
    if ((string))
       packageWebsite = [[NSString alloc] initWithUTF8String:string];
@@ -179,7 +156,6 @@
 
 - (void) setUTF8PackageLicense:(const char *)string
 {
-   [packageLicense release];
    packageLicense = nil;
    if ((string))
       packageLicense = [[NSString alloc] initWithUTF8String:string];
