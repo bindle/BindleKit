@@ -64,18 +64,12 @@
 
 - (id) initWithRange:(NSRange)range andString:(NSString *)string
 {
-   NSAutoreleasePool * pool;
-
    if ((self = [super init]) == nil)
       return(self);
-
-   pool = [[NSAutoreleasePool alloc] init];
 
    _string    = [string retain];
    _subString = [[string substringWithRange:range] retain];
    _range     = range;
-
-   [pool release];
 
    return(self);
 }
