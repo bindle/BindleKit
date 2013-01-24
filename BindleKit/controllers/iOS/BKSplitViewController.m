@@ -624,31 +624,28 @@
 // loads divider view
 - (void) loadDividerView
 {
-   NSAutoreleasePool * pool;
-
-   pool = [[NSAutoreleasePool alloc] init];
-
-   // retrieves horizontal divider
-   if (viewLayout == BKSplitViewLayoutHorizontally)
+   @autoreleasepool
    {
-      if (!(dividerHorzView))
-         dividerHorzView = [[self dividerImageView:BKSplitViewLayoutHorizontally] retain];
-      dividerView = dividerHorzView;
-      if ((dividerVertView.superview))
-         [dividerVertView removeFromSuperview];
-   };
+      // retrieves horizontal divider
+      if (viewLayout == BKSplitViewLayoutHorizontally)
+      {
+         if (!(dividerHorzView))
+            dividerHorzView = [[self dividerImageView:BKSplitViewLayoutHorizontally] retain];
+         dividerView = dividerHorzView;
+         if ((dividerVertView.superview))
+            [dividerVertView removeFromSuperview];
+      };
 
-   // retrieves vertical divider
-   if (viewLayout == BKSplitViewLayoutVertically)
-   {
-      if (!(dividerVertView))
-         dividerVertView = [[self dividerImageView:BKSplitViewLayoutVertically] retain];
-      dividerView = dividerVertView;
-      if ((dividerHorzView.superview))
-         [dividerHorzView removeFromSuperview];
+      // retrieves vertical divider
+      if (viewLayout == BKSplitViewLayoutVertically)
+      {
+         if (!(dividerVertView))
+            dividerVertView = [[self dividerImageView:BKSplitViewLayoutVertically] retain];
+         dividerView = dividerVertView;
+         if ((dividerHorzView.superview))
+            [dividerHorzView removeFromSuperview];
+      };
    };
-
-   [pool release];
 
    return;
 }
