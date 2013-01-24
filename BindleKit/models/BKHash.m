@@ -144,20 +144,18 @@
 
 - (NSString *) stringWithCryptHashWithSalt:(NSString *)saltString
 {
-   NSAutoreleasePool * pool;
    const char        * salt;
    const char        * key;
    char              * hash;
    NSString          * hashString;
 
-   pool       = [[NSAutoreleasePool alloc] init];
-
-   key        = [_string UTF8String];
-   salt       = [saltString UTF8String];
-   hash       = crypt(key, salt);
-   hashString = [[NSString alloc] initWithUTF8String:hash];
-
-   [pool release];
+   @autoreleasepool
+   {
+      key        = [_string UTF8String];
+      salt       = [saltString UTF8String];
+      hash       = crypt(key, salt);
+      hashString = [[NSString alloc] initWithUTF8String:hash];
+   };
 
    return([hashString autorelease]);
 }
@@ -165,7 +163,6 @@
 
 - (NSString *) stringWithMD2Hash
 {
-   NSAutoreleasePool * pool;
    NSString          * hashString;
    const char        * input;
    uint8_t             hash[MD2_DIGEST_LENGTH];
@@ -173,32 +170,29 @@
    char                buff[5];
    unsigned            u;
 
-   pool = [[NSAutoreleasePool alloc] init];
-
-   // hashes input
-   input = [_string UTF8String];
-   CC_MD2((uint8_t *)input, (CC_LONG)strlen(input), hash);
-
-   // converts to ASCII
-   cString[0] = '\0';
-   for(u = 0; u < MD2_DIGEST_LENGTH; u++)
+   @autoreleasepool
    {
-      snprintf(buff, 5, "%02X", hash[u]);
-      strcat(cString, buff);
+      // hashes input
+      input = [_string UTF8String];
+      CC_MD2((uint8_t *)input, (CC_LONG)strlen(input), hash);
+
+      // converts to ASCII
+      cString[0] = '\0';
+      for(u = 0; u < MD2_DIGEST_LENGTH; u++)
+      {
+         snprintf(buff, 5, "%02X", hash[u]);
+         strcat(cString, buff);
+      };
+
+      // creates new NSString object of hash
+      hashString = [[NSString alloc] initWithUTF8String:cString];
    };
-
-   // creates new NSString object of hash
-   hashString = [[NSString alloc] initWithUTF8String:cString];
-
-   [pool release];
-
    return([hashString autorelease]);
 }
 
 
 - (NSString *) stringWithMD4Hash
 {
-   NSAutoreleasePool * pool;
    NSString          * hashString;
    const char        * input;
    uint8_t             hash[MD4_DIGEST_LENGTH];
@@ -206,24 +200,23 @@
    char                buff[5];
    unsigned            u;
 
-   pool = [[NSAutoreleasePool alloc] init];
-
-   // hashes input
-   input = [_string UTF8String];
-   CC_MD4((uint8_t *)input, (CC_LONG)strlen(input), hash);
-
-   // converts to ASCII
-   cString[0] = '\0';
-   for(u = 0; u < MD2_DIGEST_LENGTH; u++)
+   @autoreleasepool
    {
-      snprintf(buff, 5, "%02X", hash[u]);
-      strcat(cString, buff);
+      // hashes input
+      input = [_string UTF8String];
+      CC_MD4((uint8_t *)input, (CC_LONG)strlen(input), hash);
+
+      // converts to ASCII
+      cString[0] = '\0';
+      for(u = 0; u < MD2_DIGEST_LENGTH; u++)
+      {
+         snprintf(buff, 5, "%02X", hash[u]);
+         strcat(cString, buff);
+      };
+
+      // creates new NSString object of hash
+      hashString = [[NSString alloc] initWithUTF8String:cString];
    };
-
-   // creates new NSString object of hash
-   hashString = [[NSString alloc] initWithUTF8String:cString];
-
-   [pool release];
 
    return([hashString autorelease]);
 }
@@ -231,7 +224,6 @@
 
 - (NSString *) stringWithMD5Hash
 {
-   NSAutoreleasePool * pool;
    NSString          * hashString;
    const char        * input;
    uint8_t             hash[MD5_DIGEST_LENGTH];
@@ -239,24 +231,23 @@
    char                buff[5];
    unsigned            u;
 
-   pool = [[NSAutoreleasePool alloc] init];
-
-   // hashes input
-   input = [_string UTF8String];
-   CC_MD5((uint8_t *)input, (CC_LONG)strlen(input), hash);
-
-   // converts to ASCII
-   cString[0] = '\0';
-   for(u = 0; u < MD5_DIGEST_LENGTH; u++)
+   @autoreleasepool
    {
-      snprintf(buff, 5, "%02X", hash[u]);
-      strcat(cString, buff);
+      // hashes input
+      input = [_string UTF8String];
+      CC_MD5((uint8_t *)input, (CC_LONG)strlen(input), hash);
+
+      // converts to ASCII
+      cString[0] = '\0';
+      for(u = 0; u < MD5_DIGEST_LENGTH; u++)
+      {
+         snprintf(buff, 5, "%02X", hash[u]);
+         strcat(cString, buff);
+      };
+
+      // creates new NSString object of hash
+      hashString = [[NSString alloc] initWithUTF8String:cString];
    };
-
-   // creates new NSString object of hash
-   hashString = [[NSString alloc] initWithUTF8String:cString];
-
-   [pool release];
 
    return([hashString autorelease]);
 }
@@ -264,7 +255,6 @@
 
 - (NSString *) stringWithSHA1Hash
 {
-   NSAutoreleasePool * pool;
    NSString          * hashString;
    const char        * input;
    uint8_t             hash[SHA_DIGEST_LENGTH];
@@ -272,24 +262,23 @@
    char                buff[5];
    unsigned            u;
 
-   pool = [[NSAutoreleasePool alloc] init];
-
-   // hashes input
-   input = [_string UTF8String];
-   CC_SHA1((uint8_t *)input, (CC_LONG)strlen(input), hash);
-
-   // converts to ASCII
-   cString[0] = '\0';
-   for(u = 0; u < SHA_DIGEST_LENGTH; u++)
+   @autoreleasepool
    {
-      snprintf(buff, 5, "%02X", hash[u]);
-      strcat(cString, buff);
+      // hashes input
+      input = [_string UTF8String];
+      CC_SHA1((uint8_t *)input, (CC_LONG)strlen(input), hash);
+
+      // converts to ASCII
+      cString[0] = '\0';
+      for(u = 0; u < SHA_DIGEST_LENGTH; u++)
+      {
+         snprintf(buff, 5, "%02X", hash[u]);
+         strcat(cString, buff);
+      };
+
+      // creates new NSString object of hash
+      hashString = [[NSString alloc] initWithUTF8String:cString];
    };
-
-   // creates new NSString object of hash
-   hashString = [[NSString alloc] initWithUTF8String:cString];
-
-   [pool release];
 
    return([hashString autorelease]);
 }
@@ -297,7 +286,6 @@
 
 - (NSString *) stringWithSHA256Hash
 {
-   NSAutoreleasePool * pool;
    NSString          * hashString;
    const char        * input;
    uint8_t             hash[SHA256_DIGEST_LENGTH];
@@ -305,24 +293,23 @@
    char                buff[5];
    unsigned            u;
 
-   pool = [[NSAutoreleasePool alloc] init];
-
-   // hashes input
-   input = [_string UTF8String];
-   CC_SHA256((uint8_t *)input, (CC_LONG)strlen(input), hash);
-
-   // converts to ASCII
-   cString[0] = '\0';
-   for(u = 0; u < SHA256_DIGEST_LENGTH; u++)
+   @autoreleasepool
    {
-      snprintf(buff, 5, "%02X", hash[u]);
-      strcat(cString, buff);
+      // hashes input
+      input = [_string UTF8String];
+      CC_SHA256((uint8_t *)input, (CC_LONG)strlen(input), hash);
+
+      // converts to ASCII
+      cString[0] = '\0';
+      for(u = 0; u < SHA256_DIGEST_LENGTH; u++)
+      {
+         snprintf(buff, 5, "%02X", hash[u]);
+         strcat(cString, buff);
+      };
+
+      // creates new NSString object of hash
+      hashString = [[NSString alloc] initWithUTF8String:cString];
    };
-
-   // creates new NSString object of hash
-   hashString = [[NSString alloc] initWithUTF8String:cString];
-
-   [pool release];
 
    return([hashString autorelease]);
 }
