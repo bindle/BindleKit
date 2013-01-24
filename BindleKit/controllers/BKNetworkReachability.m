@@ -99,20 +99,16 @@
 
 - (id) initWithHostName:(NSString *)newHostname
 {
-   NSAutoreleasePool * pool;
-
    if ((self = [super init]) == nil)
       return(self);
 
-   pool = [[NSAutoreleasePool alloc] init];
-
-   hostname        = [newHostname retain];
-
-   notifierOn      = NO;
-   linkLocalRef    = NO;
-   reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, [newHostname UTF8String]);
-
-   [pool release];
+   @autoreleasepool
+   {
+      hostname        = [newHostname retain];
+      notifierOn      = NO;
+      linkLocalRef    = NO;
+      reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, [newHostname UTF8String]);
+   };
 
    return(self);
 }
@@ -269,12 +265,9 @@
 
 - (void) setHostname:(NSString *)newHostname
 {
-   NSAutoreleasePool * pool;
-   BOOL                restartNotifier;
+   BOOL restartNotifier;
 
    NSAssert((newHostname != nil), @"hostname must not be nil");
-
-   pool = [[NSAutoreleasePool alloc] init];
 
    linkLocalRef = NO;
 
@@ -288,14 +281,15 @@
       restartNotifier = YES;
    };
 
-   if ((reachabilityRef))
-      CFRelease(reachabilityRef);
-   reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, [hostname UTF8String]);
+   @autoreleasepool
+   {
+      if ((reachabilityRef))
+         CFRelease(reachabilityRef);
+      reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, [hostname UTF8String]);
+   };
 
    if ((restartNotifier))
       [self startNotifier];
-
-   [pool release];
 
    return;
 }
@@ -305,22 +299,22 @@
 
 static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void * info)
 {
-   NSAutoreleasePool     * pool;
    BKNetworkReachability * reachability;
 
-   pool = [[NSAutoreleasePool alloc] init];
+   @autoreleasepool
+   {
+      reachability                   = (BKNetworkReachability *) info;
+      reachability.reachabilityFlags = flags;
 
-   reachability                   = (BKNetworkReachability *) info;
-   reachability.reachabilityFlags = flags;
+      if ((reachability.logUpdates))
+         [reachability logNetworkReachabilityFlags];
 
-   if ((reachability.logUpdates))
-      [reachability logNetworkReachabilityFlags];
+      [[NSNotificationCenter defaultCenter] postNotificationName:BKNetworkReachabilityNotification object:reachability];
+      if ((reachability.notificationString))
+         [[NSNotificationCenter defaultCenter] postNotificationName:reachability.notificationString object:reachability];
+   };
 
-   [[NSNotificationCenter defaultCenter] postNotificationName:BKNetworkReachabilityNotification object:reachability];
-   if ((reachability.notificationString))
-      [[NSNotificationCenter defaultCenter] postNotificationName:reachability.notificationString object:reachability];
-
-   [pool release];
+   return;
 }
 
 
