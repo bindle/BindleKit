@@ -2,7 +2,7 @@
 Bindle Binaries Objective-C Kit  
 Copyright (C) 2012 Bindle Binaries <syzdek@bindlebinaries.com>.
 
-#### Development Version
+#### 0.3   (2013-01-24)
    - Adding copyright information to BKNetTest. (syzdek)
    - Updating icon file names for examples. (syzdek)
    - Adding BKPosixRegex class. (syzdek)
