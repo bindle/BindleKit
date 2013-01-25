@@ -2,7 +2,7 @@
 Bindle Binaries Objective-C Kit  
 Copyright (C) 2012 Bindle Binaries <syzdek@bindlebinaries.com>.
 
-#### 0.2.45
+#### 0.3   (2013-01-24)
    - Adding copyright information to BKNetTest. (syzdek)
    - Updating icon file names for examples. (syzdek)
    - Adding BKPosixRegex class. (syzdek)
@@ -10,6 +10,8 @@ Copyright (C) 2012 Bindle Binaries <syzdek@bindlebinaries.com>.
    - Adding Xcode target for building and installing documentation
      docsets. (syzdek)
    - Updating accompanying text files to use _markdown_ syntax. (syzdek)
+   - Updating git-package-version.sh to be more robust. (syzdek)
+   - Enabling Automatic Reference Counting on all targets. (syzdek)
 
 #### 0.2   (2012-03-17)
    - Fixing BKCatalog example. (syzdek)
