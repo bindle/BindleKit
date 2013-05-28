@@ -1,6 +1,6 @@
 /*
  *  Bindle Binaries Objective-C Kit
- *  Copyright (c) 2012, Bindle Binaries
+ *  Copyright (c) 2013 Bindle Binaries
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_START@
  *
@@ -31,40 +31,51 @@
  *
  *  @BINDLE_BINARIES_BSD_LICENSE_END@
  */
-/*
- *  BindleKit/BindleKit.h - loads API for classes in BindleKit
+/**
+ *  BKLogController displays the contents of a BKLogger object.
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-#import <BindleKit/controllers/BKNetworkReachability.h>
-#import <BindleKit/models/BKHash.h>
-#import <BindleKit/models/BKLogger.h>
-#import <BindleKit/models/BKNode.h>
-#import <BindleKit/models/BKMemoryCache.h>
-#import <BindleKit/models/BKPackage.h>
-#import <BindleKit/models/BKQueue.h>
-#import <BindleKit/models/BKPosixRegex.h>
-#import <BindleKit/models/BKPosixRegmatch.h>
-#import <BindleKit/models/BKSelectionOption.h>
-#import <BindleKit/models/BKStack.h>
-#import <BindleKit/models/BKTableTags.h>
-#import <BindleKit/models/BKVersion.h>
-#import <BindleKit/views/BKButtonImages.h>
 
-#if TARGET_OS_IPHONE
-#import <BindleKit/controllers/iOS/BKDevice.h>
-#import <BindleKit/controllers/iOS/BKListController.h>
-#import <BindleKit/controllers/iOS/BKLoggerController.h>
-#import <BindleKit/controllers/iOS/BKPackageController.h>
-#import <BindleKit/controllers/iOS/BKSelectionController.h>
-#import <BindleKit/controllers/iOS/BKSplitViewController.h>
-#import <BindleKit/views/iOS/BKButton.h>
-#import <BindleKit/views/iOS/BKPromptView.h>
-#import <BindleKit/views/iOS/BKActivityDisplayController.h>
-#endif
+@class BKLogger;
 
-#ifdef TARGET_OS_MAC
-#endif
 
-/* end of header */
+@interface BKLoggerController : UIViewController <MFMailComposeViewControllerDelegate>
+{
+   // log state
+   BKLogger      * _log;
+   NSData        * _logData;
+   NSString      * _logDate;
+
+   // app information
+   NSString      * _appName;
+   NSString      * _appVersion;
+   NSString      * _appBuild;
+   NSString      * _appExecutable;
+
+   // views
+   UITextView    * _textView;
+}
+
+#pragma mark - Object Management Methods
+/// @name Object Management Methods
+
+- (id) initWithLogger:(BKLogger *)log;
+
+
+#pragma mark - Log State
+/// @name Log State
+
+@property (nonatomic, retain) BKLogger * log;
+
+#pragma mark - app information
+/// @name App Information
+
+@property (nonatomic, retain) NSString * appName;
+@property (nonatomic, retain) NSString * appVersion;
+@property (nonatomic, retain) NSString * appBuild;
+@property (nonatomic, retain) NSString * appExecutable;
+
+@end
