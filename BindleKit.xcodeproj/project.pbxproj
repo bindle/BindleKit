@@ -70,6 +70,10 @@
 		A092A667141706B40033C972 /* BKNode.h in Headers */ = {isa = PBXBuildFile; fileRef = A092A664141706B40033C972 /* BKNode.h */; };
 		A092A668141706B40033C972 /* BKNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A092A665141706B40033C972 /* BKNode.m */; };
 		A092A669141706B40033C972 /* BKNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A092A665141706B40033C972 /* BKNode.m */; };
+		A09BD78D17541795007D4B38 /* BKLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = A09BD78B17541795007D4B38 /* BKLogger.h */; };
+		A09BD78E17541795007D4B38 /* BKLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = A09BD78B17541795007D4B38 /* BKLogger.h */; };
+		A09BD78F17541795007D4B38 /* BKLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A09BD78C17541795007D4B38 /* BKLogger.m */; };
+		A09BD79017541795007D4B38 /* BKLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A09BD78C17541795007D4B38 /* BKLogger.m */; };
 		A0A7D51414B5B140007B2D14 /* BKDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = A0A7D51214B5B140007B2D14 /* BKDevice.h */; };
 		A0A7D51514B5B140007B2D14 /* BKDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A7D51314B5B140007B2D14 /* BKDevice.m */; };
 		A0BF01B3157ACD7400CF7690 /* BKPosixRegex.h in Headers */ = {isa = PBXBuildFile; fileRef = A0BF01B1157ACD7400CF7690 /* BKPosixRegex.h */; };
@@ -174,6 +178,8 @@
 		A07D350A140DC1E900832E1F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		A092A664141706B40033C972 /* BKNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKNode.h; sourceTree = "<group>"; };
 		A092A665141706B40033C972 /* BKNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKNode.m; sourceTree = "<group>"; };
+		A09BD78B17541795007D4B38 /* BKLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKLogger.h; sourceTree = "<group>"; };
+		A09BD78C17541795007D4B38 /* BKLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKLogger.m; sourceTree = "<group>"; };
 		A0A7D51214B5B140007B2D14 /* BKDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKDevice.h; sourceTree = "<group>"; };
 		A0A7D51314B5B140007B2D14 /* BKDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKDevice.m; sourceTree = "<group>"; };
 		A0BF01B1157ACD7400CF7690 /* BKPosixRegex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKPosixRegex.h; sourceTree = "<group>"; };
@@ -263,6 +269,8 @@
 			children = (
 				A03F4B2314E5D60C0077F16D /* BKHash.h */,
 				A03F4B2414E5D60C0077F16D /* BKHash.m */,
+				A09BD78B17541795007D4B38 /* BKLogger.h */,
+				A09BD78C17541795007D4B38 /* BKLogger.m */,
 				A092A664141706B40033C972 /* BKNode.h */,
 				A092A665141706B40033C972 /* BKNode.m */,
 				A0529AC7140DDCB500CFA6F8 /* BKMemoryCache.h */,
@@ -426,6 +434,7 @@
 				A0BF01B3157ACD7400CF7690 /* BKPosixRegex.h in Headers */,
 				A073B463157F178C00F30BAB /* BKPosixRegmatch.h in Headers */,
 				A024C24D15A3B52500D8E38A /* BKNetworkReachabilityResolver.h in Headers */,
+				A09BD78D17541795007D4B38 /* BKLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +454,7 @@
 				A0BF01B4157ACD7400CF7690 /* BKPosixRegex.h in Headers */,
 				A073B464157F178C00F30BAB /* BKPosixRegmatch.h in Headers */,
 				A024C24E15A3B52500D8E38A /* BKNetworkReachabilityResolver.h in Headers */,
+				A09BD78E17541795007D4B38 /* BKLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +607,7 @@
 				A0BF01B5157ACD7400CF7690 /* BKPosixRegex.m in Sources */,
 				A073B465157F178C00F30BAB /* BKPosixRegmatch.m in Sources */,
 				A024C24F15A3B52500D8E38A /* BKNetworkReachabilityResolver.m in Sources */,
+				A09BD78F17541795007D4B38 /* BKLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +629,7 @@
 				A0BF01B6157ACD7400CF7690 /* BKPosixRegex.m in Sources */,
 				A073B466157F178C00F30BAB /* BKPosixRegmatch.m in Sources */,
 				A024C25015A3B52500D8E38A /* BKNetworkReachabilityResolver.m in Sources */,
+				A09BD79017541795007D4B38 /* BKLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
