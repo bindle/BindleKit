@@ -518,6 +518,19 @@ void BKLogBytes(const uint8_t * d, NSUInteger len, NSUInteger off)
 }
 
 
+void BKLogBytesWithLog(BKLogger * log, const uint8_t * d, NSUInteger len,
+   NSUInteger off)
+{
+   assert(log != nil);
+   assert(d   != nil);
+   assert(len  > 0);
+
+   BKLogBytesv(log, log.ident, d, len, off);
+
+   return;
+}
+
+
 void BKLog(NSString * format, ...)
 {
    BKLogger * log;

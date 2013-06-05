@@ -44,6 +44,7 @@
  *      * `BKLog(format, ...)`                logs the formatted message to the default instance.
  *      * `BKLogWithLog(log, format, ...)`    logs the formatted message to the specified instance.
  *      * `BKLogBytes(bytes, length, offset)` logs binary data as a hex dump to the default instance.
+ *      * `BKLogBytesWithLog(log, bytes, length, offset)`  logs binary data as a hex dump to the specified instance.
  */
 
 
@@ -272,6 +273,7 @@ typedef enum bindlekit_log_mechanism BKLogMechanism;
 void BKDebugWithLogFunc(BKLogger * log, const char * pretty, NSString * format, ...);
 void BKDebugFunc(const char * pretty, NSString * format, ...);
 void BKLogBytes(const uint8_t * bytes, NSUInteger length, NSUInteger offset);
+void BKLogBytesWithLog(BKLogger * log, const uint8_t * bytes, NSUInteger length, NSUInteger offset);
 void BKLog(NSString * format, ...);
 void BKLogWithLog(BKLogger * log, NSString * format, ...);
 
