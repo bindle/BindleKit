@@ -66,6 +66,7 @@ typedef enum bindlekit_log_mechanism BKLogMechanism;
 {
    // log state
    int32_t            _enabled;
+   int32_t            _debugEnabled;
    NSRecursiveLock  * _lock;
 
    // log parameters
@@ -103,6 +104,11 @@ typedef enum bindlekit_log_mechanism BKLogMechanism;
 /// If set to NO, this logger instance is disabled and will not log data
 /// to any mechanism.
 @property (nonatomic, assign) BOOL enabled;
+
+
+/// If set to NO, this logger instance will not log debug messages from
+/// BKDebug() or BKDebugWithLog().
+@property (nonatomic, assign) BOOL debugEnabled;
 
 
 #pragma mark - Log Parameters
@@ -261,8 +267,8 @@ typedef enum bindlekit_log_mechanism BKLogMechanism;
 #pragma mark - CF logging methods
 /// @name CF logging methods
 
-#define BKDebug(format, ...) BKDebugFunc(__PRETTY_FUNCTION__, format, __VA_ARGS__)
-#define BKDebugWithLog(log, format, ...) BKDebugFunc(log, __PRETTY_FUNCTION__,format, __VA_ARGS__)
+#define BKDebug(format, ...)             BKDebugWithLogFunc([BKLogger sharedLog], __PRETTY_FUNCTION__, format, __VA_ARGS__)
+#define BKDebugWithLog(log, format, ...) BKDebugWithLogFunc(log,                  __PRETTY_FUNCTION__, format, __VA_ARGS__)
 void BKDebugWithLogFunc(BKLogger * log, const char * pretty, NSString * format, ...);
 void BKDebugFunc(const char * pretty, NSString * format, ...);
 void BKLogBytes(const uint8_t * bytes, NSUInteger length, NSUInteger offset);

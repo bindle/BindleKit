@@ -78,7 +78,9 @@ void BKLogv(BKLogger * log, NSString * ident, NSString * format,
       return(self);
 
    // log state
-   _lock = [[NSRecursiveLock alloc] init];
+   _enabled      = 0;
+   _debugEnabled = 0;
+   _lock         = [[NSRecursiveLock alloc] init];
 
    // log parameters
    _ident         = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
@@ -110,9 +112,28 @@ void BKLogv(BKLogger * log, NSString * ident, NSString * format,
 
 #pragma mark - Log State
 
+- (BOOL) debugEnabled
+{
+   return(_debugEnabled == 1);
+}
+
+
 - (BOOL) enabled
 {
    return(_enabled == 1);
+}
+
+
+- (void) setDebugEnabled:(BOOL)debugEnabled
+{
+   int32_t n;
+   int32_t o;
+   n = (debugEnabled == YES) ? 1 : 0;
+   o = (debugEnabled == NO)  ? 1 : 0;
+   [_lock lock];
+   OSAtomicCompareAndSwap32Barrier(o, n, &_debugEnabled);
+   [_lock unlock];
+   return;
 }
 
 
@@ -463,28 +484,15 @@ void BKLogv(BKLogger * log, NSString * ident, NSString * format,
 
 #pragma mark - CF logging methods
 
-void BKDebugFunc(const char * pretty, NSString * format, ...)
-{
-   BKLogger * log;
-   va_list    arguments;
-   NSString * newFormat;
-
-   log = [BKLogger sharedLog];
-
-   newFormat = [NSString stringWithFormat:@"%s: %@", pretty, format];
-
-   va_start(arguments, format);
-   BKLogv(log, log.ident, newFormat, arguments);
-   va_end(arguments);
-   
-   return;
-}
-
-
 void BKDebugWithLogFunc(BKLogger * log, const char * pretty, NSString * format, ...)
 {
    va_list    arguments;
    NSString * newFormat;
+
+   assert(log != nil);
+
+   if (!(log.debugEnabled))
+      return;
 
    newFormat = [NSString stringWithFormat:@"%s: %@", pretty, format];
 
