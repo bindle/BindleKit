@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>BKNetworkReachability Class Reference</title>
+		<title>BKLogger Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">BKNetworkReachability Class Reference</h1>
+				<h1 class="hideInXcode">BKLogger Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -32,10 +32,17 @@
 	
 	
 	
+	<option value="tasks">Tasks</option>
 	
 	
 	
 	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/sharedLog">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedLog</option>
 	
 	
 	
@@ -53,11 +60,23 @@
 
 
 
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Object Management Methods">Object Management Methods</a></span></li>
+	
+</ul></li>
 
 
 
 
 
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedLog">sharedLog</a></span></li>
+	
+</ul></li>
 
 
 
@@ -66,7 +85,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="BKNetworkReachability Class Reference" name="top"></a>
+				<a title="BKLogger Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -75,7 +94,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">BKNetworkReachability Class Reference</h1>
+						<h1 class="title title-header">BKLogger Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -86,7 +105,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">BKNetworkReachability.h<br />BKNetworkReachability.m</td>
+	<td class="specification-value">BKLogger.h<br />BKLogger.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -96,8 +115,33 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>BKNetworkReachability is an Objective-C interface to the
-SCNetworkReachability programming interface.</p>
+						<p>BKLog provides is a replacement for NSLog which is faster and allows
+log history to be accessed from within an app.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Object Management Methods" name="task_Object Management Methods"></a>
+						
+<h3 class="subsubtitle task-title">Object Management Methods</h3>
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedLog">+&nbsp;sharedLog</a></code>
+		<span class="tooltip"><p>Returns the shared logging instance.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
 					</div>
 					
 					
@@ -106,9 +150,52 @@ SCNetworkReachability programming interface.</p>
 					
 					
 					
-					
-					
-					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/sharedLog" title="sharedLog"></a>
+	<h3 class="subsubtitle method-title">sharedLog</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the shared logging instance.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (BKLogger *)sharedLog</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The shared BKLog singleton.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
 					
 					

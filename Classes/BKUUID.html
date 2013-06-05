@@ -1,0 +1,968 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>BKUUID Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">BindleKit </a></h1>
+				<a id="developerHome" href="../index.html">Bindle Binaries</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">BKUUID Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/UUID">&nbsp;&nbsp;&nbsp;&nbsp;+ UUID</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/CFUUID">&nbsp;&nbsp;&nbsp;&nbsp;- CFUUID</option>
+	
+	<option value="//api/name/NSUUID">&nbsp;&nbsp;&nbsp;&nbsp;- NSUUID</option>
+	
+	<option value="//api/name/UUIDData">&nbsp;&nbsp;&nbsp;&nbsp;- UUIDData</option>
+	
+	<option value="//api/name/UUIDString">&nbsp;&nbsp;&nbsp;&nbsp;- UUIDString</option>
+	
+	<option value="//api/name/getUUIDBytes:">&nbsp;&nbsp;&nbsp;&nbsp;- getUUIDBytes:</option>
+	
+	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
+	
+	<option value="//api/name/initWithCFUUID:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithCFUUID:</option>
+	
+	<option value="//api/name/initWithNSData:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithNSData:</option>
+	
+	<option value="//api/name/initWithNSUUID:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithNSUUID:</option>
+	
+	<option value="//api/name/initWithUUIDBytes:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithUUIDBytes:</option>
+	
+	<option value="//api/name/initWithUUIDString:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithUUIDString:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Creating UUIDs">Creating UUIDs</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Get UUID Values">Get UUID Values</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/UUID">UUID</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/CFUUID">CFUUID</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/NSUUID">NSUUID</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/UUIDData">UUIDData</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/UUIDString">UUIDString</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getUUIDBytes:">getUUIDBytes:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithCFUUID:">initWithCFUUID:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithNSData:">initWithNSData:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithNSUUID:">initWithNSUUID:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithUUIDBytes:">initWithUUIDBytes:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithUUIDString:">initWithUUIDString:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="BKUUID Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">BKUUID Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">BKUUID.h<br />BKUUID.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>BK<a href="#//api/name/UUID">UUID</a> is a drop-in replacement for <a href="#//api/name/NSUUID">NSUUID</a> and is supported on iOS 5 and
+and higher.  BK<a href="#//api/name/UUID">UUID</a> is built around CFUUIDRef which has been available
+since iOS 2.0.  BK<a href="#//api/name/UUID">UUID</a> can be used to convert between CFUUIDRef and
+<a href="#//api/name/NSUUID">NSUUID</a> objects as well as compare NSString, NSData, and <a href="#//api/name/NSUUID">NSUUID</a> objects.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Creating UUIDs" name="task_Creating UUIDs"></a>
+						<h3 class="subsubtitle task-title">Creating UUIDs</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+		<span class="tooltip"><p>Create and returns a new <a href="#//api/name/UUID">UUID</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithCFUUID:">&ndash;&nbsp;initWithCFUUID:</a></code>
+		<span class="tooltip"><p>Creates and returns a new <a href="#//api/name/UUID">UUID</a> with the given CFUUIDRef.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithNSData:">&ndash;&nbsp;initWithNSData:</a></code>
+		<span class="tooltip"><p>Creates and returns a new <a href="#//api/name/UUID">UUID</a> with the given bytes.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithNSUUID:">&ndash;&nbsp;initWithNSUUID:</a></code>
+		<span class="tooltip"><p>Creates and returns a new <a href="#//api/name/UUID">UUID</a> with the given <a href="#//api/name/NSUUID">NSUUID</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithUUIDBytes:">&ndash;&nbsp;initWithUUIDBytes:</a></code>
+		<span class="tooltip"><p>Creates and returns a new <a href="#//api/name/UUID">UUID</a> with the given bytes.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithUUIDString:">&ndash;&nbsp;initWithUUIDString:</a></code>
+		<span class="tooltip"><p>Creates and returns a new <a href="#//api/name/UUID">UUID</a> from the formatted string.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/UUID">+&nbsp;UUID</a></code>
+		<span class="tooltip"><p>Create and returns a new UUID.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Get UUID Values" name="task_Get UUID Values"></a>
+						<h3 class="subsubtitle task-title">Get UUID Values</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/CFUUID">&ndash;&nbsp;CFUUID</a></code>
+		<span class="tooltip"><p>Creates and returns the <a href="#//api/name/UUID">UUID</a> as a CFUUIDRef reference.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/NSUUID">&ndash;&nbsp;NSUUID</a></code>
+		<span class="tooltip"><p>Creates and returns the <a href="#//api/name/UUID">UUID</a> as a NS<a href="#//api/name/UUID">UUID</a> object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getUUIDBytes:">&ndash;&nbsp;getUUIDBytes:</a></code>
+		<span class="tooltip"><p>Returns the UUIDs bytes.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/UUIDData">&ndash;&nbsp;UUIDData</a></code>
+		<span class="tooltip"><p>Returns the UUIDs bytes as a NSData object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/UUIDString">&ndash;&nbsp;UUIDString</a></code>
+		<span class="tooltip"><p>Returns the <a href="#//api/name/UUID">UUID</a> as a string.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/UUID" title="UUID"></a>
+	<h3 class="subsubtitle method-title">UUID</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create and returns a new UUID.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (id)UUID</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new UUID object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKUUID.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/CFUUID" title="CFUUID"></a>
+	<h3 class="subsubtitle method-title">CFUUID</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates and returns the <a href="#//api/name/UUID">UUID</a> as a CFUUIDRef reference.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (CFUUIDRef)CFUUID</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A CFUUIDRef reference containing the uuid.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKUUID.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/NSUUID" title="NSUUID"></a>
+	<h3 class="subsubtitle method-title">NSUUID</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates and returns the <a href="#//api/name/UUID">UUID</a> as a NS<a href="#//api/name/UUID">UUID</a> object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSUUID *)NSUUID</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A NS<a href="#//api/name/UUID">UUID</a> object containing the uuid.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKUUID.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/UUIDData" title="UUIDData"></a>
+	<h3 class="subsubtitle method-title">UUIDData</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the UUIDs bytes as a NSData object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSData *)UUIDData</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A NSData object containing the value of uuid represented as raw bytes.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKUUID.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/UUIDString" title="UUIDString"></a>
+	<h3 class="subsubtitle method-title">UUIDString</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the <a href="#//api/name/UUID">UUID</a> as a string.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)UUIDString</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A string containing a formatted <a href="#//api/name/UUID">UUID</a> for example E621E1F8-C36C-495A-93FC-0C247A3E6E5F.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKUUID.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getUUIDBytes:" title="getUUIDBytes:"></a>
+	<h3 class="subsubtitle method-title">getUUIDBytes:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the UUIDs bytes.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getUUIDBytes:(uuid_t)<em>uuid</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>uuid</em></dt>
+			<dd><p>The value of uuid represented as raw bytes.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKUUID.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="subsubtitle method-title">init</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create and returns a new <a href="#//api/name/UUID">UUID</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new <a href="#//api/name/UUID">UUID</a> object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKUUID.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithCFUUID:" title="initWithCFUUID:"></a>
+	<h3 class="subsubtitle method-title">initWithCFUUID:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates and returns a new <a href="#//api/name/UUID">UUID</a> with the given CFUUIDRef.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithCFUUID:(CFUUIDRef)<em>uuidRef</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>uuidRef</em></dt>
+			<dd><p>The CFUUIDRef reference used to create the <a href="#//api/name/UUID">UUID</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new <a href="#//api/name/UUID">UUID</a> object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKUUID.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithNSData:" title="initWithNSData:"></a>
+	<h3 class="subsubtitle method-title">initWithNSData:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates and returns a new <a href="#//api/name/UUID">UUID</a> with the given bytes.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithNSData:(NSData *)<em>data</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>data</em></dt>
+			<dd><p>NSData object containing raw <a href="#//api/name/UUID">UUID</a> bytes to use to create the
+   <a href="#//api/name/UUID">UUID</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new <a href="#//api/name/UUID">UUID</a> object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKUUID.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithNSUUID:" title="initWithNSUUID:"></a>
+	<h3 class="subsubtitle method-title">initWithNSUUID:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates and returns a new <a href="#//api/name/UUID">UUID</a> with the given <a href="#//api/name/NSUUID">NSUUID</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithNSUUID:(NSUUID *)<em>uuid</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>uuid</em></dt>
+			<dd><p>The <a href="#//api/name/NSUUID">NSUUID</a> object used to create the <a href="#//api/name/UUID">UUID</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new <a href="#//api/name/UUID">UUID</a> object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKUUID.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithUUIDBytes:" title="initWithUUIDBytes:"></a>
+	<h3 class="subsubtitle method-title">initWithUUIDBytes:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates and returns a new <a href="#//api/name/UUID">UUID</a> with the given bytes.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithUUIDBytes:(const uuid_t)<em>bytes</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bytes</em></dt>
+			<dd><p>Raw <a href="#//api/name/UUID">UUID</a> bytes to use to create the <a href="#//api/name/UUID">UUID</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new <a href="#//api/name/UUID">UUID</a> object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKUUID.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithUUIDString:" title="initWithUUIDString:"></a>
+	<h3 class="subsubtitle method-title">initWithUUIDString:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates and returns a new <a href="#//api/name/UUID">UUID</a> from the formatted string.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithUUIDString:(NSString *)<em>string</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>string containing a <a href="#//api/name/UUID">UUID</a>. The standard format for UUIDs
+   represented in ASCII is a string punctuated by hyphens, for example
+   68753A44-4D6F-1226-9C60-0050E4C00067.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new <a href="#//api/name/UUID">UUID</a> object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKUUID.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Bindle Binaries. All rights reserved. (Last updated: 2013-06-05)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

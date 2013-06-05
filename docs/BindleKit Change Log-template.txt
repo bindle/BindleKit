@@ -1,6 +1,11 @@
 
 Bindle Binaries Objective-C Kit  
-Copyright (C) 2012 Bindle Binaries <syzdek@bindlebinaries.com>.
+Copyright (C) 2013 Bindle Binaries <syzdek@bindlebinaries.com>.
+
+#### Devel
+   - Adding BKLogger class. (syzdek)
+   - Adding BKLoggerController class. (syzdek)
+   - Adding BKUUID class. (syzdek)
 
 #### 0.3   (2013-01-24)
    - Adding copyright information to BKNetTest. (syzdek)
