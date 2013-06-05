@@ -66,6 +66,10 @@
 		A073B465157F178C00F30BAB /* BKPosixRegmatch.m in Sources */ = {isa = PBXBuildFile; fileRef = A073B462157F178C00F30BAB /* BKPosixRegmatch.m */; };
 		A073B466157F178C00F30BAB /* BKPosixRegmatch.m in Sources */ = {isa = PBXBuildFile; fileRef = A073B462157F178C00F30BAB /* BKPosixRegmatch.m */; };
 		A07D34F8140DC1E800832E1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07D34F7140DC1E800832E1F /* Foundation.framework */; };
+		A0808A96175FC3AA0074058B /* BKUUID.h in Headers */ = {isa = PBXBuildFile; fileRef = A0808A94175FC3AA0074058B /* BKUUID.h */; };
+		A0808A97175FC3AA0074058B /* BKUUID.h in Headers */ = {isa = PBXBuildFile; fileRef = A0808A94175FC3AA0074058B /* BKUUID.h */; };
+		A0808A98175FC3AA0074058B /* BKUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = A0808A95175FC3AA0074058B /* BKUUID.m */; };
+		A0808A99175FC3AA0074058B /* BKUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = A0808A95175FC3AA0074058B /* BKUUID.m */; };
 		A092A666141706B40033C972 /* BKNode.h in Headers */ = {isa = PBXBuildFile; fileRef = A092A664141706B40033C972 /* BKNode.h */; };
 		A092A667141706B40033C972 /* BKNode.h in Headers */ = {isa = PBXBuildFile; fileRef = A092A664141706B40033C972 /* BKNode.h */; };
 		A092A668141706B40033C972 /* BKNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A092A665141706B40033C972 /* BKNode.m */; };
@@ -178,6 +182,8 @@
 		A07D3505140DC1E800832E1F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		A07D3507140DC1E900832E1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		A07D350A140DC1E900832E1F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		A0808A94175FC3AA0074058B /* BKUUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKUUID.h; sourceTree = "<group>"; };
+		A0808A95175FC3AA0074058B /* BKUUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKUUID.m; sourceTree = "<group>"; };
 		A092A664141706B40033C972 /* BKNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKNode.h; sourceTree = "<group>"; };
 		A092A665141706B40033C972 /* BKNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKNode.m; sourceTree = "<group>"; };
 		A09BD78B17541795007D4B38 /* BKLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKLogger.h; sourceTree = "<group>"; };
@@ -293,6 +299,8 @@
 				A0D32C9214186F0200641ABD /* BKStack.m */,
 				A0E24F0C14E3DF410040D81D /* BKTableTags.h */,
 				A0E24F0D14E3DF410040D81D /* BKTableTags.m */,
+				A0808A94175FC3AA0074058B /* BKUUID.h */,
+				A0808A95175FC3AA0074058B /* BKUUID.m */,
 				A0FCC8F814E22CD5001A0644 /* BKVersion.h */,
 				A0FCC8F914E22CD5001A0644 /* BKVersion.m */,
 			);
@@ -442,6 +450,7 @@
 				A024C24D15A3B52500D8E38A /* BKNetworkReachabilityResolver.h in Headers */,
 				A09BD78D17541795007D4B38 /* BKLogger.h in Headers */,
 				A09BD7981754B5D1007D4B38 /* BKLoggerController.h in Headers */,
+				A0808A96175FC3AA0074058B /* BKUUID.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +471,7 @@
 				A073B464157F178C00F30BAB /* BKPosixRegmatch.h in Headers */,
 				A024C24E15A3B52500D8E38A /* BKNetworkReachabilityResolver.h in Headers */,
 				A09BD78E17541795007D4B38 /* BKLogger.h in Headers */,
+				A0808A97175FC3AA0074058B /* BKUUID.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +626,7 @@
 				A024C24F15A3B52500D8E38A /* BKNetworkReachabilityResolver.m in Sources */,
 				A09BD78F17541795007D4B38 /* BKLogger.m in Sources */,
 				A09BD7991754B5D1007D4B38 /* BKLoggerController.m in Sources */,
+				A0808A98175FC3AA0074058B /* BKUUID.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +649,7 @@
 				A073B466157F178C00F30BAB /* BKPosixRegmatch.m in Sources */,
 				A024C25015A3B52500D8E38A /* BKNetworkReachabilityResolver.m in Sources */,
 				A09BD79017541795007D4B38 /* BKLogger.m in Sources */,
+				A0808A99175FC3AA0074058B /* BKUUID.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

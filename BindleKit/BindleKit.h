@@ -49,6 +49,7 @@
 #import <BindleKit/models/BKSelectionOption.h>
 #import <BindleKit/models/BKStack.h>
 #import <BindleKit/models/BKTableTags.h>
+#import <BindleKit/models/BKUUID.h>
 #import <BindleKit/models/BKVersion.h>
 #import <BindleKit/views/BKButtonImages.h>
 
