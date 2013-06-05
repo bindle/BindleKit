@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>BKLogger Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 840)" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -38,6 +37,35 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/dateFormat">&nbsp;&nbsp;&nbsp;&nbsp;dateFormat</option>
+	
+	<option value="//api/name/dateString">&nbsp;&nbsp;&nbsp;&nbsp;dateString</option>
+	
+	<option value="//api/name/dateStyle">&nbsp;&nbsp;&nbsp;&nbsp;dateStyle</option>
+	
+	<option value="//api/name/debugEnabled">&nbsp;&nbsp;&nbsp;&nbsp;debugEnabled</option>
+	
+	<option value="//api/name/enabled">&nbsp;&nbsp;&nbsp;&nbsp;enabled</option>
+	
+	<option value="//api/name/forwardingLog">&nbsp;&nbsp;&nbsp;&nbsp;forwardingLog</option>
+	
+	<option value="//api/name/history">&nbsp;&nbsp;&nbsp;&nbsp;history</option>
+	
+	<option value="//api/name/historyMaxLength">&nbsp;&nbsp;&nbsp;&nbsp;historyMaxLength</option>
+	
+	<option value="//api/name/historyString">&nbsp;&nbsp;&nbsp;&nbsp;historyString</option>
+	
+	<option value="//api/name/ident">&nbsp;&nbsp;&nbsp;&nbsp;ident</option>
+	
+	<option value="//api/name/logItemMask">&nbsp;&nbsp;&nbsp;&nbsp;logItemMask</option>
+	
+	<option value="//api/name/mechanismMask">&nbsp;&nbsp;&nbsp;&nbsp;mechanismMask</option>
+	
+	<option value="//api/name/timeStyle">&nbsp;&nbsp;&nbsp;&nbsp;timeStyle</option>
+	
+	
 	
 	
 	<option value="class_methods">Class Methods</option>
@@ -45,6 +73,31 @@
 	<option value="//api/name/sharedLog">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedLog</option>
 	
 	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
+	
+	<option value="//api/name/logBytes:length:offset:">&nbsp;&nbsp;&nbsp;&nbsp;- logBytes:length:offset:</option>
+	
+	<option value="//api/name/logData:offset:">&nbsp;&nbsp;&nbsp;&nbsp;- logData:offset:</option>
+	
+	<option value="//api/name/logFormat:">&nbsp;&nbsp;&nbsp;&nbsp;- logFormat:</option>
+	
+	<option value="//api/name/logItem:withBytes:length:offset:">&nbsp;&nbsp;&nbsp;&nbsp;- logItem:withBytes:length:offset:</option>
+	
+	<option value="//api/name/logItem:withData:offset:">&nbsp;&nbsp;&nbsp;&nbsp;- logItem:withData:offset:</option>
+	
+	<option value="//api/name/logItem:withFormat:">&nbsp;&nbsp;&nbsp;&nbsp;- logItem:withFormat:</option>
+	
+	<option value="//api/name/setLogItem:toState:">&nbsp;&nbsp;&nbsp;&nbsp;- setLogItem:toState:</option>
+	
+	<option value="//api/name/setMechanism:toState:">&nbsp;&nbsp;&nbsp;&nbsp;- setMechanism:toState:</option>
+	
+	<option value="//api/name/stateForLogItem:">&nbsp;&nbsp;&nbsp;&nbsp;- stateForLogItem:</option>
+	
+	<option value="//api/name/stateForMechanism:">&nbsp;&nbsp;&nbsp;&nbsp;- stateForMechanism:</option>
 	
 	
 	
@@ -64,11 +117,53 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Object Management Methods">Object Management Methods</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Log State">Log State</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Log Parameters">Log Parameters</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Date &amp; Time">Date &amp; Time</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Log History">Log History</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Forwarding Log">Forwarding Log</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Logging Methods">Logging Methods</a></span></li>
+	
 </ul></li>
 
 
 
 
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dateFormat">dateFormat</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dateString">dateString</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dateStyle">dateStyle</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/debugEnabled">debugEnabled</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/enabled">enabled</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/forwardingLog">forwardingLog</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/history">history</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/historyMaxLength">historyMaxLength</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/historyString">historyString</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/ident">ident</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logItemMask">logItemMask</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/mechanismMask">mechanismMask</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/timeStyle">timeStyle</a></span></li>
+	
+</ul></li>
 
 
 
@@ -79,6 +174,32 @@
 </ul></li>
 
 
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logBytes:length:offset:">logBytes:length:offset:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logData:offset:">logData:offset:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logFormat:">logFormat:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logItem:withBytes:length:offset:">logItem:withBytes:length:offset:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logItem:withData:offset:">logItem:withData:offset:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logItem:withFormat:">logItem:withFormat:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setLogItem:toState:">setLogItem:toState:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setMechanism:toState:">setMechanism:toState:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stateForLogItem:">stateForLogItem:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stateForMechanism:">stateForMechanism:</a></span></li>
+	
+</ul></li>
 
 
 			</ul>
@@ -116,7 +237,21 @@
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<p>BKLog provides is a replacement for NSLog which is faster and allows
-log history to be accessed from within an app.</p>
+log <a href="#//api/name/history">history</a> to be accessed from within an app.</p>
+
+<p>The following undocumented C functions are available for logging messages
+(C functions are not supported by the current documentation generator):</p>
+
+<ul>
+<li><code>BKDebug(format, ...)</code>              logs debuging information and formatted message to default instance.</li>
+<li><code>BKDebug(format, ...)</code>              logs debuging information and formatted message to default instance.</li>
+<li><code>BKDebugWithLog(log, format, ...)</code>  logs debuging information and formatted message to the specified logger instance.</li>
+<li><code>BKLog(format, ...)</code>                logs the formatted message to the default instance.</li>
+<li><code>BKLogWithLog(log, format, ...)</code>    logs the formatted message to the specified instance.</li>
+<li><code>BKLogBytes(bytes, length, offset)</code> logs binary data as a hex dump to the default instance.</li>
+<li><code>BKLogBytesWithLog(log, bytes, length, offset)</code>  logs binary data as a hex dump to the specified instance.</li>
+</ul>
+
 					</div>
 					
 					
@@ -129,13 +264,234 @@ log history to be accessed from within an app.</p>
 						
 						
 						<a title="Object Management Methods" name="task_Object Management Methods"></a>
-						
-<h3 class="subsubtitle task-title">Object Management Methods</h3>
+						<h3 class="subsubtitle task-title">Object Management Methods</h3>
+
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
+		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+		<span class="tooltip"><p>Creates and returns a BKLogger instance.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/sharedLog">+&nbsp;sharedLog</a></code>
 		<span class="tooltip"><p>Returns the shared logging instance.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Log State" name="task_Log State"></a>
+						<h3 class="subsubtitle task-title">Log State</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/enabled">&nbsp;&nbsp;enabled</a></code>
+		<span class="tooltip"><p>If set to NO, this logger instance is disabled and will not log data
+to any mechanism.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/debugEnabled">&nbsp;&nbsp;debugEnabled</a></code>
+		<span class="tooltip"><p>If set to NO, this logger instance will not log debug messages from
+BKDebug() or BKDebugWithLog().</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Log Parameters" name="task_Log Parameters"></a>
+						<h3 class="subsubtitle task-title">Log Parameters</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/ident">&nbsp;&nbsp;ident</a></code>
+		<span class="tooltip"><p>The string used to identify the source of each log entry.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/mechanismMask">&nbsp;&nbsp;mechanismMask</a></code>
+		<span class="tooltip"><p>The mechanisms used to record log entries.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/logItemMask">&nbsp;&nbsp;logItemMask</a></code>
+		<span class="tooltip"><p>Custom bit mask intended to be used be developers to enable/disable logging
+of individual items within an application.  The bit values are determined
+by the developer.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setMechanism:toState:">&ndash;&nbsp;setMechanism:toState:</a></code>
+		<span class="tooltip"><p>Updates the state (enable or disable) of an individual logging mechanism.
+The type of request the message was initialized to process.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setLogItem:toState:">&ndash;&nbsp;setLogItem:toState:</a></code>
+		<span class="tooltip"><p>Updates the state (enable or disable) of an individual log items.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stateForMechanism:">&ndash;&nbsp;stateForMechanism:</a></code>
+		<span class="tooltip"><p>Returns the state (<a href="#//api/name/enabled">enabled</a> or disabled) of the specified logging memchanism.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stateForLogItem:">&ndash;&nbsp;stateForLogItem:</a></code>
+		<span class="tooltip"><p>Returns the state (<a href="#//api/name/enabled">enabled</a> or disabled) of the specified log item.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Date &amp; Time" name="task_Date &amp; Time"></a>
+						<h3 class="subsubtitle task-title">Date &amp; Time</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dateString">&nbsp;&nbsp;dateString</a></code>
+		<span class="tooltip"><p>Returns the current date formatted using the logger&rsquo;s date and time format.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dateFormat">&nbsp;&nbsp;dateFormat</a></code>
+		<span class="tooltip"><p>Returns logger&rsquo;s date format.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dateStyle">&nbsp;&nbsp;dateStyle</a></code>
+		<span class="tooltip"><p>Returns logger&rsquo;s date style.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/timeStyle">&nbsp;&nbsp;timeStyle</a></code>
+		<span class="tooltip"><p>Returns logger&rsquo;s time style.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Log History" name="task_Log History"></a>
+						<h3 class="subsubtitle task-title">Log History</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/history">&nbsp;&nbsp;history</a></code>
+		<span class="tooltip"><p>Returns the unformatted log history.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/historyMaxLength">&nbsp;&nbsp;historyMaxLength</a></code>
+		<span class="tooltip"><p>The maximum amount of memory the logger can use to store log <a href="#//api/name/history">history</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/historyString">&nbsp;&nbsp;historyString</a></code>
+		<span class="tooltip"><p>Returns the formatted log <a href="#//api/name/history">history</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Forwarding Log" name="task_Forwarding Log"></a>
+						<h3 class="subsubtitle task-title">Forwarding Log</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/forwardingLog">&nbsp;&nbsp;forwardingLog</a></code>
+		<span class="tooltip"><p>The logger instance used to forward log messages.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Logging Methods" name="task_Logging Methods"></a>
+						<h3 class="subsubtitle task-title">Logging Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/logBytes:length:offset:">&ndash;&nbsp;logBytes:length:offset:</a></code>
+		<span class="tooltip"><p>Logs binary data as a hex dump.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/logData:offset:">&ndash;&nbsp;logData:offset:</a></code>
+		<span class="tooltip"><p>Logs binary data as a hex dump.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/logItem:withBytes:length:offset:">&ndash;&nbsp;logItem:withBytes:length:offset:</a></code>
+		<span class="tooltip"><p>Logs binary data as a hex dump.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/logItem:withData:offset:">&ndash;&nbsp;logItem:withData:offset:</a></code>
+		<span class="tooltip"><p>Logs binary data as a hex dump.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/logItem:withFormat:">&ndash;&nbsp;logItem:withFormat:</a></code>
+		<span class="tooltip"><p>Logs a formatted message.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/logFormat:">&ndash;&nbsp;logFormat:</a></code>
+		<span class="tooltip"><p>Logs a formatted message.</p></span>
 	</span>
 	
 	
@@ -147,6 +503,572 @@ log history to be accessed from within an app.</p>
 					
 					
 					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/dateFormat" title="dateFormat"></a>
+	<h3 class="subsubtitle method-title">dateFormat</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns logger&rsquo;s date format.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSString *dateFormat</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A string containing the logger&rsquo;s date format.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/dateString" title="dateString"></a>
+	<h3 class="subsubtitle method-title">dateString</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the current date formatted using the logger&rsquo;s date and time format.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *dateString</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A string containing the formatted string of the current date.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/dateStyle" title="dateStyle"></a>
+	<h3 class="subsubtitle method-title">dateStyle</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns logger&rsquo;s date style.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSDateFormatterStyle dateStyle</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The value of the logger&rsquo;s date style.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/debugEnabled" title="debugEnabled"></a>
+	<h3 class="subsubtitle method-title">debugEnabled</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>If set to NO, this logger instance will not log debug messages from
+BKDebug() or BKDebugWithLog().</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL debugEnabled</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/enabled" title="enabled"></a>
+	<h3 class="subsubtitle method-title">enabled</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>If set to NO, this logger instance is disabled and will not log data
+to any mechanism.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL enabled</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/forwardingLog" title="forwardingLog"></a>
+	<h3 class="subsubtitle method-title">forwardingLog</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The logger instance used to forward log messages.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) BKLogger *forwardingLog</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/history" title="history"></a>
+	<h3 class="subsubtitle method-title">history</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the unformatted log history.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSData *history</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The raw data containing the unformatted log history.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/historyMaxLength" title="historyMaxLength"></a>
+	<h3 class="subsubtitle method-title">historyMaxLength</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The maximum amount of memory the logger can use to store log <a href="#//api/name/history">history</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSUInteger historyMaxLength</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The maximum amount of memory the logger can use to store log <a href="#//api/name/history">history</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/historyString" title="historyString"></a>
+	<h3 class="subsubtitle method-title">historyString</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the formatted log <a href="#//api/name/history">history</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *historyString</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The string containing the formatted log <a href="#//api/name/history">history</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/ident" title="ident"></a>
+	<h3 class="subsubtitle method-title">ident</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The string used to identify the source of each log entry.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSString *ident</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/logItemMask" title="logItemMask"></a>
+	<h3 class="subsubtitle method-title">logItemMask</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Custom bit mask intended to be used be developers to enable/disable logging
+of individual items within an application.  The bit values are determined
+by the developer.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSUInteger logItemMask</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/setLogItem:toState:">- setLogItem:toState:</a>, <a href="#//api/name/stateForLogItem:">- stateForLogItem:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/mechanismMask" title="mechanismMask"></a>
+	<h3 class="subsubtitle method-title">mechanismMask</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The mechanisms used to record log entries.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSUInteger mechanismMask</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<table>
+<thead>
+<tr>
+<th>BKLogMechanism          </th>
+<th> Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BKLogMechanismNone</code>    </td>
+<td> No mechanism (0)</td>
+</tr>
+<tr>
+<td><code>BKLogMechanismConsole</code> </td>
+<td> Mechanism for logging to STDERR.</td>
+</tr>
+<tr>
+<td><code>BKLogMechanismHistory</code> </td>
+<td> Mechanism for logging to memory.</td>
+</tr>
+<tr>
+<td><code>BKLogMechanismForward</code> </td>
+<td> Mechanism for logging to another logger instance.</td>
+</tr>
+<tr>
+<td><code>BKLogMechanismAll</code>     </td>
+<td> All Mechanism (~0)</td>
+</tr>
+</tbody>
+</table>
+
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/setMechanism:toState:">- setMechanism:toState:</a>, <a href="#//api/name/stateForMechanism:">- stateForMechanism:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/timeStyle" title="timeStyle"></a>
+	<h3 class="subsubtitle method-title">timeStyle</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns logger&rsquo;s time style.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSDateFormatterStyle timeStyle</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The value of the logger&rsquo;s time style.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
 					
 					
@@ -199,6 +1121,625 @@ log history to be accessed from within an app.</p>
 					
 					
 					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="subsubtitle method-title">init</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates and returns a BKLogger instance.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new BKLogger instance.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/logBytes:length:offset:" title="logBytes:length:offset:"></a>
+	<h3 class="subsubtitle method-title">logBytes:length:offset:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Logs binary data as a hex dump.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)logBytes:(const uint8_t *)<em>bytes</em> length:(NSUInteger)<em>length</em> offset:(NSUInteger)<em>offset</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bytes</em></dt>
+			<dd><p>The binary buffer to record.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>length</em></dt>
+			<dd><p>The length of the binary buffer in bytes.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>offset</em></dt>
+			<dd><p>The offset value to display in the log entry.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/logData:offset:" title="logData:offset:"></a>
+	<h3 class="subsubtitle method-title">logData:offset:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Logs binary data as a hex dump.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)logData:(NSData *)<em>data</em> offset:(NSUInteger)<em>offset</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>data</em></dt>
+			<dd><p>The object containing the binary buffer to record.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>offset</em></dt>
+			<dd><p>The offset value to display in the log entry.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/logFormat:" title="logFormat:"></a>
+	<h3 class="subsubtitle method-title">logFormat:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Logs a formatted message.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)logFormat:(NSString *)<em>format</em>, <em>...</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>format</em></dt>
+			<dd><p>The message format.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>...</em></dt>
+			<dd><p>The format arguments.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/logItem:withBytes:length:offset:" title="logItem:withBytes:length:offset:"></a>
+	<h3 class="subsubtitle method-title">logItem:withBytes:length:offset:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Logs binary data as a hex dump.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)logItem:(NSUInteger)<em>logItem</em> withBytes:(const uint8_t *)<em>bytes</em> length:(NSUInteger)<em>length</em> offset:(NSUInteger)<em>offset</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>logItem</em></dt>
+			<dd><p>The ID of the item to log.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bytes</em></dt>
+			<dd><p>The binary buffer to record.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>length</em></dt>
+			<dd><p>The length of the binary buffer in bytes.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>offset</em></dt>
+			<dd><p>The offset value to display in the log entry.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/logItem:withData:offset:" title="logItem:withData:offset:"></a>
+	<h3 class="subsubtitle method-title">logItem:withData:offset:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Logs binary data as a hex dump.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)logItem:(NSUInteger)<em>logItem</em> withData:(NSData *)<em>data</em> offset:(NSUInteger)<em>offset</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>logItem</em></dt>
+			<dd><p>The ID of the item to log.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>data</em></dt>
+			<dd><p>The object containing the binary buffer to record.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>offset</em></dt>
+			<dd><p>The offset value to display in the log entry.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/logItem:withFormat:" title="logItem:withFormat:"></a>
+	<h3 class="subsubtitle method-title">logItem:withFormat:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Logs a formatted message.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)logItem:(NSUInteger)<em>logItem</em> withFormat:(NSString *)<em>format</em>, <em>...</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>logItem</em></dt>
+			<dd><p>The ID of the item to log.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>format</em></dt>
+			<dd><p>The message format.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>...</em></dt>
+			<dd><p>The format arguments.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setLogItem:toState:" title="setLogItem:toState:"></a>
+	<h3 class="subsubtitle method-title">setLogItem:toState:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Updates the state (enable or disable) of an individual log items.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setLogItem:(NSUInteger)<em>logItem</em> toState:(BOOL)<em>state</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>logItem</em></dt>
+			<dd><p>The log item whose state is being updated.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>state</em></dt>
+			<dd><p>The new state of the log item.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/logItemMask">@property logItemMask</a>, <a href="#//api/name/stateForLogItem:">- stateForLogItem:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setMechanism:toState:" title="setMechanism:toState:"></a>
+	<h3 class="subsubtitle method-title">setMechanism:toState:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Updates the state (enable or disable) of an individual logging mechanism.
+The type of request the message was initialized to process.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setMechanism:(BKLogMechanism)<em>mechanism</em> toState:(BOOL)<em>state</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>mechanism</em></dt>
+			<dd><p>The mechanism whose state is being updated. See <a href="#//api/name/mechanismMask">mechanismMask</a> for values.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>state</em></dt>
+			<dd><p>The new state of the logging mechanism.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/mechanismMask">@property mechanismMask</a>, <a href="#//api/name/stateForMechanism:">- stateForMechanism:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/stateForLogItem:" title="stateForLogItem:"></a>
+	<h3 class="subsubtitle method-title">stateForLogItem:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the state (<a href="#//api/name/enabled">enabled</a> or disabled) of the specified log item.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)stateForLogItem:(NSUInteger)<em>logItem</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>logItem</em></dt>
+			<dd><p>The log item being queried.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns the state of the specified log item.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/logItemMask">@property logItemMask</a>, <a href="#//api/name/setMechanism:toState:">- setMechanism:toState:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/stateForMechanism:" title="stateForMechanism:"></a>
+	<h3 class="subsubtitle method-title">stateForMechanism:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the state (<a href="#//api/name/enabled">enabled</a> or disabled) of the specified logging memchanism.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)stateForMechanism:(BKLogMechanism)<em>mechanism</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>mechanism</em></dt>
+			<dd><p>The mechanism being queried. See <a href="#//api/name/mechanismMask">mechanismMask</a> for values.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns the state of the specified logging mechanism.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/mechanismMask">@property mechanismMask</a>, <a href="#//api/name/setMechanism:toState:">- setMechanism:toState:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BKLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
 					
 				</div>
 				<div class="main-navigation navigation-bottom">
@@ -212,7 +1753,7 @@ log history to be accessed from within an app.</p>
 					<div class="footer-copyright">
 						<p><span class="copyright">&copy; 2013 Bindle Binaries. All rights reserved. (Last updated: 2013-06-05)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						
 					</div>
 				</div>
