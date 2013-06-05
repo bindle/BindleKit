@@ -98,6 +98,7 @@ gh-pages: docset
 	cd ./docs/github && git add .
 	VER=`git describe --long --abbrev=7 |sed -e 's/-/./g'`; \
 	   cd ./docs/github && git commit -m "Generating documentation from $$VER" .
+	cd ./docs/github && git push origin gh-pages:gh-pages
 
 
 update-git: gh-pages
