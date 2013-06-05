@@ -572,6 +572,10 @@ void BKLogBytesv(BKLogger * log, NSString * ident, const uint8_t * d,
    if (!(log.mechanismMask))
       return;
 
+   // sets default values
+   if (!(ident))
+      ident = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
+
    // sends notifications
    sendKVO = NO;
    if ((log.mechanismMask & BKLogMechanismHistory))
@@ -701,6 +705,10 @@ void BKLogv(BKLogger * log, NSString * ident, NSString * format, va_list argumen
       return;
    if (!(log.mechanismMask))
       return;
+
+   // sets default values
+   if (!(ident))
+      ident = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
 
    // sends notifications
    sendKVO = NO;
