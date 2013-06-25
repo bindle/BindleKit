@@ -162,6 +162,12 @@
 }
 
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+   return(YES);
+}
+
+
 #pragma mark - UIBarButtonItem targets
 
 - (void) receiveDoneButton:(UIBarButtonItem *)barButton
